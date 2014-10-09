@@ -1,0 +1,131 @@
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Vista\bin\Debug\Vista.exe
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Vista\bin\Debug\Vista.pdb
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Vista\bin\Debug\Controladora.dll
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Vista\bin\Debug\Modelo_Entidades.dll
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Vista\bin\Debug\Controladora.pdb
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Vista\bin\Debug\Modelo_Entidades.pdb
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Vista\obj\x86\Debug\ResolveAssemblyReference.cache
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Vista\obj\x86\Debug\Vista.frmABM.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Vista\obj\x86\Debug\Vista.frmPrincipal.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Vista\obj\x86\Debug\Vista.Properties.Resources.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Vista\obj\x86\Debug\GenerateResource.read.1.tlog
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Vista\obj\x86\Debug\GenerateResource.write.1.tlog
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Vista\obj\x86\Debug\Vista.exe
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Vista\obj\x86\Debug\Vista.pdb
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Vista\obj\x86\Debug\Vista.frmAlmacen.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Vista\obj\x86\Debug\Vista.frmAlmacenes.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Vista\bin\Debug\Vista.exe.config
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Vista\obj\x86\Debug\Vista.frmClientes.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Vista\obj\x86\Debug\Vista.frmCliente.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Vista\obj\x86\Debug\Vista.frmChofer.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Vista\obj\x86\Debug\Vista.frmChoferes.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Vista\obj\x86\Debug\Vista.frmTransportes.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Vista\obj\x86\Debug\Vista.frmTransporte.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Vista\obj\x86\Debug\Vista.frmAlquiler.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Vista\obj\x86\Debug\Vista.frmAlquileres.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Vista\obj\x86\Debug\Vista.frmRegistroIngreso.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Vista\obj\x86\Debug\Vista.frmGrupo.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Vista\obj\x86\Debug\Vista.frmGrupos.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Vista\obj\x86\Debug\Vista.frmPerfiles.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Vista\obj\x86\Debug\Vista.frmUsuario.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Vista\obj\x86\Debug\Vista.frmUsuarios.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Vista\obj\x86\Debug\Vista.frmLogin.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Vista\obj\x86\Debug\Vista.frmPerfil.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Vista\obj\x86\Debug\Vista.frmCClave.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Vista\obj\x86\Debug\Vista.frmRecuperarClave.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Vista\obj\x86\Debug\Vista.frmAutorizarCierre.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Vista\obj\x86\Debug\Vista.frmCargaYDescarga.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Vista\obj\x86\Debug\Vista.frmCarga.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Vista\obj\x86\Debug\Vista.frmDescarga.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Vista\obj\x86\Debug\Vista.frmEquivalencias.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Vista\obj\x86\Debug\Vista.frmDocumento.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Vista\obj\x86\Debug\Vista.frmOperaciones.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Vista\obj\x86\Debug\Vista.frmAutorizarOperacion.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Vista\bin\Debug\Vista.exe.config
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Vista\obj\x86\Debug\Vista.exe
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Vista\obj\x86\Debug\Vista.pdb
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Vista\bin\Debug\Vista.exe
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Vista\bin\Debug\Vista.pdb
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Vista\bin\Debug\Controladora.dll
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Vista\bin\Debug\Modelo_Entidades.dll
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Vista\bin\Debug\Controladora.pdb
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Vista\bin\Debug\Modelo_Entidades.pdb
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Vista\obj\x86\Debug\Vista.csprojResolveAssemblyReference.cache
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Vista\obj\x86\Debug\Vista.frmABM.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Vista\obj\x86\Debug\Vista.frmAlmacen.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Vista\obj\x86\Debug\Vista.frmAlmacenes.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Vista\obj\x86\Debug\Vista.frmAlquiler.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Vista\obj\x86\Debug\Vista.frmAlquileres.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Vista\obj\x86\Debug\Vista.frmOperaciones.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Vista\obj\x86\Debug\Vista.frmAutorizarOperacion.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Vista\obj\x86\Debug\Vista.frmCarga.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Vista\obj\x86\Debug\Vista.frmCargaYDescarga.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Vista\obj\x86\Debug\Vista.frmCClave.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Vista\obj\x86\Debug\Vista.frmChofer.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Vista\obj\x86\Debug\Vista.frmChoferes.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Vista\obj\x86\Debug\Vista.frmCliente.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Vista\obj\x86\Debug\Vista.frmClientes.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Vista\obj\x86\Debug\Vista.frmDescarga.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Vista\obj\x86\Debug\Vista.frmDocumento.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Vista\obj\x86\Debug\Vista.frmEquivalencias.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Vista\obj\x86\Debug\Vista.frmGrupo.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Vista\obj\x86\Debug\Vista.frmGrupos.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Vista\obj\x86\Debug\Vista.frmLogin.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Vista\obj\x86\Debug\Vista.frmPerfil.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Vista\obj\x86\Debug\Vista.frmPerfiles.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Vista\obj\x86\Debug\Vista.frmPrincipal.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Vista\obj\x86\Debug\Vista.frmRecuperarClave.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Vista\obj\x86\Debug\Vista.frmRegistroIngreso.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Vista\obj\x86\Debug\Vista.frmTransporte.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Vista\obj\x86\Debug\Vista.frmTransportes.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Vista\obj\x86\Debug\Vista.frmUsuario.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Vista\obj\x86\Debug\Vista.frmUsuarios.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Vista\obj\x86\Debug\Vista.Properties.Resources.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Vista\obj\x86\Debug\Vista.csproj.GenerateResource.Cache
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\bin\Debug\Vista.exe.config
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\bin\Debug\Vista.exe
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\bin\Debug\Vista.pdb
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\bin\Debug\Controladora.dll
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\bin\Debug\Modelo_Entidades.dll
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\bin\Debug\Controladora.pdb
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\bin\Debug\Modelo_Entidades.pdb
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\obj\x86\Debug\Vista.csprojResolveAssemblyReference.cache
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\obj\x86\Debug\Vista.frmABM.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\obj\x86\Debug\Vista.frmAlmacen.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\obj\x86\Debug\Vista.frmAlmacenes.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\obj\x86\Debug\Vista.frmAlquiler.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\obj\x86\Debug\Vista.frmAlquileres.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\obj\x86\Debug\Vista.frmCargaDescarga.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\obj\x86\Debug\Vista.frmOperaciones.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\obj\x86\Debug\Vista.frmAutorizarOperacion.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\obj\x86\Debug\Vista.frmCarga.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\obj\x86\Debug\Vista.frmCargaYDescarga.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\obj\x86\Debug\Vista.frmCClave.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\obj\x86\Debug\Vista.frmChofer.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\obj\x86\Debug\Vista.frmChoferes.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\obj\x86\Debug\Vista.frmCliente.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\obj\x86\Debug\Vista.frmClientes.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\obj\x86\Debug\Vista.frmDescarga.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\obj\x86\Debug\Vista.frmEquivalencias.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\obj\x86\Debug\Vista.frmGrupo.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\obj\x86\Debug\Vista.frmGrupos.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\obj\x86\Debug\Vista.frmLogin.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\obj\x86\Debug\Vista.frmPerfil.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\obj\x86\Debug\Vista.frmPerfiles.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\obj\x86\Debug\Vista.frmPrincipal.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\obj\x86\Debug\Vista.frmRegistroIngreso.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\obj\x86\Debug\Vista.frmTransporte.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\obj\x86\Debug\Vista.frmTransportes.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\obj\x86\Debug\Vista.frmUsuario.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\obj\x86\Debug\Vista.frmUsuarios.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\obj\x86\Debug\Vista.Properties.Resources.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\obj\x86\Debug\Vista.csproj.GenerateResource.Cache
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\obj\x86\Debug\Vista.exe
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\obj\x86\Debug\Vista.pdb
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\obj\x86\Debug\Vista.frmPrincipalAntiguo.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\obj\x86\Debug\Vista.frmInformeVIP.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\obj\x86\Debug\Vista.frmInformeFertMovido.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\obj\x86\Debug\RdlCompile.cache
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\obj\x86\Debug\RdlCompile.compiled
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\obj\x86\Debug\Vista.frmRegenerarClave.resources
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\obj\x86\Debug\Vista.frmInformeEstadoAlquileres.resources

@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModeloSeguridadStoreContainer" CdmEntityContainer="ModeloSeguridadContainer">
+    <EntitySetMapping Name="FORMULARIOS">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloSeguridad.FORMULARIO)">
+        <MappingFragment StoreEntitySet="FORMULARIOS">
+          <ScalarProperty Name="FRM_CODIGO" ColumnName="FRM_CODIGO" />
+          <ScalarProperty Name="FRM_DESCRIPCION" ColumnName="FRM_DESCRIPCION" />
+          <ScalarProperty Name="FRM_MODULO" ColumnName="FRM_MODULO" />
+          <ScalarProperty Name="FRM_FORMULARIO" ColumnName="FRM_FORMULARIO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GRUPOS">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloSeguridad.GRUPO)">
+        <MappingFragment StoreEntitySet="GRUPOS">
+          <ScalarProperty Name="GRU_CODIGO" ColumnName="GRU_CODIGO" />
+          <ScalarProperty Name="GRU_DESCRIPCION" ColumnName="GRU_DESCRIPCION" />
+          <ScalarProperty Name="GRU_ESTADO" ColumnName="GRU_ESTADO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MODULOS">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloSeguridad.MODULO)">
+        <MappingFragment StoreEntitySet="MODULOS">
+          <ScalarProperty Name="MOD_CODIGO" ColumnName="MOD_CODIGO" />
+          <ScalarProperty Name="MOD_DESCRIPCION" ColumnName="MOD_DESCRIPCION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PERFILES">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloSeguridad.PERFIL)">
+        <MappingFragment StoreEntitySet="PERFILES">
+          <ScalarProperty Name="PRF_CODIGO" ColumnName="PRF_CODIGO" />
+          <ScalarProperty Name="FRM_CODIGO" ColumnName="FRM_CODIGO" />
+          <ScalarProperty Name="GRU_CODIGO" ColumnName="GRU_CODIGO" />
+          <ScalarProperty Name="PER_CODIGO" ColumnName="PER_CODIGO" />
+          <ScalarProperty Name="AU_USUARIO" ColumnName="AU_USUARIO" />
+          <ScalarProperty Name="AU_FECHA" ColumnName="AU_FECHA" />
+          <ScalarProperty Name="AU_MOVIMIENTO" ColumnName="AU_MOVIMIENTO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PERMISOS">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloSeguridad.PERMISO)">
+        <MappingFragment StoreEntitySet="PERMISOS">
+          <ScalarProperty Name="PER_CODIGO" ColumnName="PER_CODIGO" />
+          <ScalarProperty Name="PER_DESCRIPCION" ColumnName="PER_DESCRIPCION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USUARIOS">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloSeguridad.USUARIO)">
+        <MappingFragment StoreEntitySet="USUARIOS">
+          <ScalarProperty Name="USU_CODIGO" ColumnName="USU_CODIGO" />
+          <ScalarProperty Name="USU_NOMBRE" ColumnName="USU_NOMBRE" />
+          <ScalarProperty Name="USU_ESTADO" ColumnName="USU_ESTADO" />
+          <ScalarProperty Name="USU_CLAVE" ColumnName="USU_CLAVE" />
+          <ScalarProperty Name="USU_APELLIDO" ColumnName="USU_APELLIDO" />
+          <ScalarProperty Name="USU_EMAIL" ColumnName="USU_EMAIL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FORMULARIOS_PERMISOS" TypeName="ModeloSeguridad.FORMULARIOS_PERMISOS" StoreEntitySet="FORMULARIOS_PERMISOS">
+      <EndProperty Name="FORMULARIOS">
+        <ScalarProperty Name="FRM_CODIGO" ColumnName="FORMULARIOS_FRM_CODIGO" />
+      </EndProperty>
+      <EndProperty Name="PERMISOS">
+        <ScalarProperty Name="PER_CODIGO" ColumnName="PERMISOS_PER_CODIGO" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="USUARIOS_GRUPOS" TypeName="ModeloSeguridad.USUARIOS_GRUPOS" StoreEntitySet="USUARIOS_GRUPOS">
+      <EndProperty Name="GRUPOS">
+        <ScalarProperty Name="GRU_CODIGO" ColumnName="GRUPOS_GRU_CODIGO" />
+      </EndProperty>
+      <EndProperty Name="USUARIOS">
+        <ScalarProperty Name="USU_CODIGO" ColumnName="USUARIOS_USU_CODIGO" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

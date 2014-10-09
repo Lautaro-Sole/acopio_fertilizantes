@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Controladora.CCUCClave" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>CCUCClave.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Controladora.CCUCore" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QCAAgAAAIAAoIAAAAiIAAAAIAAAAQACASAIAAAAAAAA=</HashCode>
+      <FileName>CCUCore.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Controladora.CCUDocumentos" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAIAAAAQAAAACAAAAAAAAQ=</HashCode>
+      <FileName>CCUDocumentos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Controladora.CCUGAlmacenes" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAIAAAAQAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>CCUGAlmacenes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Controladora.CCUGAlquileres" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAAAAAAAAIAAAAQQAAEAAAAAAAAAQ=</HashCode>
+      <FileName>CCUGAlquileres.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Controladora.CCUGChoferes" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAABAAAAAAAAAAAAAAAAAIAAAAQAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>CCUGChoferes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Controladora.CCUGClientes" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAIAAAAQAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>CCUGClientes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Controladora.CCUGGrupos" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAQAAIAAAAQAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>CCUGGrupos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Controladora.CCUGPerfiles" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAEAAgAAEAAAAACAIAAAAQAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>CCUGPerfiles.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Controladora.CCUGProductos" Collapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CCUGProductos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Controladora.CCUGTransportes" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAIAAAAQAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>CCUGTransportes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Controladora.CCUGUsuarios" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAACACAAIAAAAAAAACCAIAAAAwAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>CCUGUsuarios.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Controladora.CCULogin">
+    <Position X="5.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAEAgAAAAAAAABAAAAAAEAA=</HashCode>
+      <FileName>CCULogin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Controladora.CCULogOut">
+    <Position X="7" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>CCULogOut.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Controladora.CCURecuperarClave">
+    <Position X="8.25" Y="6.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>CCURecuperarClave.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Controladora.CCURPF">
+    <Position X="5.25" Y="6.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAEAAAAAAEAgAAAAAAAAAAAAgAAEAA=</HashCode>
+      <FileName>CCURPF.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Controladora.FachadaModuloSeguridad">
+    <Position X="2.25" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAIAAAAAAAACAEAgAAAEQAAAAAAAAAAEAI=</HashCode>
+      <FileName>FachadaModuloSeguridad.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

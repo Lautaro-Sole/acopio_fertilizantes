@@ -1,0 +1,318 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Acopio_FertilizantesModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="Acopio_FertilizantesEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Alquileres_Productos" EntityType="Acopio_FertilizantesModel.Alquiler_Producto" />
+    <EntitySet Name="CatAlmacenes" EntityType="Acopio_FertilizantesModel.Almacen" />
+    <EntitySet Name="CatAlquileres" EntityType="Acopio_FertilizantesModel.Alquiler" />
+    <EntitySet Name="CatChoferes" EntityType="Acopio_FertilizantesModel.Chofer" />
+    <EntitySet Name="CatClientes" EntityType="Acopio_FertilizantesModel.Cliente" />
+    <EntitySet Name="CatDocumentos" EntityType="Acopio_FertilizantesModel.Documento" />
+    <EntitySet Name="CatOperaciones" EntityType="Acopio_FertilizantesModel.Operacion" />
+    <EntitySet Name="CatProductos" EntityType="Acopio_FertilizantesModel.Producto" />
+    <EntitySet Name="CatTransportes" EntityType="Acopio_FertilizantesModel.Transporte" />
+    <EntitySet Name="sysdiagrams" EntityType="Acopio_FertilizantesModel.sysdiagrams" />
+    <AssociationSet Name="FK_Alquiler_Alquiler_Producto" Association="Acopio_FertilizantesModel.FK_Alquiler_Alquiler_Producto">
+      <End Role="CatAlquileres" EntitySet="CatAlquileres" />
+      <End Role="Alquileres_Productos" EntitySet="Alquileres_Productos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Producto_Alquiler_Producto" Association="Acopio_FertilizantesModel.FK_Producto_Alquiler_Producto">
+      <End Role="CatProductos" EntitySet="CatProductos" />
+      <End Role="Alquileres_Productos" EntitySet="Alquileres_Productos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Almacen_Alquiler" Association="Acopio_FertilizantesModel.FK_Almacen_Alquiler">
+      <End Role="CatAlmacenes" EntitySet="CatAlmacenes" />
+      <End Role="CatAlquileres" EntitySet="CatAlquileres" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Alquiler_Cliente" Association="Acopio_FertilizantesModel.FK_Alquiler_Cliente">
+      <End Role="CatClientes" EntitySet="CatClientes" />
+      <End Role="CatAlquileres" EntitySet="CatAlquileres" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Operacion_Alquiler" Association="Acopio_FertilizantesModel.FK_Operacion_Alquiler">
+      <End Role="CatAlquileres" EntitySet="CatAlquileres" />
+      <End Role="CatOperaciones" EntitySet="CatOperaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Operacion_Chofer" Association="Acopio_FertilizantesModel.FK_Operacion_Chofer">
+      <End Role="CatChoferes" EntitySet="CatChoferes" />
+      <End Role="CatOperaciones" EntitySet="CatOperaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Documento_Operacion" Association="Acopio_FertilizantesModel.FK_Documento_Operacion">
+      <End Role="CatDocumentos" EntitySet="CatDocumentos" />
+      <End Role="CatOperaciones" EntitySet="CatOperaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Documento_Producto" Association="Acopio_FertilizantesModel.FK_Documento_Producto">
+      <End Role="CatProductos" EntitySet="CatProductos" />
+      <End Role="CatDocumentos" EntitySet="CatDocumentos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Operacion_Transporte" Association="Acopio_FertilizantesModel.FK_Operacion_Transporte">
+      <End Role="CatTransportes" EntitySet="CatTransportes" />
+      <End Role="CatOperaciones" EntitySet="CatOperaciones" />
+    </AssociationSet>
+    <AssociationSet Name="Choferes_Transportes" Association="Acopio_FertilizantesModel.Choferes_Transportes">
+      <End Role="CatChoferes" EntitySet="CatChoferes" />
+      <End Role="CatTransportes" EntitySet="CatTransportes" />
+    </AssociationSet>
+    <AssociationSet Name="Clientes_Choferes" Association="Acopio_FertilizantesModel.Clientes_Choferes">
+      <End Role="CatChoferes" EntitySet="CatChoferes" />
+      <End Role="CatClientes" EntitySet="CatClientes" />
+    </AssociationSet>
+    <AssociationSet Name="Clientes_Operaciones" Association="Acopio_FertilizantesModel.Cliente_Operacion">
+      <End Role="Cliente" EntitySet="CatClientes" />
+      <End Role="Operacion" EntitySet="CatOperaciones" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Alquiler_Producto">
+    <Key>
+      <PropertyRef Name="nro_alquiler" />
+      <PropertyRef Name="codigo_producto" />
+    </Key>
+    <Property Name="nro_alquiler" Type="Int32" Nullable="false" />
+    <Property Name="codigo_producto" Type="Int32" Nullable="false" />
+    <Property Name="cantidad_kg" Type="Double" />
+    <NavigationProperty Name="Alquiler" Relationship="Acopio_FertilizantesModel.FK_Alquiler_Alquiler_Producto" FromRole="Alquileres_Productos" ToRole="CatAlquileres" />
+    <NavigationProperty Name="Producto" Relationship="Acopio_FertilizantesModel.FK_Producto_Alquiler_Producto" FromRole="Alquileres_Productos" ToRole="CatProductos" />
+  </EntityType>
+  <EntityType Name="Almacen">
+    <Key>
+      <PropertyRef Name="nro_almacen" />
+    </Key>
+    <Property Name="nro_almacen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="60" Unicode="true" FixedLength="false" />
+    <Property Name="direccion" Type="String" MaxLength="60" Unicode="true" FixedLength="false" />
+    <Property Name="distancia_a_empresa" Type="Int32" />
+    <Property Name="capacidad" Type="Double" />
+    <NavigationProperty Name="Alquileres" Relationship="Acopio_FertilizantesModel.FK_Almacen_Alquiler" FromRole="CatAlmacenes" ToRole="CatAlquileres" />
+  </EntityType>
+  <EntityType Name="Alquiler">
+    <Key>
+      <PropertyRef Name="nro_alquiler" />
+    </Key>
+    <Property Name="nro_alquiler" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="estado" Type="Boolean" />
+    <Property Name="fecha_inicio_alquiler" Type="DateTime" />
+    <Property Name="fecha_fin_alquiler" Type="DateTime" />
+    <Property Name="capacidad" Type="Double" />
+    <Property Name="nro_almacen" Type="Int32" Nullable="false" />
+    <Property Name="nro_cliente" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Alquiler_Productos" Relationship="Acopio_FertilizantesModel.FK_Alquiler_Alquiler_Producto" FromRole="CatAlquileres" ToRole="Alquileres_Productos" />
+    <NavigationProperty Name="Almacen" Relationship="Acopio_FertilizantesModel.FK_Almacen_Alquiler" FromRole="CatAlquileres" ToRole="CatAlmacenes" />
+    <NavigationProperty Name="Cliente" Relationship="Acopio_FertilizantesModel.FK_Alquiler_Cliente" FromRole="CatAlquileres" ToRole="CatClientes" />
+    <NavigationProperty Name="Operaciones" Relationship="Acopio_FertilizantesModel.FK_Operacion_Alquiler" FromRole="CatAlquileres" ToRole="CatOperaciones" />
+  </EntityType>
+  <EntityType Name="Chofer">
+    <Key>
+      <PropertyRef Name="nro_chofer" />
+    </Key>
+    <Property Name="nro_chofer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="apellido" Type="String" MaxLength="60" Unicode="true" FixedLength="false" />
+    <Property Name="nombre" Type="String" MaxLength="60" Unicode="true" FixedLength="false" />
+    <Property Name="num_documento" Type="Int32" />
+    <Property Name="tipo_documento" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Operaciones" Relationship="Acopio_FertilizantesModel.FK_Operacion_Chofer" FromRole="CatChoferes" ToRole="CatOperaciones" />
+    <NavigationProperty Name="Transportes" Relationship="Acopio_FertilizantesModel.Choferes_Transportes" FromRole="CatChoferes" ToRole="CatTransportes" />
+    <NavigationProperty Name="Clientes" Relationship="Acopio_FertilizantesModel.Clientes_Choferes" FromRole="CatChoferes" ToRole="CatClientes" />
+  </EntityType>
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="nro_cliente" />
+    </Key>
+    <Property Name="nro_cliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="60" Unicode="true" FixedLength="false" />
+    <Property Name="telefono" Type="String" MaxLength="60" Unicode="true" FixedLength="false" />
+    <Property Name="email" Type="String" MaxLength="60" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Alquileres" Relationship="Acopio_FertilizantesModel.FK_Alquiler_Cliente" FromRole="CatClientes" ToRole="CatAlquileres" />
+    <NavigationProperty Name="Choferes" Relationship="Acopio_FertilizantesModel.Clientes_Choferes" FromRole="CatClientes" ToRole="CatChoferes" />
+    <NavigationProperty Name="Operaciones" Relationship="Acopio_FertilizantesModel.Cliente_Operacion" FromRole="Cliente" ToRole="Operacion" />
+  </EntityType>
+  <EntityType Name="Documento">
+    <Key>
+      <PropertyRef Name="nro_documento" />
+      <PropertyRef Name="tipo_documento" />
+    </Key>
+    <Property Name="nro_documento" Type="Int64" Nullable="false" />
+    <Property Name="fecha_hora" Type="DateTime" />
+    <Property Name="tipo_documento" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="peso" Type="Double" />
+    <Property Name="codigo_producto" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Operaciones" Relationship="Acopio_FertilizantesModel.FK_Documento_Operacion" FromRole="CatDocumentos" ToRole="CatOperaciones" />
+    <NavigationProperty Name="Producto" Relationship="Acopio_FertilizantesModel.FK_Documento_Producto" FromRole="CatDocumentos" ToRole="CatProductos" />
+  </EntityType>
+  <EntityType Name="Operacion">
+    <Key>
+      <PropertyRef Name="nro_operacion" />
+    </Key>
+    <Property Name="nro_operacion" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="estado" Type="String" MaxLength="60" Unicode="true" FixedLength="false" />
+    <Property Name="fecha_y_hora_inicio" Type="DateTime" />
+    <Property Name="fecha_y_hora_fin" Type="DateTime" />
+    <Property Name="notas" Type="String" MaxLength="320" Unicode="true" FixedLength="false" />
+    <Property Name="nro_documento" Type="Int64" />
+    <Property Name="peso_inicial" Type="Double" />
+    <Property Name="peso_final" Type="Double" />
+    <Property Name="tipo_documento" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="tipo_operacion" Type="String" MaxLength="60" Unicode="true" FixedLength="false" />
+    <Property Name="USU_CODIGO" Type="String" Nullable="false" MaxLength="15" Unicode="true" FixedLength="false" />
+    <Property Name="fecha_y_hora_accion" Type="DateTime" Nullable="false" />
+    <Property Name="accion" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="nro_alquiler" Type="Int32" />
+    <Property Name="nro_chofer" Type="Int32" Nullable="false" />
+    <Property Name="nro_transporte" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Alquiler" Relationship="Acopio_FertilizantesModel.FK_Operacion_Alquiler" FromRole="CatOperaciones" ToRole="CatAlquileres" />
+    <NavigationProperty Name="Chofer" Relationship="Acopio_FertilizantesModel.FK_Operacion_Chofer" FromRole="CatOperaciones" ToRole="CatChoferes" />
+    <NavigationProperty Name="Documento" Relationship="Acopio_FertilizantesModel.FK_Documento_Operacion" FromRole="CatOperaciones" ToRole="CatDocumentos" />
+    <NavigationProperty Name="Transporte" Relationship="Acopio_FertilizantesModel.FK_Operacion_Transporte" FromRole="CatOperaciones" ToRole="CatTransportes" />
+    <NavigationProperty Name="Cliente" Relationship="Acopio_FertilizantesModel.Cliente_Operacion" FromRole="Operacion" ToRole="Cliente" />
+  </EntityType>
+  <EntityType Name="Producto">
+    <Key>
+      <PropertyRef Name="codigo_producto" />
+    </Key>
+    <Property Name="codigo_producto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="60" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Alquiler_Productos" Relationship="Acopio_FertilizantesModel.FK_Producto_Alquiler_Producto" FromRole="CatProductos" ToRole="Alquileres_Productos" />
+    <NavigationProperty Name="Documentos" Relationship="Acopio_FertilizantesModel.FK_Documento_Producto" FromRole="CatProductos" ToRole="CatDocumentos" />
+  </EntityType>
+  <EntityType Name="Transporte">
+    <Key>
+      <PropertyRef Name="nro_transporte" />
+    </Key>
+    <Property Name="nro_transporte" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nro_matricula" Type="String" MaxLength="60" Unicode="true" FixedLength="false" />
+    <Property Name="carga_maxima" Type="Double" />
+    <Property Name="tara" Type="Double" />
+    <Property Name="tipo_matricula" Type="String" MaxLength="60" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Operaciones" Relationship="Acopio_FertilizantesModel.FK_Operacion_Transporte" FromRole="CatTransportes" ToRole="CatOperaciones" />
+    <NavigationProperty Name="Choferes" Relationship="Acopio_FertilizantesModel.Choferes_Transportes" FromRole="CatTransportes" ToRole="CatChoferes" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_Alquiler_Alquiler_Producto">
+    <End Role="CatAlquileres" Type="Acopio_FertilizantesModel.Alquiler" Multiplicity="1" />
+    <End Role="Alquileres_Productos" Type="Acopio_FertilizantesModel.Alquiler_Producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CatAlquileres">
+        <PropertyRef Name="nro_alquiler" />
+      </Principal>
+      <Dependent Role="Alquileres_Productos">
+        <PropertyRef Name="nro_alquiler" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Producto_Alquiler_Producto">
+    <End Role="CatProductos" Type="Acopio_FertilizantesModel.Producto" Multiplicity="1" />
+    <End Role="Alquileres_Productos" Type="Acopio_FertilizantesModel.Alquiler_Producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CatProductos">
+        <PropertyRef Name="codigo_producto" />
+      </Principal>
+      <Dependent Role="Alquileres_Productos">
+        <PropertyRef Name="codigo_producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Almacen_Alquiler">
+    <End Role="CatAlmacenes" Type="Acopio_FertilizantesModel.Almacen" Multiplicity="1" />
+    <End Role="CatAlquileres" Type="Acopio_FertilizantesModel.Alquiler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CatAlmacenes">
+        <PropertyRef Name="nro_almacen" />
+      </Principal>
+      <Dependent Role="CatAlquileres">
+        <PropertyRef Name="nro_almacen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Alquiler_Cliente">
+    <End Role="CatClientes" Type="Acopio_FertilizantesModel.Cliente" Multiplicity="1" />
+    <End Role="CatAlquileres" Type="Acopio_FertilizantesModel.Alquiler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CatClientes">
+        <PropertyRef Name="nro_cliente" />
+      </Principal>
+      <Dependent Role="CatAlquileres">
+        <PropertyRef Name="nro_cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Operacion_Alquiler">
+    <End Role="CatAlquileres" Type="Acopio_FertilizantesModel.Alquiler" Multiplicity="0..1" />
+    <End Role="CatOperaciones" Type="Acopio_FertilizantesModel.Operacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CatAlquileres">
+        <PropertyRef Name="nro_alquiler" />
+      </Principal>
+      <Dependent Role="CatOperaciones">
+        <PropertyRef Name="nro_alquiler" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Operacion_Chofer">
+    <End Role="CatChoferes" Type="Acopio_FertilizantesModel.Chofer" Multiplicity="1" />
+    <End Role="CatOperaciones" Type="Acopio_FertilizantesModel.Operacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CatChoferes">
+        <PropertyRef Name="nro_chofer" />
+      </Principal>
+      <Dependent Role="CatOperaciones">
+        <PropertyRef Name="nro_chofer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Documento_Operacion">
+    <End Role="CatDocumentos" Type="Acopio_FertilizantesModel.Documento" Multiplicity="0..1" />
+    <End Role="CatOperaciones" Type="Acopio_FertilizantesModel.Operacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CatDocumentos">
+        <PropertyRef Name="nro_documento" />
+        <PropertyRef Name="tipo_documento" />
+      </Principal>
+      <Dependent Role="CatOperaciones">
+        <PropertyRef Name="nro_documento" />
+        <PropertyRef Name="tipo_documento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Documento_Producto">
+    <End Role="CatProductos" Type="Acopio_FertilizantesModel.Producto" Multiplicity="1" />
+    <End Role="CatDocumentos" Type="Acopio_FertilizantesModel.Documento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CatProductos">
+        <PropertyRef Name="codigo_producto" />
+      </Principal>
+      <Dependent Role="CatDocumentos">
+        <PropertyRef Name="codigo_producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Operacion_Transporte">
+    <End Role="CatTransportes" Type="Acopio_FertilizantesModel.Transporte" Multiplicity="1" />
+    <End Role="CatOperaciones" Type="Acopio_FertilizantesModel.Operacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CatTransportes">
+        <PropertyRef Name="nro_transporte" />
+      </Principal>
+      <Dependent Role="CatOperaciones">
+        <PropertyRef Name="nro_transporte" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Choferes_Transportes">
+    <End Role="CatChoferes" Type="Acopio_FertilizantesModel.Chofer" Multiplicity="*" />
+    <End Role="CatTransportes" Type="Acopio_FertilizantesModel.Transporte" Multiplicity="*" />
+  </Association>
+  <Association Name="Clientes_Choferes">
+    <End Role="CatChoferes" Type="Acopio_FertilizantesModel.Chofer" Multiplicity="*" />
+    <End Role="CatClientes" Type="Acopio_FertilizantesModel.Cliente" Multiplicity="*" />
+  </Association>
+  <Association Name="Cliente_Operacion">
+    <End Type="Acopio_FertilizantesModel.Cliente" Role="Cliente" Multiplicity="1" />
+    <End Type="Acopio_FertilizantesModel.Operacion" Role="Operacion" Multiplicity="*" />
+  </Association>
+</Schema>

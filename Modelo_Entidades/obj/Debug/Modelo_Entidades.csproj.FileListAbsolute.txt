@@ -1,0 +1,17 @@
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Modelo_Entidades\bin\Debug\Modelo_Entidades.dll
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Modelo_Entidades\bin\Debug\Modelo_Entidades.pdb
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Modelo_Entidades\obj\Debug\ResolveAssemblyReference.cache
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Modelo_Entidades\obj\Debug\Modelo_Entidades.dll
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Modelo_Entidades\obj\Debug\Modelo_Entidades.pdb
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Modelo_Entidades\bin\Debug\Modelo_Entidades.dll.config
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Modelo_Entidades\bin\Debug\Modelo_Entidades.dll.config
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Modelo_Entidades\bin\Debug\Modelo_Entidades.dll
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Modelo_Entidades\bin\Debug\Modelo_Entidades.pdb
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Modelo_Entidades\obj\Debug\Modelo_Entidades.dll
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Modelo_Entidades\obj\Debug\Modelo_Entidades.pdb
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Modelo_Entidades\bin\Debug\Modelo_Entidades.dll.config
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Modelo_Entidades\bin\Debug\Modelo_Entidades.dll
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Modelo_Entidades\bin\Debug\Modelo_Entidades.pdb
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Modelo_Entidades\obj\Debug\Modelo_Entidades.dll
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Modelo_Entidades\obj\Debug\Modelo_Entidades.pdb
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Modelo_Entidades\obj\Debug\Modelo_Entidades.csprojResolveAssemblyReference.cache

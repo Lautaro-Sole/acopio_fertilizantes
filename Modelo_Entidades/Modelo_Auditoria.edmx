@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Modelo_AuditoriaModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="Modelo_AuditoriaModelStoreContainer">
+          <EntitySet Name="CatOperaciones_Auditoria" EntityType="Modelo_AuditoriaModel.Store.CatOperaciones_Auditoria" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Log_Historia" EntityType="Modelo_AuditoriaModel.Store.Log_Historia" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="CatOperaciones_Auditoria">
+          <Key>
+            <PropertyRef Name="nro_operacion" />
+            <PropertyRef Name="USU_CODIGO" />
+            <PropertyRef Name="fecha_y_hora_accion" />
+          </Key>
+          <Property Name="nro_operacion" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="estado" Type="nvarchar" MaxLength="60" />
+          <Property Name="fecha_y_hora_inicio" Type="datetime" />
+          <Property Name="fecha_y_hora_fin" Type="datetime" />
+          <Property Name="notas" Type="nvarchar" MaxLength="320" />
+          <Property Name="nro_documento" Type="bigint" />
+          <Property Name="peso_inicial" Type="float" />
+          <Property Name="peso_final" Type="float" />
+          <Property Name="tipo_documento" Type="nvarchar" MaxLength="30" />
+          <Property Name="tipo_operacion" Type="nvarchar" MaxLength="60" />
+          <Property Name="USU_CODIGO" Type="nvarchar" Nullable="false" MaxLength="15" />
+          <Property Name="fecha_y_hora_accion" Type="datetime" Nullable="false" />
+          <Property Name="accion" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="nro_alquiler" Type="int" />
+          <Property Name="nro_chofer" Type="int" Nullable="false" />
+          <Property Name="nro_transporte" Type="int" Nullable="false" />
+          <Property Name="Cliente_nro_cliente" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Log_Historia">
+          <Key>
+            <PropertyRef Name="nro_log" />
+            <PropertyRef Name="USU_CODIGO" />
+            <PropertyRef Name="fecha_y_hora" />
+          </Key>
+          <Property Name="nro_log" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="USU_CODIGO" Type="varchar" Nullable="false" MaxLength="15" />
+          <Property Name="fecha_y_hora" Type="datetime2" Nullable="false" />
+          <Property Name="accion" Type="varchar" Nullable="false" MaxLength="10" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Modelo_AuditoriaModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="Modelo_AuditoriaEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CatOperaciones_Auditoria" EntityType="Modelo_AuditoriaModel.Operacion_Auditoria" />
+          <EntitySet Name="Log_Historia" EntityType="Modelo_AuditoriaModel.Log" />
+        </EntityContainer>
+        <EntityType Name="Operacion_Auditoria">
+          <Key>
+            <PropertyRef Name="nro_operacion" />
+            <PropertyRef Name="USU_CODIGO" />
+            <PropertyRef Name="fecha_y_hora_accion" />
+          </Key>
+          <Property Name="nro_operacion" Type="Int64" Nullable="false" />
+          <Property Name="estado" Type="String" Nullable="false" MaxLength="60" Unicode="false" FixedLength="false" />
+          <Property Name="fecha_y_hora_inicio" Type="DateTime" />
+          <Property Name="fecha_y_hora_fin" Type="DateTime" />
+          <Property Name="notas" Type="String" MaxLength="320" Unicode="false" FixedLength="false" />
+          <Property Name="nro_documento" Type="Int64" />
+          <Property Name="nro_alquiler" Type="Int32" />
+          <Property Name="nro_chofer" Type="Int32" Nullable="false" />
+          <Property Name="nro_transporte" Type="Int32" Nullable="false" />
+          <Property Name="peso_inicial" Type="Double" />
+          <Property Name="peso_final" Type="Double" />
+          <Property Name="tipo_documento" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="tipo_operacion" Type="String" MaxLength="60" Unicode="false" FixedLength="false" />
+          <Property Name="USU_CODIGO" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="fecha_y_hora_accion" Type="DateTime" Nullable="false" />
+          <Property Name="accion" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Type="Int32" Name="Cliente_nro_cliente" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="nro_log" />
+            <PropertyRef Name="USU_CODIGO" />
+            <PropertyRef Name="fecha_y_hora" />
+          </Key>
+          <Property Type="Int64" Name="nro_log" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="USU_CODIGO" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="fecha_y_hora" Nullable="false" />
+          <Property Type="String" Name="accion" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Modelo_AuditoriaModelStoreContainer" CdmEntityContainer="Modelo_AuditoriaEntities2">
+    <EntitySetMapping Name="CatOperaciones_Auditoria">
+      <EntityTypeMapping TypeName="IsTypeOf(Modelo_AuditoriaModel.Operacion_Auditoria)">
+        <MappingFragment StoreEntitySet="CatOperaciones_Auditoria">
+          <ScalarProperty Name="Cliente_nro_cliente" ColumnName="Cliente_nro_cliente" />
+                <ScalarProperty Name="nro_operacion" ColumnName="nro_operacion" />
+          <ScalarProperty Name="USU_CODIGO" ColumnName="USU_CODIGO" />
+          <ScalarProperty Name="fecha_y_hora_accion" ColumnName="fecha_y_hora_accion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="fecha_y_hora_inicio" ColumnName="fecha_y_hora_inicio" />
+          <ScalarProperty Name="fecha_y_hora_fin" ColumnName="fecha_y_hora_fin" />
+          <ScalarProperty Name="notas" ColumnName="notas" />
+          <ScalarProperty Name="nro_documento" ColumnName="nro_documento" />
+          <ScalarProperty Name="nro_alquiler" ColumnName="nro_alquiler" />
+          <ScalarProperty Name="nro_chofer" ColumnName="nro_chofer" />
+          <ScalarProperty Name="nro_transporte" ColumnName="nro_transporte" />
+          <ScalarProperty Name="peso_inicial" ColumnName="peso_inicial" />
+          <ScalarProperty Name="peso_final" ColumnName="peso_final" />
+          <ScalarProperty Name="tipo_documento" ColumnName="tipo_documento" />
+          <ScalarProperty Name="tipo_operacion" ColumnName="tipo_operacion" />
+          <ScalarProperty Name="accion" ColumnName="accion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Log_Historia">
+      <EntityTypeMapping TypeName="IsTypeOf(Modelo_AuditoriaModel.Log)">
+        <MappingFragment StoreEntitySet="Log_Historia">
+          <ScalarProperty Name="nro_log" ColumnName="nro_log" />
+          <ScalarProperty Name="USU_CODIGO" ColumnName="USU_CODIGO" />
+          <ScalarProperty Name="fecha_y_hora" ColumnName="fecha_y_hora" />
+          <ScalarProperty Name="accion" ColumnName="accion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Modelo_Auditoria" ZoomLevel="92">
+        <EntityTypeShape EntityType="Modelo_AuditoriaModel.Operacion_Auditoria" Width="2.25" PointX="0.5" PointY="0.875" Height="4.0956022135416656" IsExpanded="true" />
+        <EntityTypeShape EntityType="Modelo_AuditoriaModel.Log" Width="1.5" PointX="4" PointY="0.875" Height="1.7879850260416665" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Modelo_Entidades.Acopio_FertilizantesEntities" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>iBQEEAAABBAABABCAABFIAGEAIAAWAQACCCIEAABEgQ=</HashCode>
+      <FileName>Acopio_FertilizantesEntities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Modelo_Entidades.Almacen">
+    <Position X="8" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQCBgAIMAAoAIACEAAAABAIEAAABAAAAAAAJClIIAAA=</HashCode>
+      <FileName>Almacen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Modelo_Entidades.Alquiler" Collapsed="true">
+    <Position X="5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AQDQjAAAUAAACEAUAKSABAAEAABAAQgCCDAEghAEABM=</HashCode>
+      <FileName>Alquiler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Modelo_Entidades.Chofer" Collapsed="true">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABEBCwAAQSEAAAAAAEAAAgwAAQgAEBACQoEABA=</HashCode>
+      <FileName>Chofer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Modelo_Entidades.Cliente" Collapsed="true">
+    <Position X="0.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gADRAAIUAAAAAAC0BAAAAAAAAAgAAAAAACAACAIAABs=</HashCode>
+      <FileName>Cliente.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Modelo_Entidades.FORMULARIO" Collapsed="true">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>TEAAAgAAAAsAEUAGAIAQEBAAAAAAAAAAAQBAACAAAAA=</HashCode>
+      <FileName>FORMULARIO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Modelo_Entidades.GRUPO" Collapsed="true">
+    <Position X="6.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAEAAAIMEIAAAIAAIBAAAAgEAAAACIAAAAA=</HashCode>
+      <FileName>GRUPO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Modelo_Entidades.ModeloSeguridadContainer" Collapsed="true">
+    <Position X="9.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABYAAAAABAUAWEISAgQAAAAgABAAAQAAACAAAAAEEAA=</HashCode>
+      <FileName>ModeloSeguridadContainer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Modelo_Entidades.MODULO" Collapsed="true">
+    <Position X="6.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAQgAAAAAAAEAAAAAAAEAAAIAAAQAAFAIAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Modelo_Entidades.PERFIL" Collapsed="true">
+    <Position X="10" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AECgAIAEAAEIAVAWAJQAQAEgJAAAAAoAAQAQIagARAI=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Modelo_Entidades.PERMISO" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAEIEAAAASAAgAAABAAAAAAQAICCAAAA=</HashCode>
+      <FileName>PERMISO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Modelo_Entidades.USUARIO" Collapsed="true">
+    <Position X="6.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>SAABgAAAIEAAADQAFBQIAEBAAQAAggAoAACBAAARAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Modelo_Entidades.ModeloTC" Collapsed="true">
+    <Position X="0.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>ModeloTC.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Modelo_Entidades.Operacion">
+    <Position X="7" Y="5.75" Width="3.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AQAIHUJzJDDFcEDCBoaAAUUQABgoBQk6BEKhAA8EFTI=</HashCode>
+      <FileName>Operacion.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_EstrategiaPropia" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Modelo_Entidades.Transporte" Collapsed="true">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABCSAQCBAIAAREwAAAAoAQCQAAAAAAFAAAABAAAJA=</HashCode>
+      <FileName>Transporte.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Modelo_Entidades.ModeloTCContainer" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>ModeloTCContainer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Modelo_Entidades.EstrategiaOperacion">
+    <Position X="2.25" Y="5.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAYAAAAAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EstrategiaOperacion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Modelo_Entidades.EstrategiaCarga">
+    <Position X="0.75" Y="8" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EstrategiaCarga.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Modelo_Entidades.EstrategiaDescarga">
+    <Position X="3.75" Y="8" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EstrategiaDescarga.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Modelo_Entidades.Modelo_AuditoriaEntities2" Collapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAkAAAAAAABABAAAAAAAACAAAAASEAA=</HashCode>
+      <FileName>Modelo_AuditoriaEntities2.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Modelo_Entidades.Log" Collapsed="true">
+    <Position X="5.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAABgAxAAAAAAQAgAACAEEAAAAAAAAIAACBBgAAAAQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Modelo_Entidades.Operacion_Auditoria" Collapsed="true">
+    <Position X="2.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIHEJzAHCFUADCBIYIAUUQAAgABQk6BUKhAAsEFSI=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Modelo_Entidades.Alquiler_Producto" Collapsed="true">
+    <Position X="4.25" Y="1.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAABAAEAAAAQIBARAABABAAAQACKAIAAgAAAAI=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Modelo_Entidades.Documento" Collapsed="true">
+    <Position X="2.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>QgAAAEBAADAAAAAARABgAAEBAAAAAAAIKAIAAAIFEBI=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Modelo_Entidades.Producto" Collapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAEAANAAAAEAAACAAAAKAIAAAQAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Modelo_Entidades.sysdiagrams" Collapsed="true">
+    <Position X="0.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAASICAMAABEIAAAIAAggAAQFIAFUAAAAAAAAQAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

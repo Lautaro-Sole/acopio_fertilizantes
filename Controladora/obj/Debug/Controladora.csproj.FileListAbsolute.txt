@@ -1,0 +1,21 @@
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Controladora\bin\Debug\Controladora.dll
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Controladora\bin\Debug\Controladora.pdb
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Controladora\bin\Debug\Modelo_Entidades.dll
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Controladora\bin\Debug\Modelo_Entidades.pdb
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Controladora\obj\Debug\ResolveAssemblyReference.cache
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Controladora\obj\Debug\Controladora.dll
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole\Controladora\obj\Debug\Controladora.pdb
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Controladora\bin\Debug\Controladora.dll
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Controladora\bin\Debug\Controladora.pdb
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Controladora\bin\Debug\Modelo_Entidades.dll
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Controladora\bin\Debug\Modelo_Entidades.pdb
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Controladora\obj\Debug\Controladora.csprojResolveAssemblyReference.cache
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Controladora\obj\Debug\Controladora.dll
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole 2012\Controladora\obj\Debug\Controladora.pdb
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Controladora\bin\Debug\Controladora.dll
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Controladora\bin\Debug\Controladora.pdb
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Controladora\bin\Debug\Modelo_Entidades.dll
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Controladora\bin\Debug\Modelo_Entidades.pdb
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Controladora\obj\Debug\Controladora.csprojResolveAssemblyReference.cache
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Controladora\obj\Debug\Controladora.dll
+G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Controladora\obj\Debug\Controladora.pdb

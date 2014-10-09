@@ -1,0 +1,529 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ModeloSeguridad.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="ModeloSeguridadStoreContainer">
+          <EntitySet Name="FORMULARIOS" EntityType="ModeloSeguridad.Store.FORMULARIOS" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FORMULARIOS_PERMISOS" EntityType="ModeloSeguridad.Store.FORMULARIOS_PERMISOS" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GRUPOS" EntityType="ModeloSeguridad.Store.GRUPOS" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MODULOS" EntityType="ModeloSeguridad.Store.MODULOS" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PERFILES" EntityType="ModeloSeguridad.Store.PERFILES" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PERMISOS" EntityType="ModeloSeguridad.Store.PERMISOS" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="USUARIOS" EntityType="ModeloSeguridad.Store.USUARIOS" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="USUARIOS_GRUPOS" EntityType="ModeloSeguridad.Store.USUARIOS_GRUPOS" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_FORMULARIOS_MODULOS" Association="ModeloSeguridad.Store.FK_FORMULARIOS_MODULOS">
+            <End Role="MODULOS" EntitySet="MODULOS" />
+            <End Role="FORMULARIOS" EntitySet="FORMULARIOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FORMULARIOS_PERMISOS_FORMULARIOS" Association="ModeloSeguridad.Store.FK_FORMULARIOS_PERMISOS_FORMULARIOS">
+            <End Role="FORMULARIOS" EntitySet="FORMULARIOS" />
+            <End Role="FORMULARIOS_PERMISOS" EntitySet="FORMULARIOS_PERMISOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FORMULARIOS_PERMISOS_PERMISOS" Association="ModeloSeguridad.Store.FK_FORMULARIOS_PERMISOS_PERMISOS">
+            <End Role="PERMISOS" EntitySet="PERMISOS" />
+            <End Role="FORMULARIOS_PERMISOS" EntitySet="FORMULARIOS_PERMISOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERFILES_FORMULARIOS" Association="ModeloSeguridad.Store.FK_PERFILES_FORMULARIOS">
+            <End Role="FORMULARIOS" EntitySet="FORMULARIOS" />
+            <End Role="PERFILES" EntitySet="PERFILES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERFILES_GRUPOS" Association="ModeloSeguridad.Store.FK_PERFILES_GRUPOS">
+            <End Role="GRUPOS" EntitySet="GRUPOS" />
+            <End Role="PERFILES" EntitySet="PERFILES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERFILES_PERMISOS" Association="ModeloSeguridad.Store.FK_PERFILES_PERMISOS">
+            <End Role="PERMISOS" EntitySet="PERMISOS" />
+            <End Role="PERFILES" EntitySet="PERFILES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USUARIOS_GRUPOS_GRUPOS" Association="ModeloSeguridad.Store.FK_USUARIOS_GRUPOS_GRUPOS">
+            <End Role="GRUPOS" EntitySet="GRUPOS" />
+            <End Role="USUARIOS_GRUPOS" EntitySet="USUARIOS_GRUPOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USUARIOS_GRUPOS_USUARIOS" Association="ModeloSeguridad.Store.FK_USUARIOS_GRUPOS_USUARIOS">
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+            <End Role="USUARIOS_GRUPOS" EntitySet="USUARIOS_GRUPOS" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="FORMULARIOS">
+          <Key>
+            <PropertyRef Name="FRM_CODIGO" />
+          </Key>
+          <Property Name="FRM_CODIGO" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="FRM_DESCRIPCION" Type="nvarchar" MaxLength="50" />
+          <Property Name="FRM_MODULO" Type="nvarchar" MaxLength="10" />
+          <Property Name="FRM_FORMULARIO" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="FORMULARIOS_PERMISOS">
+          <Key>
+            <PropertyRef Name="FORMULARIOS_FRM_CODIGO" />
+            <PropertyRef Name="PERMISOS_PER_CODIGO" />
+          </Key>
+          <Property Name="FORMULARIOS_FRM_CODIGO" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="PERMISOS_PER_CODIGO" Type="nvarchar" Nullable="false" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="GRUPOS">
+          <Key>
+            <PropertyRef Name="GRU_CODIGO" />
+          </Key>
+          <Property Name="GRU_CODIGO" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="GRU_DESCRIPCION" Type="nvarchar" MaxLength="50" />
+          <Property Name="GRU_ESTADO" Type="bit" />
+        </EntityType>
+        <EntityType Name="MODULOS">
+          <Key>
+            <PropertyRef Name="MOD_CODIGO" />
+          </Key>
+          <Property Name="MOD_CODIGO" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="MOD_DESCRIPCION" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PERFILES">
+          <Key>
+            <PropertyRef Name="PRF_CODIGO" />
+          </Key>
+          <Property Name="PRF_CODIGO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FRM_CODIGO" Type="nvarchar" MaxLength="10" />
+          <Property Name="GRU_CODIGO" Type="nvarchar" MaxLength="10" />
+          <Property Name="PER_CODIGO" Type="nvarchar" MaxLength="1" />
+          <Property Name="AU_USUARIO" Type="nvarchar" MaxLength="15" />
+          <Property Name="AU_FECHA" Type="datetime" />
+          <Property Name="AU_MOVIMIENTO" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="PERMISOS">
+          <Key>
+            <PropertyRef Name="PER_CODIGO" />
+          </Key>
+          <Property Name="PER_CODIGO" Type="nvarchar" Nullable="false" MaxLength="1" />
+          <Property Name="PER_DESCRIPCION" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="USUARIOS">
+          <Key>
+            <PropertyRef Name="USU_CODIGO" />
+          </Key>
+          <Property Name="USU_CODIGO" Type="nvarchar" Nullable="false" MaxLength="15" />
+          <Property Name="USU_CLAVE" Type="nvarchar" MaxLength="32" />
+          <Property Name="USU_APELLIDO" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="USU_NOMBRE" Type="nvarchar" MaxLength="30" />
+          <Property Name="USU_EMAIL" Type="nvarchar" Nullable="false" MaxLength="60" />
+          <Property Name="USU_ESTADO" Type="bit" />
+        </EntityType>
+        <EntityType Name="USUARIOS_GRUPOS">
+          <Key>
+            <PropertyRef Name="GRUPOS_GRU_CODIGO" />
+            <PropertyRef Name="USUARIOS_USU_CODIGO" />
+          </Key>
+          <Property Name="GRUPOS_GRU_CODIGO" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="USUARIOS_USU_CODIGO" Type="nvarchar" Nullable="false" MaxLength="15" />
+        </EntityType>
+        <Association Name="FK_FORMULARIOS_MODULOS">
+          <End Role="MODULOS" Type="ModeloSeguridad.Store.MODULOS" Multiplicity="0..1" />
+          <End Role="FORMULARIOS" Type="ModeloSeguridad.Store.FORMULARIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MODULOS">
+              <PropertyRef Name="MOD_CODIGO" />
+            </Principal>
+            <Dependent Role="FORMULARIOS">
+              <PropertyRef Name="FRM_MODULO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FORMULARIOS_PERMISOS_FORMULARIOS">
+          <End Role="FORMULARIOS" Type="ModeloSeguridad.Store.FORMULARIOS" Multiplicity="1" />
+          <End Role="FORMULARIOS_PERMISOS" Type="ModeloSeguridad.Store.FORMULARIOS_PERMISOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FORMULARIOS">
+              <PropertyRef Name="FRM_CODIGO" />
+            </Principal>
+            <Dependent Role="FORMULARIOS_PERMISOS">
+              <PropertyRef Name="FORMULARIOS_FRM_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FORMULARIOS_PERMISOS_PERMISOS">
+          <End Role="PERMISOS" Type="ModeloSeguridad.Store.PERMISOS" Multiplicity="1" />
+          <End Role="FORMULARIOS_PERMISOS" Type="ModeloSeguridad.Store.FORMULARIOS_PERMISOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERMISOS">
+              <PropertyRef Name="PER_CODIGO" />
+            </Principal>
+            <Dependent Role="FORMULARIOS_PERMISOS">
+              <PropertyRef Name="PERMISOS_PER_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PERFILES_FORMULARIOS">
+          <End Role="FORMULARIOS" Type="ModeloSeguridad.Store.FORMULARIOS" Multiplicity="0..1" />
+          <End Role="PERFILES" Type="ModeloSeguridad.Store.PERFILES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FORMULARIOS">
+              <PropertyRef Name="FRM_CODIGO" />
+            </Principal>
+            <Dependent Role="PERFILES">
+              <PropertyRef Name="FRM_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PERFILES_GRUPOS">
+          <End Role="GRUPOS" Type="ModeloSeguridad.Store.GRUPOS" Multiplicity="0..1" />
+          <End Role="PERFILES" Type="ModeloSeguridad.Store.PERFILES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRUPOS">
+              <PropertyRef Name="GRU_CODIGO" />
+            </Principal>
+            <Dependent Role="PERFILES">
+              <PropertyRef Name="GRU_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PERFILES_PERMISOS">
+          <End Role="PERMISOS" Type="ModeloSeguridad.Store.PERMISOS" Multiplicity="0..1" />
+          <End Role="PERFILES" Type="ModeloSeguridad.Store.PERFILES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERMISOS">
+              <PropertyRef Name="PER_CODIGO" />
+            </Principal>
+            <Dependent Role="PERFILES">
+              <PropertyRef Name="PER_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIOS_GRUPOS_GRUPOS">
+          <End Role="GRUPOS" Type="ModeloSeguridad.Store.GRUPOS" Multiplicity="1" />
+          <End Role="USUARIOS_GRUPOS" Type="ModeloSeguridad.Store.USUARIOS_GRUPOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRUPOS">
+              <PropertyRef Name="GRU_CODIGO" />
+            </Principal>
+            <Dependent Role="USUARIOS_GRUPOS">
+              <PropertyRef Name="GRUPOS_GRU_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIOS_GRUPOS_USUARIOS">
+          <End Role="USUARIOS" Type="ModeloSeguridad.Store.USUARIOS" Multiplicity="1" />
+          <End Role="USUARIOS_GRUPOS" Type="ModeloSeguridad.Store.USUARIOS_GRUPOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIOS">
+              <PropertyRef Name="USU_CODIGO" />
+            </Principal>
+            <Dependent Role="USUARIOS_GRUPOS">
+              <PropertyRef Name="USUARIOS_USU_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="ModeloSeguridad" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="ModeloSeguridadContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="FORMULARIOS" EntityType="ModeloSeguridad.FORMULARIO" />
+          <EntitySet Name="GRUPOS" EntityType="ModeloSeguridad.GRUPO" />
+          <EntitySet Name="MODULOS" EntityType="ModeloSeguridad.MODULO" />
+          <EntitySet Name="PERFILES" EntityType="ModeloSeguridad.PERFIL" />
+          <EntitySet Name="PERMISOS" EntityType="ModeloSeguridad.PERMISO" />
+          <EntitySet Name="USUARIOS" EntityType="ModeloSeguridad.USUARIO" />
+          <AssociationSet Name="FK_FORMULARIOS_MODULOS" Association="ModeloSeguridad.FK_FORMULARIOS_MODULOS">
+            <End Role="MODULOS" EntitySet="MODULOS" />
+            <End Role="FORMULARIOS" EntitySet="FORMULARIOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERFILES_FORMULARIOS" Association="ModeloSeguridad.FK_PERFILES_FORMULARIOS">
+            <End Role="FORMULARIOS" EntitySet="FORMULARIOS" />
+            <End Role="PERFILES" EntitySet="PERFILES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERFILES_GRUPOS" Association="ModeloSeguridad.FK_PERFILES_GRUPOS">
+            <End Role="GRUPOS" EntitySet="GRUPOS" />
+            <End Role="PERFILES" EntitySet="PERFILES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERFILES_PERMISOS" Association="ModeloSeguridad.FK_PERFILES_PERMISOS">
+            <End Role="PERMISOS" EntitySet="PERMISOS" />
+            <End Role="PERFILES" EntitySet="PERFILES" />
+          </AssociationSet>
+          <AssociationSet Name="FORMULARIOS_PERMISOS" Association="ModeloSeguridad.FORMULARIOS_PERMISOS">
+            <End Role="FORMULARIOS" EntitySet="FORMULARIOS" />
+            <End Role="PERMISOS" EntitySet="PERMISOS" />
+          </AssociationSet>
+          <AssociationSet Name="USUARIOS_GRUPOS" Association="ModeloSeguridad.USUARIOS_GRUPOS">
+            <End Role="GRUPOS" EntitySet="GRUPOS" />
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="FORMULARIO">
+          <Key>
+            <PropertyRef Name="FRM_CODIGO" />
+          </Key>
+          <Property Type="String" Name="FRM_CODIGO" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FRM_DESCRIPCION" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FRM_MODULO" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FRM_FORMULARIO" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MODULOS" Relationship="ModeloSeguridad.FK_FORMULARIOS_MODULOS" FromRole="FORMULARIOS" ToRole="MODULOS" />
+          <NavigationProperty Name="PERFILES" Relationship="ModeloSeguridad.FK_PERFILES_FORMULARIOS" FromRole="FORMULARIOS" ToRole="PERFILES" />
+          <NavigationProperty Name="PERMISOS" Relationship="ModeloSeguridad.FORMULARIOS_PERMISOS" FromRole="FORMULARIOS" ToRole="PERMISOS" />
+        </EntityType>
+        <EntityType Name="GRUPO">
+          <Key>
+            <PropertyRef Name="GRU_CODIGO" />
+          </Key>
+          <Property Type="String" Name="GRU_CODIGO" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="GRU_DESCRIPCION" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="GRU_ESTADO" />
+          <NavigationProperty Name="PERFILES" Relationship="ModeloSeguridad.FK_PERFILES_GRUPOS" FromRole="GRUPOS" ToRole="PERFILES" />
+          <NavigationProperty Name="USUARIOS" Relationship="ModeloSeguridad.USUARIOS_GRUPOS" FromRole="GRUPOS" ToRole="USUARIOS" />
+        </EntityType>
+        <EntityType Name="MODULO">
+          <Key>
+            <PropertyRef Name="MOD_CODIGO" />
+          </Key>
+          <Property Type="String" Name="MOD_CODIGO" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MOD_DESCRIPCION" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="FORMULARIOS" Relationship="ModeloSeguridad.FK_FORMULARIOS_MODULOS" FromRole="MODULOS" ToRole="FORMULARIOS" />
+        </EntityType>
+        <EntityType Name="PERFIL">
+          <Key>
+            <PropertyRef Name="PRF_CODIGO" />
+          </Key>
+          <Property Type="Int32" Name="PRF_CODIGO" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FRM_CODIGO" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="GRU_CODIGO" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PER_CODIGO" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AU_USUARIO" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="AU_FECHA" />
+          <Property Type="String" Name="AU_MOVIMIENTO" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="FORMULARIOS" Relationship="ModeloSeguridad.FK_PERFILES_FORMULARIOS" FromRole="PERFILES" ToRole="FORMULARIOS" />
+          <NavigationProperty Name="GRUPOS" Relationship="ModeloSeguridad.FK_PERFILES_GRUPOS" FromRole="PERFILES" ToRole="GRUPOS" />
+          <NavigationProperty Name="PERMISOS" Relationship="ModeloSeguridad.FK_PERFILES_PERMISOS" FromRole="PERFILES" ToRole="PERMISOS" />
+        </EntityType>
+        <EntityType Name="PERMISO">
+          <Key>
+            <PropertyRef Name="PER_CODIGO" />
+          </Key>
+          <Property Type="String" Name="PER_CODIGO" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PER_DESCRIPCION" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PERFILES" Relationship="ModeloSeguridad.FK_PERFILES_PERMISOS" FromRole="PERMISOS" ToRole="PERFILES" />
+          <NavigationProperty Name="FORMULARIOS" Relationship="ModeloSeguridad.FORMULARIOS_PERMISOS" FromRole="PERMISOS" ToRole="FORMULARIOS" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="USU_CODIGO" />
+          </Key>
+          <Property Type="String" Name="USU_CODIGO" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="USU_NOMBRE" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="USU_ESTADO" />
+          <Property Type="String" Name="USU_CLAVE" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="GRUPOS" Relationship="ModeloSeguridad.USUARIOS_GRUPOS" FromRole="USUARIOS" ToRole="GRUPOS" />
+          <Property Type="String" Name="USU_APELLIDO" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="USU_EMAIL" Nullable="false" ConcurrencyMode="None" MaxLength="60" />
+        </EntityType>
+        <Association Name="FK_FORMULARIOS_MODULOS">
+          <End Type="ModeloSeguridad.MODULO" Role="MODULOS" Multiplicity="0..1" />
+          <End Type="ModeloSeguridad.FORMULARIO" Role="FORMULARIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MODULOS">
+              <PropertyRef Name="MOD_CODIGO" />
+            </Principal>
+            <Dependent Role="FORMULARIOS">
+              <PropertyRef Name="FRM_MODULO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PERFILES_FORMULARIOS">
+          <End Type="ModeloSeguridad.FORMULARIO" Role="FORMULARIOS" Multiplicity="0..1" />
+          <End Type="ModeloSeguridad.PERFIL" Role="PERFILES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FORMULARIOS">
+              <PropertyRef Name="FRM_CODIGO" />
+            </Principal>
+            <Dependent Role="PERFILES">
+              <PropertyRef Name="FRM_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PERFILES_GRUPOS">
+          <End Type="ModeloSeguridad.GRUPO" Role="GRUPOS" Multiplicity="0..1" />
+          <End Type="ModeloSeguridad.PERFIL" Role="PERFILES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRUPOS">
+              <PropertyRef Name="GRU_CODIGO" />
+            </Principal>
+            <Dependent Role="PERFILES">
+              <PropertyRef Name="GRU_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PERFILES_PERMISOS">
+          <End Type="ModeloSeguridad.PERMISO" Role="PERMISOS" Multiplicity="0..1" />
+          <End Type="ModeloSeguridad.PERFIL" Role="PERFILES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERMISOS">
+              <PropertyRef Name="PER_CODIGO" />
+            </Principal>
+            <Dependent Role="PERFILES">
+              <PropertyRef Name="PER_CODIGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FORMULARIOS_PERMISOS">
+          <End Type="ModeloSeguridad.FORMULARIO" Role="FORMULARIOS" Multiplicity="*" />
+          <End Type="ModeloSeguridad.PERMISO" Role="PERMISOS" Multiplicity="*" />
+        </Association>
+        <Association Name="USUARIOS_GRUPOS">
+          <End Type="ModeloSeguridad.GRUPO" Role="GRUPOS" Multiplicity="*" />
+          <End Type="ModeloSeguridad.USUARIO" Role="USUARIOS" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModeloSeguridadStoreContainer" CdmEntityContainer="ModeloSeguridadContainer">
+    <EntitySetMapping Name="FORMULARIOS">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloSeguridad.FORMULARIO)">
+        <MappingFragment StoreEntitySet="FORMULARIOS">
+          <ScalarProperty Name="FRM_CODIGO" ColumnName="FRM_CODIGO" />
+          <ScalarProperty Name="FRM_DESCRIPCION" ColumnName="FRM_DESCRIPCION" />
+          <ScalarProperty Name="FRM_MODULO" ColumnName="FRM_MODULO" />
+          <ScalarProperty Name="FRM_FORMULARIO" ColumnName="FRM_FORMULARIO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GRUPOS">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloSeguridad.GRUPO)">
+        <MappingFragment StoreEntitySet="GRUPOS">
+          <ScalarProperty Name="GRU_CODIGO" ColumnName="GRU_CODIGO" />
+          <ScalarProperty Name="GRU_DESCRIPCION" ColumnName="GRU_DESCRIPCION" />
+          <ScalarProperty Name="GRU_ESTADO" ColumnName="GRU_ESTADO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MODULOS">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloSeguridad.MODULO)">
+        <MappingFragment StoreEntitySet="MODULOS">
+          <ScalarProperty Name="MOD_CODIGO" ColumnName="MOD_CODIGO" />
+          <ScalarProperty Name="MOD_DESCRIPCION" ColumnName="MOD_DESCRIPCION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PERFILES">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloSeguridad.PERFIL)">
+        <MappingFragment StoreEntitySet="PERFILES">
+          <ScalarProperty Name="PRF_CODIGO" ColumnName="PRF_CODIGO" />
+          <ScalarProperty Name="FRM_CODIGO" ColumnName="FRM_CODIGO" />
+          <ScalarProperty Name="GRU_CODIGO" ColumnName="GRU_CODIGO" />
+          <ScalarProperty Name="PER_CODIGO" ColumnName="PER_CODIGO" />
+          <ScalarProperty Name="AU_USUARIO" ColumnName="AU_USUARIO" />
+          <ScalarProperty Name="AU_FECHA" ColumnName="AU_FECHA" />
+          <ScalarProperty Name="AU_MOVIMIENTO" ColumnName="AU_MOVIMIENTO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PERMISOS">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloSeguridad.PERMISO)">
+        <MappingFragment StoreEntitySet="PERMISOS">
+          <ScalarProperty Name="PER_CODIGO" ColumnName="PER_CODIGO" />
+          <ScalarProperty Name="PER_DESCRIPCION" ColumnName="PER_DESCRIPCION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USUARIOS">
+      <EntityTypeMapping TypeName="IsTypeOf(ModeloSeguridad.USUARIO)">
+        <MappingFragment StoreEntitySet="USUARIOS">
+          <ScalarProperty Name="USU_CODIGO" ColumnName="USU_CODIGO" />
+          <ScalarProperty Name="USU_NOMBRE" ColumnName="USU_NOMBRE" />
+          <ScalarProperty Name="USU_ESTADO" ColumnName="USU_ESTADO" />
+          <ScalarProperty Name="USU_CLAVE" ColumnName="USU_CLAVE" />
+          <ScalarProperty Name="USU_APELLIDO" ColumnName="USU_APELLIDO" />
+          <ScalarProperty Name="USU_EMAIL" ColumnName="USU_EMAIL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FORMULARIOS_PERMISOS" TypeName="ModeloSeguridad.FORMULARIOS_PERMISOS" StoreEntitySet="FORMULARIOS_PERMISOS">
+      <EndProperty Name="FORMULARIOS">
+        <ScalarProperty Name="FRM_CODIGO" ColumnName="FORMULARIOS_FRM_CODIGO" />
+      </EndProperty>
+      <EndProperty Name="PERMISOS">
+        <ScalarProperty Name="PER_CODIGO" ColumnName="PERMISOS_PER_CODIGO" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="USUARIOS_GRUPOS" TypeName="ModeloSeguridad.USUARIOS_GRUPOS" StoreEntitySet="USUARIOS_GRUPOS">
+      <EndProperty Name="GRUPOS">
+        <ScalarProperty Name="GRU_CODIGO" ColumnName="GRUPOS_GRU_CODIGO" />
+      </EndProperty>
+      <EndProperty Name="USUARIOS">
+        <ScalarProperty Name="USU_CODIGO" ColumnName="USUARIOS_USU_CODIGO" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram Name="ModeloSeguridad" >
+        <EntityTypeShape EntityType="ModeloSeguridad.FORMULARIO" Width="1.5" PointX="0.75" PointY="0.75" Height="2.364889322916667" />
+        <EntityTypeShape EntityType="ModeloSeguridad.GRUPO" Width="1.5" PointX="0.75" PointY="4.25" Height="1.9802864583333335" />
+        <EntityTypeShape EntityType="ModeloSeguridad.MODULO" Width="1.5" PointX="1.5" PointY="11.25" Height="1.5956835937499996" />
+        <EntityTypeShape EntityType="ModeloSeguridad.PERFIL" Width="1.5" PointX="3" PointY="3.75" Height="2.9417936197916656" />
+        <EntityTypeShape EntityType="ModeloSeguridad.PERMISO" Width="1.5" PointX="0.75" PointY="7.875" Height="1.7879850260416639" />
+        <EntityTypeShape EntityType="ModeloSeguridad.USUARIO" Width="1.5" PointX="3" PointY="7.875" Height="2.3648893229166656" />
+        <AssociationConnector Association="ModeloSeguridad.FK_FORMULARIOS_MODULOS" >
+          <ConnectorPoint PointX="2.8125" PointY="11.25" />
+          <ConnectorPoint PointX="2.8125" PointY="1.62120724609375" />
+          <ConnectorPoint PointX="2.25" PointY="1.62120724609375" />
+        </AssociationConnector>
+        <AssociationConnector Association="ModeloSeguridad.FK_PERFILES_FORMULARIOS" >
+          <ConnectorPoint PointX="2.25" PointY="2.5549194921875" />
+          <ConnectorPoint PointX="2.7291666666666665" PointY="2.5549194921874996" />
+          <ConnectorPoint PointX="2.8958333333333335" PointY="2.5549194921875" />
+          <ConnectorPoint PointX="3.75" PointY="2.5549194921875" />
+          <ConnectorPoint PointX="3.75" PointY="3.75" />
+        </AssociationConnector>
+        <AssociationConnector Association="ModeloSeguridad.FK_PERFILES_GRUPOS" >
+          <ConnectorPoint PointX="2.25" PointY="5.2401432291666667" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="5.2401432291666659" />
+          <ConnectorPoint PointX="2.7083333333333335" PointY="5.2401432291666667" />
+          <ConnectorPoint PointX="2.7291666666666665" PointY="5.2401432291666659" />
+          <ConnectorPoint PointX="2.8958333333333335" PointY="5.2401432291666667" />
+          <ConnectorPoint PointX="3" PointY="5.2401432291666667" />
+        </AssociationConnector>
+        <AssociationConnector Association="ModeloSeguridad.FK_PERFILES_PERMISOS" >
+          <ConnectorPoint PointX="2.25" PointY="7.875" />
+          <ConnectorPoint PointX="2.625" PointY="7.5" />
+          <ConnectorPoint PointX="2.625" PointY="4.4638196145833327" />
+          <ConnectorPoint PointX="2.7291666666666665" PointY="4.4638196145833318" />
+          <ConnectorPoint PointX="2.8958333333333335" PointY="4.4638196145833327" />
+          <ConnectorPoint PointX="3" PointY="4.4638196145833327" />
+        </AssociationConnector>
+        <AssociationConnector Association="ModeloSeguridad.FORMULARIOS_PERMISOS" >
+          <ConnectorPoint PointX="0.75" PointY="3.114889322916667" />
+          <ConnectorPoint PointX="0.375" PointY="3.489889322916667" />
+          <ConnectorPoint PointX="0.375" PointY="7.5" />
+          <ConnectorPoint PointX="0.75" PointY="7.875" />
+        </AssociationConnector>
+        <AssociationConnector Association="ModeloSeguridad.USUARIOS_GRUPOS" >
+          <ConnectorPoint PointX="2.25" PointY="6.1679777660256407" />
+          <ConnectorPoint PointX="2.5660744349011213" PointY="6.4840522009267616" />
+          <ConnectorPoint PointX="2.6839255650988791" PointY="6.60190333112452" />
+          <ConnectorPoint PointX="2.6875" PointY="6.6054777660256407" />
+          <ConnectorPoint PointX="2.6875" PointY="9.0574446614583337" />
+          <ConnectorPoint PointX="2.7291666666666665" PointY="9.0574446614583337" />
+          <ConnectorPoint PointX="2.8958333333333335" PointY="9.0574446614583337" />
+          <ConnectorPoint PointX="3" PointY="9.0574446614583337" />
+        </AssociationConnector>
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

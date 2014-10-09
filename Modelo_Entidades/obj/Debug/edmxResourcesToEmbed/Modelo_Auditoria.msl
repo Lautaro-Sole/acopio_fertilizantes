@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Modelo_AuditoriaModelStoreContainer" CdmEntityContainer="Modelo_AuditoriaEntities2">
+    <EntitySetMapping Name="CatOperaciones_Auditoria">
+      <EntityTypeMapping TypeName="IsTypeOf(Modelo_AuditoriaModel.Operacion_Auditoria)">
+        <MappingFragment StoreEntitySet="CatOperaciones_Auditoria">
+          <ScalarProperty Name="Cliente_nro_cliente" ColumnName="Cliente_nro_cliente" />
+          <ScalarProperty Name="nro_operacion" ColumnName="nro_operacion" />
+          <ScalarProperty Name="USU_CODIGO" ColumnName="USU_CODIGO" />
+          <ScalarProperty Name="fecha_y_hora_accion" ColumnName="fecha_y_hora_accion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="fecha_y_hora_inicio" ColumnName="fecha_y_hora_inicio" />
+          <ScalarProperty Name="fecha_y_hora_fin" ColumnName="fecha_y_hora_fin" />
+          <ScalarProperty Name="notas" ColumnName="notas" />
+          <ScalarProperty Name="nro_documento" ColumnName="nro_documento" />
+          <ScalarProperty Name="nro_alquiler" ColumnName="nro_alquiler" />
+          <ScalarProperty Name="nro_chofer" ColumnName="nro_chofer" />
+          <ScalarProperty Name="nro_transporte" ColumnName="nro_transporte" />
+          <ScalarProperty Name="peso_inicial" ColumnName="peso_inicial" />
+          <ScalarProperty Name="peso_final" ColumnName="peso_final" />
+          <ScalarProperty Name="tipo_documento" ColumnName="tipo_documento" />
+          <ScalarProperty Name="tipo_operacion" ColumnName="tipo_operacion" />
+          <ScalarProperty Name="accion" ColumnName="accion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Log_Historia">
+      <EntityTypeMapping TypeName="IsTypeOf(Modelo_AuditoriaModel.Log)">
+        <MappingFragment StoreEntitySet="Log_Historia">
+          <ScalarProperty Name="nro_log" ColumnName="nro_log" />
+          <ScalarProperty Name="USU_CODIGO" ColumnName="USU_CODIGO" />
+          <ScalarProperty Name="fecha_y_hora" ColumnName="fecha_y_hora" />
+          <ScalarProperty Name="accion" ColumnName="accion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
