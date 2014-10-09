@@ -1,0 +1,14 @@
+﻿body {
+}
+
+.pull-right {
+    float: right;
+}
+
+.pull-left {
+    float: left;
+}
+
+.margin-left-5 {
+    margin-left: 5px;
+}

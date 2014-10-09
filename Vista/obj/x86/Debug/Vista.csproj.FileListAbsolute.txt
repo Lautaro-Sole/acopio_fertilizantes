@@ -129,3 +129,4 @@ G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\ob
 G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\obj\x86\Debug\RdlCompile.compiled
 G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\obj\x86\Debug\Vista.frmRegenerarClave.resources
 G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\obj\x86\Debug\Vista.frmInformeEstadoAlquileres.resources
+G:\Usuarios\Lautaro\Documentos\acopio_fertilizantes_equipo\Vista\bin\Debug\Vista.exe.config
