@@ -1,14 +1,10 @@
-﻿body {
-}
-
-.pull-right {
-    float: right;
-}
-
-.pull-left {
-    float: left;
-}
+﻿body { padding-bottom: 70px;}
 
 .margin-left-5 {
     margin-left: 5px;
+}
+
+.small-panel {
+    padding: 5%;
+    min-height: 260px;
 }
