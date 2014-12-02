@@ -61,11 +61,11 @@ namespace Vista_Web
                 //MenuItem Menu_Modulo;
                 Control Menu_Formularios = FindControl("ulmenu");
 
-                foreach (Modelo_Entidades.GRUPO oGrupo in oCCURPF.obtenerGruposUsuario(oUsuario))
+                foreach (Modelo_Entidades.GRUPO oGrupoActual in oCCURPF.obtenerGruposUsuario(oUsuario))
                 {
-                    foreach (Modelo_Entidades.Modulo oModulo in cPerfil.ObtenerModulosPorGrupo(oGrupo.id))
+                    foreach (Modelo_Entidades.MODULO oModuloActual in oCCURPF.obtenerModulosGrupo(oGrupoActual))
                     {
-                        if (lModulos.Contains(oModulo) == false)
+                        if (lModulos.Contains(oModuloActual) == false)
                         {
                             HtmlGenericControl Formulario = new HtmlGenericControl("li");
                             //Formulario.ID = oModulo.descripcion;
@@ -75,7 +75,7 @@ namespace Vista_Web
 
                             HtmlGenericControl Link_Formularios = new HtmlGenericControl("a");
                             //Link_Formularios.ID = "Link_Formularios";
-                            Link_Formularios.InnerHtml = oModulo.descripcion;
+                            Link_Formularios.InnerHtml = oModuloActual.MOD_DESCRIPCION;
                             Link_Formularios.Attributes.Add("class", "dropdown-toggle");
                             Link_Formularios.Attributes.Add("href", "#");
                             Link_Formularios.Attributes.Add("data-toggle", "dropdown");
@@ -98,10 +98,47 @@ namespace Vista_Web
                             //msMenu.Items.Add(Menu_Modulo);
 
                             // Busco las funciones asociadas al formulario
-                            lModulos.Add(oModulo);
-                            ArmaFormularios(oGrupo.id, SubMenu_Formularios, oModulo);
+                            lModulos.Add(oModuloActual);
+                            ArmaFormularios(oGrupoActual, SubMenu_Formularios, oModuloActual);
                         }
                     }
+                }
+            }
+        }
+        // Armo los menues y submenues
+        private void ArmaFormularios(Modelo_Entidades.GRUPO oGrupo, Control SubMenu_Formularios, Modelo_Entidades.MODULO oModulo)
+        {
+            // Le solicito a la controladora la lista de funciones de un módulo determinado.
+            // Defino un objeto ToolStripMenuItem para asignar los permisos recuperados.
+            //MenuItem SubMenu_Formularios;
+            //HtmlGenericControl SubMenu_Formularios = new HtmlGenericControl("ul");
+
+            // Recorro el listado de los permisos según el perfil
+
+            foreach (Modelo_Entidades.FORMULARIO oFormulario in oCCURPF.obtenerFormulariosPorModulo(oModulo))
+            {
+                if (lFormularios.Contains(oFormulario) == false)
+                {
+                    //SubMenu_Formularios.ID = "Link_Formulario";
+                    //SubMenu_Formularios.InnerHtml = oModulo.descripcion;
+                    ////Link_Formulario.Attributes.Add("href", oModulo.descripcion);
+                    //SubMenu_Formularios.Attributes.Add("data-toggle", "dropdown");
+                    //SubMenu_Formularios.Attributes.Add("role", "button");
+                    //Formulario.Controls.Add(SubMenu_Formularios);
+
+                    HtmlGenericControl SubFormulario = new HtmlGenericControl("li");
+
+                    //SubFormulario.ID = "SubFormulario";
+                    //SubFormulario.Attributes.Add("href", oModulo.descripcion + "/" + oFormulario.nombredemuestra + ".aspx");
+                    //SubFormulario.Attributes.Add("role", "presentation");
+                    SubMenu_Formularios.Controls.Add(SubFormulario);
+
+                    HyperLink Link_SubFormulario = new HyperLink();
+
+                    Link_SubFormulario.Text = oFormulario.FRM_DESCRIPCION;
+                    Link_SubFormulario.NavigateUrl = "~/" + oModulo.MOD_DESCRIPCION + "/" + oFormulario.FRM_DESCRIPCION + ".aspx";
+                    SubFormulario.Controls.Add(Link_SubFormulario);
+                    lFormularios.Add(oFormulario);
                 }
             }
         }
