@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="RecuperarClave.aspx.cs" Inherits="Vista_Web.Seguridad.RecuperarClave" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Default.Master" CodeBehind="RecuperarClave.aspx.cs" Inherits="Vista_Web.Seguridad.RecuperarClave" %>
 
 <!DOCTYPE html>
 

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Gestión de Perfil"  Language="C#" AutoEventWireup="true" CodeBehind="Perfil.aspx.cs" Inherits="Vista_Web.Perfil" %>
+﻿<%@ Page Title="Gestión de Perfil"  Language="C#" MasterPageFile="~/Default.Master" AutoEventWireup="true" CodeBehind="Perfil.aspx.cs" Inherits="Vista_Web.Perfil" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 

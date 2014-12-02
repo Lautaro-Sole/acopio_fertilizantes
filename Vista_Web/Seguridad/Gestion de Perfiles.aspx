@@ -1,4 +1,4 @@
-﻿<%@ Page Title= "Gestion de Perfiles" Language="C#" AutoEventWireup="true" CodeBehind="Gestion de Perfiles.aspx.cs" Inherits="Vista_Web.Perfiles" %>
+﻿<%@ Page Title= "Gestion de Perfiles" Language="C#" MasterPageFile="~/Default.Master" AutoEventWireup="true" CodeBehind="Gestion de Perfiles.aspx.cs" Inherits="Vista_Web.Perfiles" %>
 
 <%@ Register Src="../Botoneras/Botonera1.ascx" TagName="Botonera1" TagPrefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
