@@ -141,6 +141,11 @@ namespace Controladora
             return Modelo_Entidades.ModeloSeguridadContainer.ObtenerInstancia().FORMULARIOS.ToList<Modelo_Entidades.FORMULARIO>();
         }
 
+        public List<Modelo_Entidades.FORMULARIO> obtenerFormulariosPorModulo(Modelo_Entidades.MODULO oModulo)
+        {
+            return Modelo_Entidades.ModeloSeguridadContainer.ObtenerInstancia().FORMULARIOS.ToList<Modelo_Entidades.FORMULARIO>().FindAll(delegate(Modelo_Entidades.FORMULARIO oFormularioBuscado) { return (oFormularioBuscado.MODULOS == oModulo); });
+        }
+
         public List<Modelo_Entidades.GRUPO> obtenerGruposUsuario(Modelo_Entidades.USUARIO oUsuario)
         {
             List<Modelo_Entidades.GRUPO> Lista_Grupos_Usuario = oUsuario.GRUPOS.ToList<Modelo_Entidades.GRUPO>();
