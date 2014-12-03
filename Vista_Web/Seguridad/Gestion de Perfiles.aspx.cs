@@ -189,7 +189,8 @@ namespace Vista_Web
                 VarCombo_Permiso = cmb_permisos.SelectedValue.ToString();
             }
 
-            gvPerfiles.DataSource = this.ToDataTable(cPerfil.FiltrarPerfiles(VarCombo_Grupo, VarCombo_Formulario, VarCombo_Permiso));
+            gvPerfiles.DataSource = this.ToDataTable(cPerfil.obtenerPerfiles(VarCombo_Grupo, VarCombo_Formulario, VarCombo_Permiso));
+
             gvPerfiles.DataBind();
         }
 

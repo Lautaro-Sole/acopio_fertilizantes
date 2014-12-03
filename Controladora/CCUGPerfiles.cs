@@ -115,7 +115,28 @@ namespace Controladora
             return Modelo_Entidades.ModeloSeguridadContainer.ObtenerInstancia().PERFILES.ToList<Modelo_Entidades.PERFIL>().FindAll(delegate(Modelo_Entidades.PERFIL oPerfilBuscado) { return (oPerfilBuscado.GRU_CODIGO == oGrupo.GRU_CODIGO) & (oPerfilBuscado.FRM_CODIGO == oFormulario.FRM_CODIGO); });
         }
 
+        public List<Modelo_Entidades.PERFIL> obtenerPerfiles(string grupo, string formulario, string permiso)
+        {
+            var Consulta = from oPerfil in Modelo_Entidades.ModeloSeguridadContainer.ObtenerInstancia().PERFILES.ToList()
+                           select oPerfil;
 
+            if (grupo != "0")
+            {
+                Consulta = Consulta.Where(oPerfil => oPerfil.GRUPOS.GRU_DESCRIPCION == grupo);
+            }
+
+            if (formulario != "0")
+            {
+                Consulta = Consulta.Where(oPerfil => oPerfil.FORMULARIOS.FRM_DESCRIPCION == formulario);
+            }
+
+            if (permiso != "0")
+            {
+                Consulta = Consulta.Where(oPerfil => oPerfil.PERMISOS.PER_DESCRIPCION == permiso);
+            }
+
+            return (List<Modelo_Entidades.PERFIL>)Consulta.ToList();
+        }
 
 
         public List<Modelo_Entidades.FORMULARIO> obtenerFormularios()
