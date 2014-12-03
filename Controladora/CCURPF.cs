@@ -137,6 +137,12 @@ namespace Controladora
             return Lista_Grupos_Usuario;
         }
 
+        public List<Modelo_Entidades.GRUPO> obtenerGruposUsuario(string id_usuario)
+        {
+            Modelo_Entidades.USUARIO oUsuario = Modelo_Entidades.ModeloSeguridadContainer.ObtenerInstancia().USUARIOS.ToList().Find(delegate(Modelo_Entidades.USUARIO oUsuarioBuscado) { return oUsuarioBuscado.USU_CODIGO == id_usuario; });
+            return oUsuario.GRUPOS.ToList<Modelo_Entidades.GRUPO>();
+        }
+
         public Modelo_Entidades.PERFIL ObtenerPerfil(int perfil)
         {
             Modelo_Entidades.PERFIL oPerfil = Modelo_Entidades.ModeloSeguridadContainer.ObtenerInstancia().PERFILES.ToList<Modelo_Entidades.PERFIL>().Find(delegate(Modelo_Entidades.PERFIL fPerfil)
@@ -156,6 +162,20 @@ namespace Controladora
         {
            return Modelo_Entidades.ModeloSeguridadContainer.ObtenerInstancia().PERMISOS.ToList<Modelo_Entidades.PERMISO>();
 
+        }
+
+        public List<Modelo_Entidades.PERMISO> ObtenerPermisosPorFormulario(string id_grupo, string form)
+        {
+            Modelo_Entidades.GRUPO oGrupo = Modelo_Entidades.ModeloSeguridadContainer.ObtenerInstancia().GRUPOS.ToList().Find(delegate(Modelo_Entidades.GRUPO oGrupoBuscado) { return oGrupoBuscado.GRU_CODIGO == id_grupo; });
+            Modelo_Entidades.FORMULARIO oFormulario = Modelo_Entidades.ModeloSeguridadContainer.ObtenerInstancia().FORMULARIOS.ToList().Find(delegate(Modelo_Entidades.FORMULARIO oFormularioBuscado) { return oFormularioBuscado.FRM_FORMULARIO == form; });
+            List<Modelo_Entidades.PERFIL> oListaPerfiles = Modelo_Entidades.ModeloSeguridadContainer.ObtenerInstancia().PERFILES.ToList().FindAll(delegate(Modelo_Entidades.PERFIL oPerfilBuscado) { return oPerfilBuscado.FORMULARIOS == oFormulario && oPerfilBuscado.GRUPOS == oGrupo; });
+            List<Modelo_Entidades.PERMISO> oListaPermisos = new List<Modelo_Entidades.PERMISO>();
+            foreach (Modelo_Entidades.PERFIL oPerfilActual in oListaPerfiles)
+            {
+                if (oListaPermisos.Contains(oPerfilActual.PERMISOS) == false)
+                    oListaPermisos.Add(oPerfilActual.PERMISOS);
+            }
+            return oListaPermisos;
         }
     }
 }

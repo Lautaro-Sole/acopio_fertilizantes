@@ -15,19 +15,18 @@ namespace Vista_Web
         string modo;
         Controladora.CCUGUsuarios cUsuario;
         Controladora.CCUGGrupos cGrupo;
-        Controladora. cPermiso;
-        Controladora.cFormulario cFormulario;
+        Controladora.CCURPF cRPF;
         Controladora.CCUGPerfiles cPerfil;
 
         //Modelo_Entidades.Usuario oUsuario;
         Modelo_Entidades.GRUPO oGrupo;
         Modelo_Entidades.PERMISO oPermiso;
-        Modelo_Entidades.Formulario oFormulario;
+        Modelo_Entidades.FORMULARIO oFormulario;
         Modelo_Entidades.PERFIL oPerfil;
 
         List<Modelo_Entidades.GRUPO> lGrupos;
         List<Modelo_Entidades.PERMISO> lPermisos;
-        List<Modelo_Entidades.Formulario> lFormularios;
+        List<Modelo_Entidades.FORMULARIO> lFormularios;
 
         string grupo;
         string permiso;
@@ -37,11 +36,10 @@ namespace Vista_Web
         // Constructor
         public Perfil()
         {
-            cUsuario = Controladora.cUsuario.ObtenerInstancia();
-            cGrupo = Controladora.cGrupo.ObtenerInstancia();
-            cPermiso = Controladora.cPermiso.ObtenerInstancia();
-            cFormulario = Controladora.cFormulario.ObtenerInstancia();
-            cPerfil = Controladora.cPerfil.ObtenerInstancia();
+            cUsuario = Controladora.CCUGUsuarios.ObtenerInstancia();
+            cGrupo = Controladora.CCUGGrupos.ObtenerInstancia();
+            cRPF = Controladora.CCURPF.ObtenerInstancia();
+            cPerfil = Controladora.CCUGPerfiles.ObtenerInstancia();
         }
 
         //evento que se ejecuta antes de llamar al load
@@ -52,7 +50,7 @@ namespace Vista_Web
 
             if (perfil == "nuevo")
             {
-                oPerfil = new Modelo_Entidades.Perfil();
+                oPerfil = new Modelo_Entidades.PERFIL();
             }
             else
             {
@@ -69,7 +67,7 @@ namespace Vista_Web
             {
                 cmb_grupos.SelectedValue = oPerfil.GRUPOS.ToString();
                 cmb_permisos.SelectedValue = oPerfil.PERMISOS.ToString();
-                cmb_formularios.SelectedValue = oPerfil.Formulario.ToString();
+                cmb_formularios.SelectedValue = oPerfil.FORMULARIOS.ToString();
 
                 if (modo == "Consulta")
                 {
@@ -100,10 +98,10 @@ namespace Vista_Web
             if (ValidarObligatorios() == true)
             {
                 oPerfil.GRUPOS = oGrupo;
-                oPerfil.Formulario = oFormulario;
+                oPerfil.FORMULARIOS = oFormulario;
                 oPerfil.PERMISOS = oPermiso;
 
-                cPerfil.AltaPerfil(oPerfil);
+                cPerfil.Agregar(oPerfil);
                 Page.Response.Redirect("~/Seguridad/Gestion de Perfiles.aspx");
             }
         }
@@ -133,15 +131,16 @@ namespace Vista_Web
             }
 
             grupo = cmb_grupos.SelectedValue.ToString();
-            oGrupo = cGrupo.BuscarGrupoPorDesc(grupo);
+            oGrupo = cGrupo.ObtenerGrupo(grupo);
 
             permiso = cmb_permisos.SelectedValue.ToString();
-            oPermiso = cPermiso.BuscarPermisoPorDesc(permiso);
+            oPermiso = cRPF.ObtenerPermiso(permiso);
 
             formulario = cmb_formularios.SelectedValue.ToString();
-            oFormulario = cFormulario.BuscarFromularioPorDesc(formulario);
+            oFormulario = cRPF.obtenerFormulariopordesc(formulario);
 
-            if (cPerfil.ValidarPerfil(oGrupo, oFormulario, oPermiso) == false)
+
+            if (cPerfil.ValidarPerfil(oGrupo, oPermiso, oFormulario) == false)
             {
                 message.Visible = true;
                 lb_error.Text = "El perfil ya existe, ingrese otros parámetros";
@@ -158,11 +157,11 @@ namespace Vista_Web
             cmb_grupos.DataSource = lGrupos;
             cmb_grupos.DataBind();
 
-            lPermisos = cPermiso.ObtenerPermisos();
+            lPermisos = cRPF.ObtenerPermisos();
             cmb_permisos.DataSource = lPermisos;
             cmb_permisos.DataBind();
 
-            lFormularios = cFormulario.ObtenerFormularios();
+            lFormularios = cRPF.obtenerFormularios();
             cmb_formularios.DataSource = lFormularios;
             cmb_formularios.DataBind();
         }

@@ -25,6 +25,12 @@ namespace Controladora
 			return Modelo_Entidades.ModeloSeguridadContainer.ObtenerInstancia().GRUPOS.ToList<Modelo_Entidades.GRUPO>();
 		}
 
+        public List<Modelo_Entidades.GRUPO> ObtenerGrupos(string id_usuario)
+        {
+            Modelo_Entidades.USUARIO oUsuario = Modelo_Entidades.ModeloSeguridadContainer.ObtenerInstancia().USUARIOS.ToList().Find(delegate(Modelo_Entidades.USUARIO oUsuarioBuscado) { return oUsuarioBuscado.USU_CODIGO == id_usuario; });
+            return oUsuario.GRUPOS.ToList<Modelo_Entidades.GRUPO>();
+        }
+
 		public Modelo_Entidades.USUARIO ObtenerUsuario(string codigo_usuario)
 		{
 			return Modelo_Entidades.ModeloSeguridadContainer.ObtenerInstancia().USUARIOS.ToList<Modelo_Entidades.USUARIO>().Find(delegate(Modelo_Entidades.USUARIO unUsuario) { return unUsuario.USU_CODIGO == codigo_usuario; });
