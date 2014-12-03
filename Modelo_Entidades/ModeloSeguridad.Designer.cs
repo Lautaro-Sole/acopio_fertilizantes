@@ -8,12 +8,13 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.ComponentModel;
+using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Data.EntityClient;
-using System.ComponentModel;
-using System.Xml.Serialization;
+using System.Linq;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
 #region Metadatos de relaciones en EDM
@@ -172,6 +173,7 @@ namespace Modelo_Entidades
         private ObjectSet<USUARIO> _USUARIOS;
 
         #endregion
+
         #region Métodos AddTo
     
         /// <summary>
@@ -223,11 +225,11 @@ namespace Modelo_Entidades
         }
 
         #endregion
+
     }
-    
 
     #endregion
-    
+
     #region Entidades
     
     /// <summary>
@@ -252,6 +254,7 @@ namespace Modelo_Entidades
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -354,6 +357,7 @@ namespace Modelo_Entidades
         partial void OnFRM_FORMULARIOChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -440,6 +444,7 @@ namespace Modelo_Entidades
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -464,6 +469,7 @@ namespace Modelo_Entidades
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -542,6 +548,7 @@ namespace Modelo_Entidades
         partial void OnGRU_ESTADOChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -590,6 +597,7 @@ namespace Modelo_Entidades
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -614,6 +622,7 @@ namespace Modelo_Entidades
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -668,6 +677,7 @@ namespace Modelo_Entidades
         partial void OnMOD_DESCRIPCIONChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -694,6 +704,7 @@ namespace Modelo_Entidades
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -718,6 +729,7 @@ namespace Modelo_Entidades
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -892,6 +904,7 @@ namespace Modelo_Entidades
         partial void OnAU_MOVIMIENTOChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -1010,6 +1023,7 @@ namespace Modelo_Entidades
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1034,6 +1048,7 @@ namespace Modelo_Entidades
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -1088,6 +1103,7 @@ namespace Modelo_Entidades
         partial void OnPER_DESCRIPCIONChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -1136,6 +1152,7 @@ namespace Modelo_Entidades
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1164,6 +1181,7 @@ namespace Modelo_Entidades
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -1314,6 +1332,7 @@ namespace Modelo_Entidades
         partial void OnUSU_EMAILChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -1340,8 +1359,10 @@ namespace Modelo_Entidades
         }
 
         #endregion
+
     }
 
     #endregion
+
     
 }

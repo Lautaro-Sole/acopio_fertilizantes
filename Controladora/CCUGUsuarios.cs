@@ -8,6 +8,13 @@ namespace Controladora
 {
 	public class CCUGUsuarios
 	{
+        private static CCUGUsuarios oInstancia;
+        public static CCUGUsuarios ObtenerInstancia()
+            {
+                if (oInstancia == null) oInstancia = new CCUGUsuarios();
+                return oInstancia;
+            }
+
 		public List<Modelo_Entidades.USUARIO> ObtenerUsuarios()
 		{
 			return Modelo_Entidades.ModeloSeguridadContainer.ObtenerInstancia().USUARIOS.ToList<Modelo_Entidades.USUARIO>();

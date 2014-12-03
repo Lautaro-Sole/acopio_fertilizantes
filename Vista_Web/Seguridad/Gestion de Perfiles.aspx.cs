@@ -13,8 +13,8 @@ namespace Vista_Web
         Controladora.CCUGUsuarios oCUsuario;
         Controladora.CCUGGrupos cGrupo;
         Controladora.CCUGPerfiles cPerfil;
-        Controladora.cFormularios cFormulario;
-        Controladora.cPermiso cPermiso;
+        Controladora.CCURPF cRPF;
+        
 
         Modelo_Entidades.USUARIO oUsuario;
         Modelo_Entidades.PERFIL oPerfil;
@@ -25,11 +25,11 @@ namespace Vista_Web
         // Constructor
         public Perfiles()
         {
-            cUsuario = Controladora.CCUGUsuarios.ObtenerInstancia();
+            oCUsuario = Controladora.CCUGUsuarios.ObtenerInstancia();
             cGrupo = Controladora.CCUGGrupos.ObtenerInstancia();
             cPerfil = Controladora.CCUGPerfiles.ObtenerInstancia();
-            cFormulario = Controladora.cFormulario.ObtenerInstancia();
-            cPermiso = Controladora.cPermiso.ObtenerInstancia();
+            cRPF = Controladora.CCURPF.ObtenerInstancia();
+           
         }
 
         //evento que se ejecuta antes de llamar al load
@@ -95,13 +95,13 @@ namespace Vista_Web
             else
             {
                 perfil = gvPerfiles.SelectedRow.Cells[1].Text;
-                oPerfil = cPerfil.ObtenerPerfil(Convert.ToInt32(perfil));
+                oPerfil = cRPF.ObtenerPerfil(Convert.ToInt32(perfil));
                 message.Visible = false;
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "pop", "openModal();", true);
             }
         }
 
-        private DataTable ToDataTable(List<Modelo_Entidades.Perfil> Perfiles)
+        private DataTable ToDataTable(List<Modelo_Entidades.PERFIL> Perfiles)
         {
             DataTable returnTable = new DataTable("Perfiles");
             returnTable.Columns.Add(new DataColumn("ID"));
@@ -113,10 +113,11 @@ namespace Vista_Web
             {
                 returnTable.AcceptChanges();
                 DataRow row = returnTable.NewRow();
-                row[0] = unPerfil.id;
-                row[1] = unPerfil.Grupo;
-                row[2] = unPerfil.Permiso;
-                row[3] = unPerfil.Formulario;
+                row[0] = unPerfil.PRF_CODIGO;
+                row[1] = unPerfil.GRUPOS;
+                row[2] = unPerfil.PERMISOS;
+                row[3] = unPerfil.FORMULARIOS;
+                    
 
                 returnTable.Rows.Add(row);
             }
@@ -127,7 +128,7 @@ namespace Vista_Web
         // Armo la lista de la grilla de datos
         private void Arma_Lista()
         {
-            lPerfiles = cPerfil.ObtenerPerfiles();
+            lPerfiles = cPerfil.obtenerPerfiles();
             gvPerfiles.DataSource = this.ToDataTable(lPerfiles);
             gvPerfiles.DataBind();
 
@@ -136,12 +137,12 @@ namespace Vista_Web
             cmb_grupos.Items.Insert(0, new ListItem(String.Empty, String.Empty));
             cmb_grupos.SelectedIndex = 0;
 
-            cmb_formularios.DataSource = cFormulario.ObtenerFormularios();
+            cmb_formularios.DataSource = cRPF.obtenerFormularios();
             cmb_formularios.DataBind();
             cmb_formularios.Items.Insert(0, new ListItem(String.Empty, String.Empty));
             cmb_formularios.SelectedIndex = 0;
 
-            cmb_permisos.DataSource = cPermiso.ObtenerPermisos();
+            cmb_permisos.DataSource = cRPF.ObtenerPermisos();
             cmb_permisos.DataBind();
             cmb_permisos.Items.Insert(0, new ListItem(String.Empty, String.Empty));
             cmb_permisos.SelectedIndex = 0;
@@ -199,9 +200,9 @@ namespace Vista_Web
         protected void btn_eliminar_modal_Click(object sender, EventArgs e)
         {
             perfil = gvPerfiles.SelectedRow.Cells[1].Text;
-            oPerfil = cPerfil.ObtenerPerfil(Convert.ToInt32(perfil));
+            oPerfil = cRPF.ObtenerPerfil(Convert.ToInt32(perfil));
 
-            cPerfil.BajaPerfil(oPerfil);
+            cPerfil.Eliminar(oPerfil);
             ScriptManager.RegisterStartupScript(this, this.GetType(), "pop", "closeModal();", true);
             message.Visible = true;
             lb_error.Text = "El perfil fue eliminado";

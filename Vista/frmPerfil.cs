@@ -108,7 +108,7 @@ namespace Vista
 
                 try
                 {
-                    bool resultado = oCCUGPerfiles.obtenerPerfil(oPerfil);
+                    bool resultado = oCCUGPerfiles.ValidarPerfil(oPerfil);
                     if (!resultado)
                     {
                         resultado = oCCUGPerfiles.Agregar(oPerfil);

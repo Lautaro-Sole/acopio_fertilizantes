@@ -7,6 +7,12 @@ namespace Controladora
 {
     public class CCUGGrupos
     {
+        private static CCUGGrupos oInstancia;
+        public static CCUGGrupos ObtenerInstancia()
+        {
+            if (oInstancia == null) oInstancia = new CCUGGrupos();
+            return oInstancia;
+        }
         /// <summary>
         /// Devuelve todos los grupos. 
         /// </summary>
@@ -42,7 +48,7 @@ namespace Controladora
         /// <summary>
         /// Devuelve true si ya existe un grupo con esa descripción. 
         /// </summary>
-        public bool ObtenerGrupo(string descripcion)
+        public bool ComprobarGrupo(string descripcion)
         {
             Modelo_Entidades.GRUPO oGrupo = Modelo_Entidades.ModeloSeguridadContainer.ObtenerInstancia().GRUPOS.ToList<Modelo_Entidades.GRUPO>().Find(delegate(Modelo_Entidades.GRUPO oGrupoBuscado) { return oGrupoBuscado.GRU_DESCRIPCION == descripcion; });
             if (oGrupo != null)
@@ -52,6 +58,11 @@ namespace Controladora
             return false;
         }
 
+        public Modelo_Entidades.GRUPO ObtenerGrupo(string descripcion)
+        {
+            return Modelo_Entidades.ModeloSeguridadContainer.ObtenerInstancia().GRUPOS.ToList<Modelo_Entidades.GRUPO>().Find(delegate(Modelo_Entidades.GRUPO oGrupoBuscado) { return oGrupoBuscado.GRU_DESCRIPCION == descripcion; });
+
+        }
         /// <summary>
         /// Devuelve true si ya existe un grupo con esa descripción y es que estoy modificando en este momento, lo que significa que puedo seguir. 
         /// Devuelve false si no hay un grupo con esa descripción o si hay un grupo con esa descripcion y con distinto código.

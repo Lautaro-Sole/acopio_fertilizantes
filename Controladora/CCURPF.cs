@@ -62,33 +62,23 @@ namespace Controladora
             return Modelo_Entidades.ModeloSeguridadContainer.ObtenerInstancia().FORMULARIOS.ToList<Modelo_Entidades.FORMULARIO>().Find(delegate(Modelo_Entidades.FORMULARIO oFormBuscado) { return oFormBuscado.FRM_FORMULARIO == frm_formulario; });
         }
 
+        public Modelo_Entidades.FORMULARIO obtenerFormulariopordesc(string descripcion)
+        {
+            return Modelo_Entidades.ModeloSeguridadContainer.ObtenerInstancia().FORMULARIOS.ToList<Modelo_Entidades.FORMULARIO>().Find(delegate(Modelo_Entidades.FORMULARIO oFormBuscado) { return oFormBuscado.FRM_DESCRIPCION == descripcion; });
+        }
         public List<Modelo_Entidades.MODULO> obtenerModulos()
         {
             return Modelo_Entidades.ModeloSeguridadContainer.ObtenerInstancia().MODULOS.ToList<Modelo_Entidades.MODULO>();
         }
         
-        public List<Modelo_Entidades.MODULO> obtenerModulosGrupo(Modelo_Entidades.GRUPO oGrupo)
-        {
-            List<Modelo_Entidades.PERFIL> oListaPerfiles = new List<Modelo_Entidades.PERFIL>();
-            List<Modelo_Entidades.MODULO> oListaModulos = new List<Modelo_Entidades.MODULO>();
-            Modelo_Entidades.MODULO oModulo;
-            Modelo_Entidades.FORMULARIO oFormulario;
+        //public List<Modelo_Entidades.MODULO> obtenerModulosGrupo(Modelo_Entidades.GRUPO oGrupo)
+        //{
+        //    List<Modelo_Entidades.MODULO> oListaModulosGrupo = new List<Modelo_Entidades.MODULO>();
+            
 
-            Controladora.CCUGPerfiles oCCUGPerfiles = new CCUGPerfiles();
-            oListaPerfiles = oCCUGPerfiles.obtenerPerfiles(oGrupo);
 
-            foreach (Modelo_Entidades.PERFIL oPerfilActual in oListaPerfiles)
-            {
-                oFormulario = Modelo_Entidades.ModeloSeguridadContainer.ObtenerInstancia().FORMULARIOS.ToList<Modelo_Entidades.FORMULARIO>().Find(delegate(Modelo_Entidades.FORMULARIO oFormularioActual) { return oFormularioActual.FRM_CODIGO == oPerfilActual.FRM_CODIGO;});
-                oModulo = Modelo_Entidades.ModeloSeguridadContainer.ObtenerInstancia().MODULOS.ToList<Modelo_Entidades.MODULO>().Find(delegate(Modelo_Entidades.MODULO oModuloActual) {return oModuloActual.MOD_CODIGO == oFormulario.FRM_MODULO;});
-                if(oListaModulos.Contains(oModulo) == false)
-                {
-                    oListaModulos.Add(oModulo);
-                }
-            }
-
-            return oListaModulos;
-        }
+        //    return Modelo_Entidades.ModeloSeguridadContainer.ObtenerInstancia().MODULOS.ToList<Modelo_Entidades.MODULO>().FindAll(delegate(Modelo_Entidades.MODULO oModuloActual){ return oModuloActual.FORMULARIOS}
+        //}
         
         /// <summary>
         /// Busca la lista de formularios del módulo indicado a la que el usuario tiene acceso.
@@ -141,15 +131,31 @@ namespace Controladora
             return Modelo_Entidades.ModeloSeguridadContainer.ObtenerInstancia().FORMULARIOS.ToList<Modelo_Entidades.FORMULARIO>();
         }
 
-        public List<Modelo_Entidades.FORMULARIO> obtenerFormulariosPorModulo(Modelo_Entidades.MODULO oModulo)
-        {
-            return Modelo_Entidades.ModeloSeguridadContainer.ObtenerInstancia().FORMULARIOS.ToList<Modelo_Entidades.FORMULARIO>().FindAll(delegate(Modelo_Entidades.FORMULARIO oFormularioBuscado) { return (oFormularioBuscado.MODULOS == oModulo); });
-        }
-
         public List<Modelo_Entidades.GRUPO> obtenerGruposUsuario(Modelo_Entidades.USUARIO oUsuario)
         {
             List<Modelo_Entidades.GRUPO> Lista_Grupos_Usuario = oUsuario.GRUPOS.ToList<Modelo_Entidades.GRUPO>();
             return Lista_Grupos_Usuario;
+        }
+
+        public Modelo_Entidades.PERFIL ObtenerPerfil(int perfil)
+        {
+            Modelo_Entidades.PERFIL oPerfil = Modelo_Entidades.ModeloSeguridadContainer.ObtenerInstancia().PERFILES.ToList<Modelo_Entidades.PERFIL>().Find(delegate(Modelo_Entidades.PERFIL fPerfil)
+            {
+                return fPerfil.PRF_CODIGO == perfil;
+            });
+
+            return oPerfil;
+        }
+
+        public Modelo_Entidades.PERMISO ObtenerPermiso(string descripcion)
+        {
+            return Modelo_Entidades.ModeloSeguridadContainer.ObtenerInstancia().PERMISOS.ToList<Modelo_Entidades.PERMISO>().Find(delegate(Modelo_Entidades.PERMISO oPermisoBuscado) { return oPermisoBuscado.PER_DESCRIPCION == descripcion; });
+        }
+
+        public List<Modelo_Entidades.PERMISO> ObtenerPermisos()
+        {
+           return Modelo_Entidades.ModeloSeguridadContainer.ObtenerInstancia().PERMISOS.ToList<Modelo_Entidades.PERMISO>();
+
         }
     }
 }

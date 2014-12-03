@@ -1,4 +1,4 @@
-﻿<%@ Page Title= "Gestión de Usuario" Language="C#" MasterPageFile="~/Default.Master" AutoEventWireup="true" CodeBehind="Usuario.aspx.cs" Inherits="Vista_Web.Usuario" %>
+﻿<%@ Page Title= "Gestión de Usuario" Language="C#" AutoEventWireup="true" CodeBehind="Usuario.aspx.cs" Inherits="Vista_Web.Usuario" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
@@ -24,9 +24,13 @@
                             <div class="tab-pane fade active in" id="datos">
                                 <div class="form-horizontal" role="form">
                                     <div class="form-group">
-                                        <label for="txt_nombreapellido" class="col-sm-4 control-label">Nombre y apellido</label>
+                                        <label for="txt_apellido" class="col-sm-4 control-label">Apellido</label>
                                         <div class="col-sm-8">
-                                            <asp:TextBox ID="txt_nombreapellido" CssClass="form-control" runat="server"></asp:TextBox>
+                                            <asp:TextBox ID="txt_apellido" CssClass="form-control" runat="server"></asp:TextBox>
+                                        </div>
+                                        <label for="txt_nombre" class="col-sm-4 control-label">Nombre</label>
+                                        <div class="col-sm-8">
+                                            <asp:TextBox ID="txt_nombre" CssClass="form-control" runat="server"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="form-group">

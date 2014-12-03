@@ -11,7 +11,12 @@ namespace Controladora
         {
             return Modelo_Entidades.ModeloSeguridadContainer.ObtenerInstancia().PERFILES.ToList<Modelo_Entidades.PERFIL>();
         }
-
+        private static CCUGPerfiles oInstancia;
+        public static CCUGPerfiles ObtenerInstancia()
+    {
+        if (oInstancia==null) oInstancia= new CCUGPerfiles();
+            return oInstancia;
+    }
         /// <summary>
         /// Obtener perfiles por grupo
         /// </summary>
@@ -132,7 +137,7 @@ namespace Controladora
         /// <summary>
         /// Devuelve true si ya existe un perfil con ese código de grupo, formulario y permiso.
         /// </summary>
-        public bool obtenerPerfil(Modelo_Entidades.PERFIL oPerfil)
+        public bool ValidarPerfil(Modelo_Entidades.PERFIL oPerfil)
         {
             Modelo_Entidades.PERFIL oPerfilEncontrado = Modelo_Entidades.ModeloSeguridadContainer.ObtenerInstancia().PERFILES.ToList<Modelo_Entidades.PERFIL>().Find(delegate(Modelo_Entidades.PERFIL oPerfilBuscado) { return (oPerfilBuscado.FRM_CODIGO == oPerfil.FRM_CODIGO) & (oPerfilBuscado.GRU_CODIGO == oPerfil.GRU_CODIGO) & (oPerfilBuscado.PER_CODIGO == oPerfil.PER_CODIGO); });
             if (oPerfilEncontrado != null)
@@ -143,6 +148,29 @@ namespace Controladora
             {
                 return false;
             }
+        }
+
+        public bool ValidarPerfil(Modelo_Entidades.GRUPO oGrupo, Modelo_Entidades.PERMISO oPermiso, Modelo_Entidades.FORMULARIO oFormulario)
+        {
+            Modelo_Entidades.PERFIL oPerfilEncontrado = Modelo_Entidades.ModeloSeguridadContainer.ObtenerInstancia().PERFILES.ToList<Modelo_Entidades.PERFIL>().Find(delegate(Modelo_Entidades.PERFIL oPerfilBuscado) { return (oPerfilBuscado.FORMULARIOS == oFormulario) & (oPerfilBuscado.GRUPOS == oGrupo) & (oPerfilBuscado.PERMISOS == oPermiso); });
+            if (oPerfilEncontrado != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public Modelo_Entidades.PERFIL ObtenerPerfil(int perfil)
+        {
+            Modelo_Entidades.PERFIL oPerfil = Modelo_Entidades.ModeloSeguridadContainer.ObtenerInstancia().PERFILES.ToList().Find(delegate(Modelo_Entidades.PERFIL fPerfil)
+            {
+                return fPerfil.PRF_CODIGO == perfil;
+            });
+
+            return oPerfil;
         }
 
         public bool Agregar(Modelo_Entidades.PERFIL oPerfil)
