@@ -6,19 +6,19 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Vista_Web
+namespace Vista_Web.Seguridad
 {
-    public partial class RecuperarClave : System.Web.UI.Page
+    public partial class RegenerarClave : System.Web.UI.Page
     {
         Modelo_Entidades.USUARIO oUsuario;
-        Controladora.CCUGUsuarios cUsuario;
+        Controladora.CCUGUsuarios oCCUGUsuarios;
 
         string usuario;
 
-        // Constructor
-        public RecuperarClave()
+         // Constructor
+        public RegenerarClave()
         {
-            cUsuario = Controladora.CCUGUsuarios.ObtenerInstancia();
+            oCCUGUsuarios = Controladora.CCUGUsuarios.ObtenerInstancia();
         }
 
         protected void Page_Init(object sender, EventArgs e)
@@ -34,7 +34,7 @@ namespace Vista_Web
         // Valido los datos
         public bool ValidarDatos()
         {
-            oUsuario = cUsuario.ObtenerUsuario(this.txt_nombreusuario.Text);
+            oUsuario = oCCUGUsuarios.ObtenerUsuario(this.txt_nombreusuario.Text);
 
             if (string.IsNullOrEmpty(this.txt_email.Text))
             {
@@ -43,7 +43,7 @@ namespace Vista_Web
                 return false;
             }
 
-            if (this.txt_email.Text != oUsuario.email)
+            if (this.txt_email.Text != oUsuario.USU_EMAIL)
             {
                 message.Visible = true;
                 lb_error.Text = "El e-mail no pertenece al usuario introducido";
@@ -64,16 +64,16 @@ namespace Vista_Web
         {
             if (ValidarDatos())
             {
-                oUsuario = cUsuario.ObtenerUsuario(this.txt_nombreusuario.Text);
+                oUsuario = oCCUGUsuarios.ObtenerUsuario(this.txt_nombreusuario.Text);
                 if (oUsuario != null)
                 {
                     if (oUsuario.USU_ESTADO != false)
                     {
                         try
                         {
-                            cUsuario.ResetearClave(oUsuario, txt_email.Text);
+                            oCCUGUsuarios.ResetearClave(oUsuario);
                             message.Visible = true;
-                            lb_error.Text = "Contraseña reseteada con éxito. Revise su correo para volver a ingresar";
+                            lb_error.Text = "Contraseña regenerada con éxito. Revise su correo para volver a ingresar";
                         }
 
                         catch (System.Data.EntitySqlException ex)
@@ -85,13 +85,13 @@ namespace Vista_Web
                     else
                     {
                         message.Visible = true;
-                        lb_error.Text = "Datos Inválidos - Usuario Inactivo";
+                        lb_error.Text = "El usuario ingresado está deshabilitado.";
                     }
                 }
                 else
                 {
                     message.Visible = true;
-                    lb_error.Text = "Datos Inválidos - Usuario Inexistente";
+                    lb_error.Text = "El usuario ingresado no existe.";
                 }
             }
         }

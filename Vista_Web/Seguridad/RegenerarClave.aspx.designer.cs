@@ -10,7 +10,7 @@
 namespace Vista_Web.Seguridad {
     
     
-    public partial class RecuperarClave {
+    public partial class RegenerarClave {
         
         /// <summary>
         /// Control form1.

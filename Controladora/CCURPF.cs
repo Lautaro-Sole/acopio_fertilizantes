@@ -131,6 +131,11 @@ namespace Controladora
             return Modelo_Entidades.ModeloSeguridadContainer.ObtenerInstancia().FORMULARIOS.ToList<Modelo_Entidades.FORMULARIO>();
         }
 
+        public List<Modelo_Entidades.FORMULARIO> ObtenerFormulariosPorModulo(Modelo_Entidades.MODULO oModulo)
+        {
+            return Modelo_Entidades.ModeloSeguridadContainer.ObtenerInstancia().FORMULARIOS.ToList().FindAll(delegate(Modelo_Entidades.FORMULARIO oFormularioBuscado) { return oFormularioBuscado.MODULOS == oModulo; });
+        }
+
         public List<Modelo_Entidades.GRUPO> obtenerGruposUsuario(Modelo_Entidades.USUARIO oUsuario)
         {
             List<Modelo_Entidades.GRUPO> Lista_Grupos_Usuario = oUsuario.GRUPOS.ToList<Modelo_Entidades.GRUPO>();
@@ -176,6 +181,20 @@ namespace Controladora
                     oListaPermisos.Add(oPerfilActual.PERMISOS);
             }
             return oListaPermisos;
+        }
+
+        public List<Modelo_Entidades.MODULO> ObtenerModulosPorGrupo(Modelo_Entidades.GRUPO oGrupo)
+        {
+            List<Modelo_Entidades.PERFIL> oListaPerfiles = Modelo_Entidades.ModeloSeguridadContainer.ObtenerInstancia().PERFILES.ToList().FindAll(delegate(Modelo_Entidades.PERFIL oPerfilBuscado){return oPerfilBuscado.GRUPOS == oGrupo;});
+            List<Modelo_Entidades.MODULO> oListaModulos = new List<Modelo_Entidades.MODULO>();
+            foreach (Modelo_Entidades.PERFIL oPerfilActual in oListaPerfiles)
+            {
+                if (oListaModulos.Contains(oPerfilActual.FORMULARIOS.MODULOS)==false)
+                {
+                    oListaModulos.Add(oPerfilActual.FORMULARIOS.MODULOS);
+                }
+            }
+            return oListaModulos;
         }
     }
 }
