@@ -7,7 +7,7 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace Vista_Web {
+namespace Vista_Web.Seguridad {
     
     
     public partial class Usuarios {
@@ -40,13 +40,22 @@ namespace Vista_Web {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div4;
         
         /// <summary>
-        /// Control txt_nombreapellido.
+        /// Control txt_nombre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_nombreapellido;
+        protected global::System.Web.UI.WebControls.TextBox txt_nombre;
+        
+        /// <summary>
+        /// Control txt_apellido.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_apellido;
         
         /// <summary>
         /// Control cmb_grupos.
@@ -145,7 +154,7 @@ namespace Vista_Web {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.UserControl botonera1;
+        protected global::Vista_Web.Botoneras.Botonera1 botonera1;
         
         /// <summary>
         /// Control UpdatePanel1.

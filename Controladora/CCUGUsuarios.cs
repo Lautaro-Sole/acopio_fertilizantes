@@ -43,14 +43,14 @@ namespace Controladora
 			{
 				oListaUsuarios.FindAll(delegate(Modelo_Entidades.USUARIO oUsuarioBuscado) { return oUsuarioBuscado.USU_NOMBRE.StartsWith(nombre); });
 			}
-			if (!(string.IsNullOrWhiteSpace(apellido)))
+			if (!(string.IsNullOrWhiteSpace(apellido)) || apellido == "0")
 			{
 				oListaUsuarios.FindAll(delegate(Modelo_Entidades.USUARIO oUsuarioBuscado) { return oUsuarioBuscado.USU_APELLIDO.StartsWith(apellido); });
 			}
 			if (!(string.IsNullOrWhiteSpace(estado) || estado== "TODOS" ))
 			{
 				bool estadousuario;
-				if (estado == "Activo")
+				if (estado == "Activo" || estado == "1")
 				{
 					estadousuario = true;
 				}
@@ -60,7 +60,7 @@ namespace Controladora
 				}
 				oListaUsuarios.FindAll(delegate(Modelo_Entidades.USUARIO oUsuarioBuscado) { return oUsuarioBuscado.USU_ESTADO == estadousuario; });
 			}
-			if (!(string.IsNullOrWhiteSpace(grupo) || grupo =="TODOS"))
+			if (!(string.IsNullOrWhiteSpace(grupo) || grupo =="TODOS") || grupo == "0")
 			{
 				List<Modelo_Entidades.USUARIO> oListaUsuariosTemporal = new List<Modelo_Entidades.USUARIO>(); 
 				foreach (Modelo_Entidades.USUARIO oUsuarioActual in oListaUsuarios)

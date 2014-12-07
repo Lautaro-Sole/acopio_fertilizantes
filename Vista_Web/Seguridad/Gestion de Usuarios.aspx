@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Gestión de Usuarios" Language="C#" MasterPageFile="~/Default.Master" AutoEventWireup="true" CodeBehind="Gestion de Usuarios.aspx.cs" Inherits="Vista_Web.Usuarios" %>
+﻿<%@ Page Title="Gestión de Usuarios" Language="C#" MasterPageFile="~/Default.Master" AutoEventWireup="true" CodeBehind="Gestion de Usuarios.aspx.cs" Inherits="Vista_Web.Seguridad.Usuarios" %>
 
 <%@ Register Src="../Botoneras/Botonera1.ascx" TagName="Botonera1" TagPrefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -18,8 +18,10 @@
                     </div>
                     <div id="Div4" runat="server" class="col-lg-4">
                         <div runat="server" class="form-group">
-                            <label runat="server" for="exampleInputEmail1">Nombre y apellido del usuario</label>
-                            <asp:TextBox ID="txt_nombreapellido" runat="server" type="text" class="form-control" placeholder="Ingrese el nombre del usuario"></asp:TextBox>
+                            <label runat="server" for="exampleInputEmail1">Nombre del usuario</label>
+                            <asp:TextBox ID="txt_nombre" runat="server" type="text" class="form-control" placeholder="Ingrese el nombre del usuario"></asp:TextBox>
+                            <label runat="server" for="exampleInputEmail1">Apellido del usuario</label>
+                            <asp:TextBox ID="txt_apellido" runat="server" type="text" class="form-control" placeholder="Ingrese el apellido del usuario"></asp:TextBox>
                         </div>
                         <div runat="server" class="form-group">
                             <label runat="server" for="exampleInputPassword1">Grupo</label>
