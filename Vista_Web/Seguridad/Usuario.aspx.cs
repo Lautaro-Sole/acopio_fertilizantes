@@ -7,15 +7,15 @@ using System.Web.UI.WebControls;
 using System.Text.RegularExpressions;
 using AjaxControlToolkit;
 
-namespace Vista_Web
+namespace Vista_Web.Seguridad
 {
     public partial class Usuario : System.Web.UI.Page
     {
         // Declaro las variables que voy a utilizar en el formulario.
         string modo;
         string usuario;
-        Controladora.CCUGUsuarios cUsuario;
-        Controladora.CCUGGrupos cGrupo;
+        Controladora.CCUGUsuarios oCCUGUsuarios;
+        Controladora.CCUGGrupos oCCUGGrupos;
         Modelo_Entidades.USUARIO oUsuario;
         Modelo_Entidades.GRUPO oGrupo;
         string grupo;
@@ -23,8 +23,8 @@ namespace Vista_Web
         // Constructor
         public Usuario()
         {
-            cUsuario = Controladora.CCUGUsuarios.ObtenerInstancia();
-            cGrupo = Controladora.CCUGGrupos.ObtenerInstancia();
+            oCCUGUsuarios = Controladora.CCUGUsuarios.ObtenerInstancia();
+            oCCUGGrupos = Controladora.CCUGGrupos.ObtenerInstancia();
 
         }
 
@@ -42,7 +42,7 @@ namespace Vista_Web
 
             else
             {
-                oUsuario = cUsuario.ObtenerUsuario(usuario);
+                oUsuario = oCCUGUsuarios.ObtenerUsuario(usuario);
             }
 
             message.Visible = false;
@@ -110,14 +110,14 @@ namespace Vista_Web
                 oUsuario.USU_EMAIL = txt_email.Text;
                 oUsuario.USU_CODIGO = txt_nombreusuario.Text;
                 oUsuario.USU_ESTADO = chk_estado.Checked;
-                oUsuario.USU_CLAVE = cUsuario.EncriptarClave(txt_nuevacontraseña.Text);
+                oUsuario.USU_CLAVE = oCCUGUsuarios.EncriptarClave(txt_nuevacontraseña.Text);
 
                 oUsuario.GRUPOS.Clear();
 
                 for (int i = 0; i < chklstbox_grupos.Items.Count; i++)
                 {
                     grupo = chklstbox_grupos.Items[i].Text;
-                    oGrupo = cGrupo.ObtenerGrupo(grupo);
+                    oGrupo = oCCUGGrupos.ObtenerGrupo(grupo);
 
                     if (chklstbox_grupos.Items[i].Selected == true)
                     {
@@ -127,14 +127,14 @@ namespace Vista_Web
 
                 if (modo == "Alta")
                 {
-                    cUsuario.Agregar(oUsuario);
+                    oCCUGUsuarios.Agregar(oUsuario);
                     Page.Response.Redirect("~/Seguridad/Gestion de Usuarios.aspx");
                 }
 
                 else
                 {
-                    oUsuario.USU_CLAVE = cUsuario.EncriptarClave(txt_nuevacontraseña.Text);
-                    cUsuario.Modificar(oUsuario);
+                    oUsuario.USU_CLAVE = oCCUGUsuarios.EncriptarClave(txt_nuevacontraseña.Text);
+                    oCCUGUsuarios.Modificar(oUsuario);
                     Page.Response.Redirect("~/Seguridad/Gestion de Usuarios.aspx");
                 }
             }
@@ -180,7 +180,7 @@ namespace Vista_Web
                 return false;
             }
 
-            if (cUsuario.ObtenerUsuario(txt_nombreusuario.Text) == null)
+            if (oCCUGUsuarios.ObtenerUsuario(txt_nombreusuario.Text) == null)
             {
                 if (oUsuario.USU_CODIGO != txt_nombreusuario.Text)
                 {
@@ -201,7 +201,7 @@ namespace Vista_Web
                         return false;
                     }
 
-                    else if (cUsuario.EncriptarClave(txt_contraseña_actual.Text) != oUsuario.USU_CLAVE || string.IsNullOrEmpty(txt_contraseña_actual.Text))
+                    else if (oCCUGUsuarios.EncriptarClave(txt_contraseña_actual.Text) != oUsuario.USU_CLAVE || string.IsNullOrEmpty(txt_contraseña_actual.Text))
                     {
                         message.Visible = true;
                         lb_error.Text = "La contraseña actual es incorrecta, por favor introduscula nuevamente";
@@ -212,7 +212,7 @@ namespace Vista_Web
 
             if (modo != "Alta" && txt_contraseña_actual.Enabled == true)
             {
-                if (cUsuario.EncriptarClave(txt_contraseña_actual.Text) != oUsuario.USU_CLAVE || string.IsNullOrEmpty(txt_contraseña_actual.Text) || txt_nuevacontraseña.Text != txt_repetircontraseña.Text)
+                if (oCCUGUsuarios.EncriptarClave(txt_contraseña_actual.Text) != oUsuario.USU_CLAVE || string.IsNullOrEmpty(txt_contraseña_actual.Text) || txt_nuevacontraseña.Text != txt_repetircontraseña.Text)
                 {
                     message.Visible = true;
                     lb_error.Text = "La contraseña actual es incorrecta o las claves no coinciden, por favor introdusca los datos nuevamente";
@@ -244,7 +244,7 @@ namespace Vista_Web
         private void CargaDatos()
         {
             chklstbox_grupos.DataSource = null;
-            chklstbox_grupos.DataSource = cGrupo.ObtenerGrupos();
+            chklstbox_grupos.DataSource = oCCUGGrupos.ObtenerGrupos();
             chklstbox_grupos.DataBind();
 
             if (modo != "Alta")
@@ -252,7 +252,7 @@ namespace Vista_Web
                 for (int i = 0; i < chklstbox_grupos.Items.Count; i++)
                 {
                     grupo = chklstbox_grupos.Items[i].Text;
-                    oGrupo = cGrupo.ObtenerGrupo(grupo);
+                    oGrupo = oCCUGGrupos.ObtenerGrupo(grupo);
                     foreach (Modelo_Entidades.GRUPO miGrupo in oUsuario.GRUPOS.ToList())
                     {
                         if (oGrupo.GRU_CODIGO == miGrupo.GRU_CODIGO)

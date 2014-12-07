@@ -17,17 +17,17 @@ namespace Vista_Web.Botoneras
         public event Eventos_Botonera Click_Consulta;
         public event Eventos_Botonera Click_Cerrar;
 
-        Controladora.CCUGPerfiles cPerfil;
-        Controladora.CCUGGrupos cGrupo;
-        Controladora.CCUGUsuarios cUsuario;
-        Controladora.CCURPF cRPF;
+        Controladora.CCUGPerfiles oCCUGPerfiles;
+        Controladora.CCUGGrupos oCCUGGrupos;
+        Controladora.CCUGUsuarios oCCUGUsuarios;
+        Controladora.CCURPF oCCURPF;
 
         public Botonera1()
         {
-            cPerfil = Controladora.CCUGPerfiles.ObtenerInstancia();
-            cGrupo = Controladora.CCUGGrupos.ObtenerInstancia();
-            cUsuario = Controladora.CCUGUsuarios.ObtenerInstancia();
-            cRPF = Controladora.CCURPF.ObtenerInstancia();
+            oCCUGPerfiles = Controladora.CCUGPerfiles.ObtenerInstancia();
+            oCCUGGrupos = Controladora.CCUGGrupos.ObtenerInstancia();
+            oCCUGUsuarios = Controladora.CCUGUsuarios.ObtenerInstancia();
+            oCCURPF = Controladora.CCURPF.ObtenerInstancia();
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -62,9 +62,9 @@ namespace Vista_Web.Botoneras
 
         public void ArmaPerfil(Modelo_Entidades.USUARIO oUsuario, string form)
         {
-            cPerfil = Controladora.CCUGPerfiles.ObtenerInstancia();
-            cGrupo = Controladora.CCUGGrupos.ObtenerInstancia();
-            cUsuario = Controladora.CCUGUsuarios.ObtenerInstancia();
+            oCCUGPerfiles = Controladora.CCUGPerfiles.ObtenerInstancia();
+            oCCUGGrupos = Controladora.CCUGGrupos.ObtenerInstancia();
+            oCCUGUsuarios = Controladora.CCUGUsuarios.ObtenerInstancia();
 
             btn_agregar.Enabled = false;
             btn_eliminar.Enabled = false;
@@ -74,10 +74,10 @@ namespace Vista_Web.Botoneras
             try
             {
                 //por cada grupo al que pertenece el usuario
-                foreach (Modelo_Entidades.GRUPO oGrupo in cRPF.obtenerGruposUsuario(oUsuario.USU_CODIGO))
+                foreach (Modelo_Entidades.GRUPO oGrupo in oCCURPF.obtenerGruposUsuario(oUsuario.USU_CODIGO))
                 {
                     //por cada permiso del grupo en el formulario
-                    foreach (Modelo_Entidades.PERMISO oPermiso in cRPF.ObtenerPermisosPorFormulario(oGrupo.GRU_CODIGO, form))
+                    foreach (Modelo_Entidades.PERMISO oPermiso in oCCURPF.ObtenerPermisosPorFormulario(oGrupo.GRU_CODIGO, form))
                     {
                         switch (oPermiso.PER_DESCRIPCION)
                         {

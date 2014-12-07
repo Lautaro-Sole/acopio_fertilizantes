@@ -1,4 +1,4 @@
-﻿<%@ Page Title= "Gestión de Usuario" Language="C#" AutoEventWireup="true" CodeBehind="Usuario.aspx.cs" Inherits="Vista_Web.Usuario" %>
+﻿<%@ Page Title= "Gestión de Usuario" Language="C#" AutoEventWireup="true" CodeBehind="Usuario.aspx.cs" Inherits="Vista_Web.Seguridad.Usuario" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 

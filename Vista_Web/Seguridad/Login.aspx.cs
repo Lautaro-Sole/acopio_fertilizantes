@@ -12,13 +12,13 @@ namespace Vista_Web.Seguridad
         // Declaro las variables a utilizar en el formualario
         Controladora.CCULogin oCCULogin;
         //Controladora.cUsuario cUsuario;
-        Modelo_Entidades.USUARIO oUSUARIO;
+        Modelo_Entidades.USUARIO oUsuario;
         //Controladora.cGrupo cGrupo;
 
         //revisar luego
         public Modelo_Entidades.USUARIO UsuarioLogin
         {
-            get { return oUSUARIO; }
+            get { return oUsuario; }
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -56,13 +56,13 @@ namespace Vista_Web.Seguridad
         {
             // Ingreso al sistema - 
             ValidarObligatorios();
-            oUSUARIO = new Modelo_Entidades.USUARIO();
+            oUsuario = new Modelo_Entidades.USUARIO();
             oCCULogin = new Controladora.CCULogin();
 
             try
             {
-                oUSUARIO = oCCULogin.login(txt_nombreUsuario.Text, txt_contraseña.Text);
-                Session["sUsuario"] = oUSUARIO;
+                oUsuario = oCCULogin.login(txt_nombreUsuario.Text, txt_contraseña.Text);
+                Session["sUsuario"] = oUsuario;
                 Page.Response.Redirect("~/Principal.aspx");
             }
 

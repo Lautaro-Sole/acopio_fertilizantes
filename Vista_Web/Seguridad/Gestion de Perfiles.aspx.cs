@@ -7,14 +7,14 @@ using System.Web.UI.WebControls;
 using System.Data;
 using AjaxControlToolkit;
 
-namespace Vista_Web
+namespace Vista_Web.Seguridad
 {
     public partial class Perfiles : System.Web.UI.Page
     {
-        Controladora.CCUGUsuarios oCUsuario;
-        Controladora.CCUGGrupos cGrupo;
-        Controladora.CCUGPerfiles cPerfil;
-        Controladora.CCURPF cRPF;
+        Controladora.CCUGUsuarios oCCUGUsuarios;
+        Controladora.CCUGGrupos oCCUGGrupos;
+        Controladora.CCUGPerfiles oCCUGPerfiles;
+        Controladora.CCURPF oCCURPF;
         
 
         Modelo_Entidades.USUARIO oUsuario;
@@ -26,10 +26,10 @@ namespace Vista_Web
         // Constructor
         public Perfiles()
         {
-            oCUsuario = Controladora.CCUGUsuarios.ObtenerInstancia();
-            cGrupo = Controladora.CCUGGrupos.ObtenerInstancia();
-            cPerfil = Controladora.CCUGPerfiles.ObtenerInstancia();
-            cRPF = Controladora.CCURPF.ObtenerInstancia();
+            oCCUGUsuarios = Controladora.CCUGUsuarios.ObtenerInstancia();
+            oCCUGGrupos = Controladora.CCUGGrupos.ObtenerInstancia();
+            oCCUGPerfiles = Controladora.CCUGPerfiles.ObtenerInstancia();
+            oCCURPF = Controladora.CCURPF.ObtenerInstancia();
            
         }
 
@@ -96,7 +96,7 @@ namespace Vista_Web
             else
             {
                 perfil = gvPerfiles.SelectedRow.Cells[1].Text;
-                oPerfil = cRPF.ObtenerPerfil(Convert.ToInt32(perfil));
+                oPerfil = oCCURPF.ObtenerPerfil(Convert.ToInt32(perfil));
                 message.Visible = false;
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "pop", "openModal();", true);
             }
@@ -129,21 +129,21 @@ namespace Vista_Web
         // Armo la lista de la grilla de datos
         private void Arma_Lista()
         {
-            lPerfiles = cPerfil.obtenerPerfiles();
+            lPerfiles = oCCUGPerfiles.obtenerPerfiles();
             gvPerfiles.DataSource = this.ToDataTable(lPerfiles);
             gvPerfiles.DataBind();
 
-            cmb_grupos.DataSource = cGrupo.ObtenerGrupos();
+            cmb_grupos.DataSource = oCCUGGrupos.ObtenerGrupos();
             cmb_grupos.DataBind();
             cmb_grupos.Items.Insert(0, new ListItem(String.Empty, String.Empty));
             cmb_grupos.SelectedIndex = 0;
 
-            cmb_formularios.DataSource = cRPF.obtenerFormularios();
+            cmb_formularios.DataSource = oCCURPF.obtenerFormularios();
             cmb_formularios.DataBind();
             cmb_formularios.Items.Insert(0, new ListItem(String.Empty, String.Empty));
             cmb_formularios.SelectedIndex = 0;
 
-            cmb_permisos.DataSource = cRPF.ObtenerPermisos();
+            cmb_permisos.DataSource = oCCURPF.ObtenerPermisos();
             cmb_permisos.DataBind();
             cmb_permisos.Items.Insert(0, new ListItem(String.Empty, String.Empty));
             cmb_permisos.SelectedIndex = 0;
@@ -189,7 +189,7 @@ namespace Vista_Web
                 VarCombo_Permiso = cmb_permisos.SelectedValue.ToString();
             }
 
-            gvPerfiles.DataSource = this.ToDataTable(cPerfil.obtenerPerfiles(VarCombo_Grupo, VarCombo_Formulario, VarCombo_Permiso));
+            gvPerfiles.DataSource = this.ToDataTable(oCCUGPerfiles.obtenerPerfiles(VarCombo_Grupo, VarCombo_Formulario, VarCombo_Permiso));
 
             gvPerfiles.DataBind();
         }
@@ -202,9 +202,9 @@ namespace Vista_Web
         protected void btn_eliminar_modal_Click(object sender, EventArgs e)
         {
             perfil = gvPerfiles.SelectedRow.Cells[1].Text;
-            oPerfil = cRPF.ObtenerPerfil(Convert.ToInt32(perfil));
+            oPerfil = oCCURPF.ObtenerPerfil(Convert.ToInt32(perfil));
 
-            cPerfil.Eliminar(oPerfil);
+            oCCUGPerfiles.Eliminar(oPerfil);
             ScriptManager.RegisterStartupScript(this, this.GetType(), "pop", "closeModal();", true);
             message.Visible = true;
             lb_error.Text = "El perfil fue eliminado";

@@ -16,8 +16,8 @@ namespace Vista_Web
         Controladora.CCUGUsuarios oCCUGUsuarios;
         Controladora.CCURPF oCCURPF;
 
-        List<Modelo_Entidades.MODULO> lModulos;
-        List<Modelo_Entidades.FORMULARIO> lFormularios;
+        List<Modelo_Entidades.MODULO> oListaModulos;
+        List<Modelo_Entidades.FORMULARIO> oListaFormularios;
 
         protected void Page_Init(object sender, EventArgs e)
         {
@@ -36,8 +36,8 @@ namespace Vista_Web
 
             oUsuario = (Modelo_Entidades.USUARIO)Session["sUsuario"];
             // oAuditoria = new Modelo_Entidades.Auditoria_Log();
-            lModulos = new List<Modelo_Entidades.MODULO>();
-            lFormularios = new List<Modelo_Entidades.FORMULARIO>();
+            oListaModulos = new List<Modelo_Entidades.MODULO>();
+            oListaFormularios = new List<Modelo_Entidades.FORMULARIO>();
 
             //agregar el log de login en la otra página
 
@@ -65,7 +65,7 @@ namespace Vista_Web
                 {
                     foreach (Modelo_Entidades.MODULO oModuloActual in oCCURPF.ObtenerModulosPorGrupo(oGrupoActual))
                     {
-                        if (lModulos.Contains(oModuloActual) == false)
+                        if (oListaModulos.Contains(oModuloActual) == false)
                         {
                             HtmlGenericControl Formulario = new HtmlGenericControl("li");
                             //Formulario.ID = oModulo.descripcion;
@@ -98,15 +98,15 @@ namespace Vista_Web
                             //msMenu.Items.Add(Menu_Modulo);
 
                             // Busco las funciones asociadas al formulario
-                            lModulos.Add(oModuloActual);
-                            ArmaFormularios(oGrupoActual, SubMenu_Formularios, oModuloActual);
+                            oListaModulos.Add(oModuloActual);
+                            ArmarMenu(oGrupoActual, SubMenu_Formularios, oModuloActual);
                         }
                     }
                 }
             }
         }
         // Armo los menues y submenues
-        private void ArmaFormularios(Modelo_Entidades.GRUPO oGrupo, Control SubMenu_Formularios, Modelo_Entidades.MODULO oModulo)
+        private void ArmarMenu(Modelo_Entidades.GRUPO oGrupo, Control SubMenu_Formularios, Modelo_Entidades.MODULO oModulo)
         {
             // Le solicito a la controladora la lista de funciones de un módulo determinado.
             // Defino un objeto ToolStripMenuItem para asignar los permisos recuperados.
@@ -117,7 +117,7 @@ namespace Vista_Web
 
             foreach (Modelo_Entidades.FORMULARIO oFormulario in oCCURPF.ObtenerFormulariosPorModulo(oModulo))
             {
-                if (lFormularios.Contains(oFormulario) == false)
+                if (oListaFormularios.Contains(oFormulario) == false)
                 {
                     //SubMenu_Formularios.ID = "Link_Formulario";
                     //SubMenu_Formularios.InnerHtml = oModulo.descripcion;
@@ -138,7 +138,7 @@ namespace Vista_Web
                     Link_SubFormulario.Text = oFormulario.FRM_DESCRIPCION;
                     Link_SubFormulario.NavigateUrl = "~/" + oModulo.MOD_DESCRIPCION + "/" + oFormulario.FRM_DESCRIPCION + ".aspx";
                     SubFormulario.Controls.Add(Link_SubFormulario);
-                    lFormularios.Add(oFormulario);
+                    oListaFormularios.Add(oFormulario);
                 }
             }
         }

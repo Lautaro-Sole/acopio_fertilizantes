@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Gestión de Usuario" Language="C#" AutoEventWireup="true" CodeBehind="CambiarClave.aspx.cs" Inherits="Vista_Web.Cambiar_Clave" %>
+﻿<%@ Page Title="Gestión de Usuario" Language="C#" AutoEventWireup="true" CodeBehind="CambiarClave.aspx.cs" Inherits="Vista_Web.Seguridad.Cambiar_Clave" %>
 
 %@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 

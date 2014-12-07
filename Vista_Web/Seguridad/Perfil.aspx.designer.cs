@@ -7,7 +7,7 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace Vista_Web {
+namespace Vista_Web.Seguridad {
     
     
     public partial class Perfil {

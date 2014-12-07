@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using System.Text.RegularExpressions;
 using AjaxControlToolkit;
 
-namespace Vista_Web
+namespace Vista_Web.Seguridad
 {
     public partial class Cambiar_Clave : System.Web.UI.Page
     {
