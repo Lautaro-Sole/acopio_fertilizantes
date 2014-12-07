@@ -63,7 +63,7 @@ namespace Vista_Web
 
                 foreach (Modelo_Entidades.GRUPO oGrupoActual in oCCURPF.obtenerGruposUsuario(oUsuario))
                 {
-                    foreach (Modelo_Entidades.MODULO oModuloActual in oCCURPF.obtenerModulosGrupo(oGrupoActual))
+                    foreach (Modelo_Entidades.MODULO oModuloActual in oCCURPF.ObtenerModulosPorGrupo(oGrupoActual))
                     {
                         if (lModulos.Contains(oModuloActual) == false)
                         {
@@ -115,7 +115,7 @@ namespace Vista_Web
 
             // Recorro el listado de los permisos según el perfil
 
-            foreach (Modelo_Entidades.FORMULARIO oFormulario in oCCURPF.obtenerFormulariosPorModulo(oModulo))
+            foreach (Modelo_Entidades.FORMULARIO oFormulario in oCCURPF.ObtenerFormulariosPorModulo(oModulo))
             {
                 if (lFormularios.Contains(oFormulario) == false)
                 {

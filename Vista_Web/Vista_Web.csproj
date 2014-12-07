@@ -104,7 +104,7 @@
     <Content Include="Seguridad\Login.aspx" />
     <Content Include="Seguridad\Perfil.aspx" />
     <Content Include="Seguridad\Principal.aspx" />
-    <Content Include="Seguridad\RecuperarClave.aspx" />
+    <Content Include="Seguridad\RegenerarClave.aspx" />
     <Content Include="Seguridad\Usuario.aspx" />
     <Content Include="Seguridad\WebForm1.aspx" />
     <Content Include="Web.config" />
@@ -167,12 +167,12 @@
     <Compile Include="Seguridad\Principal.aspx.designer.cs">
       <DependentUpon>Principal.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Seguridad\RecuperarClave.aspx.cs">
-      <DependentUpon>RecuperarClave.aspx</DependentUpon>
+    <Compile Include="Seguridad\RegenerarClave.aspx.cs">
+      <DependentUpon>RegenerarClave.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Seguridad\RecuperarClave.aspx.designer.cs">
-      <DependentUpon>RecuperarClave.aspx</DependentUpon>
+    <Compile Include="Seguridad\RegenerarClave.aspx.designer.cs">
+      <DependentUpon>RegenerarClave.aspx</DependentUpon>
     </Compile>
     <Compile Include="Seguridad\Usuario.aspx.cs">
       <DependentUpon>Usuario.aspx</DependentUpon>

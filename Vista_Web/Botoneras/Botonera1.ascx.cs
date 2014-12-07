@@ -27,6 +27,7 @@ namespace Vista_Web.Botoneras
             cPerfil = Controladora.CCUGPerfiles.ObtenerInstancia();
             cGrupo = Controladora.CCUGGrupos.ObtenerInstancia();
             cUsuario = Controladora.CCUGUsuarios.ObtenerInstancia();
+            cRPF = Controladora.CCURPF.ObtenerInstancia();
         }
 
         protected void Page_Load(object sender, EventArgs e)
