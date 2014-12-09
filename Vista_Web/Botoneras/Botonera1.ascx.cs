@@ -65,12 +65,12 @@ namespace Vista_Web.Botoneras
             oCCUGPerfiles = Controladora.CCUGPerfiles.ObtenerInstancia();
             oCCUGGrupos = Controladora.CCUGGrupos.ObtenerInstancia();
             oCCUGUsuarios = Controladora.CCUGUsuarios.ObtenerInstancia();
-
+            /*
             btn_agregar.Enabled = false;
             btn_eliminar.Enabled = false;
             btn_modificar.Enabled = false;
             btn_verdetalle.Enabled = false;
-
+            */
             try
             {
                 //por cada grupo al que pertenece el usuario
