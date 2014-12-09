@@ -98,6 +98,7 @@
     <Content Include="JS\bootstrap.min.js" />
     <Content Include="JS\custom.js" />
     <Content Include="JS\jquery-1.11.1.min.js" />
+    <Content Include="Principal.aspx" />
     <Content Include="Seguridad\CambiarClave.aspx" />
     <Content Include="Seguridad\Gestion de Perfiles.aspx" />
     <Content Include="Seguridad\Gestion de Usuarios.aspx" />
@@ -123,6 +124,13 @@
     </Compile>
     <Compile Include="Default.Master.designer.cs">
       <DependentUpon>Default.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Principal.aspx.cs">
+      <DependentUpon>Principal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Principal.aspx.designer.cs">
+      <DependentUpon>Principal.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Seguridad\CambiarClave.aspx.cs">

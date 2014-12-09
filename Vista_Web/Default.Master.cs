@@ -18,6 +18,7 @@ namespace Vista_Web
 
         List<Modelo_Entidades.MODULO> oListaModulos;
         List<Modelo_Entidades.FORMULARIO> oListaFormularios;
+        Modelo_Entidades.Log oLog;
 
         protected void Page_Init(object sender, EventArgs e)
         {
@@ -141,6 +142,19 @@ namespace Vista_Web
                     oListaFormularios.Add(oFormulario);
                 }
             }
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            oLog = new Modelo_Entidades.Log();
+            oLog.USU_CODIGO = oUsuario.USU_CODIGO;
+            oLog.fecha_y_hora = DateTime.Now;
+            oLog.accion = "Egreso del Sistema";
+            Controladora.FachadaModuloSeguridad.ObtenerInstancia().RealizarLogOut(oUsuario);
+            
+
+            Session.Abandon();
+            Page.Response.Redirect("~/Seguridad/Login.aspx");
         }
     }
 }
