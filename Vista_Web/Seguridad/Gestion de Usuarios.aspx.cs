@@ -62,7 +62,7 @@ namespace Vista_Web.Seguridad
 
             else
             {
-                usuario = gvUsuarios.SelectedRow.Cells[6].Text;
+                usuario = gvUsuarios.SelectedRow.Cells[1].Text;
                 modo = "Consulta";
                 Response.Redirect(String.Format("~/Seguridad/Usuario.aspx?usuario={0}&modo={1}", Server.UrlEncode(usuario), Server.UrlEncode(modo)));
             }
@@ -80,7 +80,7 @@ namespace Vista_Web.Seguridad
 
             else
             {
-                usuario = gvUsuarios.SelectedRow.Cells[6].Text;
+                usuario = gvUsuarios.SelectedRow.Cells[1].Text;
                 modo = "Modifica";
                 Response.Redirect(String.Format("~/Seguridad/Usuario.aspx?usuario={0}&modo={1}", Server.UrlEncode(usuario), Server.UrlEncode(modo)));
             }
@@ -103,7 +103,7 @@ namespace Vista_Web.Seguridad
 
             else
             {
-                usuario = gvUsuarios.SelectedRow.Cells[6].Text;
+                usuario = gvUsuarios.SelectedRow.Cells[1].Text;
                 oUsuario = oCCUGUsuarios.ObtenerUsuario(usuario);
 
                 if (oUsuario.USU_ESTADO == false)
@@ -194,7 +194,7 @@ namespace Vista_Web.Seguridad
 
         protected void btn_eliminar_modal_Click(object sender, EventArgs e)
         {
-            usuario = gvUsuarios.SelectedRow.Cells[6].Text;
+            usuario = gvUsuarios.SelectedRow.Cells[1].Text;
             oUsuario = oCCUGUsuarios.ObtenerUsuario(usuario);
 
             oUsuario.USU_ESTADO = false;
@@ -218,12 +218,12 @@ namespace Vista_Web.Seguridad
 
         protected void gvUsuarios_RowCreated(object sender, GridViewRowEventArgs e)
         {
-            e.Row.Cells[1].Visible = false;
-            e.Row.Cells[2].Text = "Nombre y Apellido";
+            e.Row.Cells[1].Text = "Código de usuario";
+            e.Row.Cells[2].Text = "Nombre";
             e.Row.Cells[3].Visible = false;
-            e.Row.Cells[4].Text = "E-Mail";
-            e.Row.Cells[5].Visible = false;
-            e.Row.Cells[6].Text = "Nombre de Usuario";
+            e.Row.Cells[4].Visible = false;
+            e.Row.Cells[5].Text = "Apellido";
+            e.Row.Cells[6].Text = "E-Mail";
         }
     }
 }
