@@ -183,7 +183,7 @@ namespace Vista_Web.Seguridad
                 activa = "0";
             }
 
-            gvUsuarios.DataSource = oCCUGUsuarios.ObtenerUsuarios(nombreyapellido, VarCombo_Grupo, activa);
+            gvUsuarios.DataSource = oCCUGUsuarios.ObtenerUsuarios(nombre, apellido, VarCombo_Grupo, activa);
             gvUsuarios.DataBind();
         }
 
