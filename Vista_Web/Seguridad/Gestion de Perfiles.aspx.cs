@@ -19,7 +19,7 @@ namespace Vista_Web.Seguridad
 
         Modelo_Entidades.USUARIO oUsuario;
         Modelo_Entidades.PERFIL oPerfil;
-        List<Modelo_Entidades.PERFIL> lPerfiles;
+        List<Modelo_Entidades.PERFIL> oListaPerfiles;
         string perfil;
         string modo;
 
@@ -39,7 +39,7 @@ namespace Vista_Web.Seguridad
             if (!Page.IsPostBack)
             {
                 oUsuario = (Modelo_Entidades.USUARIO)HttpContext.Current.Session["sUsuario"];
-                botonera1.ArmaPerfil(oUsuario, "FrmPerfiles");
+                botonera1.ArmaPerfil(oUsuario, "frmPerfiles");
             }
         }
 
@@ -129,8 +129,8 @@ namespace Vista_Web.Seguridad
         // Armo la lista de la grilla de datos
         private void Arma_Lista()
         {
-            lPerfiles = oCCUGPerfiles.obtenerPerfiles();
-            gvPerfiles.DataSource = this.ToDataTable(lPerfiles);
+            oListaPerfiles = oCCUGPerfiles.obtenerPerfiles();
+            gvPerfiles.DataSource = this.ToDataTable(oListaPerfiles);
             gvPerfiles.DataBind();
 
             cmb_grupos.DataSource = oCCUGGrupos.ObtenerGrupos();

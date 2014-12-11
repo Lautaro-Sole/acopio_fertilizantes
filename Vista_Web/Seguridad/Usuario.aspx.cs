@@ -19,6 +19,7 @@ namespace Vista_Web.Seguridad
         Modelo_Entidades.USUARIO oUsuario;
         Modelo_Entidades.GRUPO oGrupo;
         string grupo;
+        string clave;
 
         // Constructor
         public Usuario()
@@ -110,7 +111,9 @@ namespace Vista_Web.Seguridad
                 oUsuario.USU_EMAIL = txt_email.Text;
                 oUsuario.USU_CODIGO = txt_nombreusuario.Text;
                 oUsuario.USU_ESTADO = chk_estado.Checked;
-                oUsuario.USU_CLAVE = oCCUGUsuarios.EncriptarClave(txt_nuevacontraseña.Text);
+                clave = oCCUGUsuarios.generarClaveAleatoria(8, false);
+                
+
 
                 oUsuario.GRUPOS.Clear();
 
@@ -127,13 +130,16 @@ namespace Vista_Web.Seguridad
 
                 if (modo == "Alta")
                 {
+                    oUsuario.USU_CLAVE = clave;
+                    oCCUGUsuarios.EnviarCorreo(oUsuario);
+                    oUsuario.USU_CLAVE = oCCUGUsuarios.EncriptarClave(clave);
                     oCCUGUsuarios.Agregar(oUsuario);
                     Page.Response.Redirect("~/Seguridad/Gestion de Usuarios.aspx");
                 }
 
                 else
                 {
-                    oUsuario.USU_CLAVE = oCCUGUsuarios.EncriptarClave(txt_nuevacontraseña.Text);
+                    //oUsuario.USU_CLAVE = oCCUGUsuarios.EncriptarClave(txt_nuevacontraseña.Text);
                     oCCUGUsuarios.Modificar(oUsuario);
                     Page.Response.Redirect("~/Seguridad/Gestion de Usuarios.aspx");
                 }
@@ -180,55 +186,55 @@ namespace Vista_Web.Seguridad
                 return false;
             }
 
-            if (oCCUGUsuarios.ObtenerUsuario(txt_nombreusuario.Text) == null)
+            if (oCCUGUsuarios.ObtenerUsuario(txt_nombreusuario.Text) != null)
             {
-                if (oUsuario.USU_CODIGO != txt_nombreusuario.Text)
-                {
+                //if (oUsuario.USU_CODIGO != txt_nombreusuario.Text)
+                //{
                     message.Visible = true;
                     lb_error.Text = "Debe ingresar otro usuario ya que el nombre no se encuentra disponible";
                     return false;
-                }
+                //}
             }
 
-            if (string.IsNullOrEmpty(txt_nuevacontraseña.Text) || string.IsNullOrEmpty(txt_repetircontraseña.Text) || string.IsNullOrEmpty(txt_nuevacontraseña.Text))
-            {
-                if (modo != "Alta" && txt_contraseña_actual.Enabled == true)
-                {
-                    if (string.IsNullOrEmpty(txt_nuevacontraseña.Text) && string.IsNullOrEmpty(txt_repetircontraseña.Text) && string.IsNullOrEmpty(txt_nuevacontraseña.Text))
-                    {
-                        message.Visible = true;
-                        lb_error.Text = "Debe ingresar una contraseña, ya que o no las ha ingresado, o no coinciden";
-                        return false;
-                    }
+            //if (string.IsNullOrEmpty(txt_nuevacontraseña.Text) || string.IsNullOrEmpty(txt_repetircontraseña.Text) || string.IsNullOrEmpty(txt_nuevacontraseña.Text))
+            //{
+            //    if (modo != "Alta" && txt_contraseña_actual.Enabled == true)
+            //    {
+            //        if (string.IsNullOrEmpty(txt_nuevacontraseña.Text) && string.IsNullOrEmpty(txt_repetircontraseña.Text) && string.IsNullOrEmpty(txt_nuevacontraseña.Text))
+            //        {
+            //            message.Visible = true;
+            //            lb_error.Text = "Debe ingresar una contraseña, ya que o no las ha ingresado, o no coinciden";
+            //            return false;
+            //        }
 
-                    else if (oCCUGUsuarios.EncriptarClave(txt_contraseña_actual.Text) != oUsuario.USU_CLAVE || string.IsNullOrEmpty(txt_contraseña_actual.Text))
-                    {
-                        message.Visible = true;
-                        lb_error.Text = "La contraseña actual es incorrecta, por favor introduscula nuevamente";
-                        return false;
-                    }
-                }
-            }
+            //        else if (oCCUGUsuarios.EncriptarClave(txt_contraseña_actual.Text) != oUsuario.USU_CLAVE || string.IsNullOrEmpty(txt_contraseña_actual.Text))
+            //        {
+            //            message.Visible = true;
+            //            lb_error.Text = "La contraseña actual es incorrecta, por favor introduscula nuevamente";
+            //            return false;
+            //        }
+            //    }
+            //}
 
-            if (modo != "Alta" && txt_contraseña_actual.Enabled == true)
-            {
-                if (oCCUGUsuarios.EncriptarClave(txt_contraseña_actual.Text) != oUsuario.USU_CLAVE || string.IsNullOrEmpty(txt_contraseña_actual.Text) || txt_nuevacontraseña.Text != txt_repetircontraseña.Text)
-                {
-                    message.Visible = true;
-                    lb_error.Text = "La contraseña actual es incorrecta o las claves no coinciden, por favor introdusca los datos nuevamente";
-                    return false;
-                }
-            }
+            //if (modo != "Alta" && txt_contraseña_actual.Enabled == true)
+            //{
+            //    if (oCCUGUsuarios.EncriptarClave(txt_contraseña_actual.Text) != oUsuario.USU_CLAVE || string.IsNullOrEmpty(txt_contraseña_actual.Text) || txt_nuevacontraseña.Text != txt_repetircontraseña.Text)
+            //    {
+            //        message.Visible = true;
+            //        lb_error.Text = "La contraseña actual es incorrecta o las claves no coinciden, por favor introdusca los datos nuevamente";
+            //        return false;
+            //    }
+            //}
 
-            if (modo == "Alta")
-            {
-                if (string.IsNullOrEmpty(txt_nuevacontraseña.Text) || string.IsNullOrEmpty(txt_repetircontraseña.Text) || txt_nuevacontraseña.Text != txt_repetircontraseña.Text)
-                {
-                    message.Visible = true;
-                    lb_error.Text = "No ha introducido una contraseña o las claves no coinciden, por favor introdusca los datos nuevamente";
-                    return false;
-                }
-            }
+            //if (modo == "Alta")
+            //{
+            //    if (string.IsNullOrEmpty(txt_nuevacontraseña.Text) || string.IsNullOrEmpty(txt_repetircontraseña.Text) || txt_nuevacontraseña.Text != txt_repetircontraseña.Text)
+            //    {
+            //        message.Visible = true;
+            //        lb_error.Text = "No ha introducido una contraseña o las claves no coinciden, por favor introdusca los datos nuevamente";
+            //        return false;
+            //    }
+            //}
 
             if (chklstbox_grupos.SelectedIndex == -1)
             {

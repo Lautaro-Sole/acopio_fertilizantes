@@ -29,7 +29,7 @@ namespace Vista_Web.Seguridad
             if (!Page.IsPostBack)
             {
                 oUsuario = (Modelo_Entidades.USUARIO)HttpContext.Current.Session["sUsuario"];
-                botonera1.ArmaPerfil(oUsuario, "FrmUsuarios");
+                botonera1.ArmaPerfil(oUsuario, "frmUsuarios");
             }
         }
 
@@ -92,7 +92,7 @@ namespace Vista_Web.Seguridad
         }
 
 
-        // Al hacer click en "Modificar"
+        // Al hacer click en "Eliminar"
         protected void botonera1_Click_Baja(object sender, EventArgs e)
         {
             if (gvUsuarios.SelectedRow == null)

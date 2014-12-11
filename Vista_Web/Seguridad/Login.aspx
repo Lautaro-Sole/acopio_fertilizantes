@@ -37,7 +37,7 @@
                 </div>
                 <div>
                     <asp:Button ID="btn_ingresa" runat="server" OnClick="btn_ingresa_Click" CssClass="btn btn-success pull-right margin-left-5" Text="Login" />
-                    <a class="pull-left" href="Recuperar Clave.aspx">Resetear contraseña</a>
+                    <a class="pull-left" href="RegenerarClave.aspx">Resetear contraseña</a>
                 </div>
             </div>
         </div>
