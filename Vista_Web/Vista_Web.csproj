@@ -114,11 +114,7 @@
     <Content Include="Seguridad\Principal.aspx" />
     <Content Include="Seguridad\RegenerarClave.aspx" />
     <Content Include="Seguridad\Usuario.aspx" />
-<<<<<<< HEAD
-=======
-    <Content Include="Seguridad\WebForm1.aspx" />
     <Content Include="Seguridad\Gestion de Grupos.aspx" />
->>>>>>> 6f8b306caf4688a2d700b646cf4e8cbdc18bbd02
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -249,15 +245,6 @@
     <Compile Include="Seguridad\Usuario.aspx.designer.cs">
       <DependentUpon>Usuario.aspx</DependentUpon>
     </Compile>
-<<<<<<< HEAD
-=======
-    <Compile Include="Seguridad\WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Seguridad\WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Seguridad\Gestion de Grupos.aspx.cs">
       <DependentUpon>Gestion de Grupos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -265,7 +252,6 @@
     <Compile Include="Seguridad\Gestion de Grupos.aspx.designer.cs">
       <DependentUpon>Gestion de Grupos.aspx</DependentUpon>
     </Compile>
->>>>>>> 6f8b306caf4688a2d700b646cf4e8cbdc18bbd02
   </ItemGroup>
   <ItemGroup>
     <Content Include="CSS\bootstrap-theme.css.map" />
