@@ -9,6 +9,23 @@ namespace Controladora
 {
     public class CCUCore
     {
+        private static CCUCore Instancia;
+
+        public static CCUCore ObtenerInstancia()
+        {
+            if (Instancia == null)
+            {
+                Instancia = new CCUCore();
+            }
+            return Instancia;
+        }
+
+        private CCUCore()
+        {
+
+        }
+
+
         #region Utilidades
         
         int kilosporbolsa = 50;

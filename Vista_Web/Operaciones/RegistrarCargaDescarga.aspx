@@ -19,16 +19,20 @@
                     </div>
                     <div id="Div4" runat="server" class="col-lg-4">
                         <div runat="server" class="form-group">
-                            <label runat="server" for="exampleInputEmail1">Peso inicial</label>
+                            <label runat="server" for="txt_pesoinicial">Peso inicial</label>
                             <asp:TextBox ID="txt_pesoinicial" runat="server" type="text" class="form-control" placeholder="Ingrese el peso inicial"></asp:TextBox>
-                            <label runat="server" for="exampleInputEmail1">Peso final</label>
+                            <label runat="server" for="txt_pesofinal">Peso final</label>
                             <asp:TextBox ID="txt_pesofinal" runat="server" type="text" class="form-control" placeholder="Ingrese el peso final"></asp:TextBox>
-                            <label runat="server" for="exampleInputEmail1">Notas</label>
+                            <label runat="server" for="txt_notas">Notas</label>
                             <asp:TextBox ID="txt_notas" runat="server" type="text" class="form-control" placeholder="Ingrese notas"></asp:TextBox>
                         </div>
+                        <div runat="server" class="alert alert-warning" role="alert" visible="false" id="message">
+                            <button id="Button1" runat="server" type="button" class="close" data-dismiss="alert"><span id="Span1" runat="server" aria-hidden="true">&times;</span><span id="Span2" runat="server" class="sr-only">Cerrar</span></button>
+                            <asp:Label ID="lb_error" runat="server" Text="Mensaje" Visible="True"></asp:Label>
+                        </div>
                         <div runat="server" class="form-group">
-                            <asp:Button ID="btn_cancelar" runat="server" OnClick="btn_cancelar_Click" CssClass="btn btn-default pull-right" Text="Cancelar" />
-                            <asp:Button ID="btn_guardar" runat="server" OnClick="btn_guardar_Click" CssClass="btn btn-success pull-right margin-left-5" Text="Guardar" />
+                            <asp:Button ID="btn_cancelar" runat="server" OnClick="btn_cancelar_Click" CssClass="btn btn-default pull-right margin-left-5" Text="Cancelar" />
+                            <asp:Button ID="btn_guardar" runat="server" OnClick="btn_guardar_Click" CssClass="btn btn-success pull-right " Text="Guardar" />
                            
                         </div>
                        
