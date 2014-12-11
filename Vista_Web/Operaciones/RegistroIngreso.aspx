@@ -30,14 +30,44 @@
                          </div>
                             <div id="Div1" runat="server" class=" form-group">
                                  <label runat="server" for="cmb_tipomatricula">Tipo de matricula</label>
-                                 <asp:DropDownList ID="DropDownList1" runat="server" class="form-control">
+                                 <asp:DropDownList ID="cmb_tipomatricula" runat="server" class="form-control">
                                  </asp:DropDownList>
                             </div> 
                             <div id="Div3" runat="server" class="form-group">
                                 <label runat="server" for="cmb_numeromatricula">Número matricula</label>
-                                </div>
+                                <asp:TextBox ID="cmb_numeromatricula" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
+                          <div id="Div5" runat="server" class="col-lg-8">
+                              <label runat="server"> Transportes </label>
+                            <div style="height: 300px; overflow: auto;" class="form-group">
+                                <asp:GridView ID="gvUsuarios" runat="server" AutoGenerateSelectButton="True" CssClass="table table-hover table-responsive table-bordered" OnRowCreated="gvTransportes_RowCreated" AllowCustomPaging="True" OnSelectedIndexChanged="gvTransportes_SelectedIndexChanged">
+                                <SelectedRowStyle BackColor="#E8E8E8" />
+                                </asp:GridView>
+                            </div>
+                        
                         </div>
+                             <div id="Div6" runat="server" class="form-group">
+                                  <label runat="server" for="cmb_tipooperacion">Tipo de operación</label>
+                                <asp:DropDownList ID="cmb_tipooperacion" runat="server" class="form-control">
+                                </asp:DropDownList>
+                            </div>
+                            <div id="Div7" runat="server" class="form-group">
+                                <label runat="server" for="cmb_permitiringreso">Permitir ingreso</label>
+                                <asp:DropDownList ID="cmb_permitiringreso" runat="server" class="form-control">
+                                </asp:DropDownList>
+                            </div>
+                            
+                            <div id="Div8" runat="server" class="form-group">
+                                <label for="txt_notasrechazo" class="control-label">Notas o razones del rechazo</label>
+                                <asp:TextBox ID="txt_notasrechazo" runat="server" CssClass="form-control"></asp:TextBox>
+                            </div>
+
+                          <div runat="server" class="form-group">
+                            <asp:Button ID="btn_cancelar" runat="server" OnClick="btn_cancelar_Click" CssClass="btn btn-default pull-right margin-left-5" Text="Cancelar" />
+                            <asp:Button ID="btn_registrar" runat="server" OnClick="btn_registrar_Click" CssClass="btn btn-success pull-right" Text="Registrar" />
+                          </div>
+                  </div>
+               </div>
                     </div>
 
         </ContentTemplate>
