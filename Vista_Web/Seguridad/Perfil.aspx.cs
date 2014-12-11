@@ -140,7 +140,7 @@ namespace Vista_Web.Seguridad
             oFormulario = oCCURPF.obtenerFormulariopordesc(formulario);
 
 
-            if (oCCUGPerfiles.ValidarPerfil(oGrupo, oPermiso, oFormulario) == false)
+            if (oCCUGPerfiles.ValidarPerfil(oGrupo, oPermiso, oFormulario) == true)
             {
                 message.Visible = true;
                 lb_error.Text = "El perfil ya existe, ingrese otros parámetros";

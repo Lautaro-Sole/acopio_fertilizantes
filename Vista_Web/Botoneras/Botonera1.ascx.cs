@@ -65,12 +65,12 @@ namespace Vista_Web.Botoneras
             oCCUGPerfiles = Controladora.CCUGPerfiles.ObtenerInstancia();
             oCCUGGrupos = Controladora.CCUGGrupos.ObtenerInstancia();
             oCCUGUsuarios = Controladora.CCUGUsuarios.ObtenerInstancia();
-            /*
+            
             btn_agregar.Enabled = false;
             btn_eliminar.Enabled = false;
             btn_modificar.Enabled = false;
             btn_verdetalle.Enabled = false;
-            */
+            
             try
             {
                 //por cada grupo al que pertenece el usuario
@@ -81,8 +81,8 @@ namespace Vista_Web.Botoneras
                     {
                         switch (oPermiso.PER_DESCRIPCION)
                         {
-                            case "Alta":
-                                if (form == "FrmAuditorias")
+                            case "ALTA":
+                                if (form == "frmAuditorias")
                                 {
                                     btn_agregar.Text = "Formatear";
                                 }
@@ -90,8 +90,8 @@ namespace Vista_Web.Botoneras
                                 btn_agregar.Enabled = true;
                                 break;
 
-                            case "Baja":
-                                if (form == "FrmProfesionales" || form == "FrmExpedientes" || form == "FrmAuditorias")
+                            case "BAJA":
+                                if (form == "frmProfesionales" || form == "frmExpedientes" || form == "frmAuditorias")
                                 {
                                     btn_eliminar.Visible = false;
                                 }
@@ -99,8 +99,8 @@ namespace Vista_Web.Botoneras
                                 btn_eliminar.Enabled = true;
                                 break;
 
-                            case "Modifica":
-                                if (form == "FrmAuditorias" || form == "FrmPerfiles")
+                            case "MODIFICAR":
+                                if (form == "frmAuditorias" || form == "frmPerfiles")
                                 {
                                     btn_modificar.Visible = false;
                                 }
@@ -109,7 +109,7 @@ namespace Vista_Web.Botoneras
 
                                 break;
 
-                            case "Consulta":
+                            case "CONSULTA":
                                 btn_verdetalle.Enabled = true;
                                 break;
                         }

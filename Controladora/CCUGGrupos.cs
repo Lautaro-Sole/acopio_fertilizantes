@@ -85,6 +85,26 @@ namespace Controladora
             else return false; //si tiene distinto código es otro grupo con la misma descripción, entonces no puedo guardar este
         }
 
+        public Modelo_Entidades.GRUPO ObtenerGrupoPorCodigo(string codigo)
+        {
+            return Modelo_Entidades.ModeloSeguridadContainer.ObtenerInstancia().GRUPOS.ToList().Find(delegate(Modelo_Entidades.GRUPO oGrupoBuscdo) { return oGrupoBuscdo.GRU_CODIGO == codigo; });
+        }
+
+        /// <summary>
+        /// Comprueba si el el grupo tiene alguna relación con perfiles o usuarios.
+        /// </summary>
+        /// <param name="oGrupo"></param>
+        /// <returns>bool (fue usado = verdadero, no fue usado = falso)</returns>
+        public bool ComprobarUso(Modelo_Entidades.GRUPO oGrupo)
+        {
+            Modelo_Entidades.GRUPO oGrupoAComprobar = Modelo_Entidades.ModeloSeguridadContainer.ObtenerInstancia().GRUPOS.ToList().Find(delegate(Modelo_Entidades.GRUPO oGrupoBuscado) { return oGrupoBuscado == oGrupo; });
+
+            if (oGrupo.PERFILES.Count == 0 && oGrupo.USUARIOS.Count == 0)
+            {
+                return false;
+            }
+            else return true;
+        }
         /// <summary>
         /// Guarda un nuevo grupo. Devuelve verdadero si no hubo errores.
         /// </summary>

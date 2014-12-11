@@ -20,6 +20,17 @@ namespace Controladora
 			return Modelo_Entidades.ModeloSeguridadContainer.ObtenerInstancia().USUARIOS.ToList<Modelo_Entidades.USUARIO>();
 		}
 
+        public List<string> ObtenerNombresDeUsuarios()
+        {
+            List<string> oListaNombres = new List<string>();
+            List<Modelo_Entidades.USUARIO> oListaUsuarios = Modelo_Entidades.ModeloSeguridadContainer.ObtenerInstancia().USUARIOS.ToList();
+            foreach (Modelo_Entidades.USUARIO oUsuarioActual in oListaUsuarios)
+            {
+                oListaNombres.Add(oUsuarioActual.USU_APELLIDO + ", " + oUsuarioActual.USU_NOMBRE);
+            }
+            return oListaNombres;
+        }
+
 		public List<Modelo_Entidades.GRUPO> ObtenerGrupos()
 		{
 			return Modelo_Entidades.ModeloSeguridadContainer.ObtenerInstancia().GRUPOS.ToList<Modelo_Entidades.GRUPO>();
@@ -35,17 +46,26 @@ namespace Controladora
 		{
 			return Modelo_Entidades.ModeloSeguridadContainer.ObtenerInstancia().USUARIOS.ToList<Modelo_Entidades.USUARIO>().Find(delegate(Modelo_Entidades.USUARIO unUsuario) { return unUsuario.USU_CODIGO == codigo_usuario; });
 		}
+
+        public Modelo_Entidades.USUARIO ObtenerUsuarioPorApellidoYNombre(string apellidoynombre)
+        {
+            char[] divisores = { ',', ' ' };
+            string[] oListaNombres;
+            oListaNombres = apellidoynombre.Split(divisores);
+            return Modelo_Entidades.ModeloSeguridadContainer.ObtenerInstancia().USUARIOS.ToList().Find(delegate(Modelo_Entidades.USUARIO oUsuarioBuscado) { return oUsuarioBuscado.USU_APELLIDO == oListaNombres[0] && oUsuarioBuscado.USU_NOMBRE == oListaNombres[2]; });
+        }
 		
 		public List<Modelo_Entidades.USUARIO> ObtenerUsuarios(string nombre, string apellido, string grupo, string estado)
 		{
 			List<Modelo_Entidades.USUARIO> oListaUsuarios = Modelo_Entidades.ModeloSeguridadContainer.ObtenerInstancia().USUARIOS.ToList<Modelo_Entidades.USUARIO>();
-			if (!(string.IsNullOrWhiteSpace(nombre)))
+            List<Modelo_Entidades.USUARIO> oListaUsuariosTemporal = new List<Modelo_Entidades.USUARIO>();
+            if (!(string.IsNullOrWhiteSpace(nombre)) || apellido != "0")
 			{
-				oListaUsuarios.FindAll(delegate(Modelo_Entidades.USUARIO oUsuarioBuscado) { return oUsuarioBuscado.USU_NOMBRE.StartsWith(nombre); });
+                oListaUsuarios = oListaUsuarios.FindAll(delegate(Modelo_Entidades.USUARIO oUsuarioBuscado) { return oUsuarioBuscado.USU_NOMBRE.StartsWith(nombre); });
 			}
-			if (!(string.IsNullOrWhiteSpace(apellido)) || apellido == "0")
+			if (!(string.IsNullOrWhiteSpace(apellido)) || apellido != "0")
 			{
-				oListaUsuarios.FindAll(delegate(Modelo_Entidades.USUARIO oUsuarioBuscado) { return oUsuarioBuscado.USU_APELLIDO.StartsWith(apellido); });
+                oListaUsuarios = oListaUsuarios.FindAll(delegate(Modelo_Entidades.USUARIO oUsuarioBuscado) { return oUsuarioBuscado.USU_APELLIDO.StartsWith(apellido); });
 			}
 			if (!(string.IsNullOrWhiteSpace(estado) || estado== "TODOS" ))
 			{
@@ -58,12 +78,11 @@ namespace Controladora
 				{
 					estadousuario = false;
 				}
-				oListaUsuarios.FindAll(delegate(Modelo_Entidades.USUARIO oUsuarioBuscado) { return oUsuarioBuscado.USU_ESTADO == estadousuario; });
+                oListaUsuarios = oListaUsuarios.FindAll(delegate(Modelo_Entidades.USUARIO oUsuarioBuscado) { return oUsuarioBuscado.USU_ESTADO == estadousuario; });
 			}
-			if (!(string.IsNullOrWhiteSpace(grupo) || grupo =="TODOS") || grupo == "0")
+			if (!(string.IsNullOrWhiteSpace(grupo) || grupo =="TODOS") || grupo != "0")
 			{
-				List<Modelo_Entidades.USUARIO> oListaUsuariosTemporal = new List<Modelo_Entidades.USUARIO>(); 
-				foreach (Modelo_Entidades.USUARIO oUsuarioActual in oListaUsuarios)
+                foreach (Modelo_Entidades.USUARIO oUsuarioActual in oListaUsuariosTemporal)
 				{
 					Modelo_Entidades.GRUPO oGrupo = oUsuarioActual.GRUPOS.ToList<Modelo_Entidades.GRUPO>().Find(delegate(Modelo_Entidades.GRUPO oGrupoBuscado) { return oGrupoBuscado.GRU_DESCRIPCION.StartsWith(grupo); });
 					if (oGrupo != null)
@@ -166,45 +185,8 @@ namespace Controladora
 			//generar una clave aleatoria
 			oUSUARIO.USU_CLAVE = generarClaveAleatoria(8, false);
 			//enviar la clave sin encriptar por mail
-			
-			string De="tc.prueba@gmail.com";
-			string Password="732112.Na$a";
-			string Para=oUSUARIO.USU_EMAIL;
-			string Mensaje = "Bienvenido al sistema. Por favor descarguelo de http://www.mediafire.com/?y34c2yu26htau (Prueba.rar) y pruebe todo el módulo de seguridad, ejecutando el sql incluído y los dos de adentro del proyecto. Su nombre de usuario es " + oUSUARIO.USU_CODIGO + " y su clave temporal es " + oUSUARIO.USU_CLAVE + ". Por favor cambie su clave la primera vez que entre al sistema." + "Sólo faltan unos filtros que no los pude hacer porque no sabía cómo poner que en los combobox llenos con objetos diga 'TODOS'."; 
-			string Asunto="Usuario y Contraseña para el sistema"; 
-			System.Net.Mail.MailMessage Email; 
 
-			Email = new System.Net.Mail.MailMessage(De, Para, Asunto, Mensaje); 
-			/*
-			System.Net.Mail.SmtpClient smtpMail = new System.Net.Mail.SmtpClient("smtp.gmail.com"); 
-			Email.IsBodyHtml = false; 
-			smtpMail.EnableSsl = true; 
-			smtpMail.UseDefaultCredentials = false;
-			smtpMail.Host = "smtp.gmail.com";
-			smtpMail.Port = ; 
-			smtpMail.Credentials = new System.Net.NetworkCredential(De, Password); 
-			//smtpMail.ClientCertificates. 
-			SmtpClient clienteSmtp = new SmtpClient("WIN02");
-			 * */
-			/*
-			 * Cliente SMTP
-			 * Gmail:  smtp.gmail.com  puerto:587
-			 * Hotmail: smtp.liva.com  puerto:25
-			 */
-			SmtpClient server = new SmtpClient("smtp.gmail.com", 587);
-			/*
-			* Autenticacion en el Servidor
-			* Utilizaremos nuestra cuenta de correo
-			*
-			* Direccion de Correo (Gmail o Hotmail)
-			* y Contrasena correspondiente
-			*/
-			server.Credentials = new System.Net.NetworkCredential(De, Password);
-			server.EnableSsl = true;
- 
-
-
-			server.Send(Email); 
+            EnviarCorreo(oUSUARIO);
 			
 			//obtener el hash md5 de la clave generada
 			string clave_temporal = oUSUARIO.USU_CLAVE;
@@ -214,6 +196,48 @@ namespace Controladora
 			if (resultado) return true;
 			else return false;
 		}
+
+        public void EnviarCorreo(Modelo_Entidades.USUARIO oUSUARIO)
+        {
+            string De = "tc.prueba@gmail.com";
+            string Password = "maildeprueba";
+            string Para = oUSUARIO.USU_EMAIL;
+            string Mensaje = "Bienvenido al sistema. Por favor descarguelo de http://www.mediafire.com/?y34c2yu26htau (Prueba.rar) y pruebe todo el módulo de seguridad, ejecutando el sql incluído y los dos de adentro del proyecto. Su nombre de usuario es " + oUSUARIO.USU_CODIGO + " y su clave temporal es " + oUSUARIO.USU_CLAVE + ". Por favor cambie su clave la primera vez que entre al sistema." + "Sólo faltan unos filtros que no los pude hacer porque no sabía cómo poner que en los combobox llenos con objetos diga 'TODOS'.";
+            string Asunto = "Usuario y Contraseña para el sistema";
+            System.Net.Mail.MailMessage Email;
+
+            Email = new System.Net.Mail.MailMessage(De, Para, Asunto, Mensaje);
+            /*
+            System.Net.Mail.SmtpClient smtpMail = new System.Net.Mail.SmtpClient("smtp.gmail.com"); 
+            Email.IsBodyHtml = false; 
+            smtpMail.EnableSsl = true; 
+            smtpMail.UseDefaultCredentials = false;
+            smtpMail.Host = "smtp.gmail.com";
+            smtpMail.Port = ; 
+            smtpMail.Credentials = new System.Net.NetworkCredential(De, Password); 
+            //smtpMail.ClientCertificates. 
+            SmtpClient clienteSmtp = new SmtpClient("WIN02");
+             * */
+            /*
+             * Cliente SMTP
+             * Gmail:  smtp.gmail.com  puerto:587
+             * Hotmail: smtp.liva.com  puerto:25
+             */
+            SmtpClient server = new SmtpClient("smtp.gmail.com", 587);
+            /*
+            * Autenticacion en el Servidor
+            * Utilizaremos nuestra cuenta de correo
+            *
+            * Direccion de Correo (Gmail o Hotmail)
+            * y Contrasena correspondiente
+            */
+            server.Credentials = new System.Net.NetworkCredential(De, Password);
+            server.EnableSsl = true;
+
+
+            server.Send(Email); 
+        }
+
 		public bool CambiarClave(Modelo_Entidades.USUARIO oUsuario, string clave)
 		{
 			string clave_encriptada = EncriptarClave(clave);

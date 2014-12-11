@@ -102,12 +102,14 @@
     <Content Include="Seguridad\CambiarClave.aspx" />
     <Content Include="Seguridad\Gestion de Perfiles.aspx" />
     <Content Include="Seguridad\Gestion de Usuarios.aspx" />
+    <Content Include="Seguridad\Grupo.aspx" />
     <Content Include="Seguridad\Login.aspx" />
     <Content Include="Seguridad\Perfil.aspx" />
     <Content Include="Seguridad\Principal.aspx" />
     <Content Include="Seguridad\RegenerarClave.aspx" />
     <Content Include="Seguridad\Usuario.aspx" />
     <Content Include="Seguridad\WebForm1.aspx" />
+    <Content Include="Seguridad\Gestion de Grupos.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -154,6 +156,13 @@
     <Compile Include="Seguridad\Gestion de Usuarios.aspx.designer.cs">
       <DependentUpon>Gestion de Usuarios.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Seguridad\Grupo.aspx.cs">
+      <DependentUpon>Grupo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seguridad\Grupo.aspx.designer.cs">
+      <DependentUpon>Grupo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Seguridad\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -195,6 +204,13 @@
     </Compile>
     <Compile Include="Seguridad\WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seguridad\Gestion de Grupos.aspx.cs">
+      <DependentUpon>Gestion de Grupos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seguridad\Gestion de Grupos.aspx.designer.cs">
+      <DependentUpon>Gestion de Grupos.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
