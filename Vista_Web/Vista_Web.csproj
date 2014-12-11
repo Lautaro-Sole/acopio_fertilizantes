@@ -98,6 +98,12 @@
     <Content Include="JS\bootstrap.min.js" />
     <Content Include="JS\custom.js" />
     <Content Include="JS\jquery-1.11.1.min.js" />
+    <Content Include="Operaciones\AgregarDocumento.aspx" />
+    <Content Include="Operaciones\AutorizarCierre.aspx" />
+    <Content Include="Operaciones\AutorizarOperacion.aspx" />
+    <Content Include="Operaciones\Operaciones.aspx" />
+    <Content Include="Operaciones\RegistrarCargaDescarga.aspx" />
+    <Content Include="Operaciones\RegistroIngreso.aspx" />
     <Content Include="Principal.aspx" />
     <Content Include="Seguridad\CambiarClave.aspx" />
     <Content Include="Seguridad\Gestion de Perfiles.aspx" />
@@ -107,7 +113,6 @@
     <Content Include="Seguridad\Principal.aspx" />
     <Content Include="Seguridad\RegenerarClave.aspx" />
     <Content Include="Seguridad\Usuario.aspx" />
-    <Content Include="Seguridad\WebForm1.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -124,6 +129,48 @@
     </Compile>
     <Compile Include="Default.Master.designer.cs">
       <DependentUpon>Default.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Operaciones\AgregarDocumento.aspx.cs">
+      <DependentUpon>AgregarDocumento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Operaciones\AgregarDocumento.aspx.designer.cs">
+      <DependentUpon>AgregarDocumento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Operaciones\AutorizarCierre.aspx.cs">
+      <DependentUpon>AutorizarCierre.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Operaciones\AutorizarCierre.aspx.designer.cs">
+      <DependentUpon>AutorizarCierre.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Operaciones\AutorizarOperacion.aspx.cs">
+      <DependentUpon>AutorizarOperacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Operaciones\AutorizarOperacion.aspx.designer.cs">
+      <DependentUpon>AutorizarOperacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Operaciones\Operaciones.aspx.cs">
+      <DependentUpon>Operaciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Operaciones\Operaciones.aspx.designer.cs">
+      <DependentUpon>Operaciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Operaciones\RegistrarCargaDescarga.aspx.cs">
+      <DependentUpon>RegistrarCargaDescarga.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Operaciones\RegistrarCargaDescarga.aspx.designer.cs">
+      <DependentUpon>RegistrarCargaDescarga.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Operaciones\RegistroIngreso.aspx.cs">
+      <DependentUpon>RegistroIngreso.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Operaciones\RegistroIngreso.aspx.designer.cs">
+      <DependentUpon>RegistroIngreso.aspx</DependentUpon>
     </Compile>
     <Compile Include="Principal.aspx.cs">
       <DependentUpon>Principal.aspx</DependentUpon>
@@ -188,13 +235,6 @@
     </Compile>
     <Compile Include="Seguridad\Usuario.aspx.designer.cs">
       <DependentUpon>Usuario.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Seguridad\WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Seguridad\WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
