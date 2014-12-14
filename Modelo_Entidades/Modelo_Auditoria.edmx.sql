@@ -36,7 +36,7 @@ GO
 -- Creating table 'CatOperaciones_Auditoria'
 CREATE TABLE [dbo].[CatOperaciones_Auditoria] (
     [nro_operacion] bigint IDENTITY(1,1) NOT NULL,
-    [estado] nvarchar(60)  NULL,
+    [estado] int NOT NULL,
     [fecha_y_hora_inicio] datetime  NULL,
     [fecha_y_hora_fin] datetime  NULL,
     [notas] nvarchar(320)  NULL,
@@ -44,14 +44,14 @@ CREATE TABLE [dbo].[CatOperaciones_Auditoria] (
     [peso_inicial] float  NULL,
     [peso_final] float  NULL,
     [tipo_documento] nvarchar(30)  NULL,
-    [tipo_operacion] nvarchar(60)  NULL,
+    [tipo_operacion] int NOT NULL,
     [USU_CODIGO] nvarchar(15)  NOT NULL,
     [fecha_y_hora_accion] datetime  NOT NULL,
     [accion] nvarchar(50)  NOT NULL,
     [nro_alquiler] int  NULL,
     [nro_chofer] int  NOT NULL,
     [nro_transporte] int  NOT NULL,
-    [Cliente_nro_cliente] int  NOT NULL
+    [nro_cliente] int  NOT NULL
 );
 GO
 

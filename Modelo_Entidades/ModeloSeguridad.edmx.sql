@@ -104,7 +104,7 @@ CREATE TABLE [dbo].[PERFILES] (
 	[PRF_CODIGO] int IDENTITY(1,1) NOT NULL,
 	[FRM_CODIGO] nvarchar(10)  NULL,
 	[GRU_CODIGO] nvarchar(10)  NULL,
-	[PER_CODIGO] nvarchar(1)  NULL,
+	[PER_CODIGO] nvarchar(5)  NULL,
 	[AU_USUARIO] nvarchar(15)  NULL,
 	[AU_FECHA] datetime  NULL,
 	[AU_MOVIMIENTO] nvarchar(10)  NULL
@@ -113,8 +113,8 @@ GO
 
 -- Creating table 'PERMISOS'
 CREATE TABLE [dbo].[PERMISOS] (
-	[PER_CODIGO] nvarchar(1)  NOT NULL,
-	[PER_DESCRIPCION] nvarchar(10)  NULL
+	[PER_CODIGO] nvarchar(5)  NOT NULL,
+	[PER_DESCRIPCION] nvarchar(30)  NULL
 );
 GO
 
@@ -132,7 +132,7 @@ GO
 -- Creating table 'FORMULARIOS_PERMISOS'
 CREATE TABLE [dbo].[FORMULARIOS_PERMISOS] (
 	[FORMULARIOS_FRM_CODIGO] nvarchar(10)  NOT NULL,
-	[PERMISOS_PER_CODIGO] nvarchar(1)  NOT NULL
+	[PERMISOS_PER_CODIGO] nvarchar(5)  NOT NULL
 );
 GO
 

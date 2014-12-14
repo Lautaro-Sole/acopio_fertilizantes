@@ -31,6 +31,10 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("Acopio_FertilizantesModel", "Choferes_Transportes", "CatChoferes", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Modelo_Entidades.Chofer), "CatTransportes", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Modelo_Entidades.Transporte))]
 [assembly: EdmRelationshipAttribute("Acopio_FertilizantesModel", "Clientes_Choferes", "CatChoferes", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Modelo_Entidades.Chofer), "CatClientes", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Modelo_Entidades.Cliente))]
 [assembly: EdmRelationshipAttribute("Acopio_FertilizantesModel", "Cliente_Operacion", "Cliente", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Modelo_Entidades.Cliente), "Operacion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Modelo_Entidades.Operacion))]
+[assembly: EdmRelationshipAttribute("Acopio_FertilizantesModel", "FK_Cliente_Operacion", "Cliente", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Modelo_Entidades.Cliente), "Operacion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Modelo_Entidades.Operacion), true)]
+[assembly: EdmRelationshipAttribute("Acopio_FertilizantesModel", "FK_Estado_Operacion_Operacion", "CatEstados_Operacion", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Modelo_Entidades.CatEstados_Operacion), "Operacion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Modelo_Entidades.Operacion), true)]
+[assembly: EdmRelationshipAttribute("Acopio_FertilizantesModel", "FK_Tipo_Operacion_Operacion", "CatTipos_Operacion", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Modelo_Entidades.CatTipos_Operacion), "Operacion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Modelo_Entidades.Operacion), true)]
+[assembly: EdmRelationshipAttribute("Acopio_FertilizantesModel", "FK_Tipo_Matricula_Transporte", "CatTipos_Matricula", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Modelo_Entidades.CatTipos_Matricula), "Transporte", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Modelo_Entidades.Transporte), true)]
 
 #endregion
 
@@ -241,6 +245,54 @@ namespace Modelo_Entidades
             }
         }
         private ObjectSet<sysdiagrams> _sysdiagrams;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<CatEstados_Operacion> CatEstados_Operacion
+        {
+            get
+            {
+                if ((_CatEstados_Operacion == null))
+                {
+                    _CatEstados_Operacion = base.CreateObjectSet<CatEstados_Operacion>("CatEstados_Operacion");
+                }
+                return _CatEstados_Operacion;
+            }
+        }
+        private ObjectSet<CatEstados_Operacion> _CatEstados_Operacion;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<CatTipos_Matricula> CatTipos_Matricula
+        {
+            get
+            {
+                if ((_CatTipos_Matricula == null))
+                {
+                    _CatTipos_Matricula = base.CreateObjectSet<CatTipos_Matricula>("CatTipos_Matricula");
+                }
+                return _CatTipos_Matricula;
+            }
+        }
+        private ObjectSet<CatTipos_Matricula> _CatTipos_Matricula;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<CatTipos_Operacion> CatTipos_Operacion
+        {
+            get
+            {
+                if ((_CatTipos_Operacion == null))
+                {
+                    _CatTipos_Operacion = base.CreateObjectSet<CatTipos_Operacion>("CatTipos_Operacion");
+                }
+                return _CatTipos_Operacion;
+            }
+        }
+        private ObjectSet<CatTipos_Operacion> _CatTipos_Operacion;
 
         #endregion
 
@@ -324,6 +376,30 @@ namespace Modelo_Entidades
         public void AddTosysdiagrams(sysdiagrams sysdiagrams)
         {
             base.AddObject("sysdiagrams", sysdiagrams);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet CatEstados_Operacion. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToCatEstados_Operacion(CatEstados_Operacion catEstados_Operacion)
+        {
+            base.AddObject("CatEstados_Operacion", catEstados_Operacion);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet CatTipos_Matricula. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToCatTipos_Matricula(CatTipos_Matricula catTipos_Matricula)
+        {
+            base.AddObject("CatTipos_Matricula", catTipos_Matricula);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet CatTipos_Operacion. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToCatTipos_Operacion(CatTipos_Operacion catTipos_Operacion)
+        {
+            base.AddObject("CatTipos_Operacion", catTipos_Operacion);
         }
 
         #endregion
@@ -1035,6 +1111,333 @@ namespace Modelo_Entidades
     /// <summary>
     /// No hay documentación de metadatos disponible.
     /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Acopio_FertilizantesModel", Name="CatEstados_Operacion")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class CatEstados_Operacion : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto CatEstados_Operacion.
+        /// </summary>
+        /// <param name="id_estado_operacion">Valor inicial de la propiedad id_estado_operacion.</param>
+        /// <param name="descripcion">Valor inicial de la propiedad descripcion.</param>
+        public static CatEstados_Operacion CreateCatEstados_Operacion(global::System.Int32 id_estado_operacion, global::System.String descripcion)
+        {
+            CatEstados_Operacion catEstados_Operacion = new CatEstados_Operacion();
+            catEstados_Operacion.id_estado_operacion = id_estado_operacion;
+            catEstados_Operacion.descripcion = descripcion;
+            return catEstados_Operacion;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 id_estado_operacion
+        {
+            get
+            {
+                return _id_estado_operacion;
+            }
+            set
+            {
+                if (_id_estado_operacion != value)
+                {
+                    Onid_estado_operacionChanging(value);
+                    ReportPropertyChanging("id_estado_operacion");
+                    _id_estado_operacion = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("id_estado_operacion");
+                    Onid_estado_operacionChanged();
+                }
+            }
+        }
+        private global::System.Int32 _id_estado_operacion;
+        partial void Onid_estado_operacionChanging(global::System.Int32 value);
+        partial void Onid_estado_operacionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String descripcion
+        {
+            get
+            {
+                return _descripcion;
+            }
+            set
+            {
+                OndescripcionChanging(value);
+                ReportPropertyChanging("descripcion");
+                _descripcion = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("descripcion");
+                OndescripcionChanged();
+            }
+        }
+        private global::System.String _descripcion;
+        partial void OndescripcionChanging(global::System.String value);
+        partial void OndescripcionChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Acopio_FertilizantesModel", "FK_Estado_Operacion_Operacion", "Operacion")]
+        public EntityCollection<Operacion> Operaciones
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Operacion>("Acopio_FertilizantesModel.FK_Estado_Operacion_Operacion", "Operacion");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Operacion>("Acopio_FertilizantesModel.FK_Estado_Operacion_Operacion", "Operacion", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Acopio_FertilizantesModel", Name="CatTipos_Matricula")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class CatTipos_Matricula : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto CatTipos_Matricula.
+        /// </summary>
+        /// <param name="id_tipo_matricula">Valor inicial de la propiedad id_tipo_matricula.</param>
+        /// <param name="descripcion">Valor inicial de la propiedad descripcion.</param>
+        public static CatTipos_Matricula CreateCatTipos_Matricula(global::System.Int32 id_tipo_matricula, global::System.String descripcion)
+        {
+            CatTipos_Matricula catTipos_Matricula = new CatTipos_Matricula();
+            catTipos_Matricula.id_tipo_matricula = id_tipo_matricula;
+            catTipos_Matricula.descripcion = descripcion;
+            return catTipos_Matricula;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 id_tipo_matricula
+        {
+            get
+            {
+                return _id_tipo_matricula;
+            }
+            set
+            {
+                if (_id_tipo_matricula != value)
+                {
+                    Onid_tipo_matriculaChanging(value);
+                    ReportPropertyChanging("id_tipo_matricula");
+                    _id_tipo_matricula = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("id_tipo_matricula");
+                    Onid_tipo_matriculaChanged();
+                }
+            }
+        }
+        private global::System.Int32 _id_tipo_matricula;
+        partial void Onid_tipo_matriculaChanging(global::System.Int32 value);
+        partial void Onid_tipo_matriculaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String descripcion
+        {
+            get
+            {
+                return _descripcion;
+            }
+            set
+            {
+                OndescripcionChanging(value);
+                ReportPropertyChanging("descripcion");
+                _descripcion = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("descripcion");
+                OndescripcionChanged();
+            }
+        }
+        private global::System.String _descripcion;
+        partial void OndescripcionChanging(global::System.String value);
+        partial void OndescripcionChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Acopio_FertilizantesModel", "FK_Tipo_Matricula_Transporte", "Transporte")]
+        public EntityCollection<Transporte> Transportes
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Transporte>("Acopio_FertilizantesModel.FK_Tipo_Matricula_Transporte", "Transporte");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Transporte>("Acopio_FertilizantesModel.FK_Tipo_Matricula_Transporte", "Transporte", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Acopio_FertilizantesModel", Name="CatTipos_Operacion")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class CatTipos_Operacion : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto CatTipos_Operacion.
+        /// </summary>
+        /// <param name="id_tipo_operacion">Valor inicial de la propiedad id_tipo_operacion.</param>
+        /// <param name="descripcion">Valor inicial de la propiedad descripcion.</param>
+        public static CatTipos_Operacion CreateCatTipos_Operacion(global::System.Int32 id_tipo_operacion, global::System.String descripcion)
+        {
+            CatTipos_Operacion catTipos_Operacion = new CatTipos_Operacion();
+            catTipos_Operacion.id_tipo_operacion = id_tipo_operacion;
+            catTipos_Operacion.descripcion = descripcion;
+            return catTipos_Operacion;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 id_tipo_operacion
+        {
+            get
+            {
+                return _id_tipo_operacion;
+            }
+            set
+            {
+                if (_id_tipo_operacion != value)
+                {
+                    Onid_tipo_operacionChanging(value);
+                    ReportPropertyChanging("id_tipo_operacion");
+                    _id_tipo_operacion = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("id_tipo_operacion");
+                    Onid_tipo_operacionChanged();
+                }
+            }
+        }
+        private global::System.Int32 _id_tipo_operacion;
+        partial void Onid_tipo_operacionChanging(global::System.Int32 value);
+        partial void Onid_tipo_operacionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String descripcion
+        {
+            get
+            {
+                return _descripcion;
+            }
+            set
+            {
+                OndescripcionChanging(value);
+                ReportPropertyChanging("descripcion");
+                _descripcion = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("descripcion");
+                OndescripcionChanged();
+            }
+        }
+        private global::System.String _descripcion;
+        partial void OndescripcionChanging(global::System.String value);
+        partial void OndescripcionChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Acopio_FertilizantesModel", "FK_Tipo_Operacion_Operacion", "Operacion")]
+        public EntityCollection<Operacion> Operaciones
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Operacion>("Acopio_FertilizantesModel.FK_Tipo_Operacion_Operacion", "Operacion");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Operacion>("Acopio_FertilizantesModel.FK_Tipo_Operacion_Operacion", "Operacion", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="Acopio_FertilizantesModel", Name="Chofer")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -1434,18 +1837,18 @@ namespace Modelo_Entidades
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Acopio_FertilizantesModel", "Cliente_Operacion", "Operacion")]
+        [EdmRelationshipNavigationPropertyAttribute("Acopio_FertilizantesModel", "FK_Cliente_Operacion", "Operacion")]
         public EntityCollection<Operacion> Operaciones
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Operacion>("Acopio_FertilizantesModel.Cliente_Operacion", "Operacion");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Operacion>("Acopio_FertilizantesModel.FK_Cliente_Operacion", "Operacion");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Operacion>("Acopio_FertilizantesModel.Cliente_Operacion", "Operacion", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Operacion>("Acopio_FertilizantesModel.FK_Cliente_Operacion", "Operacion", value);
                 }
             }
         }
@@ -1692,20 +2095,26 @@ namespace Modelo_Entidades
         /// Crear un nuevo objeto Operacion.
         /// </summary>
         /// <param name="nro_operacion">Valor inicial de la propiedad nro_operacion.</param>
+        /// <param name="estado">Valor inicial de la propiedad estado.</param>
+        /// <param name="tipo_operacion">Valor inicial de la propiedad tipo_operacion.</param>
         /// <param name="uSU_CODIGO">Valor inicial de la propiedad USU_CODIGO.</param>
         /// <param name="fecha_y_hora_accion">Valor inicial de la propiedad fecha_y_hora_accion.</param>
         /// <param name="accion">Valor inicial de la propiedad accion.</param>
         /// <param name="nro_chofer">Valor inicial de la propiedad nro_chofer.</param>
         /// <param name="nro_transporte">Valor inicial de la propiedad nro_transporte.</param>
-        public static Operacion CreateOperacion(global::System.Int64 nro_operacion, global::System.String uSU_CODIGO, global::System.DateTime fecha_y_hora_accion, global::System.String accion, global::System.Int32 nro_chofer, global::System.Int32 nro_transporte)
+        /// <param name="nro_cliente">Valor inicial de la propiedad nro_cliente.</param>
+        public static Operacion CreateOperacion(global::System.Int64 nro_operacion, global::System.Int32 estado, global::System.Int32 tipo_operacion, global::System.String uSU_CODIGO, global::System.DateTime fecha_y_hora_accion, global::System.String accion, global::System.Int32 nro_chofer, global::System.Int32 nro_transporte, global::System.Int32 nro_cliente)
         {
             Operacion operacion = new Operacion();
             operacion.nro_operacion = nro_operacion;
+            operacion.estado = estado;
+            operacion.tipo_operacion = tipo_operacion;
             operacion.USU_CODIGO = uSU_CODIGO;
             operacion.fecha_y_hora_accion = fecha_y_hora_accion;
             operacion.accion = accion;
             operacion.nro_chofer = nro_chofer;
             operacion.nro_transporte = nro_transporte;
+            operacion.nro_cliente = nro_cliente;
             return operacion;
         }
 
@@ -1743,9 +2152,9 @@ namespace Modelo_Entidades
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String estado
+        public global::System.Int32 estado
         {
             get
             {
@@ -1755,13 +2164,13 @@ namespace Modelo_Entidades
             {
                 OnestadoChanging(value);
                 ReportPropertyChanging("estado");
-                _estado = StructuralObject.SetValidValue(value, true);
+                _estado = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("estado");
                 OnestadoChanged();
             }
         }
-        private global::System.String _estado;
-        partial void OnestadoChanging(global::System.String value);
+        private global::System.Int32 _estado;
+        partial void OnestadoChanging(global::System.Int32 value);
         partial void OnestadoChanged();
     
         /// <summary>
@@ -1935,9 +2344,9 @@ namespace Modelo_Entidades
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String tipo_operacion
+        public global::System.Int32 tipo_operacion
         {
             get
             {
@@ -1947,13 +2356,13 @@ namespace Modelo_Entidades
             {
                 Ontipo_operacionChanging(value);
                 ReportPropertyChanging("tipo_operacion");
-                _tipo_operacion = StructuralObject.SetValidValue(value, true);
+                _tipo_operacion = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("tipo_operacion");
                 Ontipo_operacionChanged();
             }
         }
-        private global::System.String _tipo_operacion;
-        partial void Ontipo_operacionChanging(global::System.String value);
+        private global::System.Int32 _tipo_operacion;
+        partial void Ontipo_operacionChanging(global::System.Int32 value);
         partial void Ontipo_operacionChanged();
     
         /// <summary>
@@ -2099,6 +2508,30 @@ namespace Modelo_Entidades
         private global::System.Int32 _nro_transporte;
         partial void Onnro_transporteChanging(global::System.Int32 value);
         partial void Onnro_transporteChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 nro_cliente
+        {
+            get
+            {
+                return _nro_cliente;
+            }
+            set
+            {
+                Onnro_clienteChanging(value);
+                ReportPropertyChanging("nro_cliente");
+                _nro_cliente = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("nro_cliente");
+                Onnro_clienteChanged();
+            }
+        }
+        private global::System.Int32 _nro_cliente;
+        partial void Onnro_clienteChanging(global::System.Int32 value);
+        partial void Onnro_clienteChanged();
 
         #endregion
 
@@ -2263,16 +2696,16 @@ namespace Modelo_Entidades
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Acopio_FertilizantesModel", "Cliente_Operacion", "Cliente")]
+        [EdmRelationshipNavigationPropertyAttribute("Acopio_FertilizantesModel", "FK_Cliente_Operacion", "Cliente")]
         public Cliente Cliente
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Cliente>("Acopio_FertilizantesModel.Cliente_Operacion", "Cliente").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Cliente>("Acopio_FertilizantesModel.FK_Cliente_Operacion", "Cliente").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Cliente>("Acopio_FertilizantesModel.Cliente_Operacion", "Cliente").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Cliente>("Acopio_FertilizantesModel.FK_Cliente_Operacion", "Cliente").Value = value;
             }
         }
         /// <summary>
@@ -2284,13 +2717,89 @@ namespace Modelo_Entidades
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Cliente>("Acopio_FertilizantesModel.Cliente_Operacion", "Cliente");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Cliente>("Acopio_FertilizantesModel.FK_Cliente_Operacion", "Cliente");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Cliente>("Acopio_FertilizantesModel.Cliente_Operacion", "Cliente", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Cliente>("Acopio_FertilizantesModel.FK_Cliente_Operacion", "Cliente", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Acopio_FertilizantesModel", "FK_Estado_Operacion_Operacion", "CatEstados_Operacion")]
+        public CatEstados_Operacion Estado_Operacion
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<CatEstados_Operacion>("Acopio_FertilizantesModel.FK_Estado_Operacion_Operacion", "CatEstados_Operacion").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<CatEstados_Operacion>("Acopio_FertilizantesModel.FK_Estado_Operacion_Operacion", "CatEstados_Operacion").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<CatEstados_Operacion> Estado_OperacionReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<CatEstados_Operacion>("Acopio_FertilizantesModel.FK_Estado_Operacion_Operacion", "CatEstados_Operacion");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<CatEstados_Operacion>("Acopio_FertilizantesModel.FK_Estado_Operacion_Operacion", "CatEstados_Operacion", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Acopio_FertilizantesModel", "FK_Tipo_Operacion_Operacion", "CatTipos_Operacion")]
+        public CatTipos_Operacion Tipo_Operacion
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<CatTipos_Operacion>("Acopio_FertilizantesModel.FK_Tipo_Operacion_Operacion", "CatTipos_Operacion").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<CatTipos_Operacion>("Acopio_FertilizantesModel.FK_Tipo_Operacion_Operacion", "CatTipos_Operacion").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<CatTipos_Operacion> Tipo_OperacionReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<CatTipos_Operacion>("Acopio_FertilizantesModel.FK_Tipo_Operacion_Operacion", "CatTipos_Operacion");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<CatTipos_Operacion>("Acopio_FertilizantesModel.FK_Tipo_Operacion_Operacion", "CatTipos_Operacion", value);
                 }
             }
         }
@@ -2313,10 +2822,12 @@ namespace Modelo_Entidades
         /// Crear un nuevo objeto Producto.
         /// </summary>
         /// <param name="codigo_producto">Valor inicial de la propiedad codigo_producto.</param>
-        public static Producto CreateProducto(global::System.Int32 codigo_producto)
+        /// <param name="descripcion">Valor inicial de la propiedad descripcion.</param>
+        public static Producto CreateProducto(global::System.Int32 codigo_producto, global::System.String descripcion)
         {
             Producto producto = new Producto();
             producto.codigo_producto = codigo_producto;
+            producto.descripcion = descripcion;
             return producto;
         }
 
@@ -2354,7 +2865,7 @@ namespace Modelo_Entidades
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String descripcion
         {
@@ -2366,7 +2877,7 @@ namespace Modelo_Entidades
             {
                 OndescripcionChanging(value);
                 ReportPropertyChanging("descripcion");
-                _descripcion = StructuralObject.SetValidValue(value, true);
+                _descripcion = StructuralObject.SetValidValue(value, false);
                 ReportPropertyChanged("descripcion");
                 OndescripcionChanged();
             }
@@ -2599,10 +3110,14 @@ namespace Modelo_Entidades
         /// Crear un nuevo objeto Transporte.
         /// </summary>
         /// <param name="nro_transporte">Valor inicial de la propiedad nro_transporte.</param>
-        public static Transporte CreateTransporte(global::System.Int32 nro_transporte)
+        /// <param name="nro_matricula">Valor inicial de la propiedad nro_matricula.</param>
+        /// <param name="tipo_matricula">Valor inicial de la propiedad tipo_matricula.</param>
+        public static Transporte CreateTransporte(global::System.Int32 nro_transporte, global::System.String nro_matricula, global::System.Int32 tipo_matricula)
         {
             Transporte transporte = new Transporte();
             transporte.nro_transporte = nro_transporte;
+            transporte.nro_matricula = nro_matricula;
+            transporte.tipo_matricula = tipo_matricula;
             return transporte;
         }
 
@@ -2640,7 +3155,7 @@ namespace Modelo_Entidades
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String nro_matricula
         {
@@ -2652,7 +3167,7 @@ namespace Modelo_Entidades
             {
                 Onnro_matriculaChanging(value);
                 ReportPropertyChanging("nro_matricula");
-                _nro_matricula = StructuralObject.SetValidValue(value, true);
+                _nro_matricula = StructuralObject.SetValidValue(value, false);
                 ReportPropertyChanged("nro_matricula");
                 Onnro_matriculaChanged();
             }
@@ -2712,9 +3227,9 @@ namespace Modelo_Entidades
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String tipo_matricula
+        public global::System.Int32 tipo_matricula
         {
             get
             {
@@ -2724,13 +3239,13 @@ namespace Modelo_Entidades
             {
                 Ontipo_matriculaChanging(value);
                 ReportPropertyChanging("tipo_matricula");
-                _tipo_matricula = StructuralObject.SetValidValue(value, true);
+                _tipo_matricula = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("tipo_matricula");
                 Ontipo_matriculaChanged();
             }
         }
-        private global::System.String _tipo_matricula;
-        partial void Ontipo_matriculaChanging(global::System.String value);
+        private global::System.Int32 _tipo_matricula;
+        partial void Ontipo_matriculaChanging(global::System.Int32 value);
         partial void Ontipo_matriculaChanged();
 
         #endregion
@@ -2778,6 +3293,44 @@ namespace Modelo_Entidades
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Chofer>("Acopio_FertilizantesModel.Choferes_Transportes", "CatChoferes", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Acopio_FertilizantesModel", "FK_Tipo_Matricula_Transporte", "CatTipos_Matricula")]
+        public CatTipos_Matricula Tipo_Matricula
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<CatTipos_Matricula>("Acopio_FertilizantesModel.FK_Tipo_Matricula_Transporte", "CatTipos_Matricula").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<CatTipos_Matricula>("Acopio_FertilizantesModel.FK_Tipo_Matricula_Transporte", "CatTipos_Matricula").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<CatTipos_Matricula> Tipo_MatriculaReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<CatTipos_Matricula>("Acopio_FertilizantesModel.FK_Tipo_Matricula_Transporte", "CatTipos_Matricula");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<CatTipos_Matricula>("Acopio_FertilizantesModel.FK_Tipo_Matricula_Transporte", "CatTipos_Matricula", value);
                 }
             }
         }

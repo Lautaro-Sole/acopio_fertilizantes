@@ -59,7 +59,7 @@ namespace Vista
                 return false;
             }
              * */
-            if (oOperacion.tipo_operacion == "Descarga")
+            if (oOperacion.Tipo_Operacion.descripcion == "Descarga")
             {
                 //si la operacion es una descarga el peso final no debe ser mayor que que el inicial
                 if (Convert.ToInt32(this.msktbPesoFinal.Text) >= Convert.ToInt32(this.msktbPesoInicial.Text))
@@ -96,7 +96,7 @@ namespace Vista
                 oOperacion.peso_inicial = Convert.ToSingle(this.msktbPesoInicial.Text);
                 oOperacion.peso_final = Convert.ToSingle(this.msktbPesoFinal.Text);
                 oOperacion.notas = this.tbNotas.Text;
-                oOperacion.estado = "Finalizado";
+                oOperacion.Estado_Operacion.descripcion = "Finalizado";
 
 
                 //datos auditoría
@@ -148,7 +148,7 @@ namespace Vista
         {
             this.tbNotas.Text = oOperacion.notas;
             this.Text = "Registrar " + oOperacion.tipo_operacion;
-            if (oOperacion.tipo_operacion=="Carga")
+            if (oOperacion.Tipo_Operacion.descripcion=="Carga")
             {
                 oOperacion.EstablecerEstrategia(new Modelo_Entidades.EstrategiaCarga());
             }

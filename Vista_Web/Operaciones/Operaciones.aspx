@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Default.Master" AutoEventWireup="true" CodeBehind="Operaciones.aspx.cs" Inherits="Vista_Web.Operaciones.Operaciones" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
-<%--<%@ Register Src="../Botoneras/Botonera1.ascx" TagName="Botonera1" TagPrefix="uc1" %>--%>
+<%@ Register Src="../Botoneras/Botonera1.ascx" TagName="Botonera1" TagPrefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 
@@ -57,13 +57,16 @@
                                 </asp:GridView>
                             </div>
                          </div>
-
+                        <!--
                         <div runat="server" class="form-group">
                             <asp:Button ID="btn_autorizarcierreoperacion" runat="server" OnClick="btn_autorizarcierreoperacion_Click" CssClass="btn btn-default pull-right margin-left-5" Text="Autorizar cierre de operación" />
                             <asp:Button ID="btn_registrarcargadescarga" runat="server" OnClick="btn_registrarcargadescarga_Click" CssClass="btn btn-default pull-right margin-left-5" Text="Registrar carga o descarga" />
                             <asp:Button ID="btn_autorizaroperacion" runat="server" OnClick="btn_autorizaroperacion_Click" CssClass="btn btn-success pull-right" Text="Autorizar operación" /> 
                         </div>
-
+                        -->
+                        <div id="Div8" runat="server" class="form-group">
+                            <uc1:Botonera1 ID="botonera1" runat="server" OnClick_Alta="Click_Autorizar_Operacion" OnClick_Baja="Click_Registrar_CargaDescarga" OnClick_Cerrar="botonera1_Click_Cerrar" OnClick_Consulta="botonera1_Click_Consulta" OnClick_Modificacion="Click_Autorizar_Cierre" />
+                        </div>
                      </div>
                     </div>
         </ContentTemplate>

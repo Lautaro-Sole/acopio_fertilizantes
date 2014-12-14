@@ -59,6 +59,25 @@
       <End Role="Cliente" EntitySet="CatClientes" />
       <End Role="Operacion" EntitySet="CatOperaciones" />
     </AssociationSet>
+    <EntitySet Name="CatEstados_Operacion" EntityType="Acopio_FertilizantesModel.CatEstados_Operacion" />
+    <EntitySet Name="CatTipos_Matricula" EntityType="Acopio_FertilizantesModel.CatTipos_Matricula" />
+    <EntitySet Name="CatTipos_Operacion" EntityType="Acopio_FertilizantesModel.CatTipos_Operacion" />
+    <AssociationSet Name="FK_Cliente_Operacion" Association="Acopio_FertilizantesModel.FK_Cliente_Operacion">
+      <End Role="Cliente" EntitySet="CatClientes" />
+      <End Role="Operacion" EntitySet="CatOperaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Estado_Operacion_Operacion" Association="Acopio_FertilizantesModel.FK_Estado_Operacion_Operacion">
+      <End Role="CatEstados_Operacion" EntitySet="CatEstados_Operacion" />
+      <End Role="Operacion" EntitySet="CatOperaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tipo_Operacion_Operacion" Association="Acopio_FertilizantesModel.FK_Tipo_Operacion_Operacion">
+      <End Role="CatTipos_Operacion" EntitySet="CatTipos_Operacion" />
+      <End Role="Operacion" EntitySet="CatOperaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tipo_Matricula_Transporte" Association="Acopio_FertilizantesModel.FK_Tipo_Matricula_Transporte">
+      <End Role="CatTipos_Matricula" EntitySet="CatTipos_Matricula" />
+      <End Role="Transporte" EntitySet="CatTransportes" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Alquiler_Producto">
     <Key>
@@ -88,8 +107,8 @@
     </Key>
     <Property Name="nro_alquiler" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="estado" Type="Boolean" />
-    <Property Name="fecha_inicio_alquiler" Type="DateTime" />
-    <Property Name="fecha_fin_alquiler" Type="DateTime" />
+    <Property Name="fecha_inicio_alquiler" Type="DateTime" Precision="3" />
+    <Property Name="fecha_fin_alquiler" Type="DateTime" Precision="3" />
     <Property Name="capacidad" Type="Double" />
     <Property Name="nro_almacen" Type="Int32" Nullable="false" />
     <Property Name="nro_cliente" Type="Int32" Nullable="false" />
@@ -121,7 +140,7 @@
     <Property Name="email" Type="String" MaxLength="60" Unicode="true" FixedLength="false" />
     <NavigationProperty Name="Alquileres" Relationship="Acopio_FertilizantesModel.FK_Alquiler_Cliente" FromRole="CatClientes" ToRole="CatAlquileres" />
     <NavigationProperty Name="Choferes" Relationship="Acopio_FertilizantesModel.Clientes_Choferes" FromRole="CatClientes" ToRole="CatChoferes" />
-    <NavigationProperty Name="Operaciones" Relationship="Acopio_FertilizantesModel.Cliente_Operacion" FromRole="Cliente" ToRole="Operacion" />
+    <NavigationProperty Name="Operaciones" Relationship="Acopio_FertilizantesModel.FK_Cliente_Operacion" FromRole="Cliente" ToRole="Operacion" />
   </EntityType>
   <EntityType Name="Documento">
     <Key>
@@ -129,7 +148,7 @@
       <PropertyRef Name="tipo_documento" />
     </Key>
     <Property Name="nro_documento" Type="Int64" Nullable="false" />
-    <Property Name="fecha_hora" Type="DateTime" />
+    <Property Name="fecha_hora" Type="DateTime" Precision="3" />
     <Property Name="tipo_documento" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
     <Property Name="peso" Type="Double" />
     <Property Name="codigo_producto" Type="Int32" Nullable="false" />
@@ -141,17 +160,17 @@
       <PropertyRef Name="nro_operacion" />
     </Key>
     <Property Name="nro_operacion" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="estado" Type="String" MaxLength="60" Unicode="true" FixedLength="false" />
-    <Property Name="fecha_y_hora_inicio" Type="DateTime" />
-    <Property Name="fecha_y_hora_fin" Type="DateTime" />
+    <Property Name="estado" Type="Int32" Nullable="false" />
+    <Property Name="fecha_y_hora_inicio" Type="DateTime" Precision="3" />
+    <Property Name="fecha_y_hora_fin" Type="DateTime" Precision="3" />
     <Property Name="notas" Type="String" MaxLength="320" Unicode="true" FixedLength="false" />
     <Property Name="nro_documento" Type="Int64" />
     <Property Name="peso_inicial" Type="Double" />
     <Property Name="peso_final" Type="Double" />
     <Property Name="tipo_documento" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
-    <Property Name="tipo_operacion" Type="String" MaxLength="60" Unicode="true" FixedLength="false" />
+    <Property Name="tipo_operacion" Type="Int32" Nullable="false" />
     <Property Name="USU_CODIGO" Type="String" Nullable="false" MaxLength="15" Unicode="true" FixedLength="false" />
-    <Property Name="fecha_y_hora_accion" Type="DateTime" Nullable="false" />
+    <Property Name="fecha_y_hora_accion" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="accion" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
     <Property Name="nro_alquiler" Type="Int32" />
     <Property Name="nro_chofer" Type="Int32" Nullable="false" />
@@ -160,14 +179,17 @@
     <NavigationProperty Name="Chofer" Relationship="Acopio_FertilizantesModel.FK_Operacion_Chofer" FromRole="CatOperaciones" ToRole="CatChoferes" />
     <NavigationProperty Name="Documento" Relationship="Acopio_FertilizantesModel.FK_Documento_Operacion" FromRole="CatOperaciones" ToRole="CatDocumentos" />
     <NavigationProperty Name="Transporte" Relationship="Acopio_FertilizantesModel.FK_Operacion_Transporte" FromRole="CatOperaciones" ToRole="CatTransportes" />
-    <NavigationProperty Name="Cliente" Relationship="Acopio_FertilizantesModel.Cliente_Operacion" FromRole="Operacion" ToRole="Cliente" />
+    <Property Name="nro_cliente" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cliente" Relationship="Acopio_FertilizantesModel.FK_Cliente_Operacion" FromRole="Operacion" ToRole="Cliente" />
+    <NavigationProperty Name="Estado_Operacion" Relationship="Acopio_FertilizantesModel.FK_Estado_Operacion_Operacion" FromRole="Operacion" ToRole="CatEstados_Operacion" />
+    <NavigationProperty Name="Tipo_Operacion" Relationship="Acopio_FertilizantesModel.FK_Tipo_Operacion_Operacion" FromRole="Operacion" ToRole="CatTipos_Operacion" />
   </EntityType>
   <EntityType Name="Producto">
     <Key>
       <PropertyRef Name="codigo_producto" />
     </Key>
     <Property Name="codigo_producto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="descripcion" Type="String" MaxLength="60" Unicode="true" FixedLength="false" />
+    <Property Name="descripcion" Type="String" MaxLength="60" Unicode="true" FixedLength="false" Nullable="false" />
     <NavigationProperty Name="Alquiler_Productos" Relationship="Acopio_FertilizantesModel.FK_Producto_Alquiler_Producto" FromRole="CatProductos" ToRole="Alquileres_Productos" />
     <NavigationProperty Name="Documentos" Relationship="Acopio_FertilizantesModel.FK_Documento_Producto" FromRole="CatProductos" ToRole="CatDocumentos" />
   </EntityType>
@@ -176,12 +198,13 @@
       <PropertyRef Name="nro_transporte" />
     </Key>
     <Property Name="nro_transporte" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="nro_matricula" Type="String" MaxLength="60" Unicode="true" FixedLength="false" />
+    <Property Name="nro_matricula" Type="String" MaxLength="60" Unicode="true" FixedLength="false" Nullable="false" />
     <Property Name="carga_maxima" Type="Double" />
     <Property Name="tara" Type="Double" />
-    <Property Name="tipo_matricula" Type="String" MaxLength="60" Unicode="true" FixedLength="false" />
+    <Property Name="tipo_matricula" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Operaciones" Relationship="Acopio_FertilizantesModel.FK_Operacion_Transporte" FromRole="CatTransportes" ToRole="CatOperaciones" />
     <NavigationProperty Name="Choferes" Relationship="Acopio_FertilizantesModel.Choferes_Transportes" FromRole="CatTransportes" ToRole="CatChoferes" />
+    <NavigationProperty Name="Tipo_Matricula" Relationship="Acopio_FertilizantesModel.FK_Tipo_Matricula_Transporte" FromRole="Transporte" ToRole="CatTipos_Matricula" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -314,5 +337,77 @@
   <Association Name="Cliente_Operacion">
     <End Type="Acopio_FertilizantesModel.Cliente" Role="Cliente" Multiplicity="1" />
     <End Type="Acopio_FertilizantesModel.Operacion" Role="Operacion" Multiplicity="*" />
+  </Association>
+  <EntityType Name="CatEstados_Operacion">
+    <Key>
+      <PropertyRef Name="id_estado_operacion" />
+    </Key>
+    <Property Name="id_estado_operacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" Nullable="false" MaxLength="120" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Operaciones" Relationship="Acopio_FertilizantesModel.FK_Estado_Operacion_Operacion" FromRole="CatEstados_Operacion" ToRole="Operacion" />
+  </EntityType>
+  <EntityType Name="CatTipos_Matricula">
+    <Key>
+      <PropertyRef Name="id_tipo_matricula" />
+    </Key>
+    <Property Name="id_tipo_matricula" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" Nullable="false" MaxLength="120" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Transportes" Relationship="Acopio_FertilizantesModel.FK_Tipo_Matricula_Transporte" FromRole="CatTipos_Matricula" ToRole="Transporte" />
+  </EntityType>
+  <EntityType Name="CatTipos_Operacion">
+    <Key>
+      <PropertyRef Name="id_tipo_operacion" />
+    </Key>
+    <Property Name="id_tipo_operacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" Nullable="false" MaxLength="120" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Operaciones" Relationship="Acopio_FertilizantesModel.FK_Tipo_Operacion_Operacion" FromRole="CatTipos_Operacion" ToRole="Operacion" />
+  </EntityType>
+  <Association Name="FK_Cliente_Operacion">
+    <End Type="Acopio_FertilizantesModel.Cliente" Role="Cliente" Multiplicity="1" />
+    <End Type="Acopio_FertilizantesModel.Operacion" Role="Operacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="nro_cliente" />
+      </Principal>
+      <Dependent Role="Operacion">
+        <PropertyRef Name="nro_cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Estado_Operacion_Operacion">
+    <End Type="Acopio_FertilizantesModel.CatEstados_Operacion" Role="CatEstados_Operacion" Multiplicity="1" />
+    <End Type="Acopio_FertilizantesModel.Operacion" Role="Operacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CatEstados_Operacion">
+        <PropertyRef Name="id_estado_operacion" />
+      </Principal>
+      <Dependent Role="Operacion">
+        <PropertyRef Name="estado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tipo_Operacion_Operacion">
+    <End Type="Acopio_FertilizantesModel.CatTipos_Operacion" Role="CatTipos_Operacion" Multiplicity="1" />
+    <End Type="Acopio_FertilizantesModel.Operacion" Role="Operacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CatTipos_Operacion">
+        <PropertyRef Name="id_tipo_operacion" />
+      </Principal>
+      <Dependent Role="Operacion">
+        <PropertyRef Name="tipo_operacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tipo_Matricula_Transporte">
+    <End Type="Acopio_FertilizantesModel.CatTipos_Matricula" Role="CatTipos_Matricula" Multiplicity="1" />
+    <End Type="Acopio_FertilizantesModel.Transporte" Role="Transporte" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CatTipos_Matricula">
+        <PropertyRef Name="id_tipo_matricula" />
+      </Principal>
+      <Dependent Role="Transporte">
+        <PropertyRef Name="tipo_matricula" />
+      </Dependent>
+    </ReferentialConstraint>
   </Association>
 </Schema>

@@ -112,6 +112,25 @@ namespace Vista_Web.Botoneras
                             case "CONSULTA":
                                 btn_verdetalle.Enabled = true;
                                 break;
+
+                            case "AUTORIZAR":
+                                if (form == "frmOperaciones")
+                                {
+                                    btn_agregar.Enabled = true;
+                                    btn_agregar.Text = "Autorizar Operación";
+
+                                    btn_modificar.Enabled = true;
+                                    btn_modificar.Text = "Autorizar Cierre";
+                                }
+                                break;
+
+                            case "REGISTRAR CARGA O DESCARGA":
+                                if (form == "frmOperaciones")
+                                {
+                                    btn_eliminar.Enabled = true;
+                                    btn_eliminar.Text = "Registrar Carga o Descarga";
+                                }
+                                break;
                         }
                     }
                 }

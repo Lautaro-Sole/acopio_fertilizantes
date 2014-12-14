@@ -16,7 +16,7 @@ namespace Vista
         Controladora.CCUGAlquileres oCCUGAlquileres = new Controladora.CCUGAlquileres();
         private Modelo_Entidades.Documento _oDocumento = new Modelo_Entidades.Documento();
         Controladora.CCUGProductos oCCUGProductos = new Controladora.CCUGProductos();
-        Controladora.CCUCore oCCUCore = new Controladora.CCUCore();
+        Controladora.CCUCore oCCUCore = Controladora.CCUCore.ObtenerInstancia();
         Modelo_Entidades.Operacion oOperacion;
         Modelo_Entidades.Documento oDocumento = new Modelo_Entidades.Documento();
 
@@ -121,7 +121,7 @@ namespace Vista
             bool resultado;
             if (ValidarDatos())
             {
-                if (oOperacion.tipo_operacion == "Carga")
+                if (oOperacion.Tipo_Operacion.descripcion == "Carga")
                 {
                     oDocumento.tipo_documento = "Orden de carga";
                     oOperacion.tipo_documento = "Orden de carga";
@@ -142,7 +142,7 @@ namespace Vista
                 oDocumento.fecha_hora = this.dtpFechaYHora.Value;
 
                 oOperacion.Documento = oDocumento;
-                oOperacion.estado = "Autorizado";
+                oOperacion.Estado_Operacion.descripcion = "Autorizado";
                 oOperacion.notas = this.tbNotas.Text;
 
                 oOperacion.Alquiler = (Modelo_Entidades.Alquiler)this.bsAlquileres.Current;

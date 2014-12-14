@@ -1,17 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="Modelo_AuditoriaModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
-  <EntityContainer Name="Modelo_AuditoriaModelStoreContainer">
-    <EntitySet Name="CatOperaciones_Auditoria" EntityType="Modelo_AuditoriaModel.Store.CatOperaciones_Auditoria" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Log_Historia" EntityType="Modelo_AuditoriaModel.Store.Log_Historia" store:Type="Tables" Schema="dbo" />
-  </EntityContainer>
+<Schema Namespace="Modelo_AuditoriaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
   <EntityType Name="CatOperaciones_Auditoria">
     <Key>
       <PropertyRef Name="nro_operacion" />
       <PropertyRef Name="USU_CODIGO" />
       <PropertyRef Name="fecha_y_hora_accion" />
     </Key>
-    <Property Name="nro_operacion" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="estado" Type="nvarchar" MaxLength="60" />
+    <Property Name="nro_operacion" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="estado" Type="int" Nullable="false" />
     <Property Name="fecha_y_hora_inicio" Type="datetime" />
     <Property Name="fecha_y_hora_fin" Type="datetime" />
     <Property Name="notas" Type="nvarchar" MaxLength="320" />
@@ -19,14 +15,14 @@
     <Property Name="peso_inicial" Type="float" />
     <Property Name="peso_final" Type="float" />
     <Property Name="tipo_documento" Type="nvarchar" MaxLength="30" />
-    <Property Name="tipo_operacion" Type="nvarchar" MaxLength="60" />
-    <Property Name="USU_CODIGO" Type="nvarchar" Nullable="false" MaxLength="15" />
+    <Property Name="tipo_operacion" Type="int" Nullable="false" />
+    <Property Name="USU_CODIGO" Type="nvarchar" MaxLength="15" Nullable="false" />
     <Property Name="fecha_y_hora_accion" Type="datetime" Nullable="false" />
-    <Property Name="accion" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="accion" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="nro_alquiler" Type="int" />
     <Property Name="nro_chofer" Type="int" Nullable="false" />
     <Property Name="nro_transporte" Type="int" Nullable="false" />
-    <Property Name="Cliente_nro_cliente" Type="int" Nullable="false" />
+    <Property Name="nro_cliente" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Log_Historia">
     <Key>
@@ -34,9 +30,13 @@
       <PropertyRef Name="USU_CODIGO" />
       <PropertyRef Name="fecha_y_hora" />
     </Key>
-    <Property Name="nro_log" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="USU_CODIGO" Type="varchar" Nullable="false" MaxLength="15" />
-    <Property Name="fecha_y_hora" Type="datetime2" Nullable="false" />
-    <Property Name="accion" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="nro_log" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="USU_CODIGO" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="fecha_y_hora" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="accion" Type="varchar" MaxLength="10" Nullable="false" />
   </EntityType>
+  <EntityContainer Name="Modelo_AuditoriaModelStoreContainer">
+    <EntitySet Name="CatOperaciones_Auditoria" EntityType="Self.CatOperaciones_Auditoria" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Log_Historia" EntityType="Self.Log_Historia" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
 </Schema>

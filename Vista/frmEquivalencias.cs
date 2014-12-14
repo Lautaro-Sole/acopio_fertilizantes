@@ -12,7 +12,7 @@ namespace Vista
     public partial class frmEquivalencias : Form
     {
         private static frmEquivalencias Instancia;
-        private Controladora.CCUCore oCCUCore = new Controladora.CCUCore();
+        private Controladora.CCUCore oCCUCore = Controladora.CCUCore.ObtenerInstancia();
         Modelo_Entidades.USUARIO oUsuarioActual = new Modelo_Entidades.USUARIO();
         private frmEquivalencias()
         {

@@ -69,6 +69,7 @@
     <EntitySetMapping Name="CatOperaciones">
       <EntityTypeMapping TypeName="IsTypeOf(Acopio_FertilizantesModel.Operacion)">
         <MappingFragment StoreEntitySet="CatOperaciones">
+          <ScalarProperty Name="nro_cliente" ColumnName="nro_cliente" />
           <ScalarProperty Name="nro_operacion" ColumnName="nro_operacion" />
           <ScalarProperty Name="estado" ColumnName="estado" />
           <ScalarProperty Name="fecha_y_hora_inicio" ColumnName="fecha_y_hora_inicio" />
@@ -136,11 +137,35 @@
     </AssociationSetMapping>
     <AssociationSetMapping Name="Clientes_Operaciones" TypeName="Acopio_FertilizantesModel.Cliente_Operacion" StoreEntitySet="CatOperaciones">
       <EndProperty Name="Cliente">
-        <ScalarProperty Name="nro_cliente" ColumnName="Cliente_nro_cliente" />
+        <ScalarProperty Name="nro_cliente" ColumnName="nro_cliente" />
       </EndProperty>
       <EndProperty Name="Operacion">
         <ScalarProperty Name="nro_operacion" ColumnName="nro_operacion" />
       </EndProperty>
     </AssociationSetMapping>
+    <EntitySetMapping Name="CatEstados_Operacion">
+      <EntityTypeMapping TypeName="Acopio_FertilizantesModel.CatEstados_Operacion">
+        <MappingFragment StoreEntitySet="CatEstados_Operacion">
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="id_estado_operacion" ColumnName="id_estado_operacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CatTipos_Matricula">
+      <EntityTypeMapping TypeName="Acopio_FertilizantesModel.CatTipos_Matricula">
+        <MappingFragment StoreEntitySet="CatTipos_Matricula">
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="id_tipo_matricula" ColumnName="id_tipo_matricula" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CatTipos_Operacion">
+      <EntityTypeMapping TypeName="Acopio_FertilizantesModel.CatTipos_Operacion">
+        <MappingFragment StoreEntitySet="CatTipos_Operacion">
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="id_tipo_operacion" ColumnName="id_tipo_operacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

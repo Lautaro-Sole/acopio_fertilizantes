@@ -164,10 +164,24 @@ CREATE TABLE [dbo].[CatDocumentos] (
 );
 GO
 
+-- Creating table 'CatTipos_Operacion'
+CREATE TABLE [dbo].[CatTipos_Operacion] (
+	[id_tipo_operacion] int IDENTITY(1,1) NOT NULL,
+	[descripcion] nvarchar(120) NOT NULL
+);
+GO
+
+-- Creating table 'CatEstados_Operacion'
+CREATE TABLE [dbo].[CatEstados_Operacion] (
+	[id_estado_operacion] int IDENTITY(1,1) NOT NULL,
+	[descripcion] nvarchar(120) NOT NULL
+);
+GO
+
 -- Creating table 'CatOperaciones'
 CREATE TABLE [dbo].[CatOperaciones] (
     [nro_operacion] bigint IDENTITY(1,1) NOT NULL,
-    [estado] nvarchar(60)  NULL,
+    [estado] int NOT NULL,
     [fecha_y_hora_inicio] datetime  NULL,
     [fecha_y_hora_fin] datetime  NULL,
     [notas] nvarchar(320)  NULL,
@@ -175,31 +189,38 @@ CREATE TABLE [dbo].[CatOperaciones] (
     [peso_inicial] float  NULL,
     [peso_final] float  NULL,
     [tipo_documento] nvarchar(30)  NULL,
-    [tipo_operacion] nvarchar(60)  NULL,
+    [tipo_operacion] int NOT NULL,
     [USU_CODIGO] nvarchar(15)  NOT NULL,
     [fecha_y_hora_accion] datetime  NOT NULL,
     [accion] nvarchar(50)  NOT NULL,
     [nro_alquiler] int  NULL,
     [nro_chofer] int  NOT NULL,
     [nro_transporte] int  NOT NULL,
-    [Cliente_nro_cliente] int  NOT NULL
+    [nro_cliente] int  NOT NULL
 );
 GO
 
 -- Creating table 'CatProductos'
 CREATE TABLE [dbo].[CatProductos] (
     [codigo_producto] int IDENTITY(1,1) NOT NULL,
-    [descripcion] nvarchar(60)  NULL
+    [descripcion] nvarchar(60)  NOT NULL
+);
+GO
+
+-- Creating table 'CatTipos_Matricula'
+CREATE TABLE [dbo].[CatTipos_Matricula] (
+	[id_tipo_matricula] int IDENTITY(1,1) NOT NULL,
+	[descripcion] nvarchar(120) NOT NULL
 );
 GO
 
 -- Creating table 'CatTransportes'
 CREATE TABLE [dbo].[CatTransportes] (
     [nro_transporte] int IDENTITY(1,1) NOT NULL,
-    [nro_matricula] nvarchar(60)  NULL,
+    [nro_matricula] nvarchar(60) NOT NULL,
     [carga_maxima] float  NULL,
     [tara] float  NULL,
-    [tipo_matricula] nvarchar(60)  NULL
+    [tipo_matricula] int NOT NULL
 );
 GO
 
@@ -265,6 +286,24 @@ GO
 ALTER TABLE [dbo].[CatDocumentos]
 ADD CONSTRAINT [PK_CatDocumentos]
     PRIMARY KEY CLUSTERED ([nro_documento], [tipo_documento] ASC);
+GO
+
+-- Creating primary key on [id_tipo_operacion] in table 'CatTipos_Operacion'
+ALTER TABLE [dbo].CatTipos_Operacion
+ADD CONSTRAINT [PK_CatTipos_Operacion]
+    PRIMARY KEY CLUSTERED ([id_tipo_operacion] ASC);
+GO
+
+-- Creating primary key on [id_estado_operacion] in table 'CatEstados_Operacion'
+ALTER TABLE [dbo].CatEstados_Operacion
+ADD CONSTRAINT [PK_CatEstados_Operacion]
+    PRIMARY KEY CLUSTERED (id_estado_operacion ASC);
+GO
+
+-- Creating primary key on [id_tipo_matricula] in table 'CatTipos_Matricula'
+ALTER TABLE [dbo].CatTipos_Matricula
+ADD CONSTRAINT [PK_CatTipos_Matricula]
+    PRIMARY KEY CLUSTERED (id_tipo_matricula ASC);
 GO
 
 -- Creating primary key on [nro_operacion] in table 'CatOperaciones'
@@ -474,10 +513,10 @@ ON [dbo].[Clientes_Choferes]
     ([Clientes_nro_cliente]);
 GO
 
--- Creating foreign key on [Cliente_nro_cliente] in table 'CatOperaciones'
+-- Creating foreign key on [nro_cliente] in table 'CatOperaciones'
 ALTER TABLE [dbo].[CatOperaciones]
 ADD CONSTRAINT [FK_Cliente_Operacion]
-    FOREIGN KEY ([Cliente_nro_cliente])
+    FOREIGN KEY ([nro_cliente])
     REFERENCES [dbo].[CatClientes]
         ([nro_cliente])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -485,7 +524,49 @@ ADD CONSTRAINT [FK_Cliente_Operacion]
 -- Creating non-clustered index for FOREIGN KEY 'FK_Cliente_Operacion'
 CREATE INDEX [IX_FK_Cliente_Operacion]
 ON [dbo].[CatOperaciones]
-    ([Cliente_nro_cliente]);
+    ([nro_cliente]);
+GO
+
+-- Creating foreign key on [id_tipo_operacion] in table 'CatOperaciones'
+ALTER TABLE [dbo].[CatOperaciones]
+ADD CONSTRAINT [FK_Tipo_Operacion_Operacion]
+    FOREIGN KEY ([tipo_operacion])
+    REFERENCES [dbo].[CatTipos_Operacion]
+        ([id_tipo_operacion])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_Cliente_Operacion'
+CREATE INDEX [IX_Tipo_Operacion_Operacion]
+ON [dbo].[CatOperaciones]
+    ([tipo_operacion]);
+GO
+
+-- Creating foreign key on [id_estado_operacion] in table 'CatOperaciones'
+ALTER TABLE [dbo].[CatOperaciones]
+ADD CONSTRAINT [FK_Estado_Operacion_Operacion]
+    FOREIGN KEY ([estado])
+    REFERENCES [dbo].[CatEstados_Operacion]
+        ([id_estado_operacion])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_Cliente_Operacion'
+CREATE INDEX [IX_FK_Estado_Operacion_Operacion]
+ON [dbo].[CatOperaciones]
+    ([estado]);
+GO
+
+-- Creating foreign key on [id_estado_operacion] in table 'CatOperaciones'
+ALTER TABLE [dbo].[CatTransportes]
+ADD CONSTRAINT [FK_Tipo_Matricula_Transporte]
+    FOREIGN KEY ([tipo_matricula])
+    REFERENCES [dbo].[CatTipos_Matricula]
+        ([id_tipo_matricula])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_Cliente_Operacion'
+CREATE INDEX [IX_FK_Tipo_Matricula_Transporte]
+ON [dbo].[CatTransportes]
+    ([tipo_matricula]);
 GO
 
 -- --------------------------------------------------

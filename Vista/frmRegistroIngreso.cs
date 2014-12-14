@@ -21,7 +21,7 @@ namespace Vista
         Controladora.CCUGTransportes oCCUGTransportes = new Controladora.CCUGTransportes();
         Controladora.CCUGChoferes oCCUChoferes = new Controladora.CCUGChoferes();
         Controladora.CCUGClientes oCCUClientes = new Controladora.CCUGClientes();
-        Controladora.CCUCore oCCUCore = new Controladora.CCUCore();
+        Controladora.CCUCore oCCUCore = Controladora.CCUCore.ObtenerInstancia();
 
         Controladora.CCURPF oCCURPF = new Controladora.CCURPF();
         Modelo_Entidades.FORMULARIO oForm;
@@ -119,8 +119,8 @@ namespace Vista
                 oTransporte = (Modelo_Entidades.Transporte)bsTransportes.Current;
                 Modelo_Entidades.Operacion oOperacion = new Modelo_Entidades.Operacion();
                 if (this.cbPermiso.Text == "Si")
-                    oOperacion.estado = "Ingresa";
-                else oOperacion.estado = "Rechazado";
+                    oOperacion.Estado_Operacion.descripcion = "Ingresa";
+                else oOperacion.Estado_Operacion.descripcion = "Rechazado";
                 oOperacion.tipo_operacion = this.cbTipoOperacion.Text;
                 oOperacion.notas = this.tbNotas.Text;
                 oOperacion.fecha_y_hora_inicio = DateTime.Now;
@@ -131,7 +131,7 @@ namespace Vista
                 //datos auditoría
                 oOperacion.USU_CODIGO = oUsuarioActual.USU_CODIGO;
                 oOperacion.fecha_y_hora_accion = DateTime.Now;
-                if (oOperacion.estado == "Ingresa")
+                if (oOperacion.Estado_Operacion.descripcion == "Ingresa")
                 {
                     oOperacion.accion = "Alta - Autorizar Ingreso";
                 }

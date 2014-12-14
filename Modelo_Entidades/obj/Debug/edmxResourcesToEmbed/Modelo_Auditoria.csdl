@@ -11,22 +11,22 @@
       <PropertyRef Name="fecha_y_hora_accion" />
     </Key>
     <Property Name="nro_operacion" Type="Int64" Nullable="false" />
-    <Property Name="estado" Type="String" Nullable="false" MaxLength="60" Unicode="false" FixedLength="false" />
-    <Property Name="fecha_y_hora_inicio" Type="DateTime" />
-    <Property Name="fecha_y_hora_fin" Type="DateTime" />
-    <Property Name="notas" Type="String" MaxLength="320" Unicode="false" FixedLength="false" />
+    <Property Name="estado" Type="Int32" Nullable="false" />
+    <Property Name="fecha_y_hora_inicio" Type="DateTime" Precision="3" />
+    <Property Name="fecha_y_hora_fin" Type="DateTime" Precision="3" />
+    <Property Name="notas" Type="String" MaxLength="320" Unicode="true" FixedLength="false" />
     <Property Name="nro_documento" Type="Int64" />
     <Property Name="nro_alquiler" Type="Int32" />
     <Property Name="nro_chofer" Type="Int32" Nullable="false" />
     <Property Name="nro_transporte" Type="Int32" Nullable="false" />
     <Property Name="peso_inicial" Type="Double" />
     <Property Name="peso_final" Type="Double" />
-    <Property Name="tipo_documento" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
-    <Property Name="tipo_operacion" Type="String" MaxLength="60" Unicode="false" FixedLength="false" />
-    <Property Name="USU_CODIGO" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
-    <Property Name="fecha_y_hora_accion" Type="DateTime" Nullable="false" />
-    <Property Name="accion" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-    <Property Type="Int32" Name="Cliente_nro_cliente" Nullable="false" />
+    <Property Name="tipo_documento" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="tipo_operacion" Type="Int32" Nullable="false" />
+    <Property Name="USU_CODIGO" Type="String" Nullable="false" MaxLength="15" Unicode="true" FixedLength="false" />
+    <Property Name="fecha_y_hora_accion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="accion" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="nro_cliente" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="Log">
     <Key>
@@ -36,7 +36,7 @@
     </Key>
     <Property Type="Int64" Name="nro_log" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Type="String" Name="USU_CODIGO" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
-    <Property Type="DateTime" Name="fecha_y_hora" Nullable="false" />
+    <Property Type="DateTime" Name="fecha_y_hora" Nullable="false" Precision="7" />
     <Property Type="String" Name="accion" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
   </EntityType>
 </Schema>

@@ -13,7 +13,7 @@ namespace Vista
     {
         private static frmCargaYDescarga Instancia;
         private BindingSource bsOperaciones=new BindingSource();
-        private Controladora.CCUCore oCCUCore = new Controladora.CCUCore();
+        private Controladora.CCUCore oCCUCore = Controladora.CCUCore.ObtenerInstancia();
         private Modelo_Entidades.Operacion oOperacion;
 
 
@@ -90,7 +90,7 @@ namespace Vista
             else
             {
                 oOperacion = (Modelo_Entidades.Operacion)bsOperaciones.Current;
-                if (oOperacion.estado != "Autorizado")
+                if (oOperacion.Estado_Operacion.descripcion != "Autorizado")
                 {
                     MessageBox.Show("La operación seleccionada aún no ha sido autorizada o ya ha sido terminada.", "Error.", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }

@@ -129,13 +129,6 @@ G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\ob
 G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\obj\x86\Debug\RdlCompile.compiled
 G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\obj\x86\Debug\Vista.frmRegenerarClave.resources
 G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Vista\obj\x86\Debug\Vista.frmInformeEstadoAlquileres.resources
-G:\Usuarios\Lautaro\Documentos\acopio_fertilizantes_equipo\Vista\bin\Debug\Vista.exe.config
-G:\Usuarios\Lautaro\Documentos\acopio_fertilizantes_equipo\Vista\bin\Debug\Vista.exe
-G:\Usuarios\Lautaro\Documentos\acopio_fertilizantes_equipo\Vista\bin\Debug\Vista.pdb
-G:\Usuarios\Lautaro\Documentos\acopio_fertilizantes_equipo\Vista\bin\Debug\Controladora.dll
-G:\Usuarios\Lautaro\Documentos\acopio_fertilizantes_equipo\Vista\bin\Debug\Modelo_Entidades.dll
-G:\Usuarios\Lautaro\Documentos\acopio_fertilizantes_equipo\Vista\bin\Debug\Controladora.pdb
-G:\Usuarios\Lautaro\Documentos\acopio_fertilizantes_equipo\Vista\bin\Debug\Modelo_Entidades.pdb
 G:\Usuarios\Lautaro\Documentos\acopio_fertilizantes_equipo\Vista\obj\x86\Debug\Vista.csprojResolveAssemblyReference.cache
 G:\Usuarios\Lautaro\Documentos\acopio_fertilizantes_equipo\Vista\obj\x86\Debug\Vista.frmPrincipalAntiguo.resources
 G:\Usuarios\Lautaro\Documentos\acopio_fertilizantes_equipo\Vista\obj\x86\Debug\Vista.frmABM.resources
@@ -174,5 +167,4 @@ G:\Usuarios\Lautaro\Documentos\acopio_fertilizantes_equipo\Vista\obj\x86\Debug\V
 G:\Usuarios\Lautaro\Documentos\acopio_fertilizantes_equipo\Vista\obj\x86\Debug\Vista.csproj.GenerateResource.Cache
 G:\Usuarios\Lautaro\Documentos\acopio_fertilizantes_equipo\Vista\obj\x86\Debug\RdlCompile.cache
 G:\Usuarios\Lautaro\Documentos\acopio_fertilizantes_equipo\Vista\obj\x86\Debug\RdlCompile.compiled
-G:\Usuarios\Lautaro\Documentos\acopio_fertilizantes_equipo\Vista\obj\x86\Debug\Vista.exe
-G:\Usuarios\Lautaro\Documentos\acopio_fertilizantes_equipo\Vista\obj\x86\Debug\Vista.pdb
+G:\Usuarios\Lautaro\Documentos\acopio_fertilizantes_equipo\Vista\bin\Debug\Vista.exe.config

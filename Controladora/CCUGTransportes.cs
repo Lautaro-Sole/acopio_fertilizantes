@@ -17,7 +17,8 @@ namespace Controladora
             List<Modelo_Entidades.Transporte> oListaTransportes = Modelo_Entidades.Acopio_FertilizantesEntities.ObtenerInstancia().CatTransportes.ToList<Modelo_Entidades.Transporte>();
             if (!(string.IsNullOrWhiteSpace(tipo_matricula)))
             {
-                oListaTransportes = oListaTransportes.FindAll(delegate(Modelo_Entidades.Transporte oTransporteBuscado) { return oTransporteBuscado.tipo_matricula==tipo_matricula; });
+                int _tipo_matricula = Convert.ToInt32(tipo_matricula);
+                oListaTransportes = oListaTransportes.FindAll(delegate(Modelo_Entidades.Transporte oTransporteBuscado) { return oTransporteBuscado.tipo_matricula==_tipo_matricula; });
             }
             if (!(string.IsNullOrWhiteSpace(nro_matricula)))
             {
@@ -86,7 +87,8 @@ namespace Controladora
 
         public Modelo_Entidades.Transporte ObtenerTransporte(string tipo_matricula, string numero_matricula)
         {
-            return ObtenerTransportes().Find(delegate(Modelo_Entidades.Transporte oTransporteBuscado) { return ((oTransporteBuscado.nro_matricula == numero_matricula) && (oTransporteBuscado.tipo_matricula == tipo_matricula)); });
+            int _tipo_matricula = Convert.ToInt32(tipo_matricula);
+            return ObtenerTransportes().Find(delegate(Modelo_Entidades.Transporte oTransporteBuscado) { return ((oTransporteBuscado.nro_matricula == numero_matricula) && (oTransporteBuscado.tipo_matricula == _tipo_matricula)); });
         }
 
         public bool Agregar(Modelo_Entidades.Transporte oTransporte)

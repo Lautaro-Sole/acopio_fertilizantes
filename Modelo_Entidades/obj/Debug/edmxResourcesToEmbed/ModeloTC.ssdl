@@ -1,75 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="Acopio_FertilizantesModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
-  <EntityContainer Name="Acopio_FertilizantesModelStoreContainer">
-    <EntitySet Name="Alquileres_Productos" EntityType="Acopio_FertilizantesModel.Store.Alquileres_Productos" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="CatAlmacenes" EntityType="Acopio_FertilizantesModel.Store.CatAlmacenes" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="CatAlquileres" EntityType="Acopio_FertilizantesModel.Store.CatAlquileres" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="CatChoferes" EntityType="Acopio_FertilizantesModel.Store.CatChoferes" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="CatClientes" EntityType="Acopio_FertilizantesModel.Store.CatClientes" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="CatDocumentos" EntityType="Acopio_FertilizantesModel.Store.CatDocumentos" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="CatOperaciones" EntityType="Acopio_FertilizantesModel.Store.CatOperaciones" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="CatProductos" EntityType="Acopio_FertilizantesModel.Store.CatProductos" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="CatTransportes" EntityType="Acopio_FertilizantesModel.Store.CatTransportes" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="sysdiagrams" EntityType="Acopio_FertilizantesModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Choferes_Transportes" EntityType="Acopio_FertilizantesModel.Store.Choferes_Transportes" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Clientes_Choferes" EntityType="Acopio_FertilizantesModel.Store.Clientes_Choferes" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="FK_Alquiler_Alquiler_Producto" Association="Acopio_FertilizantesModel.Store.FK_Alquiler_Alquiler_Producto">
-      <End Role="CatAlquileres" EntitySet="CatAlquileres" />
-      <End Role="Alquileres_Productos" EntitySet="Alquileres_Productos" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Producto_Alquiler_Producto" Association="Acopio_FertilizantesModel.Store.FK_Producto_Alquiler_Producto">
-      <End Role="CatProductos" EntitySet="CatProductos" />
-      <End Role="Alquileres_Productos" EntitySet="Alquileres_Productos" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Almacen_Alquiler" Association="Acopio_FertilizantesModel.Store.FK_Almacen_Alquiler">
-      <End Role="CatAlmacenes" EntitySet="CatAlmacenes" />
-      <End Role="CatAlquileres" EntitySet="CatAlquileres" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Alquiler_Cliente" Association="Acopio_FertilizantesModel.Store.FK_Alquiler_Cliente">
-      <End Role="CatClientes" EntitySet="CatClientes" />
-      <End Role="CatAlquileres" EntitySet="CatAlquileres" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Operacion_Alquiler" Association="Acopio_FertilizantesModel.Store.FK_Operacion_Alquiler">
-      <End Role="CatAlquileres" EntitySet="CatAlquileres" />
-      <End Role="CatOperaciones" EntitySet="CatOperaciones" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Operacion_Chofer" Association="Acopio_FertilizantesModel.Store.FK_Operacion_Chofer">
-      <End Role="CatChoferes" EntitySet="CatChoferes" />
-      <End Role="CatOperaciones" EntitySet="CatOperaciones" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Documento_Operacion" Association="Acopio_FertilizantesModel.Store.FK_Documento_Operacion">
-      <End Role="CatDocumentos" EntitySet="CatDocumentos" />
-      <End Role="CatOperaciones" EntitySet="CatOperaciones" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Documento_Producto" Association="Acopio_FertilizantesModel.Store.FK_Documento_Producto">
-      <End Role="CatProductos" EntitySet="CatProductos" />
-      <End Role="CatDocumentos" EntitySet="CatDocumentos" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Operacion_Transporte" Association="Acopio_FertilizantesModel.Store.FK_Operacion_Transporte">
-      <End Role="CatTransportes" EntitySet="CatTransportes" />
-      <End Role="CatOperaciones" EntitySet="CatOperaciones" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Choferes_Transportes_CatChoferes" Association="Acopio_FertilizantesModel.Store.FK_Choferes_Transportes_CatChoferes">
-      <End Role="CatChoferes" EntitySet="CatChoferes" />
-      <End Role="Choferes_Transportes" EntitySet="Choferes_Transportes" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Choferes_Transportes_CatTransportes" Association="Acopio_FertilizantesModel.Store.FK_Choferes_Transportes_CatTransportes">
-      <End Role="CatTransportes" EntitySet="CatTransportes" />
-      <End Role="Choferes_Transportes" EntitySet="Choferes_Transportes" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Clientes_Choferes_CatChoferes" Association="Acopio_FertilizantesModel.Store.FK_Clientes_Choferes_CatChoferes">
-      <End Role="CatChoferes" EntitySet="CatChoferes" />
-      <End Role="Clientes_Choferes" EntitySet="Clientes_Choferes" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Clientes_Choferes_CatClientes" Association="Acopio_FertilizantesModel.Store.FK_Clientes_Choferes_CatClientes">
-      <End Role="CatClientes" EntitySet="CatClientes" />
-      <End Role="Clientes_Choferes" EntitySet="Clientes_Choferes" />
-    </AssociationSet>
-    <AssociationSet Name="Clientes_Operaciones" Association="Acopio_FertilizantesModel.Store.Cliente_Operacion">
-      <End Role="Cliente" EntitySet="CatClientes" />
-      <End Role="Operacion" EntitySet="CatOperaciones" />
-    </AssociationSet>
-  </EntityContainer>
+<Schema Namespace="Acopio_FertilizantesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
   <EntityType Name="Alquileres_Productos">
     <Key>
       <PropertyRef Name="nro_alquiler" />
@@ -77,27 +7,27 @@
     </Key>
     <Property Name="nro_alquiler" Type="int" Nullable="false" />
     <Property Name="codigo_producto" Type="int" Nullable="false" />
-    <Property Name="cantidad_kg" Type="float" Nullable="true" />
+    <Property Name="cantidad_kg" Type="float" />
   </EntityType>
   <EntityType Name="CatAlmacenes">
     <Key>
       <PropertyRef Name="nro_almacen" />
     </Key>
     <Property Name="nro_almacen" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="nombre" Type="nvarchar" Nullable="true" MaxLength="60" />
-    <Property Name="direccion" Type="nvarchar" Nullable="true" MaxLength="60" />
-    <Property Name="distancia_a_empresa" Type="int" Nullable="true" />
-    <Property Name="capacidad" Type="float" Nullable="true" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="60" />
+    <Property Name="direccion" Type="nvarchar" MaxLength="60" />
+    <Property Name="distancia_a_empresa" Type="int" />
+    <Property Name="capacidad" Type="float" />
   </EntityType>
   <EntityType Name="CatAlquileres">
     <Key>
       <PropertyRef Name="nro_alquiler" />
     </Key>
     <Property Name="nro_alquiler" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="estado" Type="bit" Nullable="true" />
-    <Property Name="fecha_inicio_alquiler" Type="datetime" Nullable="true" />
-    <Property Name="fecha_fin_alquiler" Type="datetime" Nullable="true" />
-    <Property Name="capacidad" Type="float" Nullable="true" />
+    <Property Name="estado" Type="bit" />
+    <Property Name="fecha_inicio_alquiler" Type="datetime" />
+    <Property Name="fecha_fin_alquiler" Type="datetime" />
+    <Property Name="capacidad" Type="float" />
     <Property Name="nro_almacen" Type="int" Nullable="false" />
     <Property Name="nro_cliente" Type="int" Nullable="false" />
   </EntityType>
@@ -106,19 +36,19 @@
       <PropertyRef Name="nro_chofer" />
     </Key>
     <Property Name="nro_chofer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="apellido" Type="nvarchar" Nullable="true" MaxLength="60" />
-    <Property Name="nombre" Type="nvarchar" Nullable="true" MaxLength="60" />
-    <Property Name="num_documento" Type="int" Nullable="true" />
-    <Property Name="tipo_documento" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="apellido" Type="nvarchar" MaxLength="60" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="60" />
+    <Property Name="num_documento" Type="int" />
+    <Property Name="tipo_documento" Type="nvarchar" MaxLength="20" />
   </EntityType>
   <EntityType Name="CatClientes">
     <Key>
       <PropertyRef Name="nro_cliente" />
     </Key>
     <Property Name="nro_cliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="nombre" Type="nvarchar" Nullable="true" MaxLength="60" />
-    <Property Name="telefono" Type="nvarchar" Nullable="true" MaxLength="60" />
-    <Property Name="email" Type="nvarchar" Nullable="true" MaxLength="60" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="60" />
+    <Property Name="telefono" Type="nvarchar" MaxLength="60" />
+    <Property Name="email" Type="nvarchar" MaxLength="60" />
   </EntityType>
   <EntityType Name="CatDocumentos">
     <Key>
@@ -126,59 +56,70 @@
       <PropertyRef Name="tipo_documento" />
     </Key>
     <Property Name="nro_documento" Type="bigint" Nullable="false" />
-    <Property Name="fecha_hora" Type="datetime" Nullable="true" />
-    <Property Name="tipo_documento" Type="nvarchar" Nullable="false" MaxLength="30" />
-    <Property Name="peso" Type="float" Nullable="true" />
+    <Property Name="fecha_hora" Type="datetime" />
+    <Property Name="tipo_documento" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="peso" Type="float" />
     <Property Name="codigo_producto" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CatEstados_Operacion">
+    <Key>
+      <PropertyRef Name="id_estado_operacion" />
+    </Key>
+    <Property Name="id_estado_operacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar" MaxLength="120" Nullable="false" />
   </EntityType>
   <EntityType Name="CatOperaciones">
     <Key>
       <PropertyRef Name="nro_operacion" />
     </Key>
     <Property Name="nro_operacion" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="estado" Type="nvarchar" Nullable="true" MaxLength="60" />
-    <Property Name="fecha_y_hora_inicio" Type="datetime" Nullable="true" />
-    <Property Name="fecha_y_hora_fin" Type="datetime" Nullable="true" />
-    <Property Name="notas" Type="nvarchar" Nullable="true" MaxLength="320" />
-    <Property Name="nro_documento" Type="bigint" Nullable="true" />
-    <Property Name="peso_inicial" Type="float" Nullable="true" />
-    <Property Name="peso_final" Type="float" Nullable="true" />
-    <Property Name="tipo_documento" Type="nvarchar" Nullable="true" MaxLength="30" />
-    <Property Name="tipo_operacion" Type="nvarchar" Nullable="true" MaxLength="60" />
-    <Property Name="USU_CODIGO" Type="nvarchar" Nullable="false" MaxLength="15" />
+    <Property Name="estado" Type="int" Nullable="false" />
+    <Property Name="fecha_y_hora_inicio" Type="datetime" />
+    <Property Name="fecha_y_hora_fin" Type="datetime" />
+    <Property Name="notas" Type="nvarchar" MaxLength="320" />
+    <Property Name="nro_documento" Type="bigint" />
+    <Property Name="peso_inicial" Type="float" />
+    <Property Name="peso_final" Type="float" />
+    <Property Name="tipo_documento" Type="nvarchar" MaxLength="30" />
+    <Property Name="tipo_operacion" Type="int" Nullable="false" />
+    <Property Name="USU_CODIGO" Type="nvarchar" MaxLength="15" Nullable="false" />
     <Property Name="fecha_y_hora_accion" Type="datetime" Nullable="false" />
-    <Property Name="accion" Type="nvarchar" Nullable="false" MaxLength="50" />
-    <Property Name="nro_alquiler" Type="int" Nullable="true" />
+    <Property Name="accion" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="nro_alquiler" Type="int" />
     <Property Name="nro_chofer" Type="int" Nullable="false" />
     <Property Name="nro_transporte" Type="int" Nullable="false" />
-    <Property Name="Cliente_nro_cliente" Type="int" Nullable="false" />
+    <Property Name="nro_cliente" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="CatProductos">
     <Key>
       <PropertyRef Name="codigo_producto" />
     </Key>
     <Property Name="codigo_producto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="descripcion" Type="nvarchar" Nullable="true" MaxLength="60" />
+    <Property Name="descripcion" Type="nvarchar" MaxLength="60" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CatTipos_Matricula">
+    <Key>
+      <PropertyRef Name="id_tipo_matricula" />
+    </Key>
+    <Property Name="id_tipo_matricula" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar" MaxLength="120" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CatTipos_Operacion">
+    <Key>
+      <PropertyRef Name="id_tipo_operacion" />
+    </Key>
+    <Property Name="id_tipo_operacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar" MaxLength="120" Nullable="false" />
   </EntityType>
   <EntityType Name="CatTransportes">
     <Key>
       <PropertyRef Name="nro_transporte" />
     </Key>
     <Property Name="nro_transporte" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="nro_matricula" Type="nvarchar" Nullable="true" MaxLength="60" />
-    <Property Name="carga_maxima" Type="float" Nullable="true" />
-    <Property Name="tara" Type="float" Nullable="true" />
-    <Property Name="tipo_matricula" Type="nvarchar" Nullable="true" MaxLength="60" />
-  </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" Nullable="true" />
-    <Property Name="definition" Type="varbinary(max)" Nullable="true" />
+    <Property Name="nro_matricula" Type="nvarchar" MaxLength="60" Nullable="false" />
+    <Property Name="carga_maxima" Type="float" />
+    <Property Name="tara" Type="float" />
+    <Property Name="tipo_matricula" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Choferes_Transportes">
     <Key>
@@ -196,33 +137,19 @@
     <Property Name="Choferes_nro_chofer" Type="int" Nullable="false" />
     <Property Name="Clientes_nro_cliente" Type="int" Nullable="false" />
   </EntityType>
-  <Association Name="FK_Alquiler_Alquiler_Producto">
-    <End Role="CatAlquileres" Type="Acopio_FertilizantesModel.Store.CatAlquileres" Multiplicity="1" />
-    <End Role="Alquileres_Productos" Type="Acopio_FertilizantesModel.Store.Alquileres_Productos" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="CatAlquileres">
-        <PropertyRef Name="nro_alquiler" />
-      </Principal>
-      <Dependent Role="Alquileres_Productos">
-        <PropertyRef Name="nro_alquiler" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Producto_Alquiler_Producto">
-    <End Role="CatProductos" Type="Acopio_FertilizantesModel.Store.CatProductos" Multiplicity="1" />
-    <End Role="Alquileres_Productos" Type="Acopio_FertilizantesModel.Store.Alquileres_Productos" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="CatProductos">
-        <PropertyRef Name="codigo_producto" />
-      </Principal>
-      <Dependent Role="Alquileres_Productos">
-        <PropertyRef Name="codigo_producto" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
   <Association Name="FK_Almacen_Alquiler">
-    <End Role="CatAlmacenes" Type="Acopio_FertilizantesModel.Store.CatAlmacenes" Multiplicity="1" />
-    <End Role="CatAlquileres" Type="Acopio_FertilizantesModel.Store.CatAlquileres" Multiplicity="*" />
+    <End Role="CatAlmacenes" Type="Self.CatAlmacenes" Multiplicity="1" />
+    <End Role="CatAlquileres" Type="Self.CatAlquileres" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CatAlmacenes">
         <PropertyRef Name="nro_almacen" />
@@ -232,9 +159,21 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Alquiler_Alquiler_Producto">
+    <End Role="CatAlquileres" Type="Self.CatAlquileres" Multiplicity="1" />
+    <End Role="Alquileres_Productos" Type="Self.Alquileres_Productos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CatAlquileres">
+        <PropertyRef Name="nro_alquiler" />
+      </Principal>
+      <Dependent Role="Alquileres_Productos">
+        <PropertyRef Name="nro_alquiler" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Alquiler_Cliente">
-    <End Role="CatClientes" Type="Acopio_FertilizantesModel.Store.CatClientes" Multiplicity="1" />
-    <End Role="CatAlquileres" Type="Acopio_FertilizantesModel.Store.CatAlquileres" Multiplicity="*" />
+    <End Role="CatClientes" Type="Self.CatClientes" Multiplicity="1" />
+    <End Role="CatAlquileres" Type="Self.CatAlquileres" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CatClientes">
         <PropertyRef Name="nro_cliente" />
@@ -244,33 +183,69 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Operacion_Alquiler">
-    <End Role="CatAlquileres" Type="Acopio_FertilizantesModel.Store.CatAlquileres" Multiplicity="0..1" />
-    <End Role="CatOperaciones" Type="Acopio_FertilizantesModel.Store.CatOperaciones" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="CatAlquileres">
-        <PropertyRef Name="nro_alquiler" />
-      </Principal>
-      <Dependent Role="CatOperaciones">
-        <PropertyRef Name="nro_alquiler" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Operacion_Chofer">
-    <End Role="CatChoferes" Type="Acopio_FertilizantesModel.Store.CatChoferes" Multiplicity="1" />
-    <End Role="CatOperaciones" Type="Acopio_FertilizantesModel.Store.CatOperaciones" Multiplicity="*" />
+  <Association Name="FK_Choferes_Transportes_CatChoferes">
+    <End Role="CatChoferes" Type="Self.CatChoferes" Multiplicity="1" />
+    <End Role="Choferes_Transportes" Type="Self.Choferes_Transportes" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CatChoferes">
         <PropertyRef Name="nro_chofer" />
       </Principal>
+      <Dependent Role="Choferes_Transportes">
+        <PropertyRef Name="Choferes_nro_chofer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Choferes_Transportes_CatTransportes">
+    <End Role="CatTransportes" Type="Self.CatTransportes" Multiplicity="1" />
+    <End Role="Choferes_Transportes" Type="Self.Choferes_Transportes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CatTransportes">
+        <PropertyRef Name="nro_transporte" />
+      </Principal>
+      <Dependent Role="Choferes_Transportes">
+        <PropertyRef Name="Transportes_nro_transporte" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cliente_Operacion">
+    <End Role="CatClientes" Type="Self.CatClientes" Multiplicity="1" />
+    <End Role="CatOperaciones" Type="Self.CatOperaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CatClientes">
+        <PropertyRef Name="nro_cliente" />
+      </Principal>
       <Dependent Role="CatOperaciones">
+        <PropertyRef Name="nro_cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Clientes_Choferes_CatChoferes">
+    <End Role="CatChoferes" Type="Self.CatChoferes" Multiplicity="1" />
+    <End Role="Clientes_Choferes" Type="Self.Clientes_Choferes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CatChoferes">
         <PropertyRef Name="nro_chofer" />
+      </Principal>
+      <Dependent Role="Clientes_Choferes">
+        <PropertyRef Name="Choferes_nro_chofer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Clientes_Choferes_CatClientes">
+    <End Role="CatClientes" Type="Self.CatClientes" Multiplicity="1" />
+    <End Role="Clientes_Choferes" Type="Self.Clientes_Choferes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CatClientes">
+        <PropertyRef Name="nro_cliente" />
+      </Principal>
+      <Dependent Role="Clientes_Choferes">
+        <PropertyRef Name="Clientes_nro_cliente" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Documento_Operacion">
-    <End Role="CatDocumentos" Type="Acopio_FertilizantesModel.Store.CatDocumentos" Multiplicity="0..1" />
-    <End Role="CatOperaciones" Type="Acopio_FertilizantesModel.Store.CatOperaciones" Multiplicity="*" />
+    <End Role="CatDocumentos" Type="Self.CatDocumentos" Multiplicity="0..1" />
+    <End Role="CatOperaciones" Type="Self.CatOperaciones" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CatDocumentos">
         <PropertyRef Name="nro_documento" />
@@ -283,8 +258,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Documento_Producto">
-    <End Role="CatProductos" Type="Acopio_FertilizantesModel.Store.CatProductos" Multiplicity="1" />
-    <End Role="CatDocumentos" Type="Acopio_FertilizantesModel.Store.CatDocumentos" Multiplicity="*" />
+    <End Role="CatProductos" Type="Self.CatProductos" Multiplicity="1" />
+    <End Role="CatDocumentos" Type="Self.CatDocumentos" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CatProductos">
         <PropertyRef Name="codigo_producto" />
@@ -294,9 +269,45 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Estado_Operacion_Operacion">
+    <End Role="CatEstados_Operacion" Type="Self.CatEstados_Operacion" Multiplicity="1" />
+    <End Role="CatOperaciones" Type="Self.CatOperaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CatEstados_Operacion">
+        <PropertyRef Name="id_estado_operacion" />
+      </Principal>
+      <Dependent Role="CatOperaciones">
+        <PropertyRef Name="estado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Operacion_Alquiler">
+    <End Role="CatAlquileres" Type="Self.CatAlquileres" Multiplicity="0..1" />
+    <End Role="CatOperaciones" Type="Self.CatOperaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CatAlquileres">
+        <PropertyRef Name="nro_alquiler" />
+      </Principal>
+      <Dependent Role="CatOperaciones">
+        <PropertyRef Name="nro_alquiler" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Operacion_Chofer">
+    <End Role="CatChoferes" Type="Self.CatChoferes" Multiplicity="1" />
+    <End Role="CatOperaciones" Type="Self.CatOperaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CatChoferes">
+        <PropertyRef Name="nro_chofer" />
+      </Principal>
+      <Dependent Role="CatOperaciones">
+        <PropertyRef Name="nro_chofer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Operacion_Transporte">
-    <End Role="CatTransportes" Type="Acopio_FertilizantesModel.Store.CatTransportes" Multiplicity="1" />
-    <End Role="CatOperaciones" Type="Acopio_FertilizantesModel.Store.CatOperaciones" Multiplicity="*" />
+    <End Role="CatTransportes" Type="Self.CatTransportes" Multiplicity="1" />
+    <End Role="CatOperaciones" Type="Self.CatOperaciones" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CatTransportes">
         <PropertyRef Name="nro_transporte" />
@@ -306,64 +317,125 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="Cliente_Operacion">
-    <End Role="Cliente" Type="Acopio_FertilizantesModel.Store.CatClientes" Multiplicity="1" />
-    <End Role="Operacion" Type="Acopio_FertilizantesModel.Store.CatOperaciones" Multiplicity="*" />
+  <Association Name="FK_Producto_Alquiler_Producto">
+    <End Role="CatProductos" Type="Self.CatProductos" Multiplicity="1" />
+    <End Role="Alquileres_Productos" Type="Self.Alquileres_Productos" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Cliente">
-        <PropertyRef Name="nro_cliente" />
+      <Principal Role="CatProductos">
+        <PropertyRef Name="codigo_producto" />
       </Principal>
-      <Dependent Role="Operacion">
-        <PropertyRef Name="Cliente_nro_cliente" />
+      <Dependent Role="Alquileres_Productos">
+        <PropertyRef Name="codigo_producto" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Choferes_Transportes_CatChoferes">
-    <End Role="CatChoferes" Type="Acopio_FertilizantesModel.Store.CatChoferes" Multiplicity="1" />
-    <End Role="Choferes_Transportes" Type="Acopio_FertilizantesModel.Store.Choferes_Transportes" Multiplicity="*" />
+  <Association Name="FK_Tipo_Matricula_Transporte">
+    <End Role="CatTipos_Matricula" Type="Self.CatTipos_Matricula" Multiplicity="1" />
+    <End Role="CatTransportes" Type="Self.CatTransportes" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="CatChoferes">
-        <PropertyRef Name="nro_chofer" />
+      <Principal Role="CatTipos_Matricula">
+        <PropertyRef Name="id_tipo_matricula" />
       </Principal>
-      <Dependent Role="Choferes_Transportes">
-        <PropertyRef Name="Choferes_nro_chofer" />
+      <Dependent Role="CatTransportes">
+        <PropertyRef Name="tipo_matricula" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Choferes_Transportes_CatTransportes">
-    <End Role="Choferes_Transportes" Type="Acopio_FertilizantesModel.Store.Choferes_Transportes" Multiplicity="*" />
-    <End Role="CatTransportes" Type="Acopio_FertilizantesModel.Store.CatTransportes" Multiplicity="1" />
+  <Association Name="FK_Tipo_Operacion_Operacion">
+    <End Role="CatTipos_Operacion" Type="Self.CatTipos_Operacion" Multiplicity="1" />
+    <End Role="CatOperaciones" Type="Self.CatOperaciones" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="CatTransportes">
-        <PropertyRef Name="nro_transporte" />
+      <Principal Role="CatTipos_Operacion">
+        <PropertyRef Name="id_tipo_operacion" />
       </Principal>
-      <Dependent Role="Choferes_Transportes">
-        <PropertyRef Name="Transportes_nro_transporte" />
+      <Dependent Role="CatOperaciones">
+        <PropertyRef Name="tipo_operacion" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Clientes_Choferes_CatChoferes">
-    <End Role="CatChoferes" Type="Acopio_FertilizantesModel.Store.CatChoferes" Multiplicity="1" />
-    <End Role="Clientes_Choferes" Type="Acopio_FertilizantesModel.Store.Clientes_Choferes" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="CatChoferes">
-        <PropertyRef Name="nro_chofer" />
-      </Principal>
-      <Dependent Role="Clientes_Choferes">
-        <PropertyRef Name="Choferes_nro_chofer" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Clientes_Choferes_CatClientes">
-    <End Role="Clientes_Choferes" Type="Acopio_FertilizantesModel.Store.Clientes_Choferes" Multiplicity="*" />
-    <End Role="CatClientes" Type="Acopio_FertilizantesModel.Store.CatClientes" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="CatClientes">
-        <PropertyRef Name="nro_cliente" />
-      </Principal>
-      <Dependent Role="Clientes_Choferes">
-        <PropertyRef Name="Clientes_nro_cliente" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
+  <EntityContainer Name="Acopio_FertilizantesModelStoreContainer">
+    <EntitySet Name="Alquileres_Productos" EntityType="Self.Alquileres_Productos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CatAlmacenes" EntityType="Self.CatAlmacenes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CatAlquileres" EntityType="Self.CatAlquileres" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CatChoferes" EntityType="Self.CatChoferes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CatClientes" EntityType="Self.CatClientes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CatDocumentos" EntityType="Self.CatDocumentos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CatEstados_Operacion" EntityType="Self.CatEstados_Operacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CatOperaciones" EntityType="Self.CatOperaciones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CatProductos" EntityType="Self.CatProductos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CatTipos_Matricula" EntityType="Self.CatTipos_Matricula" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CatTipos_Operacion" EntityType="Self.CatTipos_Operacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CatTransportes" EntityType="Self.CatTransportes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Choferes_Transportes" EntityType="Self.Choferes_Transportes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Clientes_Choferes" EntityType="Self.Clientes_Choferes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Almacen_Alquiler" Association="Self.FK_Almacen_Alquiler">
+      <End Role="CatAlmacenes" EntitySet="CatAlmacenes" />
+      <End Role="CatAlquileres" EntitySet="CatAlquileres" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Alquiler_Alquiler_Producto" Association="Self.FK_Alquiler_Alquiler_Producto">
+      <End Role="CatAlquileres" EntitySet="CatAlquileres" />
+      <End Role="Alquileres_Productos" EntitySet="Alquileres_Productos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Alquiler_Cliente" Association="Self.FK_Alquiler_Cliente">
+      <End Role="CatClientes" EntitySet="CatClientes" />
+      <End Role="CatAlquileres" EntitySet="CatAlquileres" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Choferes_Transportes_CatChoferes" Association="Self.FK_Choferes_Transportes_CatChoferes">
+      <End Role="CatChoferes" EntitySet="CatChoferes" />
+      <End Role="Choferes_Transportes" EntitySet="Choferes_Transportes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Choferes_Transportes_CatTransportes" Association="Self.FK_Choferes_Transportes_CatTransportes">
+      <End Role="CatTransportes" EntitySet="CatTransportes" />
+      <End Role="Choferes_Transportes" EntitySet="Choferes_Transportes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cliente_Operacion" Association="Self.FK_Cliente_Operacion">
+      <End Role="CatClientes" EntitySet="CatClientes" />
+      <End Role="CatOperaciones" EntitySet="CatOperaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Clientes_Choferes_CatChoferes" Association="Self.FK_Clientes_Choferes_CatChoferes">
+      <End Role="CatChoferes" EntitySet="CatChoferes" />
+      <End Role="Clientes_Choferes" EntitySet="Clientes_Choferes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Clientes_Choferes_CatClientes" Association="Self.FK_Clientes_Choferes_CatClientes">
+      <End Role="CatClientes" EntitySet="CatClientes" />
+      <End Role="Clientes_Choferes" EntitySet="Clientes_Choferes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Documento_Operacion" Association="Self.FK_Documento_Operacion">
+      <End Role="CatDocumentos" EntitySet="CatDocumentos" />
+      <End Role="CatOperaciones" EntitySet="CatOperaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Documento_Producto" Association="Self.FK_Documento_Producto">
+      <End Role="CatProductos" EntitySet="CatProductos" />
+      <End Role="CatDocumentos" EntitySet="CatDocumentos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Estado_Operacion_Operacion" Association="Self.FK_Estado_Operacion_Operacion">
+      <End Role="CatEstados_Operacion" EntitySet="CatEstados_Operacion" />
+      <End Role="CatOperaciones" EntitySet="CatOperaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Operacion_Alquiler" Association="Self.FK_Operacion_Alquiler">
+      <End Role="CatAlquileres" EntitySet="CatAlquileres" />
+      <End Role="CatOperaciones" EntitySet="CatOperaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Operacion_Chofer" Association="Self.FK_Operacion_Chofer">
+      <End Role="CatChoferes" EntitySet="CatChoferes" />
+      <End Role="CatOperaciones" EntitySet="CatOperaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Operacion_Transporte" Association="Self.FK_Operacion_Transporte">
+      <End Role="CatTransportes" EntitySet="CatTransportes" />
+      <End Role="CatOperaciones" EntitySet="CatOperaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Producto_Alquiler_Producto" Association="Self.FK_Producto_Alquiler_Producto">
+      <End Role="CatProductos" EntitySet="CatProductos" />
+      <End Role="Alquileres_Productos" EntitySet="Alquileres_Productos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tipo_Matricula_Transporte" Association="Self.FK_Tipo_Matricula_Transporte">
+      <End Role="CatTipos_Matricula" EntitySet="CatTipos_Matricula" />
+      <End Role="CatTransportes" EntitySet="CatTransportes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tipo_Operacion_Operacion" Association="Self.FK_Tipo_Operacion_Operacion">
+      <End Role="CatTipos_Operacion" EntitySet="CatTipos_Operacion" />
+      <End Role="CatOperaciones" EntitySet="CatOperaciones" />
+    </AssociationSet>
+  </EntityContainer>
 </Schema>

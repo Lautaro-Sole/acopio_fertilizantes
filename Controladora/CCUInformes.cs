@@ -106,9 +106,9 @@ namespace Controladora
                 double KGMovidos = new double();
                 foreach (Modelo_Entidades.Operacion oOperacionActual in oClienteActual.Operaciones)
                 {
-                    if (((oOperacionActual.estado == "Finalizado") || (oOperacionActual.estado == "Cerrado")))
+                    if (((oOperacionActual.Estado_Operacion.descripcion == "Finalizado") || (oOperacionActual.Estado_Operacion.descripcion == "Cerrado")))
                     {
-                        if (oOperacionActual.tipo_operacion == "Carga")
+                        if (oOperacionActual.Tipo_Operacion.descripcion == "Carga")
                         {
                             KGMovidos += Convert.ToDouble(oOperacionActual.peso_final - oOperacionActual.peso_inicial);
                         }
@@ -186,9 +186,9 @@ namespace Controladora
                 foreach (Modelo_Entidades.Operacion oOperacionActual in oClienteActual.Operaciones)
                 {
                     //contar sólo las que hayan comenzado durante el mes elegido
-                    if ((((oOperacionActual.estado == "Finalizado") || (oOperacionActual.estado == "Cerrado")) ) && ((FechaFinal <= oOperacionActual.fecha_y_hora_inicio) &&( oOperacionActual.fecha_y_hora_inicio <=FechaFinal)))
+                    if ((((oOperacionActual.Estado_Operacion.descripcion == "Finalizado") || (oOperacionActual.Estado_Operacion.descripcion == "Cerrado"))) && ((FechaFinal <= oOperacionActual.fecha_y_hora_inicio) && (oOperacionActual.fecha_y_hora_inicio <= FechaFinal)))
                     {
-                        if (oOperacionActual.tipo_operacion == "Carga")
+                        if (oOperacionActual.Tipo_Operacion.descripcion == "Carga")
                         {
                             KGMovidos += Convert.ToDouble(oOperacionActual.peso_final - oOperacionActual.peso_inicial);
                         }
@@ -268,9 +268,9 @@ namespace Controladora
                 foreach (Modelo_Entidades.Operacion oOperacionActual in oClienteActual.Operaciones)
                 {
                     //contar sólo las que hayan comenzado durante el mes elegido
-                    if ((((oOperacionActual.estado == "Finalizado") || (oOperacionActual.estado == "Cerrado"))) && ((FechaInicial <= oOperacionActual.fecha_y_hora_inicio) && (oOperacionActual.fecha_y_hora_inicio <= FechaFinal)))
+                    if ((((oOperacionActual.Estado_Operacion.descripcion == "Finalizado") || (oOperacionActual.Estado_Operacion.descripcion == "Cerrado"))) && ((FechaInicial <= oOperacionActual.fecha_y_hora_inicio) && (oOperacionActual.fecha_y_hora_inicio <= FechaFinal)))
                     {
-                        if (oOperacionActual.tipo_operacion == "Carga")
+                        if (oOperacionActual.Tipo_Operacion.descripcion == "Carga")
                         {
                             KGMovidos += Convert.ToDouble(oOperacionActual.peso_final - oOperacionActual.peso_inicial);
                         }

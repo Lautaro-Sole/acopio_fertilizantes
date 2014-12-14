@@ -4,7 +4,7 @@
     <EntitySetMapping Name="CatOperaciones_Auditoria">
       <EntityTypeMapping TypeName="IsTypeOf(Modelo_AuditoriaModel.Operacion_Auditoria)">
         <MappingFragment StoreEntitySet="CatOperaciones_Auditoria">
-          <ScalarProperty Name="Cliente_nro_cliente" ColumnName="Cliente_nro_cliente" />
+          <ScalarProperty Name="nro_cliente" ColumnName="nro_cliente" />
           <ScalarProperty Name="nro_operacion" ColumnName="nro_operacion" />
           <ScalarProperty Name="USU_CODIGO" ColumnName="USU_CODIGO" />
           <ScalarProperty Name="fecha_y_hora_accion" ColumnName="fecha_y_hora_accion" />

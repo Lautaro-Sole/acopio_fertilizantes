@@ -57,7 +57,7 @@ namespace Vista
 
                 if (Modo == "Alta")
                 {
-                    resultado = oCCUGGrupos.ObtenerGrupo(tbDescripcion.Text);
+                    resultado = oCCUGGrupos.ComprobarGrupo(tbDescripcion.Text);
                     if (resultado)
                     {
                         MessageBox.Show("Ya existe un grupo con esa descripción.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

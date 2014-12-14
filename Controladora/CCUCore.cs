@@ -139,7 +139,8 @@ namespace Controladora
             List<Modelo_Entidades.Transporte> oListaTransportes = Modelo_Entidades.Acopio_FertilizantesEntities.ObtenerInstancia().CatTransportes.ToList<Modelo_Entidades.Transporte>();
             if (tipo_matricula != null & tipo_matricula != "")
             {
-                oListaTransportes = oListaTransportes.FindAll(delegate(Modelo_Entidades.Transporte oTransporteBuscado) { return oTransporteBuscado.tipo_matricula == tipo_matricula; });
+                int _tipo_matricula = Convert.ToInt32(tipo_matricula);
+                oListaTransportes = oListaTransportes.FindAll(delegate(Modelo_Entidades.Transporte oTransporteBuscado) { return oTransporteBuscado.tipo_matricula == _tipo_matricula; });
             }
             if (nro_matricula != null & nro_matricula != "")
             {
@@ -208,7 +209,7 @@ namespace Controladora
         /// <returns></returns>
         public List<Modelo_Entidades.Operacion> ObtenerOperacionesCarga()
         {
-            return Modelo_Entidades.Acopio_FertilizantesEntities.ObtenerInstancia().CatOperaciones.ToList<Modelo_Entidades.Operacion>().FindAll(delegate(Modelo_Entidades.Operacion oOperacionBuscada) { return (oOperacionBuscada.tipo_operacion == "Carga"); });
+            return Modelo_Entidades.Acopio_FertilizantesEntities.ObtenerInstancia().CatOperaciones.ToList<Modelo_Entidades.Operacion>().FindAll(delegate(Modelo_Entidades.Operacion oOperacionBuscada) { return (oOperacionBuscada.Tipo_Operacion.descripcion == "Carga"); });
         }
 
         /// <summary>
@@ -218,36 +219,39 @@ namespace Controladora
         /// <returns></returns>
         public List<Modelo_Entidades.Operacion> ObtenerOperacionesDescarga()
         {
-            return Modelo_Entidades.Acopio_FertilizantesEntities.ObtenerInstancia().CatOperaciones.ToList<Modelo_Entidades.Operacion>().FindAll(delegate(Modelo_Entidades.Operacion oOperacionBuscada) { return (oOperacionBuscada.tipo_operacion == "Descarga"); });
+            return Modelo_Entidades.Acopio_FertilizantesEntities.ObtenerInstancia().CatOperaciones.ToList<Modelo_Entidades.Operacion>().FindAll(delegate(Modelo_Entidades.Operacion oOperacionBuscada) { return (oOperacionBuscada.Tipo_Operacion.descripcion == "Descarga"); });
         }
 
-        public List<Modelo_Entidades.Operacion> ObtenerOperaciones(string _tipo_matricula, string _nro_matricula, string _tipo_operacion, string _estado, string _nombre_cliente, string _nombre_chofer)
+        public List<Modelo_Entidades.Operacion> ObtenerOperaciones(string tipo_matricula, string nro_matricula, string tipo_operacion, string estado, string nombre_cliente, string nombre_chofer)
         {
             List<Modelo_Entidades.Operacion> oListaOperaciones = new List<Modelo_Entidades.Operacion>();
             oListaOperaciones = Modelo_Entidades.Acopio_FertilizantesEntities.ObtenerInstancia().CatOperaciones.ToList<Modelo_Entidades.Operacion>();
-            if (_tipo_matricula != null && !string.IsNullOrWhiteSpace(_tipo_matricula))
+            if (tipo_matricula != null && !string.IsNullOrWhiteSpace(tipo_matricula))
             {
+                int _tipo_matricula = Convert.ToInt32(tipo_matricula);
                 oListaOperaciones = oListaOperaciones.FindAll(delegate(Modelo_Entidades.Operacion oOperacionBuscada) { return (oOperacionBuscada.Transporte.tipo_matricula == _tipo_matricula); });
             }
-            if (_nro_matricula != null && !string.IsNullOrWhiteSpace(_nro_matricula))
+            if (nro_matricula != null && !string.IsNullOrWhiteSpace(nro_matricula))
             {
-                oListaOperaciones = oListaOperaciones.FindAll(delegate(Modelo_Entidades.Operacion oOperacionBuscada) { return (oOperacionBuscada.Transporte.nro_matricula.StartsWith(_nro_matricula)); });
+                oListaOperaciones = oListaOperaciones.FindAll(delegate(Modelo_Entidades.Operacion oOperacionBuscada) { return (oOperacionBuscada.Transporte.nro_matricula.StartsWith(nro_matricula)); });
             }
-            if (_tipo_operacion != null && !string.IsNullOrWhiteSpace(_tipo_operacion))
+            if (tipo_operacion != null && !string.IsNullOrWhiteSpace(tipo_operacion))
             {
+                int _tipo_operacion = Convert.ToInt32(tipo_operacion);
                 oListaOperaciones = oListaOperaciones.FindAll(delegate(Modelo_Entidades.Operacion oOperacionBuscada) { return (oOperacionBuscada.tipo_operacion == _tipo_operacion); });
             }
-            if (_estado != null && !string.IsNullOrWhiteSpace(_estado))
+            if (estado != null && !string.IsNullOrWhiteSpace(estado))
             {
+                int _estado = Convert.ToInt32(estado);
                 oListaOperaciones = oListaOperaciones.FindAll(delegate(Modelo_Entidades.Operacion oOperacionBuscada) { return (oOperacionBuscada.estado == _estado); });
             }
-            if (_nombre_chofer != null && !string.IsNullOrWhiteSpace(_nombre_chofer))
+            if (nombre_chofer != null && !string.IsNullOrWhiteSpace(nombre_chofer))
             {
-                oListaOperaciones = oListaOperaciones.FindAll(delegate(Modelo_Entidades.Operacion oOperacionBuscada) { return (oOperacionBuscada.Chofer.nombre.StartsWith(_nombre_chofer)); });
+                oListaOperaciones = oListaOperaciones.FindAll(delegate(Modelo_Entidades.Operacion oOperacionBuscada) { return (oOperacionBuscada.Chofer.nombre.StartsWith(nombre_chofer)); });
             }
-            if (_nombre_cliente != null && !string.IsNullOrWhiteSpace(_nombre_cliente))
+            if (nombre_cliente != null && !string.IsNullOrWhiteSpace(nombre_cliente))
             {
-                oListaOperaciones = oListaOperaciones.FindAll(delegate(Modelo_Entidades.Operacion oOperacionBuscada) { return (oOperacionBuscada.Alquiler.Cliente.nombre.StartsWith(_nombre_cliente)); });
+                oListaOperaciones = oListaOperaciones.FindAll(delegate(Modelo_Entidades.Operacion oOperacionBuscada) { return (oOperacionBuscada.Alquiler.Cliente.nombre.StartsWith(nombre_cliente)); });
             }
             return oListaOperaciones;
         }
@@ -483,7 +487,7 @@ namespace Controladora
             oOperacionAuditoria.tipo_documento = oOperacionAntigua.tipo_documento;
             oOperacionAuditoria.tipo_operacion = oOperacionAntigua.tipo_operacion;
             oOperacionAuditoria.USU_CODIGO = oOperacionAntigua.USU_CODIGO;
-            oOperacionAuditoria.Cliente_nro_cliente = oOperacionAntigua.Cliente.nro_cliente;
+            oOperacionAuditoria.nro_cliente = oOperacionAntigua.nro_cliente;
             return oOperacionAuditoria;
         }
 

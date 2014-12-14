@@ -13,7 +13,7 @@ namespace Vista
     {
         private static frmOperaciones Instancia;
         private BindingSource bsOperaciones=new BindingSource();
-        private Controladora.CCUCore oCCUCore = new Controladora.CCUCore();
+        private Controladora.CCUCore oCCUCore = Controladora.CCUCore.ObtenerInstancia();
         private Modelo_Entidades.Operacion oOperacion;
 
 
@@ -96,7 +96,7 @@ namespace Vista
             else
             {
                 oOperacion = (Modelo_Entidades.Operacion)bsOperaciones.Current;
-                if (oOperacion.estado != "Ingresa")
+                if (oOperacion.Estado_Operacion.descripcion != "Ingresa")
                 {
                     MessageBox.Show("La operación seleccionada ya ha sido autorizada.", "Error.", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -128,13 +128,13 @@ namespace Vista
             else
             {
                 oOperacion = (Modelo_Entidades.Operacion) bsOperaciones.Current;
-                if (oOperacion.estado == "Finalizado")
+                if (oOperacion.Estado_Operacion.descripcion == "Finalizado")
                 {
                     oOperacion = (Modelo_Entidades.Operacion)bsOperaciones.Current;
                     DialogResult respuesta = MessageBox.Show("¿Está seguro de que desea cerrar la operación elegida?", "Confirmar Cerrado", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (respuesta == DialogResult.Yes)
                     {
-                        oOperacion.estado = "Cerrado";
+                        oOperacion.Estado_Operacion.descripcion = "Cerrado";
 
                         //datos auditoría
                         oOperacion.USU_CODIGO = oUsuarioActual.USU_CODIGO;
@@ -167,7 +167,7 @@ namespace Vista
             else
             {
                 oOperacion = (Modelo_Entidades.Operacion)bsOperaciones.Current;
-                if (oOperacion.estado == "Autorizado")
+                if (oOperacion.Estado_Operacion.descripcion == "Autorizado")
                 {
 
                     frmCargaDescarga.ObtenerInstancia(oUsuarioActual, oOperacion).Show();

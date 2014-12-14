@@ -39,7 +39,7 @@ namespace Vista_Web.Operaciones
                 txt_notas.Text = oOperacion.notas;
                 //esto era para establecer el nombre de la ventana
                 //this.Text = "Registrar " + oOperacion.tipo_operacion;
-                switch (oOperacion.tipo_operacion)
+                switch (oOperacion.Tipo_Operacion.descripcion)
                 {
                     case "Carga":
                         oOperacion.EstablecerEstrategia(new Modelo_Entidades.EstrategiaCarga());
@@ -63,7 +63,7 @@ namespace Vista_Web.Operaciones
                 lb_error.Text = "Debe ingresar el peso final";
                 return false;
             }
-            switch (oOperacion.tipo_operacion)
+            switch (oOperacion.Tipo_Operacion.descripcion)
             {
                 case "Descarga":
                     if (Convert.ToInt32(txt_pesofinal.Text) >= Convert.ToInt32(txt_pesoinicial.Text))
@@ -104,7 +104,7 @@ namespace Vista_Web.Operaciones
                 oOperacion.peso_inicial = Convert.ToSingle(txt_pesoinicial.Text);
                 oOperacion.peso_final = Convert.ToSingle(txt_pesofinal.Text);
                 oOperacion.notas = txt_notas.Text;
-                oOperacion.estado = "Finalizado";
+                oOperacion.Estado_Operacion.descripcion = "Finalizado";
 
                 //obtener datos de usuario
                 oUsuarioActual = (Modelo_Entidades.USUARIO)Session["sUsuario"];

@@ -283,21 +283,23 @@ namespace Modelo_Entidades
         /// <param name="estado">Valor inicial de la propiedad estado.</param>
         /// <param name="nro_chofer">Valor inicial de la propiedad nro_chofer.</param>
         /// <param name="nro_transporte">Valor inicial de la propiedad nro_transporte.</param>
+        /// <param name="tipo_operacion">Valor inicial de la propiedad tipo_operacion.</param>
         /// <param name="uSU_CODIGO">Valor inicial de la propiedad USU_CODIGO.</param>
         /// <param name="fecha_y_hora_accion">Valor inicial de la propiedad fecha_y_hora_accion.</param>
         /// <param name="accion">Valor inicial de la propiedad accion.</param>
-        /// <param name="cliente_nro_cliente">Valor inicial de la propiedad Cliente_nro_cliente.</param>
-        public static Operacion_Auditoria CreateOperacion_Auditoria(global::System.Int64 nro_operacion, global::System.String estado, global::System.Int32 nro_chofer, global::System.Int32 nro_transporte, global::System.String uSU_CODIGO, global::System.DateTime fecha_y_hora_accion, global::System.String accion, global::System.Int32 cliente_nro_cliente)
+        /// <param name="nro_cliente">Valor inicial de la propiedad nro_cliente.</param>
+        public static Operacion_Auditoria CreateOperacion_Auditoria(global::System.Int64 nro_operacion, global::System.Int32 estado, global::System.Int32 nro_chofer, global::System.Int32 nro_transporte, global::System.Int32 tipo_operacion, global::System.String uSU_CODIGO, global::System.DateTime fecha_y_hora_accion, global::System.String accion, global::System.Int32 nro_cliente)
         {
             Operacion_Auditoria operacion_Auditoria = new Operacion_Auditoria();
             operacion_Auditoria.nro_operacion = nro_operacion;
             operacion_Auditoria.estado = estado;
             operacion_Auditoria.nro_chofer = nro_chofer;
             operacion_Auditoria.nro_transporte = nro_transporte;
+            operacion_Auditoria.tipo_operacion = tipo_operacion;
             operacion_Auditoria.USU_CODIGO = uSU_CODIGO;
             operacion_Auditoria.fecha_y_hora_accion = fecha_y_hora_accion;
             operacion_Auditoria.accion = accion;
-            operacion_Auditoria.Cliente_nro_cliente = cliente_nro_cliente;
+            operacion_Auditoria.nro_cliente = nro_cliente;
             return operacion_Auditoria;
         }
 
@@ -337,7 +339,7 @@ namespace Modelo_Entidades
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String estado
+        public global::System.Int32 estado
         {
             get
             {
@@ -347,13 +349,13 @@ namespace Modelo_Entidades
             {
                 OnestadoChanging(value);
                 ReportPropertyChanging("estado");
-                _estado = StructuralObject.SetValidValue(value, false);
+                _estado = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("estado");
                 OnestadoChanged();
             }
         }
-        private global::System.String _estado;
-        partial void OnestadoChanging(global::System.String value);
+        private global::System.Int32 _estado;
+        partial void OnestadoChanging(global::System.Int32 value);
         partial void OnestadoChanged();
     
         /// <summary>
@@ -599,9 +601,9 @@ namespace Modelo_Entidades
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String tipo_operacion
+        public global::System.Int32 tipo_operacion
         {
             get
             {
@@ -611,13 +613,13 @@ namespace Modelo_Entidades
             {
                 Ontipo_operacionChanging(value);
                 ReportPropertyChanging("tipo_operacion");
-                _tipo_operacion = StructuralObject.SetValidValue(value, true);
+                _tipo_operacion = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("tipo_operacion");
                 Ontipo_operacionChanged();
             }
         }
-        private global::System.String _tipo_operacion;
-        partial void Ontipo_operacionChanging(global::System.String value);
+        private global::System.Int32 _tipo_operacion;
+        partial void Ontipo_operacionChanging(global::System.Int32 value);
         partial void Ontipo_operacionChanged();
     
         /// <summary>
@@ -703,24 +705,24 @@ namespace Modelo_Entidades
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 Cliente_nro_cliente
+        public global::System.Int32 nro_cliente
         {
             get
             {
-                return _Cliente_nro_cliente;
+                return _nro_cliente;
             }
             set
             {
-                OnCliente_nro_clienteChanging(value);
-                ReportPropertyChanging("Cliente_nro_cliente");
-                _Cliente_nro_cliente = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("Cliente_nro_cliente");
-                OnCliente_nro_clienteChanged();
+                Onnro_clienteChanging(value);
+                ReportPropertyChanging("nro_cliente");
+                _nro_cliente = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("nro_cliente");
+                Onnro_clienteChanged();
             }
         }
-        private global::System.Int32 _Cliente_nro_cliente;
-        partial void OnCliente_nro_clienteChanging(global::System.Int32 value);
-        partial void OnCliente_nro_clienteChanged();
+        private global::System.Int32 _nro_cliente;
+        partial void Onnro_clienteChanging(global::System.Int32 value);
+        partial void Onnro_clienteChanged();
 
         #endregion
 
