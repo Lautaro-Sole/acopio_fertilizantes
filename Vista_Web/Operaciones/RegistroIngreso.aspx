@@ -34,7 +34,7 @@
                                  </asp:DropDownList>
                             </div> 
                             <div id="Div3" runat="server" class="form-group">
-                                <label runat="server" for="cmb_numeromatricula">Número matricula</label>
+                                <label runat="server" for="cmb_numeromatricula">Número de matricula</label>
                                 <asp:TextBox ID="cmb_numeromatricula" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
                           <div id="Div5" runat="server" class="col-lg-8">
