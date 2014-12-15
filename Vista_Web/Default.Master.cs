@@ -52,62 +52,67 @@ namespace Vista_Web
         {
             if (!IsPostBack)
             {
-                user_menu.InnerText = oUsuario.USU_NOMBRE + oUsuario.USU_APELLIDO;
+                
+            }
+        }
+        
+        private void ArmarMenu()
+        {
+            user_menu.InnerText = oUsuario.USU_NOMBRE + oUsuario.USU_APELLIDO;
 
-                HtmlGenericControl SpanFlechaUser = new HtmlGenericControl("span");
+            HtmlGenericControl SpanFlechaUser = new HtmlGenericControl("span");
 
-                SpanFlechaUser.Attributes.Add("class", "caret");
-                user_menu.Controls.Add(SpanFlechaUser);
+            SpanFlechaUser.Attributes.Add("class", "caret");
+            user_menu.Controls.Add(SpanFlechaUser);
 
-                //MenuItem Menu_Modulo;
-                Control Menu_Formularios = FindControl("ulmenu");
+            //MenuItem Menu_Modulo;
+            Control Menu_Formularios = FindControl("ulmenu");
 
-                foreach (Modelo_Entidades.GRUPO oGrupoActual in oCCURPF.obtenerGruposUsuario(oUsuario))
+            foreach (Modelo_Entidades.GRUPO oGrupoActual in oCCURPF.obtenerGruposUsuario(oUsuario))
+            {
+                foreach (Modelo_Entidades.MODULO oModuloActual in oCCURPF.ObtenerModulosPorGrupo(oGrupoActual))
                 {
-                    foreach (Modelo_Entidades.MODULO oModuloActual in oCCURPF.ObtenerModulosPorGrupo(oGrupoActual))
+                    if (oListaModulos.Contains(oModuloActual) == false)
                     {
-                        if (oListaModulos.Contains(oModuloActual) == false)
-                        {
-                            HtmlGenericControl Formulario = new HtmlGenericControl("li");
-                            //Formulario.ID = oModulo.descripcion;
-                            //Formulario.InnerHtml = oModulo.descripcion;
-                            //Formulario.Attributes.Add("class", "dropdown");
-                            Menu_Formularios.Controls.Add(Formulario);
+                        HtmlGenericControl Formulario = new HtmlGenericControl("li");
+                        //Formulario.ID = oModulo.descripcion;
+                        //Formulario.InnerHtml = oModulo.descripcion;
+                        //Formulario.Attributes.Add("class", "dropdown");
+                        Menu_Formularios.Controls.Add(Formulario);
 
-                            HtmlGenericControl Link_Formularios = new HtmlGenericControl("a");
-                            //Link_Formularios.ID = "Link_Formularios";
-                            Link_Formularios.InnerHtml = oModuloActual.MOD_DESCRIPCION;
-                            Link_Formularios.Attributes.Add("class", "dropdown-toggle");
-                            Link_Formularios.Attributes.Add("href", "#");
-                            Link_Formularios.Attributes.Add("data-toggle", "dropdown");
-                            Formulario.Controls.Add(Link_Formularios);
+                        HtmlGenericControl Link_Formularios = new HtmlGenericControl("a");
+                        //Link_Formularios.ID = "Link_Formularios";
+                        Link_Formularios.InnerHtml = oModuloActual.MOD_DESCRIPCION;
+                        Link_Formularios.Attributes.Add("class", "dropdown-toggle");
+                        Link_Formularios.Attributes.Add("href", "#");
+                        Link_Formularios.Attributes.Add("data-toggle", "dropdown");
+                        Formulario.Controls.Add(Link_Formularios);
 
-                            HtmlGenericControl SpanFlecha = new HtmlGenericControl("span");
+                        HtmlGenericControl SpanFlecha = new HtmlGenericControl("span");
 
-                            SpanFlecha.Attributes.Add("class", "caret");
-                            Link_Formularios.Controls.Add(SpanFlecha);
+                        SpanFlecha.Attributes.Add("class", "caret");
+                        Link_Formularios.Controls.Add(SpanFlecha);
 
-                            HtmlGenericControl SubMenu_Formularios = new HtmlGenericControl("ul");
-                            SubMenu_Formularios.ID = "SubMenu_Formularios";
-                            //SubMenu_Formularios.InnerHtml = oFormulario.nombredemuestra;
-                            SubMenu_Formularios.Attributes.Add("class", "dropdown-menu");
-                            SubMenu_Formularios.Attributes.Add("role", "menu");
-                            Formulario.Controls.Add(SubMenu_Formularios);
+                        HtmlGenericControl SubMenu_Formularios = new HtmlGenericControl("ul");
+                        SubMenu_Formularios.ID = "SubMenu_Formularios";
+                        //SubMenu_Formularios.InnerHtml = oFormulario.nombredemuestra;
+                        SubMenu_Formularios.Attributes.Add("class", "dropdown-menu");
+                        SubMenu_Formularios.Attributes.Add("role", "menu");
+                        Formulario.Controls.Add(SubMenu_Formularios);
 
 
-                            // Inserto el objeto creado a la barra de menúes del formulario
-                            //msMenu.Items.Add(Menu_Modulo);
+                        // Inserto el objeto creado a la barra de menúes del formulario
+                        //msMenu.Items.Add(Menu_Modulo);
 
-                            // Busco las funciones asociadas al formulario
-                            oListaModulos.Add(oModuloActual);
-                            ArmarMenu(oGrupoActual, SubMenu_Formularios, oModuloActual);
-                        }
+                        // Busco las funciones asociadas al formulario
+                        oListaModulos.Add(oModuloActual);
+                        ArmarSubMenu(oGrupoActual, SubMenu_Formularios, oModuloActual);
                     }
                 }
             }
         }
-        // Armo los menues y submenues
-        private void ArmarMenu(Modelo_Entidades.GRUPO oGrupo, Control SubMenu_Formularios, Modelo_Entidades.MODULO oModulo)
+
+        private void ArmarSubMenu(Modelo_Entidades.GRUPO oGrupo, Control SubMenu_Formularios, Modelo_Entidades.MODULO oModulo)
         {
             // Le solicito a la controladora la lista de funciones de un módulo determinado.
             // Defino un objeto ToolStripMenuItem para asignar los permisos recuperados.
