@@ -52,7 +52,7 @@ namespace Vista_Web
         {
             if (!IsPostBack)
             {
-                
+                ArmarMenu();
             }
         }
         
