@@ -124,7 +124,7 @@ namespace Vista_Web.Botoneras
                                 }
                                 break;
 
-                            case "REGISTRAR CARGA O DESCARGA":
+                            case "REGISTRAR CARGA/DESCARGA":
                                 if (form == "frmOperaciones")
                                 {
                                     btn_eliminar.Enabled = true;

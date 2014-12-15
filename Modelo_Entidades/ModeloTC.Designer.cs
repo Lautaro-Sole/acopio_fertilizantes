@@ -30,11 +30,10 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("Acopio_FertilizantesModel", "FK_Operacion_Transporte", "CatTransportes", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Modelo_Entidades.Transporte), "CatOperaciones", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Modelo_Entidades.Operacion), true)]
 [assembly: EdmRelationshipAttribute("Acopio_FertilizantesModel", "Choferes_Transportes", "CatChoferes", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Modelo_Entidades.Chofer), "CatTransportes", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Modelo_Entidades.Transporte))]
 [assembly: EdmRelationshipAttribute("Acopio_FertilizantesModel", "Clientes_Choferes", "CatChoferes", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Modelo_Entidades.Chofer), "CatClientes", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Modelo_Entidades.Cliente))]
-[assembly: EdmRelationshipAttribute("Acopio_FertilizantesModel", "Cliente_Operacion", "Cliente", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Modelo_Entidades.Cliente), "Operacion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Modelo_Entidades.Operacion))]
 [assembly: EdmRelationshipAttribute("Acopio_FertilizantesModel", "FK_Cliente_Operacion", "Cliente", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Modelo_Entidades.Cliente), "Operacion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Modelo_Entidades.Operacion), true)]
-[assembly: EdmRelationshipAttribute("Acopio_FertilizantesModel", "FK_Estado_Operacion_Operacion", "CatEstados_Operacion", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Modelo_Entidades.CatEstados_Operacion), "Operacion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Modelo_Entidades.Operacion), true)]
-[assembly: EdmRelationshipAttribute("Acopio_FertilizantesModel", "FK_Tipo_Operacion_Operacion", "CatTipos_Operacion", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Modelo_Entidades.CatTipos_Operacion), "Operacion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Modelo_Entidades.Operacion), true)]
-[assembly: EdmRelationshipAttribute("Acopio_FertilizantesModel", "FK_Tipo_Matricula_Transporte", "CatTipos_Matricula", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Modelo_Entidades.CatTipos_Matricula), "Transporte", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Modelo_Entidades.Transporte), true)]
+[assembly: EdmRelationshipAttribute("Acopio_FertilizantesModel", "FK_Estado_Operacion_Operacion", "CatEstados_Operacion", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Modelo_Entidades.Estado_Operacion), "Operacion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Modelo_Entidades.Operacion), true)]
+[assembly: EdmRelationshipAttribute("Acopio_FertilizantesModel", "FK_Tipo_Operacion_Operacion", "CatTipos_Operacion", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Modelo_Entidades.Tipo_Operacion), "Operacion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Modelo_Entidades.Operacion), true)]
+[assembly: EdmRelationshipAttribute("Acopio_FertilizantesModel", "FK_Tipo_Matricula_Transporte", "CatTipos_Matricula", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Modelo_Entidades.Tipo_Matricula), "Transporte", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Modelo_Entidades.Transporte), true)]
 
 #endregion
 
@@ -249,50 +248,50 @@ namespace Modelo_Entidades
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        public ObjectSet<CatEstados_Operacion> CatEstados_Operacion
+        public ObjectSet<Estado_Operacion> CatEstados_Operacion
         {
             get
             {
                 if ((_CatEstados_Operacion == null))
                 {
-                    _CatEstados_Operacion = base.CreateObjectSet<CatEstados_Operacion>("CatEstados_Operacion");
+                    _CatEstados_Operacion = base.CreateObjectSet<Estado_Operacion>("CatEstados_Operacion");
                 }
                 return _CatEstados_Operacion;
             }
         }
-        private ObjectSet<CatEstados_Operacion> _CatEstados_Operacion;
+        private ObjectSet<Estado_Operacion> _CatEstados_Operacion;
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        public ObjectSet<CatTipos_Matricula> CatTipos_Matricula
+        public ObjectSet<Tipo_Matricula> CatTipos_Matricula
         {
             get
             {
                 if ((_CatTipos_Matricula == null))
                 {
-                    _CatTipos_Matricula = base.CreateObjectSet<CatTipos_Matricula>("CatTipos_Matricula");
+                    _CatTipos_Matricula = base.CreateObjectSet<Tipo_Matricula>("CatTipos_Matricula");
                 }
                 return _CatTipos_Matricula;
             }
         }
-        private ObjectSet<CatTipos_Matricula> _CatTipos_Matricula;
+        private ObjectSet<Tipo_Matricula> _CatTipos_Matricula;
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        public ObjectSet<CatTipos_Operacion> CatTipos_Operacion
+        public ObjectSet<Tipo_Operacion> CatTipos_Operacion
         {
             get
             {
                 if ((_CatTipos_Operacion == null))
                 {
-                    _CatTipos_Operacion = base.CreateObjectSet<CatTipos_Operacion>("CatTipos_Operacion");
+                    _CatTipos_Operacion = base.CreateObjectSet<Tipo_Operacion>("CatTipos_Operacion");
                 }
                 return _CatTipos_Operacion;
             }
         }
-        private ObjectSet<CatTipos_Operacion> _CatTipos_Operacion;
+        private ObjectSet<Tipo_Operacion> _CatTipos_Operacion;
 
         #endregion
 
@@ -381,7 +380,7 @@ namespace Modelo_Entidades
         /// <summary>
         /// Método desusado para agregar un nuevo objeto al EntitySet CatEstados_Operacion. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
         /// </summary>
-        public void AddToCatEstados_Operacion(CatEstados_Operacion catEstados_Operacion)
+        public void AddToCatEstados_Operacion(Estado_Operacion catEstados_Operacion)
         {
             base.AddObject("CatEstados_Operacion", catEstados_Operacion);
         }
@@ -389,7 +388,7 @@ namespace Modelo_Entidades
         /// <summary>
         /// Método desusado para agregar un nuevo objeto al EntitySet CatTipos_Matricula. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
         /// </summary>
-        public void AddToCatTipos_Matricula(CatTipos_Matricula catTipos_Matricula)
+        public void AddToCatTipos_Matricula(Tipo_Matricula catTipos_Matricula)
         {
             base.AddObject("CatTipos_Matricula", catTipos_Matricula);
         }
@@ -397,7 +396,7 @@ namespace Modelo_Entidades
         /// <summary>
         /// Método desusado para agregar un nuevo objeto al EntitySet CatTipos_Operacion. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
         /// </summary>
-        public void AddToCatTipos_Operacion(CatTipos_Operacion catTipos_Operacion)
+        public void AddToCatTipos_Operacion(Tipo_Operacion catTipos_Operacion)
         {
             base.AddObject("CatTipos_Operacion", catTipos_Operacion);
         }
@@ -1114,7 +1113,7 @@ namespace Modelo_Entidades
     [EdmEntityTypeAttribute(NamespaceName="Acopio_FertilizantesModel", Name="CatEstados_Operacion")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class CatEstados_Operacion : EntityObject
+    public partial class Estado_Operacion : EntityObject
     {
         #region Método de generador
     
@@ -1123,9 +1122,9 @@ namespace Modelo_Entidades
         /// </summary>
         /// <param name="id_estado_operacion">Valor inicial de la propiedad id_estado_operacion.</param>
         /// <param name="descripcion">Valor inicial de la propiedad descripcion.</param>
-        public static CatEstados_Operacion CreateCatEstados_Operacion(global::System.Int32 id_estado_operacion, global::System.String descripcion)
+        public static Estado_Operacion CreateCatEstados_Operacion(global::System.Int32 id_estado_operacion, global::System.String descripcion)
         {
-            CatEstados_Operacion catEstados_Operacion = new CatEstados_Operacion();
+            Estado_Operacion catEstados_Operacion = new Estado_Operacion();
             catEstados_Operacion.id_estado_operacion = id_estado_operacion;
             catEstados_Operacion.descripcion = descripcion;
             return catEstados_Operacion;
@@ -1223,7 +1222,7 @@ namespace Modelo_Entidades
     [EdmEntityTypeAttribute(NamespaceName="Acopio_FertilizantesModel", Name="CatTipos_Matricula")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class CatTipos_Matricula : EntityObject
+    public partial class Tipo_Matricula : EntityObject
     {
         #region Método de generador
     
@@ -1232,9 +1231,9 @@ namespace Modelo_Entidades
         /// </summary>
         /// <param name="id_tipo_matricula">Valor inicial de la propiedad id_tipo_matricula.</param>
         /// <param name="descripcion">Valor inicial de la propiedad descripcion.</param>
-        public static CatTipos_Matricula CreateCatTipos_Matricula(global::System.Int32 id_tipo_matricula, global::System.String descripcion)
+        public static Tipo_Matricula CreateCatTipos_Matricula(global::System.Int32 id_tipo_matricula, global::System.String descripcion)
         {
-            CatTipos_Matricula catTipos_Matricula = new CatTipos_Matricula();
+            Tipo_Matricula catTipos_Matricula = new Tipo_Matricula();
             catTipos_Matricula.id_tipo_matricula = id_tipo_matricula;
             catTipos_Matricula.descripcion = descripcion;
             return catTipos_Matricula;
@@ -1332,7 +1331,7 @@ namespace Modelo_Entidades
     [EdmEntityTypeAttribute(NamespaceName="Acopio_FertilizantesModel", Name="CatTipos_Operacion")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class CatTipos_Operacion : EntityObject
+    public partial class Tipo_Operacion : EntityObject
     {
         #region Método de generador
     
@@ -1341,9 +1340,9 @@ namespace Modelo_Entidades
         /// </summary>
         /// <param name="id_tipo_operacion">Valor inicial de la propiedad id_tipo_operacion.</param>
         /// <param name="descripcion">Valor inicial de la propiedad descripcion.</param>
-        public static CatTipos_Operacion CreateCatTipos_Operacion(global::System.Int32 id_tipo_operacion, global::System.String descripcion)
+        public static Tipo_Operacion CreateCatTipos_Operacion(global::System.Int32 id_tipo_operacion, global::System.String descripcion)
         {
-            CatTipos_Operacion catTipos_Operacion = new CatTipos_Operacion();
+            Tipo_Operacion catTipos_Operacion = new Tipo_Operacion();
             catTipos_Operacion.id_tipo_operacion = id_tipo_operacion;
             catTipos_Operacion.descripcion = descripcion;
             return catTipos_Operacion;
@@ -2735,15 +2734,15 @@ namespace Modelo_Entidades
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Acopio_FertilizantesModel", "FK_Estado_Operacion_Operacion", "CatEstados_Operacion")]
-        public CatEstados_Operacion Estado_Operacion
+        public Estado_Operacion Estado_Operacion
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<CatEstados_Operacion>("Acopio_FertilizantesModel.FK_Estado_Operacion_Operacion", "CatEstados_Operacion").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Estado_Operacion>("Acopio_FertilizantesModel.FK_Estado_Operacion_Operacion", "CatEstados_Operacion").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<CatEstados_Operacion>("Acopio_FertilizantesModel.FK_Estado_Operacion_Operacion", "CatEstados_Operacion").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Estado_Operacion>("Acopio_FertilizantesModel.FK_Estado_Operacion_Operacion", "CatEstados_Operacion").Value = value;
             }
         }
         /// <summary>
@@ -2751,17 +2750,17 @@ namespace Modelo_Entidades
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<CatEstados_Operacion> Estado_OperacionReference
+        public EntityReference<Estado_Operacion> Estado_OperacionReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<CatEstados_Operacion>("Acopio_FertilizantesModel.FK_Estado_Operacion_Operacion", "CatEstados_Operacion");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Estado_Operacion>("Acopio_FertilizantesModel.FK_Estado_Operacion_Operacion", "CatEstados_Operacion");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<CatEstados_Operacion>("Acopio_FertilizantesModel.FK_Estado_Operacion_Operacion", "CatEstados_Operacion", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Estado_Operacion>("Acopio_FertilizantesModel.FK_Estado_Operacion_Operacion", "CatEstados_Operacion", value);
                 }
             }
         }
@@ -2773,15 +2772,15 @@ namespace Modelo_Entidades
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Acopio_FertilizantesModel", "FK_Tipo_Operacion_Operacion", "CatTipos_Operacion")]
-        public CatTipos_Operacion Tipo_Operacion
+        public Tipo_Operacion Tipo_Operacion
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<CatTipos_Operacion>("Acopio_FertilizantesModel.FK_Tipo_Operacion_Operacion", "CatTipos_Operacion").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Tipo_Operacion>("Acopio_FertilizantesModel.FK_Tipo_Operacion_Operacion", "CatTipos_Operacion").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<CatTipos_Operacion>("Acopio_FertilizantesModel.FK_Tipo_Operacion_Operacion", "CatTipos_Operacion").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Tipo_Operacion>("Acopio_FertilizantesModel.FK_Tipo_Operacion_Operacion", "CatTipos_Operacion").Value = value;
             }
         }
         /// <summary>
@@ -2789,17 +2788,17 @@ namespace Modelo_Entidades
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<CatTipos_Operacion> Tipo_OperacionReference
+        public EntityReference<Tipo_Operacion> Tipo_OperacionReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<CatTipos_Operacion>("Acopio_FertilizantesModel.FK_Tipo_Operacion_Operacion", "CatTipos_Operacion");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Tipo_Operacion>("Acopio_FertilizantesModel.FK_Tipo_Operacion_Operacion", "CatTipos_Operacion");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<CatTipos_Operacion>("Acopio_FertilizantesModel.FK_Tipo_Operacion_Operacion", "CatTipos_Operacion", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Tipo_Operacion>("Acopio_FertilizantesModel.FK_Tipo_Operacion_Operacion", "CatTipos_Operacion", value);
                 }
             }
         }
@@ -3304,15 +3303,15 @@ namespace Modelo_Entidades
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Acopio_FertilizantesModel", "FK_Tipo_Matricula_Transporte", "CatTipos_Matricula")]
-        public CatTipos_Matricula Tipo_Matricula
+        public Tipo_Matricula Tipo_Matricula
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<CatTipos_Matricula>("Acopio_FertilizantesModel.FK_Tipo_Matricula_Transporte", "CatTipos_Matricula").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Tipo_Matricula>("Acopio_FertilizantesModel.FK_Tipo_Matricula_Transporte", "CatTipos_Matricula").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<CatTipos_Matricula>("Acopio_FertilizantesModel.FK_Tipo_Matricula_Transporte", "CatTipos_Matricula").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Tipo_Matricula>("Acopio_FertilizantesModel.FK_Tipo_Matricula_Transporte", "CatTipos_Matricula").Value = value;
             }
         }
         /// <summary>
@@ -3320,17 +3319,17 @@ namespace Modelo_Entidades
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<CatTipos_Matricula> Tipo_MatriculaReference
+        public EntityReference<Tipo_Matricula> Tipo_MatriculaReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<CatTipos_Matricula>("Acopio_FertilizantesModel.FK_Tipo_Matricula_Transporte", "CatTipos_Matricula");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Tipo_Matricula>("Acopio_FertilizantesModel.FK_Tipo_Matricula_Transporte", "CatTipos_Matricula");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<CatTipos_Matricula>("Acopio_FertilizantesModel.FK_Tipo_Matricula_Transporte", "CatTipos_Matricula", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Tipo_Matricula>("Acopio_FertilizantesModel.FK_Tipo_Matricula_Transporte", "CatTipos_Matricula", value);
                 }
             }
         }

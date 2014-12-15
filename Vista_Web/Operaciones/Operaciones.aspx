@@ -49,6 +49,11 @@
                               <asp:TextBox ID="txt_nombrechofer" runat="server" CssClass="form-control"></asp:TextBox>
                          </div>
 
+                        <div runat="server" class="alert alert-warning" role="alert" visible="false" id="message">
+                            <button runat="server" type="button" class="close" data-dismiss="alert"><span runat="server" aria-hidden="true">&times;</span><span runat="server" class="sr-only">Cerrar</span></button>
+                            <asp:Label ID="lb_error" runat="server" Text="Mensaje"></asp:Label>
+                        </div>
+
                          <div id="Div7" runat="server" class="col-lg-8">
                               <label runat="server"> Operaciones </label>
                             <div style="height: 300px; overflow: auto;" class="form-group">
@@ -57,18 +62,44 @@
                                 </asp:GridView>
                             </div>
                          </div>
-                        <!--
-                        <div runat="server" class="form-group">
+                        
+<%--                        <div runat="server" class="form-group">
                             <asp:Button ID="btn_autorizarcierreoperacion" runat="server" OnClick="btn_autorizarcierreoperacion_Click" CssClass="btn btn-default pull-right margin-left-5" Text="Autorizar cierre de operación" />
                             <asp:Button ID="btn_registrarcargadescarga" runat="server" OnClick="btn_registrarcargadescarga_Click" CssClass="btn btn-default pull-right margin-left-5" Text="Registrar carga o descarga" />
                             <asp:Button ID="btn_autorizaroperacion" runat="server" OnClick="btn_autorizaroperacion_Click" CssClass="btn btn-success pull-right" Text="Autorizar operación" /> 
                         </div>
-                        -->
+                        --%>
                         <div id="Div8" runat="server" class="form-group">
-                            <uc1:Botonera1 ID="botonera1" runat="server" OnClick_Alta="Click_Autorizar_Operacion" OnClick_Baja="Click_Registrar_CargaDescarga" OnClick_Cerrar="botonera1_Click_Cerrar" OnClick_Consulta="botonera1_Click_Consulta" OnClick_Modificacion="Click_Autorizar_Cierre" />
+                            <uc1:Botonera1 ID="botonera1" runat="server" OnClick_Alta="botonera1_Click_Alta" OnClick_Baja="botonera1_Click_Baja" OnClick_Cerrar="botonera1_Click_Cerrar" OnClick_Consulta="botonera1_Click_Consulta" OnClick_Modificacion="botonera1_Click_Modificacion" />
                         </div>
                      </div>
                     </div>
         </ContentTemplate>
       </asp:UpdatePanel>
+</asp:Content>
+
+
+<asp:Content ID="Content3" ContentPlaceHolderID="Contenido_Especial" runat="server">
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+        <ContentTemplate>
+            <%--Modal--%>
+            <div class="modal fade" id="modal_cerrar" tabindex="-1" role="dialog" aria-labelledby="Autorizar Cierre" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button id="btn_cerrar_modal" runat="server" type="button" class="close" data-dismiss="modal_detalle_titulo"><span id="Span1" runat="server" aria-hidden="true">&times;</span><span id="Span2" runat="server" class="sr-only">Cerrar</span></button>
+                            <h4 class="modal-title">Inhabilitar usuario</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>¿Está seguro que desea inhabilitar al usuario?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <asp:Button ID="btn_cancelar_modal" data-dismiss="modal_eliminar" runat="server" Text="Cancelar" class="btn btn-default" OnClick="btn_cancelar_modal_Click" />
+                            <asp:Button ID="btn_cerrar_operacion_modal" runat="server" Text="Eliminar" class="btn btn-danger" OnClick="btn_cerrar_operacion_modal_Click" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ContentTemplate>
+    </asp:UpdatePanel>
 </asp:Content>

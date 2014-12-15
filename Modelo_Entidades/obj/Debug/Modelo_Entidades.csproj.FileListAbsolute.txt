@@ -18,6 +18,6 @@ G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Modelo_E
 G:\Usuarios\Lautaro\Documentos\acopio_fertilizantes_equipo\Modelo_Entidades\bin\Debug\Modelo_Entidades.dll.config
 G:\Usuarios\Lautaro\Documentos\acopio_fertilizantes_equipo\Modelo_Entidades\bin\Debug\Modelo_Entidades.dll
 G:\Usuarios\Lautaro\Documentos\acopio_fertilizantes_equipo\Modelo_Entidades\bin\Debug\Modelo_Entidades.pdb
+G:\Usuarios\Lautaro\Documentos\acopio_fertilizantes_equipo\Modelo_Entidades\obj\Debug\Modelo_Entidades.csprojResolveAssemblyReference.cache
 G:\Usuarios\Lautaro\Documentos\acopio_fertilizantes_equipo\Modelo_Entidades\obj\Debug\Modelo_Entidades.dll
 G:\Usuarios\Lautaro\Documentos\acopio_fertilizantes_equipo\Modelo_Entidades\obj\Debug\Modelo_Entidades.pdb
-G:\Usuarios\Lautaro\Documentos\acopio_fertilizantes_equipo\Modelo_Entidades\obj\Debug\Modelo_Entidades.csprojResolveAssemblyReference.cache

@@ -121,7 +121,7 @@ namespace Vista
                 if (this.cbPermiso.Text == "Si")
                     oOperacion.Estado_Operacion.descripcion = "Ingresa";
                 else oOperacion.Estado_Operacion.descripcion = "Rechazado";
-                oOperacion.tipo_operacion = this.cbTipoOperacion.Text;
+                oOperacion.tipo_operacion = this.cbTipoOperacion.SelectedIndex;
                 oOperacion.notas = this.tbNotas.Text;
                 oOperacion.fecha_y_hora_inicio = DateTime.Now;
                 oOperacion.Transporte = oTransporte;

@@ -55,10 +55,6 @@
       <End Role="CatChoferes" EntitySet="CatChoferes" />
       <End Role="CatClientes" EntitySet="CatClientes" />
     </AssociationSet>
-    <AssociationSet Name="Clientes_Operaciones" Association="Acopio_FertilizantesModel.Cliente_Operacion">
-      <End Role="Cliente" EntitySet="CatClientes" />
-      <End Role="Operacion" EntitySet="CatOperaciones" />
-    </AssociationSet>
     <EntitySet Name="CatEstados_Operacion" EntityType="Acopio_FertilizantesModel.CatEstados_Operacion" />
     <EntitySet Name="CatTipos_Matricula" EntityType="Acopio_FertilizantesModel.CatTipos_Matricula" />
     <EntitySet Name="CatTipos_Operacion" EntityType="Acopio_FertilizantesModel.CatTipos_Operacion" />
@@ -333,10 +329,6 @@
   <Association Name="Clientes_Choferes">
     <End Role="CatChoferes" Type="Acopio_FertilizantesModel.Chofer" Multiplicity="*" />
     <End Role="CatClientes" Type="Acopio_FertilizantesModel.Cliente" Multiplicity="*" />
-  </Association>
-  <Association Name="Cliente_Operacion">
-    <End Type="Acopio_FertilizantesModel.Cliente" Role="Cliente" Multiplicity="1" />
-    <End Type="Acopio_FertilizantesModel.Operacion" Role="Operacion" Multiplicity="*" />
   </Association>
   <EntityType Name="CatEstados_Operacion">
     <Key>

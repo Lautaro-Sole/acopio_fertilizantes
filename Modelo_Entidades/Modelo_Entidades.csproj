@@ -95,6 +95,8 @@
     <None Include="Properties\DataSources\ModeloTCContainer.datasource" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Datos Base Acopio_Fertilizantes.sql" />
+    <Content Include="Datos Base Seguridad.sql" />
     <Content Include="ModeloSeguridad.edmx.sql" />
     <Content Include="ModeloTC.edmx.sql" />
     <Content Include="Modelo_Auditoria.edmx.sql" />

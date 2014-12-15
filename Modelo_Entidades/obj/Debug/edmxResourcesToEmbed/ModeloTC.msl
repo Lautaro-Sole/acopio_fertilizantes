@@ -135,14 +135,6 @@
         <ScalarProperty Name="nro_cliente" ColumnName="Clientes_nro_cliente" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="Clientes_Operaciones" TypeName="Acopio_FertilizantesModel.Cliente_Operacion" StoreEntitySet="CatOperaciones">
-      <EndProperty Name="Cliente">
-        <ScalarProperty Name="nro_cliente" ColumnName="nro_cliente" />
-      </EndProperty>
-      <EndProperty Name="Operacion">
-        <ScalarProperty Name="nro_operacion" ColumnName="nro_operacion" />
-      </EndProperty>
-    </AssociationSetMapping>
     <EntitySetMapping Name="CatEstados_Operacion">
       <EntityTypeMapping TypeName="Acopio_FertilizantesModel.CatEstados_Operacion">
         <MappingFragment StoreEntitySet="CatEstados_Operacion">

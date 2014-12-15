@@ -40,7 +40,7 @@ namespace Vista
             if (Modo == "Modificacion")
             {
                 //bsChoferes.Current = oTransporte.Chofer;//seleccionar el chofer en el dgv
-                this.cbTipoMatricula.Text = oTransporte.tipo_matricula;
+                this.cbTipoMatricula.Text = oTransporte.Tipo_Matricula.descripcion;
                 this.tbNumMatricula.Text = oTransporte.nro_matricula;
                 this.msktbTara.Text = Convert.ToString(oTransporte.tara);
                 this.msktbCargaMaxima.Text = oTransporte.carga_maxima.ToString();
@@ -94,7 +94,7 @@ namespace Vista
                 {
                     oTransporte = new Modelo_Entidades.Transporte();
                     oChofer = (Modelo_Entidades.Chofer)bsChoferes.Current;
-                    oTransporte.tipo_matricula = this.cbTipoMatricula.Text;
+                    oTransporte.tipo_matricula = this.cbTipoMatricula.SelectedIndex;
                     oTransporte.nro_matricula = this.tbNumMatricula.Text;
                     oTransporte.tara = Convert.ToDouble(this.msktbTara.Text);
                     oTransporte.carga_maxima = Convert.ToDouble(this.msktbCargaMaxima);
@@ -135,7 +135,7 @@ namespace Vista
                 if (ValidarObligatorios())
                 {
                     oChofer = (Modelo_Entidades.Chofer)bsChoferes.Current;
-                    oTransporte.tipo_matricula = this.cbTipoMatricula.Text;
+                    oTransporte.tipo_matricula = this.cbTipoMatricula.SelectedIndex;
                     oTransporte.nro_matricula = this.tbNumMatricula.Text;
                     oTransporte.Choferes.Clear();
                     oTransporte.tara = Convert.ToDouble(this.msktbTara.Text);

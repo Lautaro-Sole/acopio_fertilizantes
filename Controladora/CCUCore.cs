@@ -535,5 +535,20 @@ namespace Controladora
             oOperacion.ActualizarAlquiler();
         }
         #endregion
+
+        public List<Modelo_Entidades.Tipo_Matricula> ObtenerTiposMatricula()
+        {
+            return Modelo_Entidades.Acopio_FertilizantesEntities.ObtenerInstancia().CatTipos_Matricula.ToList();
+        }
+
+        public List<Modelo_Entidades.Tipo_Operacion> ObtenerTiposOperacion()
+        {
+            return Modelo_Entidades.Acopio_FertilizantesEntities.ObtenerInstancia().CatTipos_Operacion.ToList();
+        }
+
+        public List<Modelo_Entidades.Estado_Operacion> ObtenerEstadosOperacion()
+        {
+            return Modelo_Entidades.Acopio_FertilizantesEntities.ObtenerInstancia().CatEstados_Operacion.ToList();
+        }
     }
 }

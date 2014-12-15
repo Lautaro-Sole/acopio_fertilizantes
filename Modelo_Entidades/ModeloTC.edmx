@@ -502,10 +502,6 @@
             <End Role="CatChoferes" EntitySet="CatChoferes" />
             <End Role="CatClientes" EntitySet="CatClientes" />
           </AssociationSet>
-          <AssociationSet Name="Clientes_Operaciones" Association="Acopio_FertilizantesModel.Cliente_Operacion">
-            <End Role="Cliente" EntitySet="CatClientes" />
-            <End Role="Operacion" EntitySet="CatOperaciones" />
-          </AssociationSet>
           <EntitySet Name="CatEstados_Operacion" EntityType="Acopio_FertilizantesModel.CatEstados_Operacion" />
           <EntitySet Name="CatTipos_Matricula" EntityType="Acopio_FertilizantesModel.CatTipos_Matricula" />
           <EntitySet Name="CatTipos_Operacion" EntityType="Acopio_FertilizantesModel.CatTipos_Operacion" />
@@ -781,10 +777,6 @@
           <End Role="CatChoferes" Type="Acopio_FertilizantesModel.Chofer" Multiplicity="*" />
           <End Role="CatClientes" Type="Acopio_FertilizantesModel.Cliente" Multiplicity="*" />
         </Association>
-        <Association Name="Cliente_Operacion">
-          <End Type="Acopio_FertilizantesModel.Cliente" Role="Cliente" Multiplicity="1" />
-          <End Type="Acopio_FertilizantesModel.Operacion" Role="Operacion" Multiplicity="*" />
-        </Association>
         <EntityType Name="CatEstados_Operacion">
           <Key>
             <PropertyRef Name="id_estado_operacion" />
@@ -997,14 +989,6 @@
         <ScalarProperty Name="nro_cliente" ColumnName="Clientes_nro_cliente" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="Clientes_Operaciones" TypeName="Acopio_FertilizantesModel.Cliente_Operacion" StoreEntitySet="CatOperaciones">
-      <EndProperty Name="Cliente">
-              <ScalarProperty Name="nro_cliente" ColumnName="nro_cliente" />
-            </EndProperty>
-            <EndProperty Name="Operacion">
-        <ScalarProperty Name="nro_operacion" ColumnName="nro_operacion" />
-      </EndProperty>
-    </AssociationSetMapping>
           <EntitySetMapping Name="CatEstados_Operacion">
             <EntityTypeMapping TypeName="Acopio_FertilizantesModel.CatEstados_Operacion">
               <MappingFragment StoreEntitySet="CatEstados_Operacion">
@@ -1122,11 +1106,6 @@
         <AssociationConnector Association="Acopio_FertilizantesModel.Clientes_Choferes" ManuallyRouted="false">
           <ConnectorPoint PointX="2.25" PointY="6.8074446614583337" />
           <ConnectorPoint PointX="3" PointY="6.8074446614583337" />
-        </AssociationConnector>
-        <AssociationConnector Association="Acopio_FertilizantesModel.Cliente_Operacion">
-          <ConnectorPoint PointX="4.03125" PointY="7.2398893229166665" />
-          <ConnectorPoint PointX="4.03125" PointY="8.85436992749531" />
-          <ConnectorPoint PointX="7.5" PointY="8.85436992749531" />
         </AssociationConnector>
         <EntityTypeShape EntityType="Acopio_FertilizantesModel.CatEstados_Operacion" Width="1.5" PointX="5.625" PointY="13" />
         <EntityTypeShape EntityType="Acopio_FertilizantesModel.CatTipos_Matricula" Width="1.5" PointX="7.75" PointY="2.75" />

@@ -19,10 +19,10 @@ G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Controla
 G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Controladora\obj\Debug\Controladora.csprojResolveAssemblyReference.cache
 G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Controladora\obj\Debug\Controladora.dll
 G:\Documentos\Visual Studio 2010\Projects\TC_Mantelli_Sole Con Strategy\Controladora\obj\Debug\Controladora.pdb
-G:\Usuarios\Lautaro\Documentos\acopio_fertilizantes_equipo\Controladora\obj\Debug\Controladora.csprojResolveAssemblyReference.cache
 G:\Usuarios\Lautaro\Documentos\acopio_fertilizantes_equipo\Controladora\bin\Debug\Controladora.dll
 G:\Usuarios\Lautaro\Documentos\acopio_fertilizantes_equipo\Controladora\bin\Debug\Controladora.pdb
 G:\Usuarios\Lautaro\Documentos\acopio_fertilizantes_equipo\Controladora\bin\Debug\Modelo_Entidades.dll
 G:\Usuarios\Lautaro\Documentos\acopio_fertilizantes_equipo\Controladora\bin\Debug\Modelo_Entidades.pdb
+G:\Usuarios\Lautaro\Documentos\acopio_fertilizantes_equipo\Controladora\obj\Debug\Controladora.csprojResolveAssemblyReference.cache
 G:\Usuarios\Lautaro\Documentos\acopio_fertilizantes_equipo\Controladora\obj\Debug\Controladora.dll
 G:\Usuarios\Lautaro\Documentos\acopio_fertilizantes_equipo\Controladora\obj\Debug\Controladora.pdb
