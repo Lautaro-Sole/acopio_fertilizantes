@@ -98,7 +98,6 @@
     <Content Include="JS\bootstrap.min.js" />
     <Content Include="JS\custom.js" />
     <Content Include="JS\jquery-1.11.1.min.js" />
-    <Content Include="Operaciones\AgregarDocumento.aspx" />
     <Content Include="Operaciones\AutorizarCierre.aspx" />
     <Content Include="Operaciones\AutorizarOperacion.aspx" />
     <Content Include="Operaciones\Operaciones.aspx" />
@@ -131,13 +130,6 @@
     </Compile>
     <Compile Include="Default.Master.designer.cs">
       <DependentUpon>Default.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Operaciones\AgregarDocumento.aspx.cs">
-      <DependentUpon>AgregarDocumento.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Operaciones\AgregarDocumento.aspx.designer.cs">
-      <DependentUpon>AgregarDocumento.aspx</DependentUpon>
     </Compile>
     <Compile Include="Operaciones\AutorizarCierre.aspx.cs">
       <DependentUpon>AutorizarCierre.aspx</DependentUpon>

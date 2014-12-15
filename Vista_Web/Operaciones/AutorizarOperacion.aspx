@@ -19,13 +19,13 @@
                             <h1>Autorizar operación  <small title="Autorizar operación"> Módulo de Operaciones</small></h1>
                         </div>
                           <ul id="myTab" class="nav nav-tabs" role="tablist">
-                            <li class="active"><a href="#datos" role="tab" data-toggle="tab">Alquiler</a></li>
-                            <li class=""><a href="#grupos" role="tab" data-toggle="tab">Documento</a></li>
+                            <li class="active"><a href="#alquiler" role="tab" data-toggle="tab">Alquiler</a></li>
+                            <li class=""><a href="#documento" role="tab" data-toggle="tab">Documento</a></li>
                             
                         </ul>
 
-                         <div id="myTabContent" class="tab-content small-panel">
-                            <div class="tab-pane fade active in" id="datos">
+                        <div id="myTabContent" class="tab-content small-panel">
+                            <div class="tab-pane fade active in" id="alquiler">
                                 <div class="form-horizontal" role="form">
                                     <div class="form-group">
                                         <label for="txt_nombrecliente" class="control-label">Nombre del cliente</label>
@@ -59,7 +59,34 @@
                                         <asp:Button ID="btn_autorizar" runat="server" OnClick="btn_autorizar_Click" CssClass="btn btn-success pull-right" Text="Autorizar" />
                                     </div>
                                 </div>
-                             </div>
+                            <div class="tab-pane fade active in" id="documento">
+                                <div class="form-horizontal" role="form">
+                                    <div class="form-group">
+                                        <label for="txt_numerodocumento" class="control-label">Número de documento</label>
+                                        <div class="col-sm-8">
+                                            <asp:TextBox ID="txt_numerodocumento" runat="server" CssClass="form-control"></asp:TextBox>
+                                        </div>
+                                        <label for="cmb_tipofertilizante" class="control-label">Tipo de fertilizante</label>
+                                        <div class="col-sm-8">
+                                             <asp:DropDownList ID="cmb_tipofertilizante" runat="server" class="form-control">
+                                            </asp:DropDownList>
+                                        </div>
+                                         <label for="txt_cantidadenkg" class="control-label">Cantidad (en KG)</label>
+                                         <div class="col-sm-8">
+                                              <asp:TextBox ID="txt_cantidadenkg" runat="server" CssClass="form-control"></asp:TextBox>
+                                         </div>
+                                         <label for="txtfecha" class="control-label">G)</label>
+                                         <div class="col-sm-8">
+                                              <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control"></asp:TextBox>
+                                         </div>
+                                   </div>
+                            </div>
+                            
+                            
+                                    
+                                </div>
+                        </div>
+
                     </div>
                  </div>
 </ContentTemplate>

@@ -26,3 +26,10 @@ G:\Usuarios\Lautaro\Documentos\acopio_fertilizantes_equipo\Controladora\bin\Debu
 G:\Usuarios\Lautaro\Documentos\acopio_fertilizantes_equipo\Controladora\obj\Debug\Controladora.csprojResolveAssemblyReference.cache
 G:\Usuarios\Lautaro\Documentos\acopio_fertilizantes_equipo\Controladora\obj\Debug\Controladora.dll
 G:\Usuarios\Lautaro\Documentos\acopio_fertilizantes_equipo\Controladora\obj\Debug\Controladora.pdb
+C:\Users\belen\Documents\acopio_fertilizantes\Controladora\bin\Debug\Controladora.dll
+C:\Users\belen\Documents\acopio_fertilizantes\Controladora\bin\Debug\Controladora.pdb
+C:\Users\belen\Documents\acopio_fertilizantes\Controladora\bin\Debug\Modelo_Entidades.dll
+C:\Users\belen\Documents\acopio_fertilizantes\Controladora\bin\Debug\Modelo_Entidades.pdb
+C:\Users\belen\Documents\acopio_fertilizantes\Controladora\obj\Debug\Controladora.csprojResolveAssemblyReference.cache
+C:\Users\belen\Documents\acopio_fertilizantes\Controladora\obj\Debug\Controladora.dll
+C:\Users\belen\Documents\acopio_fertilizantes\Controladora\obj\Debug\Controladora.pdb
