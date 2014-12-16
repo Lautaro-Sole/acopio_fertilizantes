@@ -166,6 +166,33 @@ namespace Vista_Web.Operaciones {
         protected global::System.Web.UI.WebControls.TextBox txt_nombrechofer;
         
         /// <summary>
+        /// Control Div9.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div9;
+        
+        /// <summary>
+        /// Control btn_filtrar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_filtrar;
+        
+        /// <summary>
+        /// Control btn_nuevabusqueda.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_nuevabusqueda;
+        
+        /// <summary>
         /// Control message.
         /// </summary>
         /// <remarks>

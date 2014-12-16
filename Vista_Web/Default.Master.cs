@@ -15,6 +15,7 @@ namespace Vista_Web
         Controladora.CCUGPerfiles oCCUGPerfiles;
         Controladora.CCUGUsuarios oCCUGUsuarios;
         Controladora.CCURPF oCCURPF;
+        Controladora.FachadaModuloSeguridad oFachada;
 
         List<Modelo_Entidades.MODULO> oListaModulos;
         List<Modelo_Entidades.FORMULARIO> oListaFormularios;
@@ -28,24 +29,15 @@ namespace Vista_Web
                 Response.Redirect("~/Seguridad/Login.aspx");
             }
 
-
-            //Instancio a las controladoras del modulo
-            oCCUGPerfiles = new Controladora.CCUGPerfiles();
-            oCCUGUsuarios = new Controladora.CCUGUsuarios();
-            oCCURPF = new Controladora.CCURPF();
+            oCCUGPerfiles = Controladora.CCUGPerfiles.ObtenerInstancia();
+            oCCUGUsuarios = Controladora.CCUGUsuarios.ObtenerInstancia();
+            oCCURPF = Controladora.CCURPF.ObtenerInstancia();
+            oFachada = Controladora.FachadaModuloSeguridad.ObtenerInstancia();
             
 
             oUsuario = (Modelo_Entidades.USUARIO)Session["sUsuario"];
-            // oAuditoria = new Modelo_Entidades.Auditoria_Log();
             oListaModulos = new List<Modelo_Entidades.MODULO>();
             oListaFormularios = new List<Modelo_Entidades.FORMULARIO>();
-
-            //agregar el log de login en la otra página
-
-            //oAuditoria.usuario = oUsuario.nombre_apellido;
-            //oAuditoria.fecha = DateTime.Now;
-            //oAuditoria.accion = "Ingreso al Sistema";
-            //cAuditoria.AuditarLogUsuario(oAuditoria);
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -68,9 +60,9 @@ namespace Vista_Web
             //MenuItem Menu_Modulo;
             Control Menu_Formularios = FindControl("ulmenu");
 
-            foreach (Modelo_Entidades.GRUPO oGrupoActual in oCCURPF.obtenerGruposUsuario(oUsuario))
+            foreach (Modelo_Entidades.GRUPO oGrupoActual in oFachada.ObtenerGrupos(oUsuario))
             {
-                foreach (Modelo_Entidades.MODULO oModuloActual in oCCURPF.ObtenerModulosPorGrupo(oGrupoActual))
+                foreach (Modelo_Entidades.MODULO oModuloActual in oFachada.ObtenerModulos(oGrupoActual))
                 {
                     if (oListaModulos.Contains(oModuloActual) == false)
                     {
@@ -121,7 +113,7 @@ namespace Vista_Web
 
             // Recorro el listado de los permisos según el perfil
 
-            foreach (Modelo_Entidades.FORMULARIO oFormulario in oCCURPF.ObtenerFormulariosPorModulo(oModulo))
+            foreach (Modelo_Entidades.FORMULARIO oFormulario in oFachada.ObtenerFormularios(oModulo))
             {
                 if (oListaFormularios.Contains(oFormulario) == false)
                 {

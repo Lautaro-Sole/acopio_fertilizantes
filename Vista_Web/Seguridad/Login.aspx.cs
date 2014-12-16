@@ -9,9 +9,8 @@ namespace Vista_Web.Seguridad
 {
     public partial class Login : System.Web.UI.Page
     {
-        // Declaro las variables a utilizar en el formualario
         Controladora.CCULogin oCCULogin;
-        //Controladora.cUsuario cUsuario;
+        Controladora.FachadaModuloSeguridad oFachada;
         Modelo_Entidades.USUARIO oUsuario;
         //Controladora.cGrupo cGrupo;
 
@@ -23,9 +22,6 @@ namespace Vista_Web.Seguridad
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Creo una controladora de usuario para trabajarla durante el formulario
-            //cUsuario = Controladora.cUsuario.ObtenerInstancia();
-            //cGrupo = Controladora.cGrupo.ObtenerInstancia();
 
             message.Visible = false;
         }
@@ -57,11 +53,13 @@ namespace Vista_Web.Seguridad
             // Ingreso al sistema - 
             ValidarObligatorios();
             oUsuario = new Modelo_Entidades.USUARIO();
+            oFachada = Controladora.FachadaModuloSeguridad.ObtenerInstancia();
             oCCULogin = new Controladora.CCULogin();
 
             try
             {
-                oUsuario = oCCULogin.login(txt_nombreUsuario.Text, txt_contraseña.Text);
+                oUsuario = oFachada.RealizarLogIn(txt_nombreUsuario.Text, txt_contraseña.Text);
+                //oUsuario = oCCULogin.login(txt_nombreUsuario.Text, txt_contraseña.Text);
                 Session["sUsuario"] = oUsuario;
                 Page.Response.Redirect("~/Principal.aspx");
             }

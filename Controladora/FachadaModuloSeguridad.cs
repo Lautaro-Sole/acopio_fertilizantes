@@ -8,6 +8,8 @@ namespace Controladora
     public class FachadaModuloSeguridad
     {
         private static FachadaModuloSeguridad Instancia;
+        private Controladora.CCURPF oCCURPF;
+        private Controladora.CCUGUsuarios oCCUGUsuarios;
         public static FachadaModuloSeguridad ObtenerInstancia()
         {
             if (Instancia == null) //|| Instancia.IsDisposed == true
@@ -15,7 +17,12 @@ namespace Controladora
             return Instancia;
         }
 
-        Controladora.CCUGUsuarios oCCUUsuario = new CCUGUsuarios();
+        private FachadaModuloSeguridad()
+        {
+            oCCUGUsuarios = Controladora.CCUGUsuarios.ObtenerInstancia();
+            oCCURPF = Controladora.CCURPF.ObtenerInstancia();
+        }
+
 
         /// <summary>
         /// Llama al método Login de la controladora CCULogin.
@@ -45,7 +52,7 @@ namespace Controladora
 
         public bool ResetearClave(Modelo_Entidades.USUARIO oUsuario)
         {
-            return oCCUUsuario.ResetearClave(oUsuario);
+            return oCCUGUsuarios.ResetearClave(oUsuario);
         }
 
         public List<Modelo_Entidades.PERFIL> recuperarPerfil(Modelo_Entidades.USUARIO oUsuario)
@@ -63,7 +70,25 @@ namespace Controladora
             return Controladora.CCURPF.ObtenerInstancia().recuperarPerfilForm(oUsu, oForm);
         }
 
+        public List<Modelo_Entidades.GRUPO> ObtenerGrupos(Modelo_Entidades.USUARIO oUsuario)
+        {
+            return oCCURPF.obtenerGruposUsuario(oUsuario);
+        }
 
+        public List<Modelo_Entidades.MODULO> ObtenerModulos(Modelo_Entidades.GRUPO oGrupo)
+        {
+            return oCCURPF.ObtenerModulosPorGrupo(oGrupo);
+        }
+
+        public List<Modelo_Entidades.FORMULARIO> ObtenerFormularios(Modelo_Entidades.MODULO oModulo)
+        {
+            return oCCURPF.ObtenerFormulariosPorModulo(oModulo);
+        }
+
+        public List<Modelo_Entidades.PERMISO> ObtenerPermisos(string codigo, string formulario)
+        {
+            return oCCURPF.ObtenerPermisosPorFormulario(codigo, formulario);
+        }
         /*
         public List<Modelo_Entidades.MODULO> obtenerModulos(Modelo_Entidades.USUARIO oUsuario)
         {

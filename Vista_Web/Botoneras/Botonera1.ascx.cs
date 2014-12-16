@@ -21,6 +21,7 @@ namespace Vista_Web.Botoneras
         Controladora.CCUGGrupos oCCUGGrupos;
         Controladora.CCUGUsuarios oCCUGUsuarios;
         Controladora.CCURPF oCCURPF;
+        Controladora.FachadaModuloSeguridad oFachada;
 
         public Botonera1()
         {
@@ -65,6 +66,7 @@ namespace Vista_Web.Botoneras
             oCCUGPerfiles = Controladora.CCUGPerfiles.ObtenerInstancia();
             oCCUGGrupos = Controladora.CCUGGrupos.ObtenerInstancia();
             oCCUGUsuarios = Controladora.CCUGUsuarios.ObtenerInstancia();
+            oFachada = Controladora.FachadaModuloSeguridad.ObtenerInstancia();
             
             btn_agregar.Enabled = false;
             btn_eliminar.Enabled = false;
@@ -74,10 +76,10 @@ namespace Vista_Web.Botoneras
             try
             {
                 //por cada grupo al que pertenece el usuario
-                foreach (Modelo_Entidades.GRUPO oGrupo in oCCURPF.obtenerGruposUsuario(oUsuario.USU_CODIGO))
+                foreach (Modelo_Entidades.GRUPO oGrupo in oFachada.ObtenerGrupos(oUsuario))
                 {
                     //por cada permiso del grupo en el formulario
-                    foreach (Modelo_Entidades.PERMISO oPermiso in oCCURPF.ObtenerPermisosPorFormulario(oGrupo.GRU_CODIGO, form))
+                    foreach (Modelo_Entidades.PERMISO oPermiso in oFachada.ObtenerPermisos(oGrupo.GRU_CODIGO, form))
                     {
                         switch (oPermiso.PER_DESCRIPCION)
                         {

@@ -41,12 +41,28 @@ namespace Vista_Web.Operaciones
                 //cargar combos
                 oListaTiposMatricula = oCCUCore.ObtenerTiposMatricula();
                 this.cmb_tipomatricula.DataSource = oListaTiposMatricula;
+                this.cmb_tipomatricula.DataTextField = "descripcion";
+                this.cmb_tipomatricula.DataValueField = "id_tipo_matricula";
+                this.cmb_tipomatricula.DataBind();
 
                 oListaTiposOperacion = oCCUCore.ObtenerTiposOperacion();
                 this.cmb_tipooperacion.DataSource = oListaTiposOperacion;
+                this.cmb_tipooperacion.DataTextField = "descripcion";
+                this.cmb_tipooperacion.DataValueField = "id_tipo_operacion";
+                this.cmb_tipooperacion.DataBind();
 
                 oListaEstadoOperacion = oCCUCore.ObtenerEstadosOperacion();
                 this.cmb_estado.DataSource = oListaEstadoOperacion;
+                this.cmb_estado.DataTextField = "descripcion";
+                this.cmb_estado.DataValueField = "id_estado_operacion";
+                this.cmb_estado.DataBind();
+
+                cmb_tipomatricula.Items.Insert(0, new ListItem(String.Empty, String.Empty));
+                cmb_tipooperacion.Items.Insert(0, new ListItem(String.Empty, String.Empty));
+                cmb_estado.Items.Insert(0, new ListItem(String.Empty, String.Empty));
+                cmb_tipomatricula.SelectedIndex = 0;
+                cmb_tipooperacion.SelectedIndex = 0;
+                cmb_estado.SelectedIndex = 0;
 
                 Armar_Lista();
             }
@@ -104,6 +120,28 @@ namespace Vista_Web.Operaciones
         protected void gvOperaciones_SelectedIndexChanged(object sender, EventArgs e)
         {
             message.Visible = false;
+        }
+
+        //filtrado
+        protected void btn_filtrar_Click(object sender, EventArgs e)
+        {
+            message.Visible = false;
+
+            int tipo_matricula = cmb_tipomatricula.SelectedIndex;
+
+        }
+
+        protected void btn_nuevabusqueda_Click(object sender, EventArgs e)
+        {
+            txt_nombrechofer.Text = "";
+            txt_nombrecliente.Text = "";
+            txt_numeromatricula.Text = "";
+
+            cmb_tipomatricula.SelectedIndex = 0;
+            cmb_tipooperacion.SelectedIndex = 0;
+            cmb_estado.SelectedIndex = 0;
+
+            Armar_Lista();
         }
 
         protected void botonera1_Click_Alta(object sender, EventArgs e)
