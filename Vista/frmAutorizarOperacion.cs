@@ -13,12 +13,12 @@ namespace Vista
     {
         BindingSource bsAlquileres = new BindingSource();
         BindingSource bsProductos = new BindingSource();
-        Controladora.CCUGAlquileres oCCUGAlquileres = new Controladora.CCUGAlquileres();
-        private Modelo_Entidades.Documento _oDocumento = new Modelo_Entidades.Documento();
-        Controladora.CCUGProductos oCCUGProductos = new Controladora.CCUGProductos();
+        Controladora.CCUGAlquileres oCCUGAlquileres = Controladora.CCUGAlquileres.ObtenerInstancia();
+        Controladora.CCUGProductos oCCUGProductos = Controladora.CCUGProductos.ObtenerInstancia();
         Controladora.CCUCore oCCUCore = Controladora.CCUCore.ObtenerInstancia();
         Modelo_Entidades.Operacion oOperacion;
         Modelo_Entidades.Documento oDocumento = new Modelo_Entidades.Documento();
+        private Modelo_Entidades.Documento _oDocumento = new Modelo_Entidades.Documento();
 
 
         Modelo_Entidades.USUARIO oUsuarioActual;

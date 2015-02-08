@@ -38,8 +38,14 @@
                                         </div>
                                          <label for="txt_distanciamaximaempresa" class="control-label">Distancia máxima a la empresa</label>
                                          <div class="col-sm-8">
-                                              <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control"></asp:TextBox>
+                                              <asp:TextBox ID="txt_distanciamaximaempresa" runat="server" CssClass="form-control"></asp:TextBox>
                                          </div>
+                                        <div id="Div9" runat="server" class="form-group">
+                                            <asp:Button ID="btn_filtrar" runat="server" OnClick="btn_filtrar_Click" Text="Filtrar" class="btn btn-info" />
+                                            &nbsp;&nbsp;
+                                            <asp:Button ID="btn_nuevabusqueda" runat="server" OnClick="btn_nuevabusqueda_Click" Text="Nueva Búsqueda" class="btn btn-default" />
+                                        </div>
+
                                    </div>
                             </div>
                             <div id="Div4" runat="server" class="col-lg-8">
@@ -57,6 +63,10 @@
                                     <div runat="server" class="form-group">
                                         <asp:Button ID="btn_denegar" runat="server" OnClick="btn_denegar_Click" CssClass="btn btn-default pull-right margin-left-5" Text="Denegar" />
                                         <asp:Button ID="btn_autorizar" runat="server" OnClick="btn_autorizar_Click" CssClass="btn btn-success pull-right" Text="Autorizar" />
+                                    </div>
+                                    <div runat="server" class="alert alert-warning" role="alert" visible="false" id="message">
+                                        <button runat="server" type="button" class="close" data-dismiss="alert"><span runat="server" aria-hidden="true">&times;</span><span runat="server" class="sr-only">Cerrar</span></button>
+                                        <asp:Label ID="lb_error" runat="server" Text="Mensaje"></asp:Label>
                                     </div>
                                 </div>
                             <div class="tab-pane fade active in" id="documento">

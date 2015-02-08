@@ -23,7 +23,7 @@ namespace Vista_Web.Operaciones
         public RegistrarCargaDescarga()
         {
             oCCUCore = Controladora.CCUCore.ObtenerInstancia();
-            oCCUGAlquileres = new Controladora.CCUGAlquileres();
+            oCCUGAlquileres = Controladora.CCUGAlquileres.ObtenerInstancia();
         }
 
         protected void Page_Init(object sender, EventArgs e)

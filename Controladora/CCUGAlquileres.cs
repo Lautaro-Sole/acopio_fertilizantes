@@ -7,6 +7,23 @@ namespace Controladora
 {
     public class CCUGAlquileres
     {
+
+        private static CCUGAlquileres Instancia;
+
+        public static CCUGAlquileres ObtenerInstancia()
+        {
+            if (Instancia == null)
+            {
+                Instancia = new CCUGAlquileres();
+            }
+            return Instancia;
+        }
+
+        private CCUGAlquileres()
+        {
+
+        }
+
         public List<Modelo_Entidades.Alquiler> ObtenerAlquileres()
         {
             return Modelo_Entidades.Acopio_FertilizantesEntities.ObtenerInstancia().CatAlquileres.ToList<Modelo_Entidades.Alquiler>();
@@ -143,6 +160,5 @@ namespace Controladora
             if (resultado != -1) return true;
             else return false;
         }
-
     }
 }
