@@ -81,5 +81,21 @@ namespace Modelo_Entidades
             return this.Almacen.nombre + "(" + this.Almacen.direccion + "), " + (this.capacidad - this.EspacioUtilizado).ToString() + " kg de " + this.capacidad.ToString() + " kg disponibles.";
         }
 
+        public string NombreCliente
+        {
+            get
+            {
+                return this.Cliente.nombre;
+            }
+        }
+
+        public string NombreAlmacen
+        {
+            get
+            {
+                return this.Almacen.nombre;
+            }
+        }
+
     }
 }

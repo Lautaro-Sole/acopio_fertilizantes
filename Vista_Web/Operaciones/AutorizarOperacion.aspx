@@ -8,8 +8,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
     <ajaxToolkit:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </ajaxToolkit:ToolkitScriptManager>
-    <asp:ScriptManager ID="ScriptManager" runat="server">
-    </asp:ScriptManager>
     <asp:UpdatePanel ID="UpdatePanel" runat="server">
         <ContentTemplate>
             <div class="container">
@@ -61,7 +59,6 @@
                                     <asp:TextBox ID="txt_notas" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
                                     <div runat="server" class="form-group">
-                                        <asp:Button ID="btn_denegar" runat="server" OnClick="btn_denegar_Click" CssClass="btn btn-default pull-right margin-left-5" Text="Denegar" />
                                         <asp:Button ID="btn_autorizar" runat="server" OnClick="btn_autorizar_Click" CssClass="btn btn-success pull-right" Text="Autorizar" />
                                     </div>
                                     <div runat="server" class="alert alert-warning" role="alert" visible="false" id="message">
@@ -85,9 +82,9 @@
                                          <div class="col-sm-8">
                                               <asp:TextBox ID="txt_cantidadenkg" runat="server" CssClass="form-control"></asp:TextBox>
                                          </div>
-                                         <label for="txtfecha" class="control-label">G)</label>
+                                         <label for="txt_fecha" class="control-label">Fecha y Hora</label>
                                          <div class="col-sm-8">
-                                              <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control"></asp:TextBox>
+                                              <asp:TextBox ID="txt_fecha" runat="server" CssClass="form-control"></asp:TextBox>
                                          </div>
                                    </div>
                             </div>
