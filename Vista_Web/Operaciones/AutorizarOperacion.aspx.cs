@@ -20,6 +20,8 @@ namespace Vista_Web.Operaciones
 
         List<Modelo_Entidades.Alquiler> oListaAlquileres;
         List<Modelo_Entidades.Producto> oListaProductos;
+        List<Modelo_Entidades.Tipo_Operacion> oListaTiposOperacion;
+        List<Modelo_Entidades.Estado_Operacion> oListaEstadosOperacion;
 
         string nrooperacion;
 
@@ -51,6 +53,9 @@ namespace Vista_Web.Operaciones
             cmb_tipofertilizante.DataValueField = "codigo_producto";
             cmb_tipofertilizante.DataBind();
 
+            oListaEstadosOperacion = oCCUCore.ObtenerEstadosOperacion();
+            oListaTiposOperacion = oCCUCore.ObtenerTiposOperacion();
+
             Armar_Lista();
         }
 
@@ -75,6 +80,12 @@ namespace Vista_Web.Operaciones
             {
                 distancia_maxima = Convert.ToInt32(this.txt_distanciamaximaempresa.Text);
             }
+            if (oOperacion == null)
+            {
+                nrooperacion = Server.UrlDecode(Request.QueryString["operacion"]);
+                oOperacion = oCCUCore.ObtenerOperacion(Convert.ToInt64(nrooperacion));
+            }
+
             oListaAlquileres = oCCUGAlquileres.ObtenerAlquileres(oOperacion.Cliente.nombre, distancia_maxima, espacio_minimo);
             gvAlquileres.DataSource = oListaAlquileres;
             gvAlquileres.DataBind();
@@ -100,8 +111,7 @@ namespace Vista_Web.Operaciones
             e.Row.Cells[13].Text = "Número de almacén";
             e.Row.Cells[14].Text = "Número de cliente";
 
-            e.Row.Cells[9].Visible = e.Row.Cells[13].Visible = e.Row.Cells[14].Visible = false;
-
+            e.Row.Cells[8].Visible = e.Row.Cells[9].Visible = e.Row.Cells[13].Visible = e.Row.Cells[14].Visible = false;
         }
 
         protected void gvAlquileres_SelectedIndexChanged(object sender, EventArgs e)
@@ -135,6 +145,7 @@ namespace Vista_Web.Operaciones
             message.Visible = true;
 
             bool resultado;
+            oDocumento = new Modelo_Entidades.Documento();
 
             if (ValidarDatos())
             {
@@ -154,17 +165,20 @@ namespace Vista_Web.Operaciones
                 }
 
                 oDocumento.nro_documento = Convert.ToInt32(this.txt_numerodocumento.Text);
-                oDocumento.Producto = (Modelo_Entidades.Producto)oListaProductos[this.cmb_tipofertilizante.SelectedIndex];
+                //oDocumento.Producto = (Modelo_Entidades.Producto)oListaProductos[this.cmb_tipofertilizante.SelectedIndex];
+                oDocumento.Producto = oListaProductos.Find(delegate(Modelo_Entidades.Producto oProductoBuscado) { return oProductoBuscado.codigo_producto == Convert.ToInt32(cmb_tipofertilizante.SelectedValue); });
                 oDocumento.peso = Convert.ToInt32(this.txt_cantidadenkg.Text);
                 oDocumento.fecha_hora = Convert.ToDateTime(this.txt_fecha.Text);
 
                 oOperacion.Documento = oDocumento;
-                oOperacion.Estado_Operacion.descripcion = "Autorizado";
+                //oOperacion.Estado_Operacion.descripcion = "Autorizado";
+                oOperacion.Estado_Operacion = oListaEstadosOperacion.Find(delegate(Modelo_Entidades.Estado_Operacion oEstadoBuscado) { return oEstadoBuscado.descripcion == "Autorizado"; });
                 oOperacion.notas = this.txt_notas.Text;
 
-                oOperacion.Alquiler = (Modelo_Entidades.Alquiler)this.gvAlquileres.SelectedRow.DataItem;
+                oOperacion.Alquiler = oListaAlquileres[this.gvAlquileres.SelectedIndex];
 
                 //datos auditoría
+                oUsuario = (Modelo_Entidades.USUARIO)HttpContext.Current.Session["sUsuario"];
                 oOperacion.USU_CODIGO = oUsuario.USU_CODIGO;
                 oOperacion.fecha_y_hora_accion = DateTime.Now;
                 oOperacion.accion = "Modificacion - Autorizar Operacion";
@@ -211,11 +225,14 @@ namespace Vista_Web.Operaciones
                 lb_error.Text = "Debe seleccionar un alquiler.";
                 return false;
             }
-            Modelo_Entidades.Alquiler oAlquiler = (Modelo_Entidades.Alquiler)this.gvAlquileres.SelectedRow.DataItem;
-            if (oAlquiler.estado == false)
+            else
             {
-                lb_error.Text = "Debe seleccionar un alquiler válido.";
-                return false;
+                Modelo_Entidades.Alquiler oAlquiler = oListaAlquileres[this.gvAlquileres.SelectedIndex];
+                if (oAlquiler.estado == false)
+                {
+                    lb_error.Text = "Debe seleccionar un alquiler válido.";
+                    return false;
+                }
             }
             if (string.IsNullOrEmpty(this.cmb_tipofertilizante.Text))
             {
