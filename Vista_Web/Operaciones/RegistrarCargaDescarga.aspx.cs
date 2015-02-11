@@ -15,8 +15,8 @@ namespace Vista_Web.Operaciones
         Controladora.CCUCore oCCUCore;
         Controladora.CCUGAlquileres oCCUGAlquileres;
         Modelo_Entidades.Operacion oOperacion;
-        Modelo_Entidades.USUARIO oUsuarioActual;
-        Int64 id_operacion;
+        Modelo_Entidades.USUARIO oUsuario;
+        string nrooperacion;
         float peso;
 
 
@@ -28,8 +28,15 @@ namespace Vista_Web.Operaciones
 
         protected void Page_Init(object sender, EventArgs e)
         {
-            id_operacion = Convert.ToInt64(Server.UrlDecode(Request.QueryString["operacion"]));
-            oOperacion = oCCUCore.ObtenerOperacion(id_operacion);
+            if (!Page.IsPostBack)
+            {
+                oUsuario = (Modelo_Entidades.USUARIO)HttpContext.Current.Session["sUsuario"];
+                ArmarPerfil(oUsuario, "frmAutorizarOperacion");
+
+                //obtener la operacion de la base de datos o de la sesión
+                nrooperacion = Server.UrlDecode(Request.QueryString["operacion"]);
+                oOperacion = oCCUCore.ObtenerOperacion(Convert.ToInt64(nrooperacion));
+            }
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -49,6 +56,11 @@ namespace Vista_Web.Operaciones
                         break;
                 }
             }
+        }
+
+        protected void ArmarPerfil(Modelo_Entidades.USUARIO oUsuario, string formulario)
+        { 
+
         }
 
         private bool ValidarObligatorios()
@@ -97,7 +109,7 @@ namespace Vista_Web.Operaciones
             Page.Response.Redirect("~/Operaciones/Operaciones.aspx");
         }
 
-        protected void btnbtn_guardar_Click(object sender, EventArgs e)
+        protected void btn_guardar_Click(object sender, EventArgs e)
         {
             if (ValidarObligatorios())
             {
@@ -107,9 +119,9 @@ namespace Vista_Web.Operaciones
                 oOperacion.Estado_Operacion.descripcion = "Finalizado";
 
                 //obtener datos de usuario
-                oUsuarioActual = (Modelo_Entidades.USUARIO)Session["sUsuario"];
+                oUsuario = (Modelo_Entidades.USUARIO)Session["sUsuario"];
                 //datos auditoría
-                oOperacion.USU_CODIGO = oUsuarioActual.USU_CODIGO;
+                oOperacion.USU_CODIGO = oUsuario.USU_CODIGO;
                 oOperacion.fecha_y_hora_accion = DateTime.Now;
                 oOperacion.accion = "Modificacion - Registrar " + oOperacion.tipo_operacion;
 
