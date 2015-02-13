@@ -125,7 +125,7 @@ namespace Vista_Web.Operaciones
         {
             txt_capacidadlibreminima.Text = "";
             txt_distanciamaximaempresa.Text = "";
-            txt_nombrecliente.Text = "";
+            
 
             Armar_Lista();
         }
