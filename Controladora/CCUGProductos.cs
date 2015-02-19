@@ -28,6 +28,10 @@ namespace Controladora
             return Modelo_Entidades.Acopio_FertilizantesEntities.ObtenerInstancia().CatProductos.ToList<Modelo_Entidades.Producto>();
         }
 
+        public Modelo_Entidades.Producto ObtenerProducto(string descripcion)
+        {
+            return Modelo_Entidades.Acopio_FertilizantesEntities.ObtenerInstancia().CatProductos.ToList<Modelo_Entidades.Producto>().Find(delegate(Modelo_Entidades.Producto oProductoBuscado) { return oProductoBuscado.descripcion == descripcion; });
+        }
 
     }
 }

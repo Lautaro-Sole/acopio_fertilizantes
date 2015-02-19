@@ -12,6 +12,7 @@ namespace Vista_Web.Operaciones
     {
         Modelo_Entidades.Documento oDocumento;
         Modelo_Entidades.Operacion oOperacion;
+        Modelo_Entidades.Producto oProducto;
         Modelo_Entidades.USUARIO oUsuario;
 
         Controladora.CCUCore oCCUCore;
@@ -24,7 +25,8 @@ namespace Vista_Web.Operaciones
         List<Modelo_Entidades.Estado_Operacion> oListaEstadosOperacion;
 
         string nrooperacion;
-
+        string tipofertilizante;
+        string nroalquiler;
         public AutorizarOperacion()
         {
             oCCUCore = Controladora.CCUCore.ObtenerInstancia();
@@ -46,17 +48,20 @@ namespace Vista_Web.Operaciones
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            //lista de productos
-            oListaProductos = oCCUGProductos.ObtenerProductos();
-            cmb_tipofertilizante.DataSource = oListaProductos;
-            cmb_tipofertilizante.DataTextField = "descripcion";
-            cmb_tipofertilizante.DataValueField = "codigo_producto";
-            cmb_tipofertilizante.DataBind();
+            if (!Page.IsPostBack)
+            {
+                //lista de productos
+                oListaProductos = oCCUGProductos.ObtenerProductos();
+                cmb_tipofertilizante.DataSource = oListaProductos;
+                //cmb_tipofertilizante.DataTextField = "descripcion";
+                //cmb_tipofertilizante.DataValueField = "codigo_producto";
+                cmb_tipofertilizante.DataBind();
 
-            oListaEstadosOperacion = oCCUCore.ObtenerEstadosOperacion();
-            oListaTiposOperacion = oCCUCore.ObtenerTiposOperacion();
+                oListaEstadosOperacion = oCCUCore.ObtenerEstadosOperacion();
+                oListaTiposOperacion = oCCUCore.ObtenerTiposOperacion();
 
-            Armar_Lista();
+                Armar_Lista();
+            }
         }
 
         private void Armar_Lista()
@@ -117,6 +122,7 @@ namespace Vista_Web.Operaciones
         protected void gvAlquileres_SelectedIndexChanged(object sender, EventArgs e)
         {
             message.Visible = false;
+            nroalquiler = gvAlquileres.SelectedIndex.ToString();
         }
 
         private void ArmarPerfil(Modelo_Entidades.USUARIO oUsuario, string formulario)
@@ -138,6 +144,15 @@ namespace Vista_Web.Operaciones
             
 
             Armar_Lista();
+        }
+
+        protected void cmb_tipofertilizante_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            message.Visible = false;
+
+            tipofertilizante = cmb_tipofertilizante.Text.ToString();
+            oProducto = oCCUGProductos.ObtenerProducto(tipofertilizante);
+
         }
 
         protected void btn_autorizar_Click(object sender, EventArgs e)
@@ -166,14 +181,20 @@ namespace Vista_Web.Operaciones
 
                 oDocumento.nro_documento = Convert.ToInt32(this.txt_numerodocumento.Text);
                 //oDocumento.Producto = (Modelo_Entidades.Producto)oListaProductos[this.cmb_tipofertilizante.SelectedIndex];
-                oDocumento.Producto = oListaProductos.Find(delegate(Modelo_Entidades.Producto oProductoBuscado) { return oProductoBuscado.codigo_producto == Convert.ToInt32(cmb_tipofertilizante.SelectedValue); });
+                //oDocumento.Producto = oListaProductos.Find(delegate(Modelo_Entidades.Producto oProductoBuscado) { return oProductoBuscado.codigo_producto == Convert.ToInt32(cmb_tipofertilizante.SelectedValue); });
+                //oProducto = (Modelo_Entidades.Producto) cmb_tipofertilizante.Items[cmb_tipofertilizante.SelectedIndex];
+                oDocumento.Producto = oListaProductos.Find(delegate(Modelo_Entidades.Producto oProductoBuscado) { return oProductoBuscado.descripcion == cmb_tipofertilizante.Text; });
+
+                //oDocumento.Producto = oListaProductos.Find(delegate(Modelo_Entidades.Producto oProductoBuscado) { return oProductoBuscado.codigo_producto == Convert.ToInt32(cmb_tipofertilizante.SelectedItem); });
+                //oDocumento.Producto = oListaProductos.Find(delegate(Modelo_Entidades.Producto oProductoBuscado) { return oProductoBuscado.codigo_producto == Convert.ToInt32(cmb_tipofertilizante.SelectedIndex); });
+
                 oDocumento.peso = Convert.ToInt32(this.txt_cantidadenkg.Text);
                 oDocumento.fecha_hora = Convert.ToDateTime(this.txt_fecha.Text);
 
                 oOperacion.Documento = oDocumento;
                 //oOperacion.Estado_Operacion.descripcion = "Autorizado";
                 oOperacion.Estado_Operacion = oListaEstadosOperacion.Find(delegate(Modelo_Entidades.Estado_Operacion oEstadoBuscado) { return oEstadoBuscado.descripcion == "Autorizado"; });
-                oOperacion.notas = this.txt_notas.Text;
+                //oOperacion.notas = this.txt_notas.Text;
 
                 oOperacion.Alquiler = oListaAlquileres[this.gvAlquileres.SelectedIndex];
 
@@ -247,6 +268,11 @@ namespace Vista_Web.Operaciones
             if (string.IsNullOrEmpty(this.txt_numerodocumento.Text))
             {
                 lb_error.Text = "Primero debe ingresar el número del documento.";
+                return false;
+            }
+            if (oProducto == null)
+            {
+                lb_error.Text = "Primero debe sellecionar un tipo de fertilizante. oProducto Nulo.";
                 return false;
             }
             return true;
