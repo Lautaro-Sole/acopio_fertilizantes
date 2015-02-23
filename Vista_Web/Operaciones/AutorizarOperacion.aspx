@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Default.Master" AutoEventWireup="true" CodeBehind="AutorizarOperacion.aspx.cs" Inherits="Vista_Web.Operaciones.AutorizarOperacion" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Default.Master" AutoEventWireup="true" EnableViewState="true" CodeBehind="AutorizarOperacion.aspx.cs" Inherits="Vista_Web.Operaciones.AutorizarOperacion" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 

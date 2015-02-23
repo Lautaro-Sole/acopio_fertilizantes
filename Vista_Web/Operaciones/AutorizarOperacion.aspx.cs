@@ -13,6 +13,7 @@ namespace Vista_Web.Operaciones
         Modelo_Entidades.Documento oDocumento;
         Modelo_Entidades.Operacion oOperacion;
         Modelo_Entidades.Producto oProducto;
+        Modelo_Entidades.Alquiler oAlquiler;
         Modelo_Entidades.USUARIO oUsuario;
 
         Controladora.CCUCore oCCUCore;
@@ -26,7 +27,7 @@ namespace Vista_Web.Operaciones
 
         string nrooperacion;
         string tipofertilizante;
-        string nroalquiler;
+        int nroalquiler;
         public AutorizarOperacion()
         {
             oCCUCore = Controladora.CCUCore.ObtenerInstancia();
@@ -53,15 +54,62 @@ namespace Vista_Web.Operaciones
                 //lista de productos
                 oListaProductos = oCCUGProductos.ObtenerProductos();
                 cmb_tipofertilizante.DataSource = oListaProductos;
-                //cmb_tipofertilizante.DataTextField = "descripcion";
-                //cmb_tipofertilizante.DataValueField = "codigo_producto";
+                cmb_tipofertilizante.DataTextField = "descripcion";
+                cmb_tipofertilizante.DataValueField = "codigo_producto";
                 cmb_tipofertilizante.DataBind();
 
                 oListaEstadosOperacion = oCCUCore.ObtenerEstadosOperacion();
                 oListaTiposOperacion = oCCUCore.ObtenerTiposOperacion();
 
                 Armar_Lista();
+
+                gvAlquileres.EnableViewState = true;
+                gvAlquileres.ViewStateMode = ViewStateMode.Enabled;
+
+                cmb_tipofertilizante.EnableViewState = true;
+                cmb_tipofertilizante.ViewStateMode = ViewStateMode.Enabled;
+
+                GuardarEnSesion();
             }
+            else
+            {
+                LeerDeSesion();
+            }
+        }
+
+        private void GuardarEnSesion()
+        {
+            HttpContext.Current.Session["Operacion"] = oOperacion;
+            HttpContext.Current.Session["Alquiler"] = oAlquiler;
+            HttpContext.Current.Session["Producto"] = oProducto;
+            HttpContext.Current.Session["ListaAlquileres"] = oListaAlquileres;
+            HttpContext.Current.Session["ListaTipos"] = oListaTiposOperacion;
+            HttpContext.Current.Session["ListaProductos"] = oListaProductos;
+            HttpContext.Current.Session["ListaEstado"] = oListaEstadosOperacion;
+        }
+
+        private void LeerDeSesion()
+        {
+            oOperacion = (Modelo_Entidades.Operacion)HttpContext.Current.Session["Operacion"];
+            oAlquiler = (Modelo_Entidades.Alquiler)HttpContext.Current.Session["Alquiler"];
+            oProducto = (Modelo_Entidades.Producto)HttpContext.Current.Session["Producto"];
+            oListaAlquileres = (List<Modelo_Entidades.Alquiler>)HttpContext.Current.Session["ListaAlquileres"];
+            oListaTiposOperacion = (List<Modelo_Entidades.Tipo_Operacion>)HttpContext.Current.Session["ListaTipos"];
+            oListaProductos = (List<Modelo_Entidades.Producto>)HttpContext.Current.Session["ListaProductos"];
+            oListaEstadosOperacion = (List<Modelo_Entidades.Estado_Operacion>)HttpContext.Current.Session["ListaEstado"];
+        }
+
+        private void LimpiarSesion(Modelo_Entidades.USUARIO oUsuario)
+        {
+            HttpContext.Current.Session.Clear();
+            HttpContext.Current.Session["sUsuario"] = oUsuario;
+        }
+
+        private void LimpiarSesion()
+        {
+            oUsuario = (Modelo_Entidades.USUARIO)HttpContext.Current.Session["sUsuario"];
+            HttpContext.Current.Session.Clear();
+            HttpContext.Current.Session["sUsuario"] = oUsuario;
         }
 
         private void Armar_Lista()
@@ -95,8 +143,7 @@ namespace Vista_Web.Operaciones
             gvAlquileres.DataSource = oListaAlquileres;
             gvAlquileres.DataBind();
 
-
-
+            HttpContext.Current.Session["ListaAlquileres"] = oListaAlquileres;
         }
 
         protected void gvAlquileres_RowCreated(object sender, GridViewRowEventArgs e)
@@ -122,7 +169,10 @@ namespace Vista_Web.Operaciones
         protected void gvAlquileres_SelectedIndexChanged(object sender, EventArgs e)
         {
             message.Visible = false;
-            nroalquiler = gvAlquileres.SelectedIndex.ToString();
+            nroalquiler = gvAlquileres.SelectedIndex;
+            oAlquiler = oListaAlquileres[nroalquiler];
+
+            HttpContext.Current.Session["Alquiler"] = oAlquiler; 
         }
 
         private void ArmarPerfil(Modelo_Entidades.USUARIO oUsuario, string formulario)
@@ -151,7 +201,8 @@ namespace Vista_Web.Operaciones
             message.Visible = false;
 
             tipofertilizante = cmb_tipofertilizante.Text.ToString();
-            oProducto = oCCUGProductos.ObtenerProducto(tipofertilizante);
+            //oProducto = oCCUGProductos.ObtenerProducto(tipofertilizante);
+            oProducto = oListaProductos[cmb_tipofertilizante.SelectedIndex];
 
         }
 
@@ -183,10 +234,11 @@ namespace Vista_Web.Operaciones
                 //oDocumento.Producto = (Modelo_Entidades.Producto)oListaProductos[this.cmb_tipofertilizante.SelectedIndex];
                 //oDocumento.Producto = oListaProductos.Find(delegate(Modelo_Entidades.Producto oProductoBuscado) { return oProductoBuscado.codigo_producto == Convert.ToInt32(cmb_tipofertilizante.SelectedValue); });
                 //oProducto = (Modelo_Entidades.Producto) cmb_tipofertilizante.Items[cmb_tipofertilizante.SelectedIndex];
-                oDocumento.Producto = oListaProductos.Find(delegate(Modelo_Entidades.Producto oProductoBuscado) { return oProductoBuscado.descripcion == cmb_tipofertilizante.Text; });
-
+                //oDocumento.Producto = oListaProductos.Find(delegate(Modelo_Entidades.Producto oProductoBuscado) { return oProductoBuscado.descripcion == cmb_tipofertilizante.Text; });
                 //oDocumento.Producto = oListaProductos.Find(delegate(Modelo_Entidades.Producto oProductoBuscado) { return oProductoBuscado.codigo_producto == Convert.ToInt32(cmb_tipofertilizante.SelectedItem); });
                 //oDocumento.Producto = oListaProductos.Find(delegate(Modelo_Entidades.Producto oProductoBuscado) { return oProductoBuscado.codigo_producto == Convert.ToInt32(cmb_tipofertilizante.SelectedIndex); });
+
+                oDocumento.Producto = oProducto;
 
                 oDocumento.peso = Convert.ToInt32(this.txt_cantidadenkg.Text);
                 oDocumento.fecha_hora = Convert.ToDateTime(this.txt_fecha.Text);
@@ -196,7 +248,8 @@ namespace Vista_Web.Operaciones
                 oOperacion.Estado_Operacion = oListaEstadosOperacion.Find(delegate(Modelo_Entidades.Estado_Operacion oEstadoBuscado) { return oEstadoBuscado.descripcion == "Autorizado"; });
                 //oOperacion.notas = this.txt_notas.Text;
 
-                oOperacion.Alquiler = oListaAlquileres[this.gvAlquileres.SelectedIndex];
+                //oOperacion.Alquiler = oListaAlquileres[this.gvAlquileres.SelectedIndex];
+                oOperacion.Alquiler = oAlquiler;
 
                 //datos auditoría
                 oUsuario = (Modelo_Entidades.USUARIO)HttpContext.Current.Session["sUsuario"];
@@ -214,6 +267,8 @@ namespace Vista_Web.Operaciones
                         if (resultado)
                         {
                             this.lb_error.Text = "Guardado con éxito.";
+
+                            LimpiarSesion();
 
                             //código para redireccionar http://www.aspsnippets.com/Articles/Redirect-to-another-page-after-5-seconds-in-ASPNet.aspx
                             HtmlMeta meta = new HtmlMeta();
@@ -248,17 +303,27 @@ namespace Vista_Web.Operaciones
             }
             else
             {
-                Modelo_Entidades.Alquiler oAlquiler = oListaAlquileres[this.gvAlquileres.SelectedIndex];
-                if (oAlquiler.estado == false)
+                //Modelo_Entidades.Alquiler oAlquiler = oListaAlquileres[this.gvAlquileres.SelectedIndex];
+                if (gvAlquileres.SelectedRow.Cells[5].Text != "Activo")
                 {
                     lb_error.Text = "Debe seleccionar un alquiler válido.";
                     return false;
                 }
             }
-            if (string.IsNullOrEmpty(this.cmb_tipofertilizante.Text))
+            //if (string.IsNullOrEmpty(this.cmb_tipofertilizante.Text))
+            //{
+            //    lb_error.Text = "Primero debe seleccionar un tipo de fertilizante.";
+            //    return false;
+            //}
+            if ((cmb_tipofertilizante.SelectedIndex == null) || (cmb_tipofertilizante.SelectedIndex == -1))
             {
                 lb_error.Text = "Primero debe seleccionar un tipo de fertilizante.";
                 return false;
+            }
+            oProducto = oListaProductos[cmb_tipofertilizante.SelectedIndex];
+            if(oProducto == null)
+            {
+                oProducto = oListaProductos[cmb_tipofertilizante.SelectedIndex];
             }
             if (string.IsNullOrEmpty(this.txt_cantidadenkg.Text))
             {
@@ -270,11 +335,11 @@ namespace Vista_Web.Operaciones
                 lb_error.Text = "Primero debe ingresar el número del documento.";
                 return false;
             }
-            if (oProducto == null)
-            {
-                lb_error.Text = "Primero debe sellecionar un tipo de fertilizante. oProducto Nulo.";
-                return false;
-            }
+            //if (oProducto == null)
+            //{
+            //    lb_error.Text = "Primero debe sellecionar un tipo de fertilizante. oProducto Nulo.";
+            //    return false;
+            //}
             return true;
 
 
