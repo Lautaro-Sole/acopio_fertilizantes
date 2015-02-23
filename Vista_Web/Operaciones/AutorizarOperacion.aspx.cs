@@ -28,11 +28,24 @@ namespace Vista_Web.Operaciones
         string nrooperacion;
         string tipofertilizante;
         int nroalquiler;
+
+        //rpf
+        Controladora.CCUGPerfiles oCCUGPerfiles;
+        Controladora.CCUGGrupos oCCUGGrupos;
+        Controladora.CCUGUsuarios oCCUGUsuarios;
+        Controladora.CCURPF oCCURPF;
+        Controladora.FachadaModuloSeguridad oFachada;
         public AutorizarOperacion()
         {
             oCCUCore = Controladora.CCUCore.ObtenerInstancia();
             oCCUGProductos = Controladora.CCUGProductos.ObtenerInstancia();
             oCCUGAlquileres = Controladora.CCUGAlquileres.ObtenerInstancia();
+
+            //rpf
+            oCCUGPerfiles = Controladora.CCUGPerfiles.ObtenerInstancia();
+            oCCUGGrupos = Controladora.CCUGGrupos.ObtenerInstancia();
+            oCCUGUsuarios = Controladora.CCUGUsuarios.ObtenerInstancia();
+            oCCURPF = Controladora.CCURPF.ObtenerInstancia();
         }
 
         protected void Page_Init(object sender, EventArgs e)
@@ -40,7 +53,7 @@ namespace Vista_Web.Operaciones
             if (!Page.IsPostBack)
             {
                 oUsuario = (Modelo_Entidades.USUARIO)HttpContext.Current.Session["sUsuario"];
-                ArmarPerfil(oUsuario, "frmAutorizarOperacion");
+                botonera1.ArmaPerfil(oUsuario, "frmAutorizarOperacion");
 
                 //obtener la operacion de la base de datos o de la sesión
                 nrooperacion = Server.UrlDecode(Request.QueryString["operacion"]);
@@ -51,6 +64,12 @@ namespace Vista_Web.Operaciones
         {
             if (!Page.IsPostBack)
             {
+                //comprobar que la operación sea válida
+                if (oOperacion.Estado_Operacion.descripcion != "Ingresa")
+                {
+                    LimpiarYSalir();
+                }
+
                 //lista de productos
                 oListaProductos = oCCUGProductos.ObtenerProductos();
                 cmb_tipofertilizante.DataSource = oListaProductos;
@@ -175,10 +194,6 @@ namespace Vista_Web.Operaciones
             HttpContext.Current.Session["Alquiler"] = oAlquiler; 
         }
 
-        private void ArmarPerfil(Modelo_Entidades.USUARIO oUsuario, string formulario)
-        {
-
-        }
 
         protected void btn_filtrar_Click(object sender, EventArgs e)
         {
@@ -294,6 +309,87 @@ namespace Vista_Web.Operaciones
             }
         }
 
+        protected void botonera1_Click_Alta(object sender, EventArgs e)
+        {
+            message.Visible = true;
+
+            bool resultado;
+            oDocumento = new Modelo_Entidades.Documento();
+
+            if (ValidarDatos())
+            {
+                if (oOperacion.Tipo_Operacion.descripcion == "Carga")
+                {
+                    oDocumento.tipo_documento = "Orden de carga";
+                    oOperacion.tipo_documento = "Orden de carga";
+                    //establecer estrategia
+                    oOperacion.EstablecerEstrategia(new Modelo_Entidades.EstrategiaCarga());
+                }
+                else
+                {
+                    oDocumento.tipo_documento = "Remito";
+                    oOperacion.tipo_documento = "Remito";
+                    //establecer estrategia
+                    oOperacion.EstablecerEstrategia(new Modelo_Entidades.EstrategiaDescarga());
+                }
+
+                oDocumento.nro_documento = Convert.ToInt32(this.txt_numerodocumento.Text);
+                //oDocumento.Producto = (Modelo_Entidades.Producto)oListaProductos[this.cmb_tipofertilizante.SelectedIndex];
+                //oDocumento.Producto = oListaProductos.Find(delegate(Modelo_Entidades.Producto oProductoBuscado) { return oProductoBuscado.codigo_producto == Convert.ToInt32(cmb_tipofertilizante.SelectedValue); });
+                //oProducto = (Modelo_Entidades.Producto) cmb_tipofertilizante.Items[cmb_tipofertilizante.SelectedIndex];
+                //oDocumento.Producto = oListaProductos.Find(delegate(Modelo_Entidades.Producto oProductoBuscado) { return oProductoBuscado.descripcion == cmb_tipofertilizante.Text; });
+                //oDocumento.Producto = oListaProductos.Find(delegate(Modelo_Entidades.Producto oProductoBuscado) { return oProductoBuscado.codigo_producto == Convert.ToInt32(cmb_tipofertilizante.SelectedItem); });
+                //oDocumento.Producto = oListaProductos.Find(delegate(Modelo_Entidades.Producto oProductoBuscado) { return oProductoBuscado.codigo_producto == Convert.ToInt32(cmb_tipofertilizante.SelectedIndex); });
+
+                oDocumento.Producto = oProducto;
+
+                oDocumento.peso = Convert.ToInt32(this.txt_cantidadenkg.Text);
+                oDocumento.fecha_hora = Convert.ToDateTime(this.txt_fecha.Text);
+
+                oOperacion.Documento = oDocumento;
+                //oOperacion.Estado_Operacion.descripcion = "Autorizado";
+                oOperacion.Estado_Operacion = oListaEstadosOperacion.Find(delegate(Modelo_Entidades.Estado_Operacion oEstadoBuscado) { return oEstadoBuscado.descripcion == "Autorizado"; });
+                //oOperacion.notas = this.txt_notas.Text;
+
+                //oOperacion.Alquiler = oListaAlquileres[this.gvAlquileres.SelectedIndex];
+                oOperacion.Alquiler = oAlquiler;
+
+                //datos auditoría
+                oUsuario = (Modelo_Entidades.USUARIO)HttpContext.Current.Session["sUsuario"];
+                oOperacion.USU_CODIGO = oUsuario.USU_CODIGO;
+                oOperacion.fecha_y_hora_accion = DateTime.Now;
+                oOperacion.accion = "Modificacion - Autorizar Operacion";
+
+                try
+                {
+                    //llamar comprobacion
+                    resultado = oCCUCore.ComprobrarPosibilidadDeOperacion(oOperacion);
+                    if (resultado)
+                    {
+                        resultado = oCCUCore.Modificar(oOperacion);
+                        if (resultado)
+                        {
+                            this.lb_error.Text = "Guardado con éxito.";
+
+                            LimpiarYSalir();
+                        }
+                        else
+                        {
+                            this.lb_error.Text = "No guardado.";
+                        }
+                    }
+                    else
+                    {
+                        this.lb_error.Text = "No es posible realizar la operación deseada en el alquiler seleccionado.";
+                    }
+                }
+                catch (System.Data.DataException ex)
+                {
+                    this.lb_error.Text = "No se ha podido actualizar la operación: " + ex.Message;
+                }
+            }
+        }
+
         protected bool ValidarDatos()
         {
             if (this.gvAlquileres.SelectedRow == null)
@@ -343,6 +439,24 @@ namespace Vista_Web.Operaciones
             return true;
 
 
+        }
+
+        protected void botonera1_Click_Cerrar(object sender, EventArgs e)
+        {
+            LimpiarYSalir();
+        }
+
+        private void LimpiarYSalir()
+        {
+            LimpiarSesion();
+
+            //código para redireccionar http://www.aspsnippets.com/Articles/Redirect-to-another-page-after-5-seconds-in-ASPNet.aspx
+            //HtmlMeta meta = new HtmlMeta();
+            //meta.HttpEquiv = "Refresh";
+            //meta.Content = "3;url=/Operaciones/Operaciones.aspx";
+            //this.Page.Controls.Add(meta);
+            Response.AppendHeader("Refresh", "3; url=/Operaciones/Operaciones.aspx");
+            lb_error.Text = "Será redireccionado en 3 segundos.";
         }
     }
 }

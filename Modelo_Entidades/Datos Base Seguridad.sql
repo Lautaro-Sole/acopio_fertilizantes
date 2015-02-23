@@ -53,6 +53,7 @@ insert into SEGURIDAD.dbo.FORMULARIOS values
 ('transp', 'Transportes', 'gestiones', 'frmTransportes'),
 ('regingreso', 'Registro de Ingreso', 'opera', 'frmRegistroIngreso'),
 ('opera', 'Operaciones', 'opera', 'frmOperaciones') ,
+('autorizar', 'Autorizar Operacion', 'opera', 'frmAutorizarOperacion'),
 ('cargadesc', 'Carga y Descarga', 'opera', 'frmCargaYDescarga'),
 ('infvip','Mejores Clientes', 'informes', 'frmInformeVIP'),
 ('infestalq', 'Estado de alquileres', 'informes', 'frmInformeEstadoAlquileres'),
@@ -80,6 +81,7 @@ insert into SEGURIDAD.dbo.FORMULARIOS_PERMISOS values
 ('alquileres','B'),
 ('alquileres','C'),
 ('alquileres','M'),
+('autorizar', 'Z'),
 ('choferes','A'),
 ('choferes','B'),
 ('choferes','C'),
@@ -140,6 +142,7 @@ insert into SEGURIDAD.dbo.PERFILES values
 ('transp','seg','C', 'admin', '06-07-2012','A'),
 ('opera','seg','Z', 'admin', '06-07-2012','A'),
 ('opera','seg','C', 'admin', '06-07-2012','A'),
+('autorizar', 'seg', 'Z', 'admin', '2012-07-06 00:00:00.000', 'A'),
 ('infvip','seg','C', 'admin', '06-07-2012','A'),
 ('inffertmov','seg','C', 'admin', '06-07-2012','A'),
 ('infestalq','seg','C', 'admin', '06-07-2012','A')

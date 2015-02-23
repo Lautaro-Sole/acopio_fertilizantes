@@ -90,7 +90,8 @@
                                         </label>
                                         
                                    </div>
-                                    <asp:Button ID="Button3" runat="server" OnClick="btn_autorizar_Click" CssClass="btn btn-success pull-right" Text="Autorizar" />
+                                    <%--<asp:Button ID="btn_autorizar" runat="server" OnClick="btn_autorizar_Click" CssClass="btn btn-success pull-right" Text="Autorizar" />--%>
+                                    <uc1:Botonera1 ID="botonera1" runat="server" OnClick_Alta="botonera1_Click_Alta" OnClick_Cerrar="botonera1_Click_Cerrar"/>
                                 </div>
                             
                             

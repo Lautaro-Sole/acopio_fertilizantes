@@ -124,6 +124,15 @@ namespace Vista_Web.Botoneras
                                     btn_modificar.Enabled = true;
                                     btn_modificar.Text = "Autorizar Cierre";
                                 }
+                                if (form == "frmAutorizarOperacion")
+                                {
+                                    btn_agregar.Enabled = true;
+                                    btn_agregar.Text = "Autorizar";
+
+                                    btn_modificar.Visible = false;
+                                    btn_verdetalle.Visible = false;
+                                    btn_eliminar.Visible = false;
+                                }
                                 break;
 
                             case "REGISTRAR CARGA/DESCARGA":

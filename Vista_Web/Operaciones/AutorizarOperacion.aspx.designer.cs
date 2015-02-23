@@ -148,12 +148,12 @@ namespace Vista_Web.Operaciones {
         protected global::System.Web.UI.WebControls.TextBox txt_fecha;
         
         /// <summary>
-        /// Control Button3.
+        /// Control botonera1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button3;
+        protected global::Vista_Web.Botoneras.Botonera1 botonera1;
     }
 }
