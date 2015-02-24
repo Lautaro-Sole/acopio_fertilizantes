@@ -85,33 +85,6 @@ namespace Vista_Web.Operaciones {
         protected global::System.Web.UI.WebControls.GridView gvAlquileres;
         
         /// <summary>
-        /// Control txt_notas.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_notas;
-        
-        /// <summary>
-        /// Control message.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl message;
-        
-        /// <summary>
-        /// Control lb_error.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lb_error;
-        
-        /// <summary>
         /// Control txt_numerodocumento.
         /// </summary>
         /// <remarks>
@@ -148,12 +121,39 @@ namespace Vista_Web.Operaciones {
         protected global::System.Web.UI.WebControls.TextBox txt_fecha;
         
         /// <summary>
-        /// Control botonera1.
+        /// Control message.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Vista_Web.Botoneras.Botonera1 botonera1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl message;
+        
+        /// <summary>
+        /// Control txt_notas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_notas;
+        
+        /// <summary>
+        /// Control lb_error.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lb_error;
+        
+        /// <summary>
+        /// Control botonera2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Vista_Web.Botoneras.Botonera1 botonera2;
     }
 }
