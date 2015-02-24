@@ -11,12 +11,15 @@ namespace Vista_Web.Operaciones
     {
         private Controladora.CCUCore oCCUCore;
         private Controladora.CCURPF oCCURPF;
+
         private Modelo_Entidades.Operacion oOperacion;
         private Modelo_Entidades.USUARIO oUsuario;
+
         private List<Modelo_Entidades.Operacion> oListaOperaciones;
         private List<Modelo_Entidades.Tipo_Matricula> oListaTiposMatricula;
         private List<Modelo_Entidades.Tipo_Operacion> oListaTiposOperacion;
-        private List<Modelo_Entidades.Estado_Operacion> oListaEstadoOperacion;
+        private List<Modelo_Entidades.Estado_Operacion> oListaEstadosOperacion;
+
         private string operacion;
 
         public Operaciones()
@@ -51,8 +54,8 @@ namespace Vista_Web.Operaciones
                 this.cmb_tipooperacion.DataValueField = "id_tipo_operacion";
                 this.cmb_tipooperacion.DataBind();
 
-                oListaEstadoOperacion = oCCUCore.ObtenerEstadosOperacion();
-                this.cmb_estado.DataSource = oListaEstadoOperacion;
+                oListaEstadosOperacion = oCCUCore.ObtenerEstadosOperacion();
+                this.cmb_estado.DataSource = oListaEstadosOperacion;
                 this.cmb_estado.DataTextField = "descripcion";
                 this.cmb_estado.DataValueField = "id_estado_operacion";
                 this.cmb_estado.DataBind();
@@ -68,6 +71,30 @@ namespace Vista_Web.Operaciones
             }
         }
 
+        private void GuardarEnSesion()
+        {
+            HttpContext.Current.Session["Operacion"] = oOperacion;
+            HttpContext.Current.Session["ListaOperaciones"] = oListaOperaciones;
+            HttpContext.Current.Session["ListaTipos"] = oListaTiposOperacion;
+            HttpContext.Current.Session["ListaMatriculas"] = oListaTiposMatricula;
+            HttpContext.Current.Session["ListaEstado"] = oListaEstadosOperacion;
+        }
+
+        private void LeerDeSesion()
+        {
+            oOperacion = (Modelo_Entidades.Operacion)HttpContext.Current.Session["Operacion"];
+            oListaOperaciones = (List<Modelo_Entidades.Operacion>)HttpContext.Current.Session["ListaOperaciones"];
+            oListaTiposOperacion = (List<Modelo_Entidades.Tipo_Operacion>)HttpContext.Current.Session["ListaTipos"];
+            oListaTiposMatricula = (List<Modelo_Entidades.Tipo_Matricula>)HttpContext.Current.Session["ListaMatriculas"];
+            oListaEstadosOperacion = (List<Modelo_Entidades.Estado_Operacion>)HttpContext.Current.Session["ListaEstado"];
+        }
+
+        private void LimpiarSesion(Modelo_Entidades.USUARIO oUsuario)
+        {
+            HttpContext.Current.Session.Clear();
+            HttpContext.Current.Session["sUsuario"] = oUsuario;
+        }
+
         private void Armar_Lista()
         {
             oListaOperaciones = oCCUCore.ObtenerOperaciones();
@@ -79,9 +106,9 @@ namespace Vista_Web.Operaciones
             for (int i = 0; i < cantidadfilas; i++)
             {
                 int estado = Convert.ToInt32(gvOperaciones.Rows[i].Cells[2].Text) -1;
-                gvOperaciones.Rows[i].Cells[2].Text = oListaEstadoOperacion[estado].descripcion;
+                gvOperaciones.Rows[i].Cells[2].Text = oListaEstadosOperacion[estado].descripcion;
                 int tipo = Convert.ToInt32(gvOperaciones.Rows[i].Cells[10].Text) -1;
-                gvOperaciones.Rows[i].Cells[10].Text = oListaEstadoOperacion[tipo].descripcion;
+                gvOperaciones.Rows[i].Cells[10].Text = oListaEstadosOperacion[tipo].descripcion;
                 /*
                 int alquiler = Convert.ToInt32(gvOperaciones.Rows[i].Cells[14].Text);
                 gvOperaciones.Rows[i].Cells[14].Text = oListaEstadoOperacion[alquiler].ToString();
@@ -241,7 +268,7 @@ namespace Vista_Web.Operaciones
             operacion = gvOperaciones.SelectedRow.Cells[1].Text;
             oOperacion = oCCUCore.ObtenerOperacion(Convert.ToInt64(operacion));
 
-            oOperacion.Estado_Operacion = oListaEstadoOperacion.Find(delegate(Modelo_Entidades.Estado_Operacion oEstadoBuscado) { return oEstadoBuscado.descripcion == "Finalizado"; });
+            oOperacion.Estado_Operacion = oListaEstadosOperacion.Find(delegate(Modelo_Entidades.Estado_Operacion oEstadoBuscado) { return oEstadoBuscado.descripcion == "Finalizado"; });
             oOperacion.USU_CODIGO = oUsuario.USU_CODIGO;
             oOperacion.accion = "Modificación - Cerrado";
             oOperacion.fecha_y_hora_accion = DateTime.Now;

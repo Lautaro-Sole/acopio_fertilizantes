@@ -193,7 +193,6 @@ namespace Controladora
         }
         #endregion
 
-        //sección universal
         public List<Modelo_Entidades.Operacion> ObtenerOperaciones()
         {
             return Modelo_Entidades.Acopio_FertilizantesEntities.ObtenerInstancia().CatOperaciones.ToList<Modelo_Entidades.Operacion>();
@@ -472,7 +471,8 @@ namespace Controladora
         public Modelo_Entidades.Operacion_Auditoria CopiarValores(Modelo_Entidades.Operacion oOperacionAntigua, Modelo_Entidades.Operacion_Auditoria oOperacionAuditoria)
         {
             oOperacionAuditoria.accion = oOperacionAntigua.accion;
-            oOperacionAuditoria.estado = oOperacionAntigua.estado;
+            //oOperacionAuditoria.estado = oOperacionAntigua.estado;
+            oOperacionAuditoria.estado = oOperacionAntigua.Estado_Operacion.id_estado_operacion;
             oOperacionAuditoria.fecha_y_hora_accion = oOperacionAntigua.fecha_y_hora_accion;
             oOperacionAuditoria.fecha_y_hora_fin = oOperacionAntigua.fecha_y_hora_fin;
             oOperacionAuditoria.fecha_y_hora_inicio = oOperacionAntigua.fecha_y_hora_inicio;
@@ -480,7 +480,8 @@ namespace Controladora
             oOperacionAuditoria.nro_alquiler = oOperacionAntigua.nro_alquiler;
             oOperacionAuditoria.nro_chofer = oOperacionAntigua.nro_chofer;
             oOperacionAuditoria.nro_documento = oOperacionAntigua.nro_documento;
-            oOperacionAuditoria.nro_operacion = oOperacionAntigua.nro_operacion;
+            //oOperacionAuditoria.nro_documento = oOperacionAntigua.nro_documento;
+            oOperacionAuditoria.nro_operacion = oOperacionAntigua.Documento.nro_documento;
             oOperacionAuditoria.nro_transporte = oOperacionAntigua.nro_transporte;
             oOperacionAuditoria.peso_final = oOperacionAntigua.peso_final;
             oOperacionAuditoria.peso_inicial = oOperacionAntigua.peso_inicial;
