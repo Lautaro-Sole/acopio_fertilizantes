@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -22,6 +24,12 @@ namespace Vista_Web.Operaciones
 
         private string operacion;
 
+        private global::System.Web.UI.WebControls.Button btn_agregar;
+        private global::System.Web.UI.WebControls.Button btn_cerrar;
+        private global::System.Web.UI.WebControls.Button btn_eliminar;
+        private global::System.Web.UI.WebControls.Button btn_modificar;
+        private global::System.Web.UI.WebControls.Button btn_verdetalle;
+
         public Operaciones()
         {
             oCCUCore = Controladora.CCUCore.ObtenerInstancia();
@@ -30,9 +38,20 @@ namespace Vista_Web.Operaciones
 
         protected void Page_Init(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
+            //if (!Page.IsPostBack)
+            //{
+            //    oUsuario = (Modelo_Entidades.USUARIO)HttpContext.Current.Session["sUsuario"];
+            //    botonera1.ArmaPerfil(oUsuario, "frmOperaciones");
+
+            //}
+
+            oUsuario = (Modelo_Entidades.USUARIO)HttpContext.Current.Session["sUsuario"];
+            if (oUsuario == null)
             {
-                oUsuario = (Modelo_Entidades.USUARIO)HttpContext.Current.Session["sUsuario"];
+                Response.Redirect("~/Seguridad/Login.aspx");
+            }
+            else
+            {
                 botonera1.ArmaPerfil(oUsuario, "frmOperaciones");
             }
         }
@@ -68,7 +87,50 @@ namespace Vista_Web.Operaciones
                 cmb_estado.SelectedIndex = 0;
 
                 Armar_Lista();
+
+                gvOperaciones.EnableViewState = true;
+                gvOperaciones.ViewStateMode = ViewStateMode.Enabled;
+
+                cmb_estado.EnableViewState = true;
+                cmb_estado.ViewStateMode = ViewStateMode.Enabled;
+
+                cmb_tipomatricula.EnableViewState = true;
+                cmb_tipomatricula.ViewStateMode = ViewStateMode.Enabled;
+
+                cmb_tipooperacion.EnableViewState = true;
+                cmb_tipooperacion.ViewStateMode = ViewStateMode.Enabled;
+
+                botonera1.EnableViewState = true;
+                botonera1.ViewStateMode = ViewStateMode.Enabled;
+
+                
+
+                GuardarEnSesion();
             }
+            else
+            {
+                LeerDeSesion();                
+            }
+
+            btn_agregar = (System.Web.UI.WebControls.Button)botonera1.FindControl("btn_agregar");
+            btn_agregar.Click -= new EventHandler(botonera1_Click_Alta);
+            btn_agregar.Click += new EventHandler(botonera1_Click_Alta);
+
+            btn_cerrar = (System.Web.UI.WebControls.Button)botonera1.FindControl("btn_cerrar");
+            btn_cerrar.Click -= new EventHandler(botonera1_Click_Cerrar);
+            btn_cerrar.Click += new EventHandler(botonera1_Click_Cerrar);
+
+            btn_eliminar = (System.Web.UI.WebControls.Button)botonera1.FindControl("btn_eliminar");
+            btn_eliminar.Click -= new EventHandler(botonera1_Click_Baja);
+            btn_eliminar.Click += new EventHandler(botonera1_Click_Baja);
+
+            btn_modificar = (System.Web.UI.WebControls.Button)botonera1.FindControl("btn_modificar");
+            btn_modificar.Click -= new EventHandler(botonera1_Click_Modificacion);
+            btn_modificar.Click += new EventHandler(botonera1_Click_Modificacion);
+
+            btn_verdetalle = (System.Web.UI.WebControls.Button)botonera1.FindControl("btn_verdetalle");
+            btn_verdetalle.Click -= new EventHandler(botonera1_Click_Consulta);
+            btn_verdetalle.Click += new EventHandler(botonera1_Click_Consulta);
         }
 
         private void GuardarEnSesion()
@@ -95,31 +157,50 @@ namespace Vista_Web.Operaciones
             HttpContext.Current.Session["sUsuario"] = oUsuario;
         }
 
+        private void RemoveClickEvent(Button b)
+        {
+            FieldInfo f1 = typeof(Control).GetField("EventClick",
+                BindingFlags.Static | BindingFlags.NonPublic);
+            object obj = f1.GetValue(b);
+            PropertyInfo pi = b.GetType().GetProperty("Events",
+                BindingFlags.NonPublic | BindingFlags.Instance);
+            EventHandlerList list = (EventHandlerList)pi.GetValue(b, null);
+            list.RemoveHandler(obj, list[obj]);
+        }
+
         private void Armar_Lista()
         {
-            oListaOperaciones = oCCUCore.ObtenerOperaciones();
+            //oListaOperaciones = oCCUCore.ObtenerOperaciones();
+            oListaOperaciones = oCCUCore.ObtenerOperaciones(this.cmb_tipomatricula.Text, this.txt_numeromatricula.Text, this.cmb_tipooperacion.Text, this.cmb_estado.Text, this.txt_nombrecliente.Text, this.txt_nombrechofer.Text);
             gvOperaciones.DataSource = oListaOperaciones;
             gvOperaciones.DataBind();
 
+            HttpContext.Current.Session["ListaOperaciones"] = oListaOperaciones; 
+            
             //mostrar a qué estado, tipo de op, alquiler y cliente corresponden los números
             int cantidadfilas = gvOperaciones.Rows.Count; 
             for (int i = 0; i < cantidadfilas; i++)
             {
-                int estado = Convert.ToInt32(gvOperaciones.Rows[i].Cells[2].Text) -1;
-                gvOperaciones.Rows[i].Cells[2].Text = oListaEstadosOperacion[estado].descripcion;
-                int tipo = Convert.ToInt32(gvOperaciones.Rows[i].Cells[10].Text) -1;
-                gvOperaciones.Rows[i].Cells[10].Text = oListaEstadosOperacion[tipo].descripcion;
+                int estado = Convert.ToInt32(gvOperaciones.Rows[i].Cells[2].Text);
+                gvOperaciones.Rows[i].Cells[2].Text = oListaEstadosOperacion[estado -1].descripcion;
+                int tipo = Convert.ToInt32(gvOperaciones.Rows[i].Cells[10].Text);
+                gvOperaciones.Rows[i].Cells[10].Text = oListaTiposOperacion[tipo -1].descripcion;
                 /*
                 int alquiler = Convert.ToInt32(gvOperaciones.Rows[i].Cells[14].Text);
                 gvOperaciones.Rows[i].Cells[14].Text = oListaEstadoOperacion[alquiler].ToString();
                 int cliente = Convert.ToInt32(gvOperaciones.Rows[i].Cells[17].Text);
                 gvOperaciones.Rows[i].Cells[17].Text = oListaEstadoOperacion[cliente].ToString();
-                */
+                 * */
+                
             }
+            
+            //HttpContext.Current.Session["ListaOperaciones"] = oListaOperaciones; 
+
         }
 
         protected void gvOperaciones_RowCreated(object sender, GridViewRowEventArgs e)
         {
+            
             e.Row.Cells[1].Text = "Número de operación";
             e.Row.Cells[2].Text = "Estado";
             e.Row.Cells[3].Text = "Inicio";
@@ -140,21 +221,70 @@ namespace Vista_Web.Operaciones
             
             //ocultar
             e.Row.Cells[6].Visible = e.Row.Cells[9].Visible = e.Row.Cells[9].Visible = e.Row.Cells[11].Visible = e.Row.Cells[12].Visible = e.Row.Cells[13].Visible = e.Row.Cells[15].Visible = e.Row.Cells[16].Visible = false;
-
+            
             
         }
 
         protected void gvOperaciones_SelectedIndexChanged(object sender, EventArgs e)
         {
             message.Visible = false;
+            int nrooperacion = gvOperaciones.SelectedIndex;
+            oOperacion = oListaOperaciones[nrooperacion];
+            HttpContext.Current.Session["Operacion"] = oOperacion; 
+
+        }
+
+        protected void cmb_tipooperacion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void cmb_tipomatricula_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void cmb_estado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
 
         //filtrado
         protected void btn_filtrar_Click(object sender, EventArgs e)
         {
             message.Visible = false;
+            //int tipo_matricula;
+            //int tipo_operacion;
+            //int nro_estado;
 
-            int tipo_matricula = cmb_tipomatricula.SelectedIndex;
+            //if (cmb_tipomatricula.SelectedIndex != 0)
+            //{
+            //    tipo_matricula = cmb_tipomatricula.SelectedIndex - 1;
+
+            //}
+            //else
+            //{
+            //    tipo_matricula = 0;
+            //}
+            //if (cmb_tipooperacion.SelectedIndex != 0)
+            //{
+            //    tipo_operacion = cmb_tipooperacion.SelectedIndex - 1;
+
+            //}
+            //else
+            //{
+            //    tipo_operacion = 0;
+            //}
+            //if (cmb_estado.SelectedIndex != 0)
+            //{
+            //    nro_estado = cmb_estado.SelectedIndex - 1;
+
+            //}
+            //else
+            //{
+            //    nro_estado = 0;
+            //}
+            Armar_Lista();
 
         }
 
@@ -199,48 +329,52 @@ namespace Vista_Web.Operaciones
         {
             message.Visible = true;
 
-            if (gvOperaciones.SelectedRow == null)
-            {
-                lb_error.Text = "Debe seleccionar una operación";
-            }
-            else
-            {
+            //if (gvOperaciones.SelectedRow == null)
+            //{
+            //    lb_error.Text = "Debe seleccionar una operación";
+            //}
+            //else
+            //{
                 //comprobar estado
-                if (gvOperaciones.SelectedRow.Cells[2].Text =="Autorizado")
-                {
-                    operacion = gvOperaciones.SelectedRow.Cells[1].Text;
+                //if (gvOperaciones.SelectedRow.Cells[2].Text =="Autorizado")
+                //{
+                    //operacion = gvOperaciones.SelectedRow.Cells[1].Text;
+                    operacion = "9";
                     Response.Redirect(String.Format("~/Operaciones/RegistrarCargaDescarga.aspx?operacion={0}", Server.UrlEncode(operacion)));
-                }
-                else
-                {
-                    lb_error.Text = "La operación seleccionada no tiene el estado correcto.";
-                }
-            }
+            //    }
+            //    else
+            //    {
+            //        lb_error.Text = "La operación seleccionada no tiene el estado correcto.";
+            //    }
+            //}
         }
 
         protected void botonera1_Click_Baja(object sender, EventArgs e)
         {
             message.Visible = true;
 
-            if (gvOperaciones.SelectedRow == null)
-            {
-                lb_error.Text = "Debe seleccionar una operación";
-            }
+            //if (gvOperaciones.SelectedRow == null)
+            //{
+            //    lb_error.Text = "Debe seleccionar una operación";
+            //}
 
-            else
-            {
+            operacion = "9";
+
+            //else
+            //{
                 //comprobar estado
-                if (gvOperaciones.SelectedRow.Cells[2].Text == "Finalizado")
+                //if (gvOperaciones.SelectedRow.Cells[2].Text == "Finalizado")
+                if (gvOperaciones.Rows[8].Cells[2].Text == "Finalizado")
                 {
                     //mostrar modal
                     message.Visible = false;
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "pop", "openModal();", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "pop", "openModalCerrar();", true);
                 }
                 else
                 {
                     lb_error.Text = "La operación seleccionada no tiene el estado correcto.";
                 }
-            }
+            //}
         }
 
         protected void botonera1_Click_Consulta(object sender, EventArgs e)

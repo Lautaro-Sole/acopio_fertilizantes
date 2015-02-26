@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Default.Master" AutoEventWireup="true" CodeBehind="Operaciones.aspx.cs" Inherits="Vista_Web.Operaciones.Operaciones" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Default.Master" AutoEventWireup="true" EnableViewState="true" CodeBehind="Operaciones.aspx.cs" Inherits="Vista_Web.Operaciones.Operaciones" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <%@ Register Src="../Botoneras/Botonera1.ascx" TagName="Botonera1" TagPrefix="uc1" %>
@@ -18,7 +18,7 @@
                         </div>
                           <div id="Div1" runat="server" class="form-group">
                             <label id="Label1" runat="server" for="cmb_tipomatricula">Tipo de matricula</label>
-                            <asp:DropDownList ID="cmb_tipomatricula" runat="server" class="form-control">
+                            <asp:DropDownList ID="cmb_tipomatricula" runat="server" class="form-control" OnSelectedIndexChanged="cmb_tipomatricula_SelectedIndexChanged">
                             </asp:DropDownList>
                          </div>
                          
@@ -34,13 +34,13 @@
 
                          <div id="Div4" runat="server" class="form-group">
                               <label id="Label2" runat="server" for="cmb_tipooperacion">Tipo de operación</label>
-                              <asp:DropDownList ID="cmb_tipooperacion" runat="server" class="form-control">
+                              <asp:DropDownList ID="cmb_tipooperacion" runat="server" class="form-control" OnSelectedIndexChanged="cmb_tipooperacion_SelectedIndexChanged">
                               </asp:DropDownList>
                          </div>
                          
                          <div id="Div5" runat="server" class="form-group">
                               <label id="Label3" runat="server" for="cmb_estado">Estado</label>
-                              <asp:DropDownList ID="cmb_estado" runat="server" class="form-control">
+                              <asp:DropDownList ID="cmb_estado" runat="server" class="form-control" OnSelectedIndexChanged="cmb_estado_SelectedIndexChanged">
                               </asp:DropDownList>
                          </div>
                          
@@ -93,15 +93,15 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <button id="btn_cerrar_modal" runat="server" type="button" class="close" data-dismiss="modal_detalle_titulo"><span id="Span1" runat="server" aria-hidden="true">&times;</span><span id="Span2" runat="server" class="sr-only">Cerrar</span></button>
-                            <h4 class="modal-title">Inhabilitar usuario</h4>
+                            <button id="btn_cerrar_modal" runat="server" type="button" class="close" data-dismiss="modal_cerrar"><span id="Span1" runat="server" aria-hidden="true">&times;</span><span id="Span2" runat="server" class="sr-only">Cerrar</span></button>
+                            <h4 class="modal-title">Autorizar Cierre</h4>
                         </div>
                         <div class="modal-body">
-                            <p>¿Está seguro que desea inhabilitar al usuario?</p>
+                            <p>¿Está seguro que desea cerrar la operación?</p>
                         </div>
                         <div class="modal-footer">
-                            <asp:Button ID="btn_cancelar_modal" data-dismiss="modal_eliminar" runat="server" Text="Cancelar" class="btn btn-default" OnClick="btn_cancelar_modal_Click" />
-                            <asp:Button ID="btn_cerrar_operacion_modal" runat="server" Text="Eliminar" class="btn btn-danger" OnClick="btn_cerrar_operacion_modal_Click" />
+                            <asp:Button ID="btn_cancelar_modal" data-dismiss="modal_cerrar" runat="server" Text="Cancelar" class="btn btn-default" OnClick="btn_cancelar_modal_Click" />
+                            <asp:Button ID="btn_cerrar_operacion_modal" runat="server" Text="Cerrar Operación" class="btn btn-danger" OnClick="btn_cerrar_operacion_modal_Click" />
                         </div>
                     </div>
                 </div>

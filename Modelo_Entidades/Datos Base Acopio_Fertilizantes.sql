@@ -93,6 +93,9 @@ insert into CatOperaciones(estado, fecha_y_hora_inicio, notas, nro_chofer, nro_t
 insert into CatOperaciones(estado, fecha_y_hora_inicio, notas, nro_documento , nro_alquiler, nro_chofer, nro_transporte, nro_cliente, tipo_documento, tipo_operacion, USU_CODIGO, fecha_y_hora_accion, accion) values
 (3, '01-08-2014 08:03:03', 'Nada que destacar.', 7, 5, 3, 3, 2,'Orden de Carga', 1, 'debug', '01-08-2014 08:23:03', 'modificacion') 
 
+--operaciones finalizadas
+ 
+
 
 -- select * from Alquileres_Productos
 insert into Alquileres_Productos values

@@ -17,6 +17,9 @@ namespace Vista_Web.Botoneras
         public event Eventos_Botonera Click_Consulta;
         public event Eventos_Botonera Click_Cerrar;
 
+        List<Modelo_Entidades.PERFIL> oListaPerfiles;
+        List<Modelo_Entidades.PERMISO> oListaPermisos;
+
         Controladora.CCUGPerfiles oCCUGPerfiles;
         Controladora.CCUGGrupos oCCUGGrupos;
         Controladora.CCUGUsuarios oCCUGUsuarios;
@@ -29,12 +32,72 @@ namespace Vista_Web.Botoneras
             oCCUGGrupos = Controladora.CCUGGrupos.ObtenerInstancia();
             oCCUGUsuarios = Controladora.CCUGUsuarios.ObtenerInstancia();
             oCCURPF = Controladora.CCURPF.ObtenerInstancia();
+
+            oListaPermisos = new List<Modelo_Entidades.PERMISO>();
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
+
+        //public global::System.Web.UI.WebControls.Button btn_agregar
+        //{
+        //    get
+        //    {
+        //        return btn_agregar;
+        //    }
+        //    //set
+        //    //{
+        //    //    btn_agregar = value;
+        //    //}
+        //}
+
+        //public global::System.Web.UI.WebControls.Button btn_cerrar
+        //{
+        //    get
+        //    {
+        //        return btn_cerrar;
+        //    }
+        //    //set
+        //    //{
+        //    //    btn_cerrar = value;
+        //    //}
+        //}
+        //public global::System.Web.UI.WebControls.Button btn_eliminar
+        //{
+        //    get
+        //    {
+        //        return btn_eliminar;
+        //    }
+        //    //set
+        //    //{
+        //    //    btn_eliminar = value;
+        //    //}
+        //}
+        //public global::System.Web.UI.WebControls.Button btn_modificar
+        //{
+        //    get
+        //    {
+        //        return btn_modificar;
+        //    }
+        //    //set
+        //    //{
+        //    //    btn_modificar = value;
+        //    //}
+        //}
+
+        //public global::System.Web.UI.WebControls.Button btn_verdetalle
+        //{
+        //    get
+        //    {
+        //        return btn_verdetalle;
+        //    }
+        //    //set
+        //    //{
+        //    //    btn_verdetalle = value;
+        //    //}
+        //}
 
         protected void btn_agregar_Click(object sender, EventArgs e)
         {
@@ -81,6 +144,7 @@ namespace Vista_Web.Botoneras
                     //por cada permiso del grupo en el formulario
                     foreach (Modelo_Entidades.PERMISO oPermiso in oFachada.ObtenerPermisos(oGrupo.GRU_CODIGO, form))
                     {
+                        oListaPermisos.Add(oPermiso);
                         switch (oPermiso.PER_DESCRIPCION)
                         {
                             case "ALTA":
@@ -121,8 +185,8 @@ namespace Vista_Web.Botoneras
                                     btn_agregar.Enabled = true;
                                     btn_agregar.Text = "Autorizar Operación";
 
-                                    btn_modificar.Enabled = true;
-                                    btn_modificar.Text = "Autorizar Cierre";
+                                    btn_eliminar.Enabled = true;
+                                    btn_eliminar.Text = "Autorizar Cierre";
                                 }
                                 if (form == "frmAutorizarOperacion")
                                 {
@@ -138,12 +202,16 @@ namespace Vista_Web.Botoneras
                             case "REGISTRAR CARGA/DESCARGA":
                                 if (form == "frmOperaciones")
                                 {
-                                    btn_eliminar.Enabled = true;
-                                    btn_eliminar.Text = "Registrar Carga o Descarga";
+                                    btn_modificar.Enabled = true;
+                                    btn_modificar.Text = "Registrar Carga o Descarga";
                                 }
                                 break;
                         }
                     }
+                }
+                if(oListaPermisos.Count == 0)
+                {
+                    Response.Redirect("~/Seguridad/Login.aspx");
                 }
             }
 
