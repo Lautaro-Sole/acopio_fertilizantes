@@ -8,6 +8,7 @@ function openModal1() {
 
 function openModalCerrar() {
     $('#modal_cerrar').modal('show');
+    return false;
 }
 
 function closeModal() {
@@ -20,4 +21,13 @@ function closeModal1() {
     $('#modal_especial1').modal('hide');
     $('body').removeClass('modal-open');
     $('.modal-backdrop').remove();
+
+
+}
+
+function closeModalCerrar() {
+    $('#modal_cerrar').modal('hide');
+    $('body').removeClass('modal-open');
+    $('.modal-backdrop').remove();
+    return false;
 }

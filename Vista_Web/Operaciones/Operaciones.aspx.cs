@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -30,10 +31,13 @@ namespace Vista_Web.Operaciones
         private global::System.Web.UI.WebControls.Button btn_modificar;
         private global::System.Web.UI.WebControls.Button btn_verdetalle;
 
+        ClientScriptManager oClientScriptManager;
         public Operaciones()
         {
             oCCUCore = Controladora.CCUCore.ObtenerInstancia();
             oCCURPF = Controladora.CCURPF.ObtenerInstancia();
+
+            oClientScriptManager = Page.ClientScript;
         }
 
         protected void Page_Init(object sender, EventArgs e)
@@ -131,6 +135,12 @@ namespace Vista_Web.Operaciones
             btn_verdetalle = (System.Web.UI.WebControls.Button)botonera1.FindControl("btn_verdetalle");
             btn_verdetalle.Click -= new EventHandler(botonera1_Click_Consulta);
             btn_verdetalle.Click += new EventHandler(botonera1_Click_Consulta);
+
+            btn_eliminar.Attributes.Add("OnClientClick", "javascript: return openModalCerrar();");
+            btn_eliminar.Attributes.Add("onClick", "javascript: return openModalCerrar();");
+
+            //btn_cerrar_operacion_modal.Attributes.Add("onclick", "javascript: return closeModalCerrar();");
+
         }
 
         private void GuardarEnSesion()
@@ -368,7 +378,18 @@ namespace Vista_Web.Operaciones
                 {
                     //mostrar modal
                     message.Visible = false;
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "pop", "openModalCerrar();", true);
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "pop", "openModalCerrar();", true);
+
+                    //StringBuilder sb = new StringBuilder();
+                    //sb.Append("<script type=\"text/javascript\"> function openModalCerrar() {)");
+                    //sb.Append("$('#modal_cerrar').modal('hide');");
+                    //sb.Append("$('body').removeClass('modal-open');");
+                    //sb.Append("$('.modal-backdrop').remove();");
+                    //sb.Append("return false;</script>");
+
+                    //this.ScriptManager.RegisterClientScriptBlock(this.GetType(), "funcioncerrarmodal", sb.ToString());
+                    
+                   
                 }
                 else
                 {
@@ -399,10 +420,11 @@ namespace Vista_Web.Operaciones
 
         protected void btn_cerrar_operacion_modal_Click(object sender, EventArgs e)
         {
-            operacion = gvOperaciones.SelectedRow.Cells[1].Text;
+            //operacion = gvOperaciones.SelectedRow.Cells[1].Text;
+            operacion = "9";
             oOperacion = oCCUCore.ObtenerOperacion(Convert.ToInt64(operacion));
 
-            oOperacion.Estado_Operacion = oListaEstadosOperacion.Find(delegate(Modelo_Entidades.Estado_Operacion oEstadoBuscado) { return oEstadoBuscado.descripcion == "Finalizado"; });
+            oOperacion.Estado_Operacion = oListaEstadosOperacion.Find(delegate(Modelo_Entidades.Estado_Operacion oEstadoBuscado) { return oEstadoBuscado.descripcion == "Cerrado"; });
             oOperacion.USU_CODIGO = oUsuario.USU_CODIGO;
             oOperacion.accion = "Modificación - Cerrado";
             oOperacion.fecha_y_hora_accion = DateTime.Now;
@@ -416,7 +438,7 @@ namespace Vista_Web.Operaciones
                 lb_error.Text = "Excepción: " + ex.InnerException.Message;
             }
 
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "pop", "closeModal();", true);
+            ScriptManager.RegisterStartupScript(this.btn_cerrar_operacion_modal, typeof(System.Web.UI.WebControls.Button), "popout", "closeModalCerrar();", true);
             message.Visible = true;
             lb_error.Text = "Se ha cerrado la operación.";
             Armar_Lista();
