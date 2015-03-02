@@ -100,7 +100,7 @@
     <Content Include="JS\jquery-1.11.1.min.js" />
     <Content Include="Operaciones\AutorizarCierre.aspx" />
     <Content Include="Operaciones\AutorizarOperacion.aspx" />
-    <Content Include="Operaciones\Operaciones.aspx" />
+    <Content Include="Operaciones\OperacionesIntento2.aspx" />
     <Content Include="Operaciones\RegistrarCargaDescarga.aspx" />
     <Content Include="Operaciones\Registro de Ingreso.aspx" />
     <Content Include="Principal.aspx" />
@@ -145,12 +145,12 @@
     <Compile Include="Operaciones\AutorizarOperacion.aspx.designer.cs">
       <DependentUpon>AutorizarOperacion.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Operaciones\Operaciones.aspx.cs">
-      <DependentUpon>Operaciones.aspx</DependentUpon>
+    <Compile Include="Operaciones\OperacionesIntento2.aspx.cs">
+      <DependentUpon>OperacionesIntento2.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Operaciones\Operaciones.aspx.designer.cs">
-      <DependentUpon>Operaciones.aspx</DependentUpon>
+    <Compile Include="Operaciones\OperacionesIntento2.aspx.designer.cs">
+      <DependentUpon>OperacionesIntento2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Operaciones\RegistrarCargaDescarga.aspx.cs">
       <DependentUpon>RegistrarCargaDescarga.aspx</DependentUpon>

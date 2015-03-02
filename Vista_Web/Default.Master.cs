@@ -50,7 +50,7 @@ namespace Vista_Web
         
         private void ArmarMenu()
         {
-            user_menu.InnerText = oUsuario.USU_NOMBRE + oUsuario.USU_APELLIDO;
+            user_menu.InnerText = oUsuario.USU_NOMBRE + " " + oUsuario.USU_APELLIDO;
 
             HtmlGenericControl SpanFlechaUser = new HtmlGenericControl("span");
 
