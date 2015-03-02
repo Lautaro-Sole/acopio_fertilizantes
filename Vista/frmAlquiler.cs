@@ -16,7 +16,7 @@ namespace Vista
         private BindingSource bsClientes = new BindingSource();
         private Controladora.CCUGAlmacenes oCCUGAlmacenes = new Controladora.CCUGAlmacenes();
         private Controladora.CCUGClientes oCCUGClientes = new Controladora.CCUGClientes();
-        private Controladora.CCUGAlquileres oCCUGAlquileres = new Controladora.CCUGAlquileres();
+        private Controladora.CCUGAlquileres oCCUGAlquileres = Controladora.CCUGAlquileres.ObtenerInstancia();
         private Modelo_Entidades.Alquiler oAlquiler;
         private Modelo_Entidades.Almacen oAlmacen;
         private Modelo_Entidades.Cliente oCliente;

@@ -12,7 +12,7 @@ namespace Vista
     public partial class frmCarga : Form
     {
         BindingSource bsAlquileres = new BindingSource();
-        Controladora.CCUGAlquileres oCCUGAlquileres = new Controladora.CCUGAlquileres();
+        Controladora.CCUGAlquileres oCCUGAlquileres = Controladora.CCUGAlquileres.ObtenerInstancia();
         Controladora.CCUCore oCCUCore = Controladora.CCUCore.ObtenerInstancia();
         Modelo_Entidades.Operacion oOperacion;
         

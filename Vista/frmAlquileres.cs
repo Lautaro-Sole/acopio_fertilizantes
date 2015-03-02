@@ -12,7 +12,7 @@ namespace Vista
     {
         private static frmAlquileres Instancia;
         private BindingSource bsAlquileres = new BindingSource();
-        private Controladora.CCUGAlquileres oCCUGAlquileres = new Controladora.CCUGAlquileres();
+        private Controladora.CCUGAlquileres oCCUGAlquileres = Controladora.CCUGAlquileres.ObtenerInstancia();
         private Modelo_Entidades.Alquiler oAlquiler = new Modelo_Entidades.Alquiler();
 
         Modelo_Entidades.USUARIO oUsuarioActual;

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Gestión de Usuarios" Language="C#" MasterPageFile="~/Default.Master" AutoEventWireup="true" CodeBehind="Gestion de Usuarios.aspx.cs" Inherits="Vista_Web.Seguridad.Usuarios" %>
+﻿<%@ Page Title="Gestión de Usuarios" Language="C#" MasterPageFile="~/Default.Master" AutoEventWireup="true" CodeBehind="Usuarios.aspx.cs" Inherits="Vista_Web.Seguridad.Usuarios" %>
 
 <%@ Register Src="../Botoneras/Botonera1.ascx" TagName="Botonera1" TagPrefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">

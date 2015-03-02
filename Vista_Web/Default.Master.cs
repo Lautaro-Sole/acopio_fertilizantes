@@ -135,7 +135,11 @@ namespace Vista_Web
 
                     Link_SubFormulario.Text = oFormulario.FRM_DESCRIPCION;
                     Link_SubFormulario.NavigateUrl = "~/" + oModulo.MOD_DESCRIPCION + "/" + oFormulario.FRM_DESCRIPCION + ".aspx";
-                    SubFormulario.Controls.Add(Link_SubFormulario);
+                    if (!(oFormulario.FRM_CODIGO == "autorizar") && !(oFormulario.FRM_CODIGO == "cargadesc"))
+                    {
+                        SubFormulario.Controls.Add(Link_SubFormulario);
+                    }
+
                     oListaFormularios.Add(oFormulario);
                 }
             }

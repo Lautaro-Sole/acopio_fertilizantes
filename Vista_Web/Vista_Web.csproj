@@ -87,6 +87,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Auditoria\AuditoriaOperaciones.aspx" />
+    <Content Include="Auditoria\AuditoriaSesiones.aspx" />
     <Content Include="Botoneras\Botonera1.ascx" />
     <Content Include="CSS\bootstrap-theme.css" />
     <Content Include="CSS\bootstrap-theme.min.css" />
@@ -100,23 +102,38 @@
     <Content Include="JS\jquery-1.11.1.min.js" />
     <Content Include="Operaciones\AutorizarCierre.aspx" />
     <Content Include="Operaciones\AutorizarOperacion.aspx" />
+    <Content Include="Operaciones\Operacion.aspx" />
     <Content Include="Operaciones\Operaciones.aspx" />
     <Content Include="Operaciones\RegistrarCargaDescarga.aspx" />
     <Content Include="Operaciones\Registro de Ingreso.aspx" />
     <Content Include="Principal.aspx" />
     <Content Include="Seguridad\CambiarClave.aspx" />
-    <Content Include="Seguridad\Gestion de Perfiles.aspx" />
-    <Content Include="Seguridad\Gestion de Usuarios.aspx" />
+    <Content Include="Seguridad\Perfiles.aspx" />
+    <Content Include="Seguridad\Usuarios.aspx" />
     <Content Include="Seguridad\Grupo.aspx" />
     <Content Include="Seguridad\Login.aspx" />
     <Content Include="Seguridad\Perfil.aspx" />
     <Content Include="Seguridad\Principal.aspx" />
     <Content Include="Seguridad\RegenerarClave.aspx" />
     <Content Include="Seguridad\Usuario.aspx" />
-    <Content Include="Seguridad\Gestion de Grupos.aspx" />
+    <Content Include="Seguridad\Grupos.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Auditoria\AuditoriaOperaciones.aspx.cs">
+      <DependentUpon>AuditoriaOperaciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Auditoria\AuditoriaOperaciones.aspx.designer.cs">
+      <DependentUpon>AuditoriaOperaciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Auditoria\AuditoriaSesiones.aspx.cs">
+      <DependentUpon>AuditoriaSesiones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Auditoria\AuditoriaSesiones.aspx.designer.cs">
+      <DependentUpon>AuditoriaSesiones.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Botoneras\Botonera1.ascx.cs">
       <DependentUpon>Botonera1.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -144,6 +161,13 @@
     </Compile>
     <Compile Include="Operaciones\AutorizarOperacion.aspx.designer.cs">
       <DependentUpon>AutorizarOperacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Operaciones\Operacion.aspx.cs">
+      <DependentUpon>Operacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Operaciones\Operacion.aspx.designer.cs">
+      <DependentUpon>Operacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Operaciones\Operaciones.aspx.cs">
       <DependentUpon>Operaciones.aspx</DependentUpon>
@@ -181,19 +205,19 @@
     <Compile Include="Seguridad\CambiarClave.aspx.designer.cs">
       <DependentUpon>CambiarClave.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Seguridad\Gestion de Perfiles.aspx.cs">
-      <DependentUpon>Gestion de Perfiles.aspx</DependentUpon>
+    <Compile Include="Seguridad\Perfiles.aspx.cs">
+      <DependentUpon>Perfiles.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Seguridad\Gestion de Perfiles.aspx.designer.cs">
-      <DependentUpon>Gestion de Perfiles.aspx</DependentUpon>
+    <Compile Include="Seguridad\Perfiles.aspx.designer.cs">
+      <DependentUpon>Perfiles.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Seguridad\Gestion de Usuarios.aspx.cs">
-      <DependentUpon>Gestion de Usuarios.aspx</DependentUpon>
+    <Compile Include="Seguridad\Usuarios.aspx.cs">
+      <DependentUpon>Usuarios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Seguridad\Gestion de Usuarios.aspx.designer.cs">
-      <DependentUpon>Gestion de Usuarios.aspx</DependentUpon>
+    <Compile Include="Seguridad\Usuarios.aspx.designer.cs">
+      <DependentUpon>Usuarios.aspx</DependentUpon>
     </Compile>
     <Compile Include="Seguridad\Grupo.aspx.cs">
       <DependentUpon>Grupo.aspx</DependentUpon>
@@ -237,12 +261,12 @@
     <Compile Include="Seguridad\Usuario.aspx.designer.cs">
       <DependentUpon>Usuario.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Seguridad\Gestion de Grupos.aspx.cs">
-      <DependentUpon>Gestion de Grupos.aspx</DependentUpon>
+    <Compile Include="Seguridad\Grupos.aspx.cs">
+      <DependentUpon>Grupos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Seguridad\Gestion de Grupos.aspx.designer.cs">
-      <DependentUpon>Gestion de Grupos.aspx</DependentUpon>
+    <Compile Include="Seguridad\Grupos.aspx.designer.cs">
+      <DependentUpon>Grupos.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

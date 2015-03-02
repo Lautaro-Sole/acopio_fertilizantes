@@ -1,4 +1,4 @@
-﻿<%@ Page Title= "Gestion de Perfiles" Language="C#" MasterPageFile="~/Default.Master" AutoEventWireup="true" CodeBehind="Gestion de Perfiles.aspx.cs" Inherits="Vista_Web.Seguridad.Perfiles" %>
+﻿<%@ Page Title= "Gestion de Perfiles" Language="C#" MasterPageFile="~/Default.Master" AutoEventWireup="true" CodeBehind="Perfiles.aspx.cs" Inherits="Vista_Web.Seguridad.Perfiles" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <%--<%@ Register Src="../Botoneras/Botonera1.ascx" TagName="Botonera1" TagPrefix="uc1" %>--%>
