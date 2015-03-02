@@ -10,7 +10,7 @@
 namespace Vista_Web.Operaciones {
     
     
-    public partial class Operaciones {
+    public partial class OperacionesIntento2 {
         
         /// <summary>
         /// Control ScriptManager.
@@ -229,13 +229,13 @@ namespace Vista_Web.Operaciones {
         protected global::System.Web.UI.WebControls.GridView gvOperaciones;
         
         /// <summary>
-        /// Control Div8.
+        /// Control Div10.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div8;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div10;
         
         /// <summary>
         /// Control botonera1.
