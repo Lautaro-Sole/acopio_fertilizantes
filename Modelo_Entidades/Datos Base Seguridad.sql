@@ -54,7 +54,7 @@ insert into SEGURIDAD.dbo.FORMULARIOS values
 ('regingreso', 'Registro de Ingreso', 'opera', 'frmRegistroIngreso'),
 ('opera', 'Operaciones', 'opera', 'frmOperaciones') ,
 ('autorizar', 'Autorizar Operacion', 'opera', 'frmAutorizarOperacion'),
-('cargadesc', 'Carga y Descarga', 'opera', 'frmCargaYDescarga'),
+('pesado', 'Pesado', 'opera', 'frmPesado'),
 ('infvip','Mejores Clientes', 'informes', 'frmInformeVIP'),
 ('infestalq', 'Estado de alquileres', 'informes', 'frmInformeEstadoAlquileres'),
 ('inffertmov','Clientes que movieron más fertilizante', 'informes', 'frmInformeFertMovido')
@@ -95,7 +95,7 @@ insert into SEGURIDAD.dbo.FORMULARIOS_PERMISOS values
 ('transp','C'),
 ('transp','M'),
 ('regingreso','A'),
-('cargadesc', 'A'),
+('pesado', 'A'),
 ('opera','Z'),
 ('opera','G'),
 ('opera','C'),
@@ -154,7 +154,7 @@ insert into SEGURIDAD.dbo.PERFILES values
 --darle todos los perfiles de carga y descarga a empleados de carga y descarga
 insert into SEGURIDAD.dbo.PERFILES values 
 ('opera','carga','C', 'admin', '06-07-2012','A'),
-('cargadesc','carga','A', 'admin', '06-07-2012','A')
+('pesado','carga','A', 'admin', '06-07-2012','A')
 
 --darle todos los perfiles a usuario para pruebas
 insert into SEGURIDAD.dbo.PERFILES values   
@@ -182,7 +182,7 @@ insert into SEGURIDAD.dbo.PERFILES values
 ('opera','debug','Z', 'admin', '06-07-2012','A'),
 ('opera','debug','G', 'admin', '06-07-2012','A'),
 ('opera','debug','C', 'admin', '06-07-2012','A'),
-('cargadesc','debug','A', 'admin', '06-07-2012','A'),
+('pesado','debug','A', 'admin', '06-07-2012','A'),
 ('infvip','debug','C', 'admin', '06-07-2012','A'),
 ('inffertmov','debug','C', 'admin', '06-07-2012','A'),
 ('infestalq','debug','C', 'admin', '06-07-2012','A'),

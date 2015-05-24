@@ -203,7 +203,7 @@ namespace Vista_Web.Botoneras
                                 if (form == "frmOperaciones")
                                 {
                                     btn_modificar.Enabled = true;
-                                    btn_modificar.Text = "Registrar Carga o Descarga";
+                                    btn_modificar.Text = "Registrar Pesado";
                                 }
                                 break;
                         }

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Default.Master" AutoEventWireup="true" CodeBehind="RegistrarCargaDescarga.aspx.cs" Inherits="Vista_Web.Operaciones.RegistrarCargaDescarga" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Default.Master" AutoEventWireup="true" CodeBehind="Pesado.aspx.cs" Inherits="Vista_Web.Operaciones.RegistrarCargaDescarga" %>
 
 <%@ Register Src="../Botoneras/Botonera1.ascx" TagName="Botonera1" TagPrefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -14,7 +14,7 @@
                 <div runat="server" class="row">
                     <div runat="server" class="col-lg-12">
                         <div class="page-header" title="Gestión de Usuarios">
-                            <h1>Registro de Carga o Descarga <small>Módulo de Operaciones</small></h1>
+                            <h1 id="nombrepagina">Pesado <small>Módulo de Operaciones</small></h1>
                         </div>
                     </div>
                     <div id="Div4" runat="server" class="col-lg-4">

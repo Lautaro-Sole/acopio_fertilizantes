@@ -69,6 +69,7 @@ insert into dbo.CatEstados_Operacion values
 ('Ingresa'),
 ('Rechazado'),
 ('Autorizado'),
+('En Proceso'),
 ('Finalizado'),
 ('Cerrado')
 
@@ -78,12 +79,12 @@ insert into dbo.CatTipos_Operacion values
 
 --operaciones completas
 insert into CatOperaciones(estado, fecha_y_hora_inicio, fecha_y_hora_fin, notas, nro_documento, peso_inicial, peso_final, tipo_documento, tipo_operacion, USU_CODIGO, fecha_y_hora_accion, accion, nro_alquiler, nro_chofer, nro_transporte, nro_cliente) values
-(5, '12-10-2011 12:23:14', '12-10-2011 14:33:33', 'Retrasado por piquete.', 1, 25028, 13028, 'Remito', 2, 'debug', '12-10-2011 14:33:33', 'modificacion', 1, 2, 3, 1),
-(5, '12-10-2011 14:33:33', '12-10-2011 16:53:43', 'Retrasado por piquete.', 2, 18752, 9752, 'Remito', 2, 'debug', '12-10-2011 16:53:43', 'modificacion', 1, 1, 1, 1),
-(5, '10-10-2013 09:27:42', '10-10-2013 20:53:43', 'Nada que destacar.', 3, 20133, 12133, 'Remito', 2, 'debug', '10-10-2013 20:53:43', 'modificacion', 4, 2, 2, 1),
-(5, '12-12-2013 12:33:33', '12-12-2013 15:22:53', 'Nada que destacar.', 4, 19735, 9735, 'Remito', 2, 'debug', '12-12-2013 15:22:53', 'modificacion', 5, 3, 1, 2),
-(5, '29-07-2014 09:07:05', '29-07-2014 11:28:17', 'Nada que destacar.', 5, 17138, 12138, 'Remito', 2, 'debug', '29-07-2014 11:28:17', 'modificacion', 3, 2, 2, 2),
-(5, '31-07-2014 08:03:12', '31-07-2014 11:13:12', 'Nada que destacar.', 6, 12130, 15130, 'Orden de Carga', 1, 'debug', '31-07-2014 11:13:12', 'modificacion', 4, 1, 2, 1)
+(6, '12-10-2011 12:23:14', '12-10-2011 14:33:33', 'Retrasado por piquete.', 1, 25028, 13028, 'Remito', 2, 'debug', '12-10-2011 14:33:33', 'modificacion', 1, 2, 3, 1),
+(6, '12-10-2011 14:33:33', '12-10-2011 16:53:43', 'Retrasado por piquete.', 2, 18752, 9752, 'Remito', 2, 'debug', '12-10-2011 16:53:43', 'modificacion', 1, 1, 1, 1),
+(6, '10-10-2013 09:27:42', '10-10-2013 20:53:43', 'Nada que destacar.', 3, 20133, 12133, 'Remito', 2, 'debug', '10-10-2013 20:53:43', 'modificacion', 4, 2, 2, 1),
+(6, '12-12-2013 12:33:33', '12-12-2013 15:22:53', 'Nada que destacar.', 4, 19735, 9735, 'Remito', 2, 'debug', '12-12-2013 15:22:53', 'modificacion', 5, 3, 1, 2),
+(6, '29-07-2014 09:07:05', '29-07-2014 11:28:17', 'Nada que destacar.', 5, 17138, 12138, 'Remito', 2, 'debug', '29-07-2014 11:28:17', 'modificacion', 3, 2, 2, 2),
+(6, '31-07-2014 08:03:12', '31-07-2014 11:13:12', 'Nada que destacar.', 6, 12130, 15130, 'Orden de Carga', 1, 'debug', '31-07-2014 11:13:12', 'modificacion', 4, 1, 2, 1)
 -- operaciones iniciadas
 -- chofer 2, transporte 2, cliente 2
 insert into CatOperaciones(estado, fecha_y_hora_inicio, notas, nro_chofer, nro_transporte, nro_cliente, tipo_documento, tipo_operacion, USU_CODIGO, fecha_y_hora_accion, accion) values
