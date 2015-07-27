@@ -321,10 +321,10 @@ namespace Vista_Web.Operaciones
             else
             {
             //comprobar estado
-            if (gvOperaciones.SelectedRow.Cells[2].Text =="Autorizado")
+            if ((gvOperaciones.SelectedRow.Cells[2].Text =="Autorizado")||(gvOperaciones.SelectedRow.Cells[2].Text=="En Proceso"))
             {
             operacion = gvOperaciones.SelectedRow.Cells[1].Text;
-            Response.Redirect(String.Format("~/Operaciones/RegistrarCargaDescarga.aspx?operacion={0}", Server.UrlEncode(operacion)));
+            Response.Redirect(String.Format("~/Operaciones/Pesado.aspx?operacion={0}", Server.UrlEncode(operacion)));
             }
                 else
                 {

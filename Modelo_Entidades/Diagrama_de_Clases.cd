@@ -3,21 +3,21 @@
   <Class Name="Modelo_Entidades.Acopio_FertilizantesEntities" Collapsed="true">
     <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>iBQEEAAABBAABABCAABFIAGEAIAAWAQACCCIEAABEgQ=</HashCode>
+      <HashCode>iBQEEEQABBAIBgBCAABFIAGEAIBAWAQACCSYEAABEgQ=</HashCode>
       <FileName>Acopio_FertilizantesEntities.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Modelo_Entidades.Almacen">
-    <Position X="8" Y="1.5" Width="1.5" />
+  <Class Name="Modelo_Entidades.Almacen" Collapsed="true">
+    <Position X="8.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AQCBgAIMAAoAIACEAAAABAIEAAABAAAAAAAJClIIAAA=</HashCode>
       <FileName>Almacen.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Modelo_Entidades.Alquiler" Collapsed="true">
-    <Position X="5" Y="0.5" Width="2.25" />
+  <Class Name="Modelo_Entidades.Alquiler">
+    <Position X="10.5" Y="3.75" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AQDQjAAAUAAACEAUAKSABAAEAABAAQgCCDAEghAEABM=</HashCode>
+      <HashCode>AQDQjAAAUAAACEAUAKSABAAEAABAAQgCCDAEghAEEBM=</HashCode>
       <FileName>Alquiler.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -36,14 +36,14 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Modelo_Entidades.FORMULARIO" Collapsed="true">
-    <Position X="11" Y="0.5" Width="1.5" />
+    <Position X="12" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>TEAAAgAAAAsAEUAGAIAQEBAAAAAAAAAAAQBAACAAAAA=</HashCode>
       <FileName>FORMULARIO.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Modelo_Entidades.GRUPO" Collapsed="true">
-    <Position X="6.25" Y="1.5" Width="1.5" />
+    <Position X="5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAEAAEAAAIMEIAAAIAAIBAAAAgEAAAACIAAAAA=</HashCode>
       <FileName>GRUPO.cs</FileName>
@@ -57,7 +57,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Modelo_Entidades.MODULO" Collapsed="true">
-    <Position X="6.75" Y="2.5" Width="1.5" />
+    <Position X="6" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AEAAQgAAAAAAAEAAAAAAAEAAAIAAAQAAFAIAAAAAAAA=</HashCode>
     </TypeIdentifier>
@@ -69,7 +69,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Modelo_Entidades.PERMISO" Collapsed="true">
-    <Position X="0.5" Y="3.5" Width="1.5" />
+    <Position X="0.5" Y="4.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAEAAEIEAAAASAAgAAABAAAAAAQAICCAAAA=</HashCode>
       <FileName>PERMISO.cs</FileName>
@@ -90,13 +90,48 @@
   </Class>
   <Class Name="Modelo_Entidades.Operacion">
     <Position X="7" Y="5.75" Width="3.25" />
+    <Members>
+      <Method Name="CreateOperacion" Hidden="true" />
+      <Method Name="OnaccionChanged" Hidden="true" />
+      <Method Name="OnaccionChanging" Hidden="true" />
+      <Method Name="OnestadoChanged" Hidden="true" />
+      <Method Name="OnestadoChanging" Hidden="true" />
+      <Method Name="Onfecha_y_hora_accionChanged" Hidden="true" />
+      <Method Name="Onfecha_y_hora_accionChanging" Hidden="true" />
+      <Method Name="Onfecha_y_hora_finChanged" Hidden="true" />
+      <Method Name="Onfecha_y_hora_finChanging" Hidden="true" />
+      <Method Name="Onfecha_y_hora_inicioChanged" Hidden="true" />
+      <Method Name="Onfecha_y_hora_inicioChanging" Hidden="true" />
+      <Method Name="OnnotasChanged" Hidden="true" />
+      <Method Name="OnnotasChanging" Hidden="true" />
+      <Method Name="Onnro_alquilerChanged" Hidden="true" />
+      <Method Name="Onnro_alquilerChanging" Hidden="true" />
+      <Method Name="Onnro_choferChanged" Hidden="true" />
+      <Method Name="Onnro_choferChanging" Hidden="true" />
+      <Method Name="Onnro_clienteChanged" Hidden="true" />
+      <Method Name="Onnro_clienteChanging" Hidden="true" />
+      <Method Name="Onnro_documentoChanged" Hidden="true" />
+      <Method Name="Onnro_documentoChanging" Hidden="true" />
+      <Method Name="Onnro_operacionChanged" Hidden="true" />
+      <Method Name="Onnro_operacionChanging" Hidden="true" />
+      <Method Name="Onnro_transporteChanged" Hidden="true" />
+      <Method Name="Onnro_transporteChanging" Hidden="true" />
+      <Method Name="Onpeso_finalChanged" Hidden="true" />
+      <Method Name="Onpeso_finalChanging" Hidden="true" />
+      <Method Name="Onpeso_inicialChanged" Hidden="true" />
+      <Method Name="Onpeso_inicialChanging" Hidden="true" />
+      <Method Name="Ontipo_documentoChanged" Hidden="true" />
+      <Method Name="Ontipo_documentoChanging" Hidden="true" />
+      <Method Name="Ontipo_operacionChanged" Hidden="true" />
+      <Method Name="Ontipo_operacionChanging" Hidden="true" />
+      <Method Name="OnUSU_CODIGOChanged" Hidden="true" />
+      <Method Name="OnUSU_CODIGOChanging" Hidden="true" />
+    </Members>
     <Compartments>
-      <Compartment Name="Fields" Collapsed="true" />
       <Compartment Name="Properties" Collapsed="true" />
-      <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AQAIHUJzJDDFcEDCBoaAAUUQABgoBQk6BEKhAA8EFTI=</HashCode>
+      <HashCode>IQBYHUJ7NDDFcEDShoaAAUUQABgoBQk6BGKhAA8EFTI=</HashCode>
       <FileName>Operacion.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -106,7 +141,7 @@
   <Class Name="Modelo_Entidades.Transporte" Collapsed="true">
     <Position X="2.25" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAABCSAQCBAIAAREwAAAAoAQCQAAAAAAFAAAABAAAJA=</HashCode>
+      <HashCode>AAABCSAQCDAIAAxEwAAAAoAQCQAAAAAAFAAAABAAAJA=</HashCode>
       <FileName>Transporte.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -120,25 +155,25 @@
   <Class Name="Modelo_Entidades.EstrategiaOperacion">
     <Position X="2.25" Y="5.75" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAIAAAYAAAAAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAIAAAYAAAAAAAgAAAAAAAAAAAACAAAAAAAAA=</HashCode>
       <FileName>EstrategiaOperacion.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Modelo_Entidades.EstrategiaCarga">
-    <Position X="0.75" Y="8" Width="2.75" />
+    <Position X="0.75" Y="8.25" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAIAAAYAAAAAAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
       <FileName>EstrategiaCarga.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Modelo_Entidades.EstrategiaDescarga">
-    <Position X="3.75" Y="8" Width="2.75" />
+    <Position X="3.75" Y="8.25" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAIAAAYAAAAAAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
       <FileName>EstrategiaDescarga.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Modelo_Entidades.Modelo_AuditoriaEntities2" Collapsed="true">
+  <Class Name="Modelo_Entidades.Modelo_Auditoria" Collapsed="true">
     <Position X="4" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAAAkAAAAAAABABAAAAAAAACAAAAASEAA=</HashCode>
@@ -146,7 +181,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Modelo_Entidades.Log" Collapsed="true">
-    <Position X="5.5" Y="0.5" Width="1.5" />
+    <Position X="5.5" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>gAAABgAxAAAAAAQAgAACAEEAAAAAAAAIAACBBgAAAAQ=</HashCode>
     </TypeIdentifier>
@@ -154,11 +189,11 @@
   <Class Name="Modelo_Entidades.Operacion_Auditoria" Collapsed="true">
     <Position X="2.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAIHEJzAHCFUADCBIYIAUUQAAgABQk6BUKhAAsEFSI=</HashCode>
+      <HashCode>AABYHEJzADCFUADSBIYAAUUQAAgABQk6BGKhAAsEFSI=</HashCode>
     </TypeIdentifier>
   </Class>
   <Class Name="Modelo_Entidades.Alquiler_Producto" Collapsed="true">
-    <Position X="4.25" Y="1.5" Width="2" />
+    <Position X="4.25" Y="1.75" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAQAABAAEAAAAQIBARAABABAAAQACKAIAAgAAAAI=</HashCode>
     </TypeIdentifier>
@@ -170,9 +205,10 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Modelo_Entidades.Producto" Collapsed="true">
-    <Position X="9.25" Y="0.5" Width="1.5" />
+    <Position X="9.25" Y="0.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAEAAAAEAANAAAAEAAACAAAAKAIAAAQAAAA=</HashCode>
+      <FileName>Producto.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Modelo_Entidades.sysdiagrams" Collapsed="true">

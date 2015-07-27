@@ -448,7 +448,7 @@ namespace Controladora
                 //entonces asignar los valores antiguos a la operación que será guardada en la tabla de auditoría
                 oOperacionAuditoria = this.CopiarValores(oOperacionAntigua, oOperacionAuditoria);
                 //enviar la operacion con los valores antiguos al catálogo de auditoría
-                Modelo_Entidades.Modelo_AuditoriaEntities2.ObtenerInstancia().CatOperaciones_Auditoria.AddObject(oOperacionAuditoria);
+                Modelo_Entidades.Modelo_Auditoria.ObtenerInstancia().CatOperaciones_Auditoria.AddObject(oOperacionAuditoria);
                 // se quita este savechanges para que se guarden todos los cambios de una sola vez
                 /*
                 int resultado1 = Modelo_Entidades.Modelo_AuditoriaEntities2.ObtenerInstancia().SaveChanges();
@@ -535,8 +535,23 @@ namespace Controladora
         {
             oOperacion.ActualizarAlquiler();
         }
+
+        public bool ComprobarTolerancia(Modelo_Entidades.Operacion oOperacion)
+        {
+            string respuesta = oOperacion.ComprobarTolerancia();
+            if (respuesta == "Correcto")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         #endregion
 
+
+        #region tipos
         public List<Modelo_Entidades.Tipo_Matricula> ObtenerTiposMatricula()
         {
             return Modelo_Entidades.Acopio_FertilizantesEntities.ObtenerInstancia().CatTipos_Matricula.ToList();
@@ -551,5 +566,6 @@ namespace Controladora
         {
             return Modelo_Entidades.Acopio_FertilizantesEntities.ObtenerInstancia().CatEstados_Operacion.ToList();
         }
+        #endregion
     }
 }

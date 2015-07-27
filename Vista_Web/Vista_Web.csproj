@@ -104,7 +104,7 @@
     <Content Include="Operaciones\AutorizarOperacion.aspx" />
     <Content Include="Operaciones\Operacion.aspx" />
     <Content Include="Operaciones\Operaciones.aspx" />
-    <Content Include="Operaciones\RegistrarCargaDescarga.aspx" />
+    <Content Include="Operaciones\Pesado.aspx" />
     <Content Include="Operaciones\Registro de Ingreso.aspx" />
     <Content Include="Principal.aspx" />
     <Content Include="Seguridad\CambiarClave.aspx" />
@@ -176,12 +176,12 @@
     <Compile Include="Operaciones\Operaciones.aspx.designer.cs">
       <DependentUpon>Operaciones.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Operaciones\RegistrarCargaDescarga.aspx.cs">
-      <DependentUpon>RegistrarCargaDescarga.aspx</DependentUpon>
+    <Compile Include="Operaciones\Pesado.aspx.cs">
+      <DependentUpon>Pesado.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Operaciones\RegistrarCargaDescarga.aspx.designer.cs">
-      <DependentUpon>RegistrarCargaDescarga.aspx</DependentUpon>
+    <Compile Include="Operaciones\Pesado.aspx.designer.cs">
+      <DependentUpon>Pesado.aspx</DependentUpon>
     </Compile>
     <Compile Include="Operaciones\Registro de Ingreso.aspx.cs">
       <DependentUpon>Registro de Ingreso.aspx</DependentUpon>

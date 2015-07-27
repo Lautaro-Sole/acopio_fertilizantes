@@ -96,7 +96,7 @@ namespace Vista_Web.Seguridad
             else
             {
                 perfil = gvPerfiles.SelectedRow.Cells[1].Text;
-                oPerfil = oCCURPF.ObtenerPerfil(Convert.ToInt32(perfil));
+                //oPerfil = oCCURPF.ObtenerPerfil(Convert.ToInt32(perfil));
                 message.Visible = false;
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "pop", "openModal();", true);
             }

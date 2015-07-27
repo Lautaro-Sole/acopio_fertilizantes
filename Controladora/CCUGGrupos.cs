@@ -97,7 +97,7 @@ namespace Controladora
         /// <returns>bool (fue usado = verdadero, no fue usado = falso)</returns>
         public bool ComprobarUso(Modelo_Entidades.GRUPO oGrupo)
         {
-            Modelo_Entidades.GRUPO oGrupoAComprobar = Modelo_Entidades.ModeloSeguridadContainer.ObtenerInstancia().GRUPOS.ToList().Find(delegate(Modelo_Entidades.GRUPO oGrupoBuscado) { return oGrupoBuscado == oGrupo; });
+            //Modelo_Entidades.GRUPO oGrupoAComprobar = Modelo_Entidades.ModeloSeguridadContainer.ObtenerInstancia().GRUPOS.ToList().Find(delegate(Modelo_Entidades.GRUPO oGrupoBuscado) { return oGrupoBuscado == oGrupo; });
 
             if (oGrupo.PERFILES.Count == 0 && oGrupo.USUARIOS.Count == 0)
             {

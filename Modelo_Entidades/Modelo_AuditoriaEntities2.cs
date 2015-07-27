@@ -5,13 +5,13 @@ using System.Text;
 
 namespace Modelo_Entidades
 {
-    partial class Modelo_AuditoriaEntities2
+    partial class Modelo_Auditoria
     {
-        private static Modelo_AuditoriaEntities2 Instancia;
-        public static Modelo_AuditoriaEntities2 ObtenerInstancia()
+        private static Modelo_Auditoria Instancia;
+        public static Modelo_Auditoria ObtenerInstancia()
         {
             if (Instancia == null) //|| Instancia.IsDisposed == true
-                Instancia = new Modelo_AuditoriaEntities2();
+                Instancia = new Modelo_Auditoria();
             return Instancia;
         }
     }

@@ -41,8 +41,8 @@ namespace Controladora
                         oLogin.fecha_y_hora = System.DateTime.Now;
                         oLogin.USU_CODIGO = oUsuarioEncontrado.USU_CODIGO;
                         //guardarlo en la base de datos:
-                        Modelo_Entidades.Modelo_AuditoriaEntities2.ObtenerInstancia().Log_Historia.AddObject(oLogin);
-                        int resultado = Modelo_Entidades.Modelo_AuditoriaEntities2.ObtenerInstancia().SaveChanges();
+                        Modelo_Entidades.Modelo_Auditoria.ObtenerInstancia().Log_Historia.AddObject(oLogin);
+                        int resultado = Modelo_Entidades.Modelo_Auditoria.ObtenerInstancia().SaveChanges();
                         if (resultado == -1)
                         {
                             throw new Exception("Error al registrar el login.");

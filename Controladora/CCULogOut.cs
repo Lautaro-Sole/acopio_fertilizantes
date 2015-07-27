@@ -21,8 +21,8 @@ namespace Controladora
             oLogOut.USU_CODIGO = oUsuario.USU_CODIGO;
             oLogOut.fecha_y_hora = System.DateTime.Now;
             oLogOut.accion = "LOGOUT";
-            Modelo_Entidades.Modelo_AuditoriaEntities2.ObtenerInstancia().Log_Historia.AddObject(oLogOut);
-            int resultado = Modelo_Entidades.Modelo_AuditoriaEntities2.ObtenerInstancia().SaveChanges();
+            Modelo_Entidades.Modelo_Auditoria.ObtenerInstancia().Log_Historia.AddObject(oLogOut);
+            int resultado = Modelo_Entidades.Modelo_Auditoria.ObtenerInstancia().SaveChanges();
             if (resultado != -1)
             {
                 return true;

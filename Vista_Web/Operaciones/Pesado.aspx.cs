@@ -18,7 +18,7 @@ namespace Vista_Web.Operaciones
         Modelo_Entidades.USUARIO oUsuario;
         string nrooperacion;
         float peso;
-
+        string pesado;
 
         public RegistrarCargaDescarga()
         {
@@ -43,6 +43,7 @@ namespace Vista_Web.Operaciones
         {
             if (!IsPostBack)
             {
+                //cambiar //
                 txt_notas.Text = oOperacion.notas;
                 //esto era para establecer el nombre de la ventana
                 //this.Text = "Registrar " + oOperacion.tipo_operacion;
@@ -55,6 +56,16 @@ namespace Vista_Web.Operaciones
                         oOperacion.EstablecerEstrategia(new Modelo_Entidades.EstrategiaDescarga());
                         break;
                 }
+
+                if (oOperacion.Estado_Operacion.descripcion == "Autorizado")
+                {
+                    pesado = "Pesado Inicial";
+                }
+                else if (oOperacion.Estado_Operacion.descripcion == "En Proceso")
+                {
+                    pesado = "Pesado Final";
+                }
+                this.Title = "Pesado Inicial";
             }
         }
 
@@ -65,16 +76,14 @@ namespace Vista_Web.Operaciones
 
         private bool ValidarObligatorios()
         {
-            if (string.IsNullOrEmpty(txt_pesoinicial.Text))
+            if (string.IsNullOrEmpty(txt_peso.Text))
             {
-                lb_error.Text = "Debe ingresar el peso inicial.";
+                lb_error.Text = "Debe ingresar el peso medido.";
                 return false;
             }
-            if (string.IsNullOrEmpty(txt_pesofinal.Text))
-            {
-                lb_error.Text = "Debe ingresar el peso final";
-                return false;
-            }
+            
+            //todo: if para si es pesado inicial o pesado final
+            /*
             switch (oOperacion.Tipo_Operacion.descripcion)
             {
                 case "Descarga":
@@ -93,6 +102,8 @@ namespace Vista_Web.Operaciones
                     break;
             }
             peso = Convert.ToSingle(txt_pesofinal.Text) - Convert.ToSingle(txt_pesoinicial.Text);
+            */
+
             //si lo entregado está dentro de la tolerancia -> movido a la clase
             /*
             if (!((oOperacion.Documentos.peso * 0.95 <= _peso) & (_peso <= oOperacion.Documentos.peso * 1.05)))
@@ -113,29 +124,49 @@ namespace Vista_Web.Operaciones
         {
             if (ValidarObligatorios())
             {
-                oOperacion.peso_inicial = Convert.ToSingle(txt_pesoinicial.Text);
-                oOperacion.peso_final = Convert.ToSingle(txt_pesofinal.Text);
+                
                 oOperacion.notas = txt_notas.Text;
-                oOperacion.Estado_Operacion.descripcion = "Finalizado";
+                if (oOperacion.Estado_Operacion.descripcion == "Autorizado")
+                {
+                    oOperacion.Estado_Operacion.descripcion = "En Proceso";
+                    oOperacion.peso_inicial = Convert.ToSingle(txt_peso.Text);
+                    //datos auditoría
+                    oOperacion.accion = "Modificacion - Registrar Pesado Inicial";
+                }
+                else
+                {
+                    oOperacion.Estado_Operacion.descripcion = "Finalizado";
+                    oOperacion.peso_final = Convert.ToSingle(txt_peso.Text);
+                    //datos auditoría
+                    oOperacion.accion = "Modificacion - Registrar Pesado Final";
+                }
+                
 
                 //obtener datos de usuario
                 oUsuario = (Modelo_Entidades.USUARIO)Session["sUsuario"];
                 //datos auditoría
                 oOperacion.USU_CODIGO = oUsuario.USU_CODIGO;
                 oOperacion.fecha_y_hora_accion = DateTime.Now;
-                oOperacion.accion = "Modificacion - Registrar " + oOperacion.tipo_operacion;
+                
 
                 try
                 {
                     //llamar comprobacion (comprobar si lo movido concuerda con lo que está en el documento)
-                    bool resultado = oCCUCore.ComprobarFertilizanteMovido(oOperacion);
+                    //bool resultado = oCCUCore.ComprobarFertilizanteMovido(oOperacion);
+
+                    bool resultado = oCCUCore.ComprobarTolerancia(oOperacion);
 
                     if (resultado)
                     {
-                        //actualizar los valores del alquiler
-                        oCCUCore.ActualizarAlquiler(oOperacion);
+                        if ( oOperacion.Estado_Operacion.descripcion=="Finalizado")
+                        {
+                            //actualizar los valores del alquiler
+                            oCCUCore.ActualizarAlquiler(oOperacion);
+                        }
+
 
                         bool resultado2 = oCCUCore.Modificar(oOperacion);
+
                         if (resultado2)
                         {
                             lb_error.Text = this.oOperacion.tipo_operacion + " registrada correctamente. Será redireccionado a Operaciones en 5 segundos.";
@@ -149,12 +180,12 @@ namespace Vista_Web.Operaciones
                         }
                         else
                         {
-                            lb_error.Text = oOperacion.tipo_operacion + " no registrada.";
+                            lb_error.Text = pesado + " no registrado.";
                         }
                     }
                     else
                     {
-                        lb_error.Text = oOperacion.tipo_operacion + " no registrada.";                        
+                        lb_error.Text = pesado + " no registrado.";                        
                     }
                 }
                 catch (System.Data.DataException ex)

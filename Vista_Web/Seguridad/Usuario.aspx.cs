@@ -111,7 +111,7 @@ namespace Vista_Web.Seguridad
                 oUsuario.USU_EMAIL = txt_email.Text;
                 oUsuario.USU_CODIGO = txt_nombreusuario.Text;
                 oUsuario.USU_ESTADO = chk_estado.Checked;
-                clave = oCCUGUsuarios.generarClaveAleatoria(8, false);
+                //clave = oCCUGUsuarios.generarClaveAleatoria(8, false);
                 
 
 
@@ -130,10 +130,12 @@ namespace Vista_Web.Seguridad
 
                 if (modo == "Alta")
                 {
-                    oUsuario.USU_CLAVE = clave;
-                    oCCUGUsuarios.EnviarCorreo(oUsuario);
-                    oUsuario.USU_CLAVE = oCCUGUsuarios.EncriptarClave(clave);
+                    //clave = oCCUGUsuarios.generarClaveAleatoria(8, false);
+                    oUsuario.USU_CLAVE = "clavetemp";
+                    //oCCUGUsuarios.EnviarCorreo(oUsuario);
+                    //oUsuario.USU_CLAVE = oCCUGUsuarios.EncriptarClave(clave);
                     oCCUGUsuarios.Agregar(oUsuario);
+                    oCCUGUsuarios.ResetearClave(oUsuario);
                     Page.Response.Redirect("~/Seguridad/Gestion de Usuarios.aspx");
                 }
 

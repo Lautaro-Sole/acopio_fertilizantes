@@ -24,14 +24,14 @@ namespace Modelo_Entidades
     /// <summary>
     /// No hay documentación de metadatos disponible.
     /// </summary>
-    public partial class Modelo_AuditoriaEntities2 : ObjectContext
+    public partial class Modelo_Auditoria : ObjectContext
     {
         #region Constructores
     
         /// <summary>
         /// Inicializa un nuevo objeto Modelo_AuditoriaEntities2 usando la cadena de conexión encontrada en la sección 'Modelo_AuditoriaEntities2' del archivo de configuración de la aplicación.
         /// </summary>
-        public Modelo_AuditoriaEntities2() : base("name=Modelo_AuditoriaEntities2", "Modelo_AuditoriaEntities2")
+        public Modelo_Auditoria() : base("name=Modelo_AuditoriaEntities2", "Modelo_AuditoriaEntities2")
         {
             this.ContextOptions.LazyLoadingEnabled = true;
             OnContextCreated();
@@ -40,7 +40,7 @@ namespace Modelo_Entidades
         /// <summary>
         /// Inicializar un nuevo objeto Modelo_AuditoriaEntities2.
         /// </summary>
-        public Modelo_AuditoriaEntities2(string connectionString) : base(connectionString, "Modelo_AuditoriaEntities2")
+        public Modelo_Auditoria(string connectionString) : base(connectionString, "Modelo_AuditoriaEntities2")
         {
             this.ContextOptions.LazyLoadingEnabled = true;
             OnContextCreated();
@@ -49,7 +49,7 @@ namespace Modelo_Entidades
         /// <summary>
         /// Inicializar un nuevo objeto Modelo_AuditoriaEntities2.
         /// </summary>
-        public Modelo_AuditoriaEntities2(EntityConnection connection) : base(connection, "Modelo_AuditoriaEntities2")
+        public Modelo_Auditoria(EntityConnection connection) : base(connection, "Modelo_AuditoriaEntities2")
         {
             this.ContextOptions.LazyLoadingEnabled = true;
             OnContextCreated();

@@ -29,5 +29,10 @@ namespace Modelo_Entidades
         {
             this._EstrategiaPropia.ActualizarAlquiler(this.Alquiler, this.Documento, Convert.ToDouble(this.peso_inicial), Convert.ToDouble(this.peso_final));
         }
+
+        public string ComprobarTolerancia()
+        {
+            return this._EstrategiaPropia.ComprobarTolerancia(this.Alquiler, this.Documento, this.Transporte, Convert.ToDouble(this.peso_inicial), Convert.ToDouble(this.peso_final), this.Estado_Operacion.descripcion);
+        }
     }
 }

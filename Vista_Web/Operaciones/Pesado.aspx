@@ -13,16 +13,14 @@
             <div class="container">
                 <div runat="server" class="row">
                     <div runat="server" class="col-lg-12">
-                        <div class="page-header" title="Gestión de Usuarios">
+                        <div id="cabecera" class="page-header" title="Gestión de Usuarios">
                             <h1 id="nombrepagina">Pesado <small>Módulo de Operaciones</small></h1>
                         </div>
                     </div>
                     <div id="Div4" runat="server" class="col-lg-4">
                         <div runat="server" class="form-group">
-                            <label runat="server" for="txt_pesoinicial">Peso inicial</label>
-                            <asp:TextBox ID="txt_pesoinicial" runat="server" type="text" class="form-control" placeholder="Ingrese el peso inicial"></asp:TextBox>
-                            <label runat="server" for="txt_pesofinal">Peso final</label>
-                            <asp:TextBox ID="txt_pesofinal" runat="server" type="text" class="form-control" placeholder="Ingrese el peso final"></asp:TextBox>
+                            <label runat="server" for="txt_peso">Peso Medido</label>
+                            <asp:TextBox ID="txt_peso" runat="server" type="text" class="form-control" placeholder="Ingrese el peso medido"></asp:TextBox>
                             <label runat="server" for="txt_notas">Notas</label>
                             <asp:TextBox ID="txt_notas" runat="server" type="text" class="form-control" placeholder="Ingrese notas"></asp:TextBox>
                         </div>

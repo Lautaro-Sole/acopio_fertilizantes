@@ -257,7 +257,7 @@ namespace Controladora
         {
             //buscar en el catálogo de trabajo y el de auditoría si alguna de las operaciones fue hecha o modificada por el usuario
             Modelo_Entidades.Operacion oOperacionEncontrada = Modelo_Entidades.Acopio_FertilizantesEntities.ObtenerInstancia().CatOperaciones.ToList<Modelo_Entidades.Operacion>().Find(delegate(Modelo_Entidades.Operacion oOperacionBuscada){return oOperacionBuscada.USU_CODIGO==codigo_usuario;});
-            Modelo_Entidades.Operacion_Auditoria oOperacion_AuditoriaEncontrada = Modelo_Entidades.Modelo_AuditoriaEntities2.ObtenerInstancia().CatOperaciones_Auditoria.ToList<Modelo_Entidades.Operacion_Auditoria>().Find(delegate(Modelo_Entidades.Operacion_Auditoria oOperacionBuscada){return oOperacionBuscada.USU_CODIGO==codigo_usuario;});
+            Modelo_Entidades.Operacion_Auditoria oOperacion_AuditoriaEncontrada = Modelo_Entidades.Modelo_Auditoria.ObtenerInstancia().CatOperaciones_Auditoria.ToList<Modelo_Entidades.Operacion_Auditoria>().Find(delegate(Modelo_Entidades.Operacion_Auditoria oOperacionBuscada){return oOperacionBuscada.USU_CODIGO==codigo_usuario;});
 
             if ((oOperacionEncontrada != null) || (oOperacion_AuditoriaEncontrada != null))
             {
