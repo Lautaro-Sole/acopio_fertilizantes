@@ -472,7 +472,9 @@ namespace Controladora
         {
             oOperacionAuditoria.accion = oOperacionAntigua.accion;
             //oOperacionAuditoria.estado = oOperacionAntigua.estado;
-            oOperacionAuditoria.estado = oOperacionAntigua.Estado_Operacion.id_estado_operacion;
+            //oOperacionAuditoria.estado = oOperacionAntigua.Estado_Operacion.id_estado_operacion;
+            oOperacionAuditoria.estado = oOperacionAntigua.estado;
+
             oOperacionAuditoria.fecha_y_hora_accion = oOperacionAntigua.fecha_y_hora_accion;
             oOperacionAuditoria.fecha_y_hora_fin = oOperacionAntigua.fecha_y_hora_fin;
             oOperacionAuditoria.fecha_y_hora_inicio = oOperacionAntigua.fecha_y_hora_inicio;
@@ -539,7 +541,7 @@ namespace Controladora
         public bool ComprobarTolerancia(Modelo_Entidades.Operacion oOperacion)
         {
             string respuesta = oOperacion.ComprobarTolerancia();
-            if (respuesta == "Correcto")
+            if (respuesta == "Aceptable")
             {
                 return true;
             }

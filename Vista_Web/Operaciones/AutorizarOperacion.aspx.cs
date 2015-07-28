@@ -345,6 +345,7 @@ namespace Vista_Web.Operaciones
                 oOperacion.Documento = oDocumento;
                 //oOperacion.Estado_Operacion.descripcion = "Autorizado";
                 oOperacion.Estado_Operacion = oListaEstadosOperacion.Find(delegate(Modelo_Entidades.Estado_Operacion oEstadoBuscado) { return oEstadoBuscado.descripcion == "Autorizado"; });
+                oOperacion.estado = oOperacion.Estado_Operacion.id_estado_operacion;
                 //oOperacion.notas = this.txt_notas.Text;
 
                 //oOperacion.Alquiler = oListaAlquileres[this.gvAlquileres.SelectedIndex];

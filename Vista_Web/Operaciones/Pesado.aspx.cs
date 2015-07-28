@@ -16,6 +16,7 @@ namespace Vista_Web.Operaciones
         Controladora.CCUGAlquileres oCCUGAlquileres;
         Modelo_Entidades.Operacion oOperacion;
         Modelo_Entidades.USUARIO oUsuario;
+        List<Modelo_Entidades.Estado_Operacion> oListaEstadosOperacion;
         string nrooperacion;
         float peso;
         string pesado;
@@ -36,6 +37,7 @@ namespace Vista_Web.Operaciones
                 //obtener la operacion de la base de datos o de la sesión
                 nrooperacion = Server.UrlDecode(Request.QueryString["operacion"]);
                 oOperacion = oCCUCore.ObtenerOperacion(Convert.ToInt64(nrooperacion));
+                
             }
             else
             {
@@ -44,8 +46,10 @@ namespace Vista_Web.Operaciones
 
                 //obtener la operacion de la base de datos o de la sesión
                 nrooperacion = Server.UrlDecode(Request.QueryString["operacion"]);
-                oOperacion = oCCUCore.ObtenerOperacion(Convert.ToInt64(nrooperacion));
+                oOperacion = oCCUCore.ObtenerOperacion(Convert.ToInt64(nrooperacion)); 
+                
             }
+
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -69,12 +73,12 @@ namespace Vista_Web.Operaciones
                 if (oOperacion.Estado_Operacion.descripcion == "Autorizado")
                 {
                     pesado = "Pesado Inicial";
-                    this.txt_peso.Text = "Peso Inicial medido";
+                    //this.txt_peso.Text = "Peso Inicial medido";
                 }
                 else if (oOperacion.Estado_Operacion.descripcion == "En Proceso")
                 {
                     pesado = "Pesado Final";
-                    this.txt_peso.Text = "Peso Inicial medido";
+                    //this.txt_peso.Text = "Peso Final medido";
                 }
                 this.Title = pesado + " - " + oOperacion.Tipo_Operacion.descripcion;
             }
@@ -170,16 +174,20 @@ namespace Vista_Web.Operaciones
                     //bool resultado = oCCUCore.ComprobarFertilizanteMovido(oOperacion);
 
                     bool resultado = oCCUCore.ComprobarTolerancia(oOperacion);
-
+                    List<Modelo_Entidades.Estado_Operacion> oListaTiposOperacion = oCCUCore.ObtenerEstadosOperacion();
                     if (resultado)
                     {
                         if (oOperacion.Estado_Operacion.descripcion == "Autorizado")
                         {
-                            oOperacion.Estado_Operacion.descripcion = "En Proceso";
+                            //oOperacion.Estado_Operacion.descripcion = "En Proceso";
+                            oOperacion.Estado_Operacion = oListaTiposOperacion.Find(delegate(Modelo_Entidades.Estado_Operacion oEstadoBuscado) { return oEstadoBuscado.descripcion == "En Proceso"; });
+                            oOperacion.estado = oOperacion.Estado_Operacion.id_estado_operacion;
                         }
                         else
                         {
-                            oOperacion.Estado_Operacion.descripcion = "Finalizado";
+                            //oOperacion.Estado_Operacion.descripcion = "Finalizado";
+                            oOperacion.Estado_Operacion = oListaTiposOperacion.Find(delegate(Modelo_Entidades.Estado_Operacion oEstadoBuscado) { return oEstadoBuscado.descripcion == "Finalizado"; });
+                            oOperacion.estado = oOperacion.Estado_Operacion.id_estado_operacion;
                         }
 
                         if ( oOperacion.Estado_Operacion.descripcion=="Finalizado")
@@ -187,6 +195,8 @@ namespace Vista_Web.Operaciones
                             //actualizar los valores del alquiler
                             oCCUCore.ActualizarAlquiler(oOperacion);
                         }
+
+
 
 
                         bool resultado2 = oCCUCore.Modificar(oOperacion);

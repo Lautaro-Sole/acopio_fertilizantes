@@ -89,7 +89,7 @@ namespace Vista_Web.Seguridad
 
         protected void botonera1_Click_Cerrar(object sender, EventArgs e)
         {
-            Response.Redirect(String.Format("~/Principal.aspx"));
+            Response.Redirect(String.Format("~/Principal.aspx"), false);
         }
 
         // Al hacer click en "Modificar"

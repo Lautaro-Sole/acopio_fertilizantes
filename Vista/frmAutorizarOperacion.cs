@@ -142,7 +142,8 @@ namespace Vista
                 oDocumento.fecha_hora = this.dtpFechaYHora.Value;
 
                 oOperacion.Documento = oDocumento;
-                oOperacion.Estado_Operacion.descripcion = "Autorizado";
+                //oOperacion.Estado_Operacion.descripcion = "Autorizado";
+                oOperacion.Estado_Operacion = oCCUCore.ObtenerEstadosOperacion().ToList<Modelo_Entidades.Estado_Operacion>().Find(delegate(Modelo_Entidades.Estado_Operacion oEstadoBuscado) { return oEstadoBuscado.descripcion == "Autorizado"; });
                 oOperacion.notas = this.tbNotas.Text;
 
                 oOperacion.Alquiler = (Modelo_Entidades.Alquiler)this.bsAlquileres.Current;

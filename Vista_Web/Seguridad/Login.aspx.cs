@@ -61,7 +61,7 @@ namespace Vista_Web.Seguridad
                 oUsuario = oFachada.RealizarLogIn(txt_nombreUsuario.Text, txt_contraseña.Text);
                 //oUsuario = oCCULogin.login(txt_nombreUsuario.Text, txt_contraseña.Text);
                 Session["sUsuario"] = oUsuario;
-                Page.Response.Redirect("~/Principal.aspx");
+                Page.Response.Redirect("~/Principal.aspx", false);
             }
 
             catch (Exception Exc)

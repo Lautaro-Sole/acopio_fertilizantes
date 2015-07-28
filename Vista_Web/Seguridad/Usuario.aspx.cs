@@ -98,7 +98,7 @@ namespace Vista_Web.Seguridad
 
         protected void btn_cancelar_Click(object sender, EventArgs e)
         {
-            Page.Response.Redirect("~/Seguridad/Gestion de Usuarios.aspx");
+            Page.Response.Redirect("~/Seguridad/Gestion de Usuarios.aspx", false);
         }
 
         protected void btn_guardar_Click(object sender, EventArgs e)
@@ -136,14 +136,14 @@ namespace Vista_Web.Seguridad
                     //oUsuario.USU_CLAVE = oCCUGUsuarios.EncriptarClave(clave);
                     oCCUGUsuarios.Agregar(oUsuario);
                     oCCUGUsuarios.ResetearClave(oUsuario);
-                    Page.Response.Redirect("~/Seguridad/Gestion de Usuarios.aspx");
+                    Page.Response.Redirect("~/Seguridad/Gestion de Usuarios.aspx", false);
                 }
 
                 else
                 {
                     //oUsuario.USU_CLAVE = oCCUGUsuarios.EncriptarClave(txt_nuevacontraseña.Text);
                     oCCUGUsuarios.Modificar(oUsuario);
-                    Page.Response.Redirect("~/Seguridad/Gestion de Usuarios.aspx");
+                    Page.Response.Redirect("~/Seguridad/Gestion de Usuarios.aspx", false);
                 }
             }
         }

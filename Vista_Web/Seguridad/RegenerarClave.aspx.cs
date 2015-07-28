@@ -98,7 +98,7 @@ namespace Vista_Web.Seguridad
 
         protected void btn_cancelar_Click(object sender, EventArgs e)
         {
-            Page.Response.Redirect("~/Seguridad/Login.aspx");
+            Page.Response.Redirect("~/Seguridad/Login.aspx", false);
         }
     }
 }
