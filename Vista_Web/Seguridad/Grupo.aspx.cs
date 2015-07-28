@@ -85,7 +85,7 @@ namespace Vista_Web.Seguridad
 
         protected void btn_cancelar_Click(object sender, EventArgs e)
         {
-            Page.Response.Redirect("~/Seguridad/Gestion de Grupos.aspx");
+            Page.Response.Redirect("~/Seguridad/Gestion de Grupos.aspx", false);
         }
 
         protected void btn_guardar_Click(object sender, EventArgs e)
@@ -120,7 +120,7 @@ namespace Vista_Web.Seguridad
                 }
             }
 
-            Page.Response.Redirect("~/Seguridad/Gestion de Grupos.aspx");
+            Page.Response.Redirect("~/Seguridad/Gestion de Grupos.aspx", false);
         }
 
         // Valido los datos del usuario

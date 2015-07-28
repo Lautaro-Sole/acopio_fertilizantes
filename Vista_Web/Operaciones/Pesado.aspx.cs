@@ -37,16 +37,25 @@ namespace Vista_Web.Operaciones
                 nrooperacion = Server.UrlDecode(Request.QueryString["operacion"]);
                 oOperacion = oCCUCore.ObtenerOperacion(Convert.ToInt64(nrooperacion));
             }
+            else
+            {
+                oUsuario = (Modelo_Entidades.USUARIO)HttpContext.Current.Session["sUsuario"];
+                ArmarPerfil(oUsuario, "frmAutorizarOperacion");
+
+                //obtener la operacion de la base de datos o de la sesión
+                nrooperacion = Server.UrlDecode(Request.QueryString["operacion"]);
+                oOperacion = oCCUCore.ObtenerOperacion(Convert.ToInt64(nrooperacion));
+            }
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            //if (!IsPostBack)
+            try
             {
                 //cambiar //
                 txt_notas.Text = oOperacion.notas;
                 //esto era para establecer el nombre de la ventana
-                //this.Text = "Registrar " + oOperacion.tipo_operacion;
                 switch (oOperacion.Tipo_Operacion.descripcion)
                 {
                     case "Carga":
@@ -60,12 +69,18 @@ namespace Vista_Web.Operaciones
                 if (oOperacion.Estado_Operacion.descripcion == "Autorizado")
                 {
                     pesado = "Pesado Inicial";
+                    this.txt_peso.Text = "Peso Inicial medido";
                 }
                 else if (oOperacion.Estado_Operacion.descripcion == "En Proceso")
                 {
                     pesado = "Pesado Final";
+                    this.txt_peso.Text = "Peso Inicial medido";
                 }
-                this.Title = "Pesado Inicial";
+                this.Title = pesado + " - " + oOperacion.Tipo_Operacion.descripcion;
+            }
+            catch(Exception ex)
+            {
+                lb_error.Text = ex.InnerException.Message;
             }
         }
 
@@ -117,7 +132,7 @@ namespace Vista_Web.Operaciones
 
         protected void btn_cancelar_Click(object sender, EventArgs e)
         {
-            Page.Response.Redirect("~/Operaciones/Operaciones.aspx");
+            Page.Response.Redirect("~/Operaciones/Operaciones.aspx", false);
         }
 
         protected void btn_guardar_Click(object sender, EventArgs e)
@@ -128,14 +143,14 @@ namespace Vista_Web.Operaciones
                 oOperacion.notas = txt_notas.Text;
                 if (oOperacion.Estado_Operacion.descripcion == "Autorizado")
                 {
-                    oOperacion.Estado_Operacion.descripcion = "En Proceso";
+                    //oOperacion.Estado_Operacion.descripcion = "En Proceso";
                     oOperacion.peso_inicial = Convert.ToSingle(txt_peso.Text);
                     //datos auditoría
                     oOperacion.accion = "Modificacion - Registrar Pesado Inicial";
                 }
                 else
                 {
-                    oOperacion.Estado_Operacion.descripcion = "Finalizado";
+                    //oOperacion.Estado_Operacion.descripcion = "Finalizado";
                     oOperacion.peso_final = Convert.ToSingle(txt_peso.Text);
                     //datos auditoría
                     oOperacion.accion = "Modificacion - Registrar Pesado Final";
@@ -158,6 +173,15 @@ namespace Vista_Web.Operaciones
 
                     if (resultado)
                     {
+                        if (oOperacion.Estado_Operacion.descripcion == "Autorizado")
+                        {
+                            oOperacion.Estado_Operacion.descripcion = "En Proceso";
+                        }
+                        else
+                        {
+                            oOperacion.Estado_Operacion.descripcion = "Finalizado";
+                        }
+
                         if ( oOperacion.Estado_Operacion.descripcion=="Finalizado")
                         {
                             //actualizar los valores del alquiler
@@ -171,12 +195,7 @@ namespace Vista_Web.Operaciones
                         {
                             lb_error.Text = this.oOperacion.tipo_operacion + " registrada correctamente. Será redireccionado a Operaciones en 5 segundos.";
 
-                            //código para redireccionar http://www.aspsnippets.com/Articles/Redirect-to-another-page-after-5-seconds-in-ASPNet.aspx
-                            HtmlMeta meta = new HtmlMeta();
-                            meta.HttpEquiv = "Refresh";
-                            meta.Content = "5;url=~/Operaciones/Operaciones.aspx";
-                            this.Page.Controls.Add(meta);
-                            //Label1.Text = "You will now be redirected in 5 seconds";
+                            Page.Response.Redirect("~/Operaciones/Operaciones.aspx", false);
                         }
                         else
                         {

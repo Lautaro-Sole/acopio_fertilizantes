@@ -26,7 +26,7 @@ namespace Vista_Web
             //Compruebo si el usuario se ha logueado viendo si existe una sesión
             if (Session["sUsuario"] == null)
             {
-                Response.Redirect("~/Seguridad/Login.aspx");
+                Response.Redirect("~/Seguridad/Login.aspx", false);
             }
 
             oCCUGPerfiles = Controladora.CCUGPerfiles.ObtenerInstancia();
@@ -135,7 +135,7 @@ namespace Vista_Web
 
                     Link_SubFormulario.Text = oFormulario.FRM_DESCRIPCION;
                     Link_SubFormulario.NavigateUrl = "~/" + oModulo.MOD_DESCRIPCION + "/" + oFormulario.FRM_DESCRIPCION + ".aspx";
-                    if (!(oFormulario.FRM_CODIGO == "autorizar") && !(oFormulario.FRM_CODIGO == "cargadesc"))
+                    if (!(oFormulario.FRM_CODIGO == "autorizar") && !(oFormulario.FRM_CODIGO == "cargadesc") && !(oFormulario.FRM_CODIGO == "pesado"))
                     {
                         SubFormulario.Controls.Add(Link_SubFormulario);
                     }
@@ -155,7 +155,7 @@ namespace Vista_Web
             
 
             Session.Abandon();
-            Page.Response.Redirect("~/Seguridad/Login.aspx");
+            Page.Response.Redirect("~/Seguridad/Login.aspx", false);
         }
     }
 }

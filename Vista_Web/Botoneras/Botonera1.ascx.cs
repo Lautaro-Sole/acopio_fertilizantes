@@ -211,13 +211,14 @@ namespace Vista_Web.Botoneras
                 }
                 if(oListaPermisos.Count == 0)
                 {
-                    Response.Redirect("~/Seguridad/Login.aspx");
+                    Response.Redirect("~/Seguridad/Login.aspx", false);
                 }
             }
 
             catch (Exception Exc)
             {
-                throw new Exception(Exc.Message);
+                //throw new Exception(Exc.Message);
+                Response.Redirect("~/Seguridad/Login.aspx", false);
             }
         }
     }

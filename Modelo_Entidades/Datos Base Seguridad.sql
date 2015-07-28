@@ -182,6 +182,7 @@ insert into SEGURIDAD.dbo.PERFILES values
 ('opera','debug','Z', 'admin', '06-07-2012','A'),
 ('opera','debug','G', 'admin', '06-07-2012','A'),
 ('opera','debug','C', 'admin', '06-07-2012','A'),
+('autorizar', 'debug', 'Z', 'admin', '2012-07-06', 'A'),
 ('pesado','debug','A', 'admin', '06-07-2012','A'),
 ('infvip','debug','C', 'admin', '06-07-2012','A'),
 ('inffertmov','debug','C', 'admin', '06-07-2012','A'),

@@ -42,7 +42,7 @@ namespace Vista_Web.Seguridad
 
         protected void btn_cancelar_Click(object sender, EventArgs e)
         {
-            Page.Response.Redirect("~/Seguridad/Principal.aspx");
+            Page.Response.Redirect("~/Seguridad/Principal.aspx", false);
         }
 
         // Valido los datos del usuario

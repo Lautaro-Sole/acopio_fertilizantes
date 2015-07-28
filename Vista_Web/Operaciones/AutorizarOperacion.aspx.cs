@@ -285,12 +285,8 @@ namespace Vista_Web.Operaciones
 
                             LimpiarSesion();
 
-                            //código para redireccionar http://www.aspsnippets.com/Articles/Redirect-to-another-page-after-5-seconds-in-ASPNet.aspx
-                            HtmlMeta meta = new HtmlMeta();
-                            meta.HttpEquiv = "Refresh";
-                            meta.Content = "5;url=~/Operaciones/Operaciones.aspx";
-                            this.Page.Controls.Add(meta);
-                            //Label1.Text = "You will now be redirected in 5 seconds";
+                            //Response.AddHeader("REFRESH", "2;URL=test.aspx");
+                            Page.Response.Redirect("~/Operaciones/Operaciones.aspx", false);
                         }
                         else
                         {
@@ -455,8 +451,10 @@ namespace Vista_Web.Operaciones
             //meta.HttpEquiv = "Refresh";
             //meta.Content = "3;url=/Operaciones/Operaciones.aspx";
             //this.Page.Controls.Add(meta);
-            Response.AppendHeader("Refresh", "3; url=/Operaciones/Operaciones.aspx");
+            
+            //Response.AppendHeader("Refresh", "3; url=/Operaciones/Operaciones.aspx");
             lb_error.Text = "Será redireccionado en 3 segundos.";
+            Page.Response.Redirect("~/Operaciones/Operaciones.aspx", false);
         }
     }
 }

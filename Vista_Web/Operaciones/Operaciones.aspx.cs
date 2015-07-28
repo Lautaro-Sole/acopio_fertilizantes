@@ -52,7 +52,7 @@ namespace Vista_Web.Operaciones
 
                 if (oUsuario == null)
                 {
-                    Response.Redirect("~/Seguridad/Login.aspx");
+                    Response.Redirect("~/Seguridad/Login.aspx", false);
                 }
                 else
                 {
@@ -383,7 +383,7 @@ namespace Vista_Web.Operaciones
 
         protected void botonera1_Click_Cerrar(object sender, EventArgs e)
         {
-            Response.Redirect(String.Format("~/Principal.aspx"));
+            Response.Redirect(String.Format("~/Principal.aspx"), false);
         }
 
         #endregion
@@ -392,8 +392,8 @@ namespace Vista_Web.Operaciones
 
         protected void btn_cerrar_operacion_modal_Click(object sender, EventArgs e)
         {
-            //operacion = gvOperaciones.SelectedRow.Cells[1].Text;
-            operacion = "9";
+            operacion = gvOperaciones.SelectedRow.Cells[1].Text;
+            //operacion = "9";
             oOperacion = oCCUCore.ObtenerOperacion(Convert.ToInt64(operacion));
 
             oOperacion.Estado_Operacion = oListaEstadosOperacion.Find(delegate(Modelo_Entidades.Estado_Operacion oEstadoBuscado) { return oEstadoBuscado.descripcion == "Cerrado"; });
@@ -414,12 +414,15 @@ namespace Vista_Web.Operaciones
             message.Visible = true;
             lb_error.Text = "Se ha cerrado la operación.";
             Armar_Lista();
+            
+            Page.Response.Redirect("~/Operaciones/Operaciones.aspx", false);
         }
 
         protected void btn_cancelar_modal_Click(object sender, EventArgs e)
         {
-            ScriptManager.RegisterStartupScript(this.btn_cerrar_operacion_modal, typeof(System.Web.UI.WebControls.Button), "popout", "closeModalCerrar();", true);
+            //ScriptManager.RegisterStartupScript(this.btn_cerrar_operacion_modal, typeof(System.Web.UI.WebControls.Button), "popout", "closeModalCerrar();", true);
             //ScriptManager.RegisterStartupScript(this, this.GetType(), "pop", "closeModal();", true);
+            Page.Response.Redirect("~/Operaciones/Operaciones.aspx", false);
         }
         #endregion
 
