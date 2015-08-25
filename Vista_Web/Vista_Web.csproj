@@ -96,6 +96,7 @@
     <Content Include="CSS\bootstrap.min.css" />
     <Content Include="CSS\custom.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Informes\InformeEstadoAlmacenes.aspx" />
     <Content Include="JS\bootstrap.js" />
     <Content Include="JS\bootstrap.min.js" />
     <Content Include="JS\custom.js" />
@@ -147,6 +148,13 @@
     </Compile>
     <Compile Include="Default.Master.designer.cs">
       <DependentUpon>Default.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\InformeEstadoAlmacenes.aspx.cs">
+      <DependentUpon>InformeEstadoAlmacenes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Informes\InformeEstadoAlmacenes.aspx.designer.cs">
+      <DependentUpon>InformeEstadoAlmacenes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Operaciones\AutorizarCierre.aspx.cs">
       <DependentUpon>AutorizarCierre.aspx</DependentUpon>
